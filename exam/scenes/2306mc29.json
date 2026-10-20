@@ -1,0 +1,68 @@
+{
+  "topic": "자취",
+  "mode": "2d",
+  "answer": "80",
+  "scale": 17,
+  "camera": { "rotX": -1.5708, "rotY": 0, "zoom": 1.05 },
+  "objects": [
+    { "id": "axisX", "type": "segment", "from": [-7, 0, 0], "to": [7, 0, 0], "color": "muted", "tags": ["axes"] },
+    { "id": "axisY", "type": "segment", "from": [0, -3, 0], "to": [0, 7, 0], "color": "muted", "tags": ["axes"] },
+    { "id": "O", "type": "point", "at": [0, 0, 0], "label": "O", "color": "text", "tags": ["given"] },
+    { "id": "F", "type": "point", "at": [5, 0, 0], "label": "F", "color": "B", "tags": ["given", "foci", "triangle"] },
+    { "id": "Fp", "type": "point", "at": [-5, 0, 0], "label": "F'", "color": "B", "tags": ["given", "foci", "triangle"] },
+    { "id": "focusAxis", "type": "segment", "from": [-5, 0, 0], "to": [5, 0, 0], "dash": [4, 3], "color": "muted", "tags": ["foci", "triangle"] },
+    { "id": "C1", "type": "hyperbola", "form": "x2-y2", "a": 1, "b": 4.898979, "center": [0, 0, 0], "span": 0.95, "branch": "both", "width": 3, "color": "A", "tags": ["given", "c1"] },
+    { "id": "C2", "type": "hyperbola", "form": "x2-y2", "a": 2, "b": 4.582576, "center": [0, 0, 0], "span": 0.85, "branch": "both", "dash": [5, 4], "width": 2.5, "color": "D", "tags": ["given", "c2"] },
+    { "id": "asym1", "type": "segment", "from": [-1.4, 6.858571, 0], "to": [1.4, -6.858571, 0], "dash": [3, 4], "color": "muted", "tags": ["c1"] },
+    { "id": "asym2", "type": "segment", "from": [-1.4, -6.858571, 0], "to": [1.4, 6.858571, 0], "dash": [3, 4], "color": "muted", "tags": ["c1"] },
+    { "id": "P", "type": "point", "at": [-1.4, 4.8, 0], "label": "P", "color": "C", "tags": ["points", "triangle", "c1"] },
+    { "id": "Q", "type": "point", "at": [-2.48, 3.36, 0], "label": "Q", "color": "E", "tags": ["points", "c2", "linePQ"] },
+    { "id": "segPFp", "type": "segment", "from": [-1.4, 4.8, 0], "to": [-5, 0, 0], "width": 3, "color": "C", "tags": ["distances", "triangle"] },
+    { "id": "segPF", "type": "segment", "from": [-1.4, 4.8, 0], "to": [5, 0, 0], "width": 3, "color": "C", "tags": ["distances", "triangle"] },
+    { "id": "segQFp", "type": "segment", "from": [-2.48, 3.36, 0], "to": [-5, 0, 0], "width": 2.5, "color": "E", "tags": ["distances", "linePQ"] },
+    { "id": "segQF", "type": "segment", "from": [-2.48, 3.36, 0], "to": [5, 0, 0], "dash": [4, 3], "width": 2.5, "color": "E", "tags": ["distances"] },
+    { "id": "linePQ", "type": "segment", "from": [-5.25, -0.333333, 0], "to": [-0.95, 5.4, 0], "width": 3, "color": "C", "tags": ["linePQ", "slope"] },
+    { "id": "rightP", "type": "rightangle", "vertex": [-1.4, 4.8, 0], "a": [-5, 0, 0], "b": [5, 0, 0], "color": "D", "tags": ["triangle"] },
+    { "id": "runSlope", "type": "segment", "from": [-5, 0, 0], "to": [-1.4, 0, 0], "dash": [3, 3], "color": "D", "tags": ["slope"] },
+    { "id": "riseSlope", "type": "segment", "from": [-1.4, 0, 0], "to": [-1.4, 4.8, 0], "dash": [3, 3], "color": "D", "tags": ["slope"] },
+    { "id": "labelC1", "type": "label", "at": [1.6, 5.2, 0], "text": "C_1:\\ x^2-\\dfrac{y^2}{24}=1", "color": "text", "tags": ["c1"] },
+    { "id": "labelC2", "type": "label", "at": [2.1, 4.45, 0], "text": "C_2:\\ \\dfrac{x^2}{4}-\\dfrac{y^2}{21}=1", "color": "text", "tags": ["c2"] },
+    { "id": "labelPFp", "type": "label", "at": [-3.6, 2.8, 0], "text": "PF'=6", "color": "text", "tags": ["triangle"] },
+    { "id": "labelPF", "type": "label", "at": [1.2, 2.9, 0], "text": "PF=8", "color": "text", "tags": ["triangle"] },
+    { "id": "labelFFp", "type": "label", "at": [-0.7, -0.7, 0], "text": "FF'=10", "color": "text", "tags": ["triangle"] },
+    { "id": "labelSlope", "type": "label", "at": [-3.15, 5.85, 0], "text": "m=\\dfrac{8}{6}=\\dfrac43", "color": "text", "tags": ["slope", "answer"] },
+    { "id": "answerLabel", "type": "label", "at": [1.7, 6.2, 0], "text": "60m=80", "color": "text", "tags": ["answer"] }
+  ],
+  "steps": [
+    {
+      "text": "$C_1:x^2-\\dfrac{y^2}{24}=1$은 $a=1$, $b^2=24$이므로 $c=5$입니다. $C_2:\\dfrac{x^2}{4}-\\dfrac{y^2}{21}=1$도 $a=2$, $b^2=21$이므로 같은 초점 $\\mathrm{F}(5,\\ 0)$, $\\mathrm{F'}(-5,\\ 0)$을 가집니다.",
+      "show": ["axes", "given", "foci", "c1", "c2"],
+      "focus": ["foci", "c1", "c2"]
+    },
+    {
+      "text": "$\\overline{\\mathrm{PQ}}=\\alpha$, $\\overline{\\mathrm{QF'}}=\\beta$라 두면 $C_1$의 정의에서 $\\overline{\\mathrm{PF}}=\\alpha+\\beta+2$이고, $C_2$의 정의에서 $\\overline{\\mathrm{QF}}=\\beta+4$입니다.",
+      "show": ["axes", "foci", "c1", "c2", "points", "distances", "linePQ"],
+      "focus": ["points", "distances"]
+    },
+    {
+      "text": "세 길이 $\\overline{\\mathrm{PQ}}+\\overline{\\mathrm{QF}}$, $2\\overline{\\mathrm{PF'}}$, $\\overline{\\mathrm{PF}}+\\overline{\\mathrm{PF'}}$가 등차수열이므로 $4(\\alpha+\\beta)=\\alpha+\\beta+4+2(\\alpha+\\beta)+2$입니다. 따라서 $\\alpha+\\beta=6$입니다.",
+      "show": ["axes", "foci", "c1", "c2", "points", "distances", "linePQ"],
+      "focus": ["linePQ", "distances"]
+    },
+    {
+      "text": "즉 $\\overline{\\mathrm{PF'}}=6$, $\\overline{\\mathrm{PF}}=8$입니다. 또한 공통 초점 거리에서 $\\overline{\\mathrm{FF'}}=10$이므로 삼각형 $\\mathrm{PFF'}$는 $6$-$8$-$10$ 직각삼각형입니다.",
+      "show": ["axes", "foci", "c1", "points", "triangle"],
+      "focus": ["triangle"]
+    },
+    {
+      "text": "직선 $\\mathrm{PQ}$는 직선 $\\mathrm{PF'}$와 같으므로 기울기 $m$은 $\\tan\\angle \\mathrm{PF'F}=\\dfrac{8}{6}=\\dfrac43$입니다.",
+      "show": ["axes", "foci", "points", "triangle", "slope"],
+      "focus": ["slope"]
+    },
+    {
+      "text": "따라서 $60m=60\\times\\dfrac43=80$입니다.",
+      "show": ["axes", "foci", "points", "triangle", "slope", "answer"],
+      "focus": ["answer"]
+    }
+  ]
+}

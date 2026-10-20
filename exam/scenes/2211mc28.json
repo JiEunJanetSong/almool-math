@@ -1,0 +1,597 @@
+{
+  "topic": "자취",
+  "mode": "2d",
+  "answer": "\\dfrac{9}{4}",
+  "scale": 42,
+  "camera": {
+    "rotX": -1.5708,
+    "rotY": 0,
+    "zoom": 1.05
+  },
+  "objects": [
+    {
+      "id": "axisX",
+      "type": "segment",
+      "from": [
+        -3.4,
+        0,
+        0
+      ],
+      "to": [
+        3.4,
+        0,
+        0
+      ],
+      "color": "muted",
+      "tags": [
+        "axes"
+      ]
+    },
+    {
+      "id": "axisY",
+      "type": "segment",
+      "from": [
+        0,
+        -2.7,
+        0
+      ],
+      "to": [
+        0,
+        3.2,
+        0
+      ],
+      "color": "muted",
+      "tags": [
+        "axes"
+      ]
+    },
+    {
+      "id": "hyperbolaC",
+      "type": "hyperbola",
+      "form": "x2-y2",
+      "a": 1.125,
+      "b": 1.5,
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "span": 1.25,
+      "branch": "both",
+      "color": "A",
+      "width": 3,
+      "tags": [
+        "hyperbola",
+        "equation",
+        "answer"
+      ]
+    },
+    {
+      "id": "asymptoteNeg",
+      "type": "segment",
+      "from": [
+        -2.4,
+        3.2,
+        0
+      ],
+      "to": [
+        2.4,
+        -3.2,
+        0
+      ],
+      "dash": [
+        5,
+        4
+      ],
+      "color": "muted",
+      "tags": [
+        "asymptotes",
+        "parallel"
+      ]
+    },
+    {
+      "id": "asymptotePos",
+      "type": "segment",
+      "from": [
+        -2.4,
+        -3.2,
+        0
+      ],
+      "to": [
+        2.4,
+        3.2,
+        0
+      ],
+      "dash": [
+        5,
+        4
+      ],
+      "color": "muted",
+      "tags": [
+        "asymptotes",
+        "parallel"
+      ]
+    },
+    {
+      "id": "O",
+      "type": "point",
+      "at": [
+        0,
+        0,
+        0
+      ],
+      "label": "O",
+      "color": "text",
+      "tags": [
+        "axes",
+        "center"
+      ]
+    },
+    {
+      "id": "F",
+      "type": "point",
+      "at": [
+        1.875,
+        0,
+        0
+      ],
+      "label": "F",
+      "color": "B",
+      "tags": [
+        "given",
+        "foci"
+      ]
+    },
+    {
+      "id": "Fp",
+      "type": "point",
+      "at": [
+        -1.875,
+        0,
+        0
+      ],
+      "label": "F'",
+      "color": "B",
+      "tags": [
+        "given",
+        "foci"
+      ]
+    },
+    {
+      "id": "focusAxis",
+      "type": "segment",
+      "from": [
+        -1.875,
+        0,
+        0
+      ],
+      "to": [
+        1.875,
+        0,
+        0
+      ],
+      "dash": [
+        4,
+        3
+      ],
+      "color": "muted",
+      "tags": [
+        "foci"
+      ]
+    },
+    {
+      "id": "A",
+      "type": "point",
+      "at": [
+        0,
+        2.5,
+        0
+      ],
+      "label": "A",
+      "color": "E",
+      "tags": [
+        "given",
+        "pointA",
+        "parallel"
+      ]
+    },
+    {
+      "id": "lineAF",
+      "type": "segment",
+      "from": [
+        0,
+        2.5,
+        0
+      ],
+      "to": [
+        1.875,
+        0,
+        0
+      ],
+      "color": "D",
+      "width": 2.5,
+      "tags": [
+        "given",
+        "parallel",
+        "secants"
+      ]
+    },
+    {
+      "id": "lineAFp",
+      "type": "segment",
+      "from": [
+        0,
+        2.5,
+        0
+      ],
+      "to": [
+        -1.875,
+        0,
+        0
+      ],
+      "color": "D",
+      "width": 2.5,
+      "tags": [
+        "secants",
+        "symmetry"
+      ]
+    },
+    {
+      "id": "P",
+      "type": "point",
+      "at": [
+        1.275,
+        0.8,
+        0
+      ],
+      "label": "P",
+      "color": "C",
+      "tags": [
+        "pointsP",
+        "ratio",
+        "equation"
+      ]
+    },
+    {
+      "id": "Pp",
+      "type": "point",
+      "at": [
+        -1.275,
+        0.8,
+        0
+      ],
+      "label": "P'",
+      "color": "C",
+      "tags": [
+        "pointsP",
+        "ratio",
+        "symmetry"
+      ]
+    },
+    {
+      "id": "segAP",
+      "type": "segment",
+      "from": [
+        0,
+        2.5,
+        0
+      ],
+      "to": [
+        1.275,
+        0.8,
+        0
+      ],
+      "color": "C",
+      "width": 3,
+      "tags": [
+        "ratio"
+      ]
+    },
+    {
+      "id": "segPF",
+      "type": "segment",
+      "from": [
+        1.275,
+        0.8,
+        0
+      ],
+      "to": [
+        1.875,
+        0,
+        0
+      ],
+      "color": "B",
+      "width": 3,
+      "tags": [
+        "pf",
+        "ratio"
+      ]
+    },
+    {
+      "id": "segPPp",
+      "type": "segment",
+      "from": [
+        1.275,
+        0.8,
+        0
+      ],
+      "to": [
+        -1.275,
+        0.8,
+        0
+      ],
+      "color": "C",
+      "width": 3,
+      "tags": [
+        "ratio",
+        "symmetry"
+      ]
+    },
+    {
+      "id": "segPpFp",
+      "type": "segment",
+      "from": [
+        -1.275,
+        0.8,
+        0
+      ],
+      "to": [
+        -1.875,
+        0,
+        0
+      ],
+      "color": "B",
+      "width": 3,
+      "tags": [
+        "symmetry"
+      ]
+    },
+    {
+      "id": "segPFp",
+      "type": "segment",
+      "from": [
+        1.275,
+        0.8,
+        0
+      ],
+      "to": [
+        -1.875,
+        0,
+        0
+      ],
+      "dash": [
+        4,
+        3
+      ],
+      "color": "E",
+      "width": 2.5,
+      "tags": [
+        "definition"
+      ]
+    },
+    {
+      "id": "V",
+      "type": "point",
+      "at": [
+        1.125,
+        0,
+        0
+      ],
+      "label": "V",
+      "color": "A",
+      "tags": [
+        "vertices",
+        "answer"
+      ]
+    },
+    {
+      "id": "Vp",
+      "type": "point",
+      "at": [
+        -1.125,
+        0,
+        0
+      ],
+      "label": "V'",
+      "color": "A",
+      "tags": [
+        "vertices",
+        "answer"
+      ]
+    },
+    {
+      "id": "majorAxis",
+      "type": "segment",
+      "from": [
+        -1.125,
+        0,
+        0
+      ],
+      "to": [
+        1.125,
+        0,
+        0
+      ],
+      "color": "A",
+      "width": 4,
+      "tags": [
+        "vertices",
+        "answer"
+      ]
+    },
+    {
+      "id": "parallelLabel",
+      "type": "label",
+      "at": [
+        1.35,
+        2.1,
+        0
+      ],
+      "text": "\\overline{\\mathrm{AF}}\\parallel y=-\\dfrac{b}{a}x",
+      "color": "text",
+      "tags": [
+        "parallel"
+      ]
+    },
+    {
+      "id": "ratioLabel",
+      "type": "label",
+      "at": [
+        -2.8,
+        1.05,
+        0
+      ],
+      "text": "\\overline{\\mathrm{AP}}:\\overline{\\mathrm{PP'}}=5:6,\\ \\overline{\\mathrm{PF}}=1",
+      "color": "text",
+      "tags": [
+        "ratio"
+      ]
+    },
+    {
+      "id": "coordLabel",
+      "type": "label",
+      "at": [
+        1.1,
+        -1.25,
+        0
+      ],
+      "text": "\\mathrm{P}\\left(\\dfrac{51}{40},\\ \\dfrac45\\right)",
+      "color": "text",
+      "tags": [
+        "equation"
+      ]
+    },
+    {
+      "id": "definitionLabel",
+      "type": "label",
+      "at": [
+        -3.25,
+        -1.7,
+        0
+      ],
+      "text": "\\overline{\\mathrm{PF'}}=2a+1",
+      "color": "text",
+      "tags": [
+        "definition"
+      ]
+    },
+    {
+      "id": "answerLabel",
+      "type": "label",
+      "at": [
+        -1.1,
+        -2.3,
+        0
+      ],
+      "text": "a=\\dfrac98,\\quad 2a=\\dfrac94",
+      "color": "text",
+      "tags": [
+        "answer"
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "text": "쌍곡선 $C$의 두 초점을 $\\mathrm{F}(c,\\ 0)$, $\\mathrm{F'}(-c,\\ 0)$이라 하고, $y$축 위의 점 $\\mathrm{A}$에서 두 초점으로 그은 선분이 쌍곡선과 만나는 점을 각각 $\\mathrm{P}$, $\\mathrm{P'}$라 합니다. 조건은 $\\overline{\\mathrm{AP}}:\\overline{\\mathrm{PP'}}=5:6$, $\\overline{\\mathrm{PF}}=1$입니다.",
+      "show": [
+        "axes",
+        "given",
+        "foci",
+        "secants"
+      ],
+      "focus": [
+        "given",
+        "foci",
+        "secants"
+      ]
+    },
+    {
+      "text": "$\\mathrm{A}$가 $y$축 위에 있으므로 $\\overline{\\mathrm{AF}}=\\overline{\\mathrm{AF'}}$이고, $\\overline{\\mathrm{AF}}$의 기울기가 $-\\dfrac{b}{a}$가 되도록 $\\mathrm{A}=\\left(0,\\ \\dfrac{bc}{a}\\right)$로 둘 수 있습니다. 그러면 $\\overline{\\mathrm{AF}}=\\dfrac{c^2}{a}$입니다.",
+      "show": [
+        "axes",
+        "hyperbola",
+        "asymptotes",
+        "given",
+        "foci",
+        "secants",
+        "parallel"
+      ],
+      "focus": [
+        "parallel",
+        "asymptotes"
+      ]
+    },
+    {
+      "text": "$\\overline{\\mathrm{AP}}=5t$, $\\overline{\\mathrm{PP'}}=6t$, $\\overline{\\mathrm{PF}}=1$로 놓으면 $\\overline{\\mathrm{AF}}=5t+1$입니다. $\\mathrm{P}=\\left(\\dfrac{5ct}{5t+1},\\ \\dfrac{bc}{a(5t+1)}\\right)$이고, 쌍곡선 위 조건에서 $\\dfrac{c^2(5t-1)}{a^2(5t+1)}=1$입니다.",
+      "show": [
+        "axes",
+        "hyperbola",
+        "asymptotes",
+        "given",
+        "foci",
+        "secants",
+        "pointsP",
+        "ratio",
+        "pf",
+        "equation"
+      ],
+      "focus": [
+        "pointsP",
+        "ratio",
+        "equation"
+      ]
+    },
+    {
+      "text": "대칭에 의해 $\\mathrm{P'}=\\left(-\\dfrac{5ct}{5t+1},\\ \\dfrac{bc}{a(5t+1)}\\right)$이므로 $\\overline{\\mathrm{PP'}}=\\dfrac{10ct}{5t+1}=6t$에서 $c=\\dfrac{3(5t+1)}{5}$입니다. 따라서 $a=\\dfrac{9(5t+1)}{25}$이고 $\\dfrac{b^2}{a^2}=\\dfrac{16}{9}$입니다.",
+      "show": [
+        "axes",
+        "hyperbola",
+        "asymptotes",
+        "given",
+        "foci",
+        "pointsP",
+        "ratio",
+        "symmetry",
+        "equation"
+      ],
+      "focus": [
+        "symmetry",
+        "ratio"
+      ]
+    },
+    {
+      "text": "쌍곡선의 정의에서 $\\overline{\\mathrm{PF'}}=2a+1$입니다. 좌표로 구한 식 $(2a+1)^2=\\dfrac{9(10t+1)^2+16}{25}$와 $2a+1=\\dfrac{90t+43}{25}$를 연립하면 $200t^2-45t-17=0$, 따라서 $t=\\dfrac{17}{40}$입니다.",
+      "show": [
+        "axes",
+        "hyperbola",
+        "asymptotes",
+        "given",
+        "foci",
+        "pointsP",
+        "definition",
+        "equation"
+      ],
+      "focus": [
+        "definition",
+        "equation"
+      ]
+    },
+    {
+      "text": "$t=\\dfrac{17}{40}$을 대입하면 $a=\\dfrac{9\\left(\\frac{125}{40}\\right)}{25}=\\dfrac98$입니다. 그러므로 쌍곡선 $C$의 주축의 길이는 $2a=\\dfrac94$입니다.",
+      "show": [
+        "axes",
+        "hyperbola",
+        "asymptotes",
+        "given",
+        "foci",
+        "pointsP",
+        "vertices",
+        "answer"
+      ],
+      "focus": [
+        "vertices",
+        "answer"
+      ]
+    }
+  ]
+}

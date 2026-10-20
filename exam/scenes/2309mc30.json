@@ -1,0 +1,74 @@
+{
+  "topic": "내적",
+  "mode": "2d",
+  "answer": "27",
+  "scale": 26,
+  "camera": { "rotX": -1.5708, "rotY": 0, "zoom": 1.05 },
+  "objects": [
+    { "id": "axisX", "type": "segment", "from": [-3.2, 0, 0], "to": [7.2, 0, 0], "color": "muted", "tags": ["axes"] },
+    { "id": "axisY", "type": "segment", "from": [0, -4.8, 0], "to": [0, 7, 0], "color": "muted", "tags": ["axes"] },
+    { "id": "A", "type": "point", "at": [0, 0, 0], "label": "A", "color": "B", "tags": ["given", "triangleABC", "equilateral", "min"] },
+    { "id": "B", "type": "point", "at": [6, 0, 0], "label": "B", "color": "B", "tags": ["given", "triangleABC", "dot"] },
+    { "id": "C", "type": "point", "at": [0, 6, 0], "label": "C", "color": "B", "tags": ["given", "triangleABC", "conditionN", "dot"] },
+    { "id": "P", "type": "point", "at": [-2, -3.464102, 0], "label": "P", "color": "C", "tags": ["equilateral", "conditionA"] },
+    { "id": "Q", "type": "point", "at": [2, -3.464102, 0], "label": "Q", "color": "C", "tags": ["equilateral", "conditionA", "conditionN", "dot", "min"] },
+    { "id": "M", "type": "point", "at": [3, 0, 0], "label": "M", "color": "E", "tags": ["midpoint", "min"] },
+    { "id": "X", "type": "point", "at": [0.75, -1.299038, 0], "label": "X", "color": "A", "tags": ["min", "answer"] },
+    { "id": "triABC", "type": "plane", "corners": [[0, 0, 0], [6, 0, 0], [0, 6, 0]], "alpha": 0.12, "color": "muted", "tags": ["given", "triangleABC"] },
+    { "id": "segAB", "type": "segment", "from": [0, 0, 0], "to": [6, 0, 0], "width": 3, "color": "B", "tags": ["given", "triangleABC", "conditionA"] },
+    { "id": "segAC", "type": "segment", "from": [0, 0, 0], "to": [0, 6, 0], "width": 3, "color": "B", "tags": ["given", "triangleABC", "conditionN"] },
+    { "id": "segBC", "type": "segment", "from": [6, 0, 0], "to": [0, 6, 0], "width": 2.5, "color": "B", "tags": ["given", "triangleABC", "dot"] },
+    { "id": "raA", "type": "rightangle", "vertex": [0, 0, 0], "a": [6, 0, 0], "b": [0, 6, 0], "color": "D", "tags": ["given", "triangleABC"] },
+    { "id": "triAPQ", "type": "plane", "corners": [[0, 0, 0], [-2, -3.464102, 0], [2, -3.464102, 0]], "alpha": 0.18, "color": "C", "tags": ["equilateral", "conditionA"] },
+    { "id": "segAP", "type": "segment", "from": [0, 0, 0], "to": [-2, -3.464102, 0], "width": 3, "color": "C", "tags": ["equilateral"] },
+    { "id": "segAQ", "type": "segment", "from": [0, 0, 0], "to": [2, -3.464102, 0], "width": 3, "color": "C", "tags": ["equilateral", "conditionN", "min"] },
+    { "id": "segPQ", "type": "segment", "from": [-2, -3.464102, 0], "to": [2, -3.464102, 0], "width": 3, "color": "C", "tags": ["equilateral", "conditionA", "dot"] },
+    { "id": "vecPQ", "type": "vector", "from": [-2, -3.464102, 0], "to": [2, -3.464102, 0], "label": "PQ", "width": 3, "color": "A", "tags": ["conditionA", "dot"] },
+    { "id": "vecAB", "type": "vector", "from": [0, 0, 0], "to": [6, 0, 0], "label": "AB", "width": 3, "color": "A", "tags": ["conditionA"] },
+    { "id": "vecAQ", "type": "vector", "from": [0, 0, 0], "to": [2, -3.464102, 0], "label": "AQ", "width": 2.5, "color": "D", "tags": ["conditionN"] },
+    { "id": "vecAC", "type": "vector", "from": [0, 0, 0], "to": [0, 6, 0], "label": "AC", "width": 2.5, "color": "D", "tags": ["conditionN"] },
+    { "id": "vecCB", "type": "vector", "from": [0, 6, 0], "to": [6, 0, 0], "label": "CB", "width": 3, "color": "D", "tags": ["dot"] },
+    { "id": "arcDot", "type": "arc", "center": [2.6, -3.464102, 0], "a": [1, 0, 0], "b": [0.707107, -0.707107, 0], "r": 26, "label": "\\pi/4", "color": "D", "tags": ["dot"] },
+    { "id": "segAMid", "type": "segment", "from": [0, 0, 0], "to": [3, 0, 0], "dash": [4, 3], "color": "E", "tags": ["midpoint"] },
+    { "id": "segBMid", "type": "segment", "from": [6, 0, 0], "to": [3, 0, 0], "dash": [4, 3], "color": "E", "tags": ["midpoint"] },
+    { "id": "segMX", "type": "segment", "from": [3, 0, 0], "to": [0.75, -1.299038, 0], "width": 3, "color": "A", "tags": ["min", "answer"] },
+    { "id": "segAX", "type": "segment", "from": [0, 0, 0], "to": [0.75, -1.299038, 0], "width": 3, "color": "A", "tags": ["min"] },
+    { "id": "raX", "type": "rightangle", "vertex": [0.75, -1.299038, 0], "a": [2.25, 1.299038, 0], "b": [-0.75, 1.299038, 0], "color": "D", "tags": ["min", "answer"] },
+    { "id": "labelRatio", "type": "label", "at": [-2.9, -4.35, 0], "text": "PQ=\\dfrac{2}{3}AB=4", "color": "text", "tags": ["conditionA"] },
+    { "id": "labelDot", "type": "label", "at": [3.9, 2.9, 0], "text": "4\\cdot6\\sqrt2\\cdot\\cos\\dfrac{\\pi}{4}=24", "color": "text", "tags": ["dot"] },
+    { "id": "labelMin", "type": "label", "at": [2.0, -1.95, 0], "text": "MX=\\dfrac{3\\sqrt3}{2}", "color": "text", "tags": ["min"] },
+    { "id": "labelAnswer", "type": "label", "at": [4.0, -2.6, 0], "text": "m=2MX=3\\sqrt3,\\quad m^2=27", "color": "text", "tags": ["answer"] }
+  ],
+  "steps": [
+    {
+      "text": "$\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}=a$라 하면 $\\overline{\\mathrm{BC}}=\\sqrt2a$입니다. 좌표를 $\\mathrm{A}(0,\\ 0)$, $\\mathrm{B}(a,\\ 0)$, $\\mathrm{C}(0,\\ a)$로 잡습니다.",
+      "show": ["axes", "given", "triangleABC"],
+      "focus": ["triangleABC"]
+    },
+    {
+      "text": "정삼각형 $\\mathrm{APQ}$의 한 변의 길이를 $b$라 하면 조건 (가)에서 $9b^2=4a^2$이므로 $3b=2a$입니다. 또 $\\overrightarrow{\\mathrm{PQ}}$는 $\\overrightarrow{\\mathrm{AB}}$와 방향이 같고 크기는 $\\dfrac{2}{3}$배입니다.",
+      "show": ["axes", "given", "triangleABC", "equilateral", "conditionA"],
+      "focus": ["equilateral", "conditionA"]
+    },
+    {
+      "text": "조건 (나) $\\overrightarrow{\\mathrm{AC}}\\cdot\\overrightarrow{\\mathrm{AQ}}<0$에 의해 점 $\\mathrm{P}$, $\\mathrm{Q}$는 점 $\\mathrm{C}$와 반대쪽에 있습니다. 따라서 $a=6$일 때 $\\mathrm{P}(-2,\\ -2\\sqrt3)$, $\\mathrm{Q}(2,\\ -2\\sqrt3)$로 그릴 수 있습니다.",
+      "show": ["axes", "given", "triangleABC", "equilateral", "conditionN"],
+      "focus": ["conditionN", "equilateral"]
+    },
+    {
+      "text": "벡터 $\\overrightarrow{\\mathrm{PQ}}$와 $\\overrightarrow{\\mathrm{CB}}$의 사잇각은 $\\dfrac{\\pi}{4}$입니다. 조건 (다)에서 $\\dfrac{2}{3}a\\cdot\\sqrt2a\\cdot\\cos\\dfrac{\\pi}{4}=24$이므로 $a^2=36$, 즉 $a=6$입니다.",
+      "show": ["axes", "given", "triangleABC", "equilateral", "dot"],
+      "focus": ["dot"]
+    },
+    {
+      "text": "선분 $\\mathrm{AB}$의 중점을 $\\mathrm{M}$이라 하면 $\\left|\\overrightarrow{\\mathrm{XA}}+\\overrightarrow{\\mathrm{XB}}\\right|=2\\left|\\overrightarrow{\\mathrm{XM}}\\right|$입니다. 점 $\\mathrm{X}$는 선분 $\\mathrm{AQ}$ 위에 있으므로 최솟값은 $\\mathrm{M}$에서 직선 $\\mathrm{AQ}$에 내린 수선에서 나옵니다.",
+      "show": ["axes", "given", "triangleABC", "equilateral", "midpoint", "min"],
+      "focus": ["midpoint", "min"]
+    },
+    {
+      "text": "$\\angle\\mathrm{QAB}=\\dfrac{\\pi}{3}$이므로 $m=2\\left|\\overrightarrow{\\mathrm{MX}}\\right|=2\\times\\dfrac{1}{2}a\\times\\sin\\dfrac{\\pi}{3}=\\dfrac{\\sqrt3}{2}a=3\\sqrt3$입니다. 따라서 $m^2=27$입니다.",
+      "show": ["axes", "given", "triangleABC", "equilateral", "midpoint", "min", "answer"],
+      "focus": ["answer"]
+    }
+  ]
+}

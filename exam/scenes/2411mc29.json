@@ -1,0 +1,571 @@
+{
+  "topic": "자취",
+  "mode": "2d",
+  "answer": "107",
+  "scale": 17,
+  "camera": {
+    "rotX": -1.5708,
+    "rotY": 0,
+    "zoom": 1.05
+  },
+  "objects": [
+    {
+      "id": "axisX",
+      "type": "segment",
+      "from": [
+        -8.4,
+        0,
+        0
+      ],
+      "to": [
+        8.8,
+        0,
+        0
+      ],
+      "color": "muted",
+      "tags": [
+        "axes"
+      ]
+    },
+    {
+      "id": "axisY",
+      "type": "segment",
+      "from": [
+        0,
+        -1.2,
+        0
+      ],
+      "to": [
+        0,
+        10.2,
+        0
+      ],
+      "color": "muted",
+      "tags": [
+        "axes"
+      ]
+    },
+    {
+      "id": "hyperbola",
+      "type": "hyperbola",
+      "form": "x2-y2",
+      "a": 1,
+      "b": 5.91608,
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "span": 1.9,
+      "branch": "both",
+      "width": 3,
+      "color": "A",
+      "tags": [
+        "given",
+        "hyperbola"
+      ]
+    },
+    {
+      "id": "asymptotePos",
+      "type": "segment",
+      "from": [
+        -1.65,
+        -9.761532,
+        0
+      ],
+      "to": [
+        1.65,
+        9.761532,
+        0
+      ],
+      "dash": [
+        5,
+        4
+      ],
+      "color": "muted",
+      "tags": [
+        "hyperbola"
+      ]
+    },
+    {
+      "id": "asymptoteNeg",
+      "type": "segment",
+      "from": [
+        -1.65,
+        9.761532,
+        0
+      ],
+      "to": [
+        1.65,
+        -9.761532,
+        0
+      ],
+      "dash": [
+        5,
+        4
+      ],
+      "color": "muted",
+      "tags": [
+        "hyperbola"
+      ]
+    },
+    {
+      "id": "F",
+      "type": "point",
+      "at": [
+        6,
+        0,
+        0
+      ],
+      "label": "F",
+      "color": "B",
+      "tags": [
+        "given",
+        "foci",
+        "similarity",
+        "lengths",
+        "area"
+      ]
+    },
+    {
+      "id": "Fp",
+      "type": "point",
+      "at": [
+        -6,
+        0,
+        0
+      ],
+      "label": "F'",
+      "color": "B",
+      "tags": [
+        "given",
+        "foci",
+        "similarity",
+        "lengths"
+      ]
+    },
+    {
+      "id": "focusAxis",
+      "type": "segment",
+      "from": [
+        -6,
+        0,
+        0
+      ],
+      "to": [
+        6,
+        0,
+        0
+      ],
+      "width": 2.5,
+      "color": "B",
+      "tags": [
+        "foci",
+        "lengths"
+      ]
+    },
+    {
+      "id": "P",
+      "type": "point",
+      "at": [
+        1.333333,
+        5.217491,
+        0
+      ],
+      "label": "P",
+      "color": "C",
+      "tags": [
+        "pointP",
+        "given",
+        "lengths",
+        "similarity",
+        "area"
+      ]
+    },
+    {
+      "id": "Q",
+      "type": "point",
+      "at": [
+        7.037037,
+        9.275541,
+        0
+      ],
+      "label": "Q",
+      "color": "E",
+      "tags": [
+        "pointQ",
+        "similarity",
+        "lengths",
+        "area"
+      ]
+    },
+    {
+      "id": "segPF",
+      "type": "segment",
+      "from": [
+        1.333333,
+        5.217491,
+        0
+      ],
+      "to": [
+        6,
+        0,
+        0
+      ],
+      "width": 3,
+      "color": "C",
+      "tags": [
+        "lengths",
+        "area"
+      ]
+    },
+    {
+      "id": "segPFp",
+      "type": "segment",
+      "from": [
+        1.333333,
+        5.217491,
+        0
+      ],
+      "to": [
+        -6,
+        0,
+        0
+      ],
+      "width": 3,
+      "color": "C",
+      "tags": [
+        "lengths",
+        "similarity"
+      ]
+    },
+    {
+      "id": "segPQ",
+      "type": "segment",
+      "from": [
+        1.333333,
+        5.217491,
+        0
+      ],
+      "to": [
+        7.037037,
+        9.275541,
+        0
+      ],
+      "width": 3,
+      "color": "E",
+      "tags": [
+        "lengths",
+        "area"
+      ]
+    },
+    {
+      "id": "segQFp",
+      "type": "segment",
+      "from": [
+        7.037037,
+        9.275541,
+        0
+      ],
+      "to": [
+        -6,
+        0,
+        0
+      ],
+      "width": 2.5,
+      "color": "D",
+      "tags": [
+        "similarity",
+        "lengths"
+      ]
+    },
+    {
+      "id": "segQF",
+      "type": "segment",
+      "from": [
+        7.037037,
+        9.275541,
+        0
+      ],
+      "to": [
+        6,
+        0,
+        0
+      ],
+      "width": 3,
+      "color": "A",
+      "tags": [
+        "similarity",
+        "area"
+      ]
+    },
+    {
+      "id": "M",
+      "type": "point",
+      "at": [
+        6.518519,
+        4.637771,
+        0
+      ],
+      "label": "M",
+      "color": "D",
+      "tags": [
+        "height",
+        "area"
+      ]
+    },
+    {
+      "id": "segPM",
+      "type": "segment",
+      "from": [
+        1.333333,
+        5.217491,
+        0
+      ],
+      "to": [
+        6.518519,
+        4.637771,
+        0
+      ],
+      "dash": [
+        4,
+        3
+      ],
+      "width": 2.5,
+      "color": "D",
+      "tags": [
+        "height",
+        "area"
+      ]
+    },
+    {
+      "id": "segMF",
+      "type": "segment",
+      "from": [
+        6.518519,
+        4.637771,
+        0
+      ],
+      "to": [
+        6,
+        0,
+        0
+      ],
+      "dash": [
+        4,
+        3
+      ],
+      "width": 2.5,
+      "color": "D",
+      "tags": [
+        "height"
+      ]
+    },
+    {
+      "id": "raM",
+      "type": "rightangle",
+      "vertex": [
+        6.518519,
+        4.638214,
+        0
+      ],
+      "a": [
+        1.333333,
+        5.217491,
+        0
+      ],
+      "b": [
+        6,
+        0,
+        0
+      ],
+      "color": "D",
+      "tags": [
+        "height",
+        "area"
+      ]
+    },
+    {
+      "id": "triPFQ",
+      "type": "plane",
+      "corners": [
+        [
+          1.333333,
+          5.217491,
+          0
+        ],
+        [
+          6,
+          0,
+          0
+        ],
+        [
+          7.037037,
+          9.276428,
+          0
+        ]
+      ],
+      "alpha": 0.16,
+      "color": "A",
+      "tags": [
+        "area"
+      ]
+    },
+    {
+      "id": "labelEquation",
+      "type": "label",
+      "at": [
+        -7.9,
+        9.4,
+        0
+      ],
+      "text": "x^2-\\dfrac{y^2}{35}=1",
+      "color": "text",
+      "tags": [
+        "given",
+        "hyperbola"
+      ]
+    },
+    {
+      "id": "labelM",
+      "type": "label",
+      "at": [
+        -3.3,
+        7.6,
+        0
+      ],
+      "text": "m=PF=7,\\quad PF'=9",
+      "color": "text",
+      "tags": [
+        "lengths"
+      ]
+    },
+    {
+      "id": "labelQF",
+      "type": "label",
+      "at": [
+        7.0,
+        5.0,
+        0
+      ],
+      "text": "QF=\\dfrac{28}{3}",
+      "color": "text",
+      "tags": [
+        "area"
+      ]
+    },
+    {
+      "id": "labelAnswer",
+      "type": "label",
+      "at": [
+        0.6,
+        9.2,
+        0
+      ],
+      "text": "[PFQ]=\\dfrac{98\\sqrt5}{9},\\quad p+q=107",
+      "color": "text",
+      "tags": [
+        "answer"
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "text": "쌍곡선 $x^2-\\dfrac{y^2}{35}=1$은 $a=1$, $b=\\sqrt{35}$이므로 $c=6$이고 두 초점은 $\\mathrm{F}(6,\\ 0)$, $\\mathrm{F'}(-6,\\ 0)$입니다.",
+      "show": [
+        "axes",
+        "given",
+        "hyperbola",
+        "foci"
+      ],
+      "focus": [
+        "hyperbola",
+        "foci"
+      ]
+    },
+    {
+      "text": "$\\overline{\\mathrm{PQ}}=\\overline{\\mathrm{PF}}$이므로 $\\angle\\mathrm{PQF}=\\angle\\mathrm{PFQ}=\\alpha$라 하면 $\\angle\\mathrm{FPF'}=2\\alpha$입니다. 또 $\\triangle\\mathrm{QF'F}$와 $\\triangle\\mathrm{FF'P}$가 닮음이므로 대응 길이를 비교합니다.",
+      "show": [
+        "axes",
+        "given",
+        "hyperbola",
+        "foci",
+        "pointP",
+        "pointQ",
+        "similarity"
+      ],
+      "focus": [
+        "similarity"
+      ]
+    },
+    {
+      "text": "$\\overline{\\mathrm{PF}}=m$이라 하면 주축의 길이가 $2$이므로 $\\overline{\\mathrm{PF'}}=m+2$, $\\overline{\\mathrm{PQ}}=m$, $\\overline{\\mathrm{QF'}}=2m+2$입니다. 닮음에서 $12:m+2=2m+2:12$이므로 $(m+2)(m+1)=72$, 따라서 $m=7$입니다.",
+      "show": [
+        "axes",
+        "given",
+        "hyperbola",
+        "foci",
+        "pointP",
+        "pointQ",
+        "similarity",
+        "lengths"
+      ],
+      "focus": [
+        "lengths",
+        "similarity"
+      ]
+    },
+    {
+      "text": "다시 닮음에서 $\\overline{\\mathrm{QF}}:7=12:9$이므로 $\\overline{\\mathrm{QF}}=\\dfrac{28}{3}$입니다. 실제로 $\\mathrm{P}\\left(\\dfrac43,\\ \\dfrac{7\\sqrt5}{3}\\right)$이고 $\\mathrm{Q}\\left(\\dfrac{190}{27},\\ \\dfrac{112\\sqrt5}{27}\\right)$입니다.",
+      "show": [
+        "axes",
+        "given",
+        "hyperbola",
+        "foci",
+        "pointP",
+        "pointQ",
+        "similarity",
+        "lengths",
+        "area"
+      ],
+      "focus": [
+        "pointP",
+        "pointQ",
+        "area"
+      ]
+    },
+    {
+      "text": "선분 $\\mathrm{QF}$의 중점을 $\\mathrm{M}$이라 하면 이등변삼각형 $\\mathrm{PQF}$에서 $\\overline{\\mathrm{MF}}=\\dfrac{14}{3}$입니다. 따라서 $\\overline{\\mathrm{PM}}=\\sqrt{7^2-\\left(\\dfrac{14}{3}\\right)^2}=\\dfrac{7\\sqrt5}{3}$입니다.",
+      "show": [
+        "axes",
+        "given",
+        "foci",
+        "pointP",
+        "pointQ",
+        "area",
+        "height"
+      ],
+      "focus": [
+        "height",
+        "area"
+      ]
+    },
+    {
+      "text": "$[\\mathrm{PFQ}]=\\dfrac12\\times\\dfrac{28}{3}\\times\\dfrac{7\\sqrt5}{3}=\\dfrac{98\\sqrt5}{9}$입니다. $p=9$, $q=98$이므로 $p+q=107$입니다.",
+      "show": [
+        "axes",
+        "given",
+        "foci",
+        "pointP",
+        "pointQ",
+        "area",
+        "height",
+        "answer"
+      ],
+      "focus": [
+        "area",
+        "answer"
+      ]
+    }
+  ]
+}

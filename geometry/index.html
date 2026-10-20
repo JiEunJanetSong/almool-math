@@ -1,0 +1,1792 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="description" content="A 3D visualization and proof-tracing tool for high-school solid-geometry theorems — feel orthogonal projection, dihedral angles, and the three-perpendiculars theorem through direct rotation and dragging.">
+<meta property="og:title" content="Understanding 3D Proofs, Hands-On">
+<meta property="og:description" content="A 3D visualization and proof-tracing tool for high-school solid-geometry theorems — feel orthogonal projection, dihedral angles, and the three-perpendiculars theorem through direct rotation and dragging.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#f5f5f4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111827" media="(prefers-color-scheme: dark)">
+<title>Understanding 3D Proofs, Hands-On</title>
+</head>
+<body class="theme-system">
+<noscript><div style="padding:1.25rem;font-family:'Pretendard Variable',-apple-system,sans-serif;color:#1a1a1a;background:#f5f5f4;border:.5px solid #e8e8e8;border-radius:10px;margin:1.25rem;line-height:1.6">이 학습 도구는 JavaScript로 3D 도형을 그립니다. 브라우저의 JavaScript를 활성화한 뒤 페이지를 새로고침해 주세요. / This learning tool draws 3D shapes with JavaScript. Please enable JavaScript in your browser and reload the page.</div></noscript>
+<style>
+@font-face{font-family:'KaTeX_Math';font-style:italic;font-weight:400;font-display:swap;src:url('https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/fonts/KaTeX_Math-Italic.woff2') format('woff2')}
+@font-face{font-family:'KaTeX_Math';font-style:italic;font-weight:700;font-display:swap;src:url('https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/fonts/KaTeX_Math-BoldItalic.woff2') format('woff2')}
+@font-face{font-family:'KaTeX_Main';font-style:normal;font-weight:400;font-display:swap;src:url('https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/fonts/KaTeX_Main-Regular.woff2') format('woff2')}
+@font-face{font-family:'KaTeX_Main';font-style:normal;font-weight:700;font-display:swap;src:url('https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/fonts/KaTeX_Main-Bold.woff2') format('woff2')}
+@font-face{font-family:'KaTeX_Main';font-style:italic;font-weight:400;font-display:swap;src:url('https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/fonts/KaTeX_Main-Italic.woff2') format('woff2')}
+@font-face{font-family:'KaTeX_AMS';font-style:normal;font-weight:400;font-display:swap;src:url('https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/fonts/KaTeX_AMS-Regular.woff2') format('woff2')}
+@font-face{font-family:'Pretendard Variable';font-weight:45 920;font-style:normal;font-display:swap;src:url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/woff2/PretendardVariable.woff2') format('woff2-variations')}
+</style>
+<style>
+:root,.theme-light{
+  --font-sans:'Pretendard Variable','Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  --color-text-primary:#1a1a1a;--color-text-secondary:#555;--color-text-tertiary:#999;
+  --color-text-info:#1a6fb5;--color-text-on-info:#f5f5f4;
+  --color-background-primary:#fff;--color-background-secondary:#f5f5f4;--color-background-tertiary:#eee;
+  --color-background-info:rgba(26,111,181,0.08);
+  --color-border-primary:#ccc;--color-border-secondary:#ddd;--color-border-tertiary:#e8e8e8;
+  --color-border-info:rgba(26,111,181,0.3);
+  --color-state-error:#a32d2d;--color-state-error-bg:rgba(163,45,45,0.08);
+  --geo-violet:#534AB7;--geo-jade:#1D9E75;--geo-vermilion:#D85A30;--geo-amber:#BA7517;--geo-saffron:#EF9F27;
+  --geo-amber-tint:rgba(186,117,23,0.10);--geo-amber-border:rgba(186,117,23,0.35);
+  --geo-amber-solid:#fff4dc;
+  --geo-cb-violet:#785EF0;--geo-cb-magenta:#DC267F;--geo-cb-orange:#FE6100;--geo-cb-blue:#648FFF;--geo-cb-amber:#FFB000;
+  --glass-fill:rgba(255,255,255,0.66);--glass-fill-strong:rgba(255,255,255,0.30);
+  --glass-highlight:rgba(255,255,255,0.70);--glass-border:rgba(255,255,255,0.55);
+  --glass-blur-soft:12px;--glass-blur-strong:34px;
+  --border-radius-lg:10px;--border-radius-md:8px;
+  --canvas-bg:#f5f5f4;--canvas-text:#2c2c2a;
+}
+.theme-dark{
+  --color-text-primary:oklch(93% 0.018 91);--color-text-secondary:oklch(78% 0.028 92);--color-text-tertiary:oklch(58% 0.028 92);
+  --color-text-info:oklch(82% 0.14 220);--color-text-on-info:oklch(18% 0.035 248);
+  --color-background-primary:oklch(18% 0.036 248);--color-background-secondary:oklch(23% 0.038 248);--color-background-tertiary:oklch(29% 0.04 248);
+  --color-background-info:oklch(82% 0.14 220 / .12);
+  --color-border-primary:oklch(50% 0.05 248);--color-border-secondary:oklch(38% 0.045 248);--color-border-tertiary:oklch(31% 0.04 248);
+  --color-border-info:oklch(82% 0.14 220 / .36);
+  --color-state-error:oklch(76% 0.15 28);--color-state-error-bg:oklch(76% 0.15 28 / .12);
+  --geo-violet:oklch(75% 0.16 292);--geo-jade:oklch(78% 0.16 158);--geo-vermilion:oklch(73% 0.18 31);--geo-amber:oklch(84% 0.16 84);--geo-saffron:oklch(86% 0.18 98);
+  --geo-amber-tint:oklch(84% 0.16 84 / .14);--geo-amber-border:oklch(84% 0.16 84 / .48);
+  --geo-amber-solid:oklch(27% 0.052 84);
+  --glass-fill:oklch(23% 0.038 248 / .72);--glass-fill-strong:oklch(18% 0.036 248 / .58);
+  --glass-highlight:oklch(96% 0.02 91 / .08);--glass-border:oklch(96% 0.02 91 / .12);
+  --canvas-bg:oklch(15% 0.038 248);--canvas-text:oklch(88% 0.035 91);
+}
+@media(prefers-color-scheme:dark){.theme-system{
+  --color-text-primary:oklch(93% 0.018 91);--color-text-secondary:oklch(78% 0.028 92);--color-text-tertiary:oklch(58% 0.028 92);
+  --color-text-info:oklch(82% 0.14 220);--color-text-on-info:oklch(18% 0.035 248);
+  --color-background-primary:oklch(18% 0.036 248);--color-background-secondary:oklch(23% 0.038 248);--color-background-tertiary:oklch(29% 0.04 248);
+  --color-background-info:oklch(82% 0.14 220 / .12);
+  --color-border-primary:oklch(50% 0.05 248);--color-border-secondary:oklch(38% 0.045 248);--color-border-tertiary:oklch(31% 0.04 248);
+  --color-border-info:oklch(82% 0.14 220 / .36);
+  --color-state-error:oklch(76% 0.15 28);--color-state-error-bg:oklch(76% 0.15 28 / .12);
+  --geo-violet:oklch(75% 0.16 292);--geo-jade:oklch(78% 0.16 158);--geo-vermilion:oklch(73% 0.18 31);--geo-amber:oklch(84% 0.16 84);--geo-saffron:oklch(86% 0.18 98);
+  --geo-amber-tint:oklch(84% 0.16 84 / .14);--geo-amber-border:oklch(84% 0.16 84 / .48);
+  --geo-amber-solid:oklch(27% 0.052 84);
+  --glass-fill:oklch(23% 0.038 248 / .72);--glass-fill-strong:oklch(18% 0.036 248 / .58);
+  --glass-highlight:oklch(96% 0.02 91 / .08);--glass-border:oklch(96% 0.02 91 / .12);
+  --canvas-bg:oklch(15% 0.038 248);--canvas-text:oklch(88% 0.035 91);
+}}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{touch-action:manipulation}
+body{background:var(--color-background-primary);color:var(--color-text-primary);overflow-x:hidden}
+#app{padding:1rem 1.25rem;font-family:var(--font-sans);--role-given:var(--geo-amber);--role-given-bg:var(--geo-amber-tint);--role-result:var(--geo-violet);--role-result-bg:rgba(83,74,183,.12);--role-focus:var(--color-text-info);--role-focus-bg:var(--color-background-info);--role-past:var(--color-text-tertiary);--role-locked:var(--color-border-secondary)}
+.hdr{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;padding:12px 1.25rem;margin:-1rem -1.25rem 1rem;background:var(--color-background-primary);border-bottom:.5px solid var(--color-border-tertiary);transition:background .22s,backdrop-filter .22s}
+body.glass-on .hdr{background:var(--glass-fill-strong);backdrop-filter:blur(var(--glass-blur-strong)) saturate(1.5);-webkit-backdrop-filter:blur(var(--glass-blur-strong)) saturate(1.5);border-bottom-color:var(--glass-border);box-shadow:inset 0 1px 0 var(--glass-highlight)}
+.hdr-left h1{font-size:22px;font-weight:600;color:var(--color-text-primary);line-height:1.25}
+.hdr-left p{font-size:15px;color:var(--color-text-secondary);margin-top:4px}
+.title-mobile{display:none}
+.hdr-actions{display:flex;align-items:center;gap:6px;margin-left:auto}
+.hdr-proof-nav{display:flex;gap:4px}
+.mobile-menu-toggle{display:none}
+.hdr-proof-nav button,.settings-summary{min-height:36px;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;background:var(--color-background-secondary);color:var(--color-text-primary);cursor:pointer}
+.hdr-proof-nav button{min-width:82px;padding:0 12px;border:.5px solid var(--color-border-secondary);font-size:14px;font-weight:600;line-height:1}
+.settings-summary{min-width:38px;background:transparent}
+.hdr-proof-nav button:disabled{opacity:.35;cursor:not-allowed}
+.settings-menu{position:relative}
+.settings-summary{list-style:none;font-size:18px;padding:0;user-select:none}
+.settings-summary::-webkit-details-marker{display:none}
+.settings-menu[open] .settings-summary{background:transparent;color:var(--color-text-info)}
+.settings{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.settings-menu .settings{position:absolute;right:0;top:calc(100% + 8px);z-index:20;width:max-content;max-width:min(92vw,520px);padding:8px;border:.5px solid var(--color-border-tertiary);border-radius:10px;background:var(--color-background-primary);box-shadow:0 12px 30px rgba(0,0,0,.12)}
+body.glass-on .settings-menu .settings{background:var(--glass-fill-strong);backdrop-filter:blur(var(--glass-blur-strong)) saturate(1.5);-webkit-backdrop-filter:blur(var(--glass-blur-strong)) saturate(1.5);border-color:var(--glass-border)}
+.mobile-navsheet{display:none}
+.seg-group{display:flex;gap:0}
+.seg-btn{font-size:14px;padding:5px 12px;border:.5px solid var(--color-border-secondary);background:var(--color-background-secondary);color:var(--color-text-secondary);cursor:pointer;transition:background .15s,color .15s}
+.seg-btn:first-child{border-radius:6px 0 0 6px}
+.seg-btn:last-child{border-radius:0 6px 6px 0}
+.seg-btn.active{background:var(--color-text-info);color:var(--color-text-on-info);border-color:var(--color-text-info)}
+.cb-toggle{font-size:14px;padding:5px 12px;border-radius:6px;border:.5px solid var(--color-border-secondary);background:var(--color-background-secondary);color:var(--color-text-secondary);cursor:pointer;transition:background .15s}
+.cb-toggle.active{background:var(--color-background-info);color:var(--color-text-info);border-color:var(--color-border-info)}
+.workspace{display:grid;grid-template-columns:minmax(180px,220px) minmax(0,1fr) minmax(300px,340px);gap:14px;align-items:start}
+.navpane{position:sticky;top:76px;display:flex;flex-direction:column;gap:14px;max-height:calc(100svh - 92px);overflow:auto;padding:12px;border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);background:var(--color-background-secondary)}
+body.glass-on .navpane{background:var(--glass-fill);backdrop-filter:blur(var(--glass-blur-soft)) saturate(1.15);-webkit-backdrop-filter:blur(var(--glass-blur-soft)) saturate(1.15)}
+.nav-label{font-size:12px;font-weight:600;color:var(--color-text-tertiary);letter-spacing:0;text-transform:uppercase;margin-bottom:6px}
+.navblock{min-width:0}
+.mainstage{min-width:0}
+.stage-tabs{display:flex;gap:6px;margin-bottom:.5rem;flex-wrap:wrap}
+.navpane .stage-tabs{flex-direction:column;margin:0}
+.stab{font-size:15px;padding:5px 14px;border-radius:12px;border:.5px solid var(--color-border-secondary);background:var(--color-background-secondary);color:var(--color-text-secondary);cursor:pointer;transition:background .15s,border-color .15s,color .15s}
+.navpane .stab{width:100%;text-align:left;border-radius:8px;background:var(--color-background-primary)}
+.stab.active{background:var(--color-background-primary);color:var(--color-text-primary);border-color:var(--color-border-primary);font-weight:500}
+.thm-scroll{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;margin-bottom:.75rem;scrollbar-width:thin}
+.navpane .thm-scroll{flex-direction:column;overflow:visible;margin:0;padding:0}
+.thm-scroll::-webkit-scrollbar{height:3px}
+.tbtn{font-size:15px;padding:5px 14px;border-radius:12px;border:.5px solid var(--color-border-secondary);background:var(--color-background-secondary);color:var(--color-text-secondary);cursor:pointer;white-space:nowrap;flex-shrink:0;transition:background .15s,border-color .15s,color .15s}
+.navpane .tbtn{width:100%;text-align:left;border-radius:8px;background:var(--color-background-primary)}
+.tbtn.active{background:var(--color-background-info);color:var(--color-text-info);border-color:var(--color-border-info)}
+.cvwrap{position:relative;background:var(--color-background-secondary);border-radius:var(--border-radius-lg);border:.5px solid var(--color-border-tertiary);overflow:hidden}
+.mobile-given{display:none}
+.canvas-overlay{position:absolute;top:12px;left:12px;max-width:min(420px,calc(100% - 24px));padding:10px 13px;border-radius:12px;font:inherit;font-size:14px;color:var(--color-text-primary);line-height:1.55;background:var(--color-background-primary);border:.5px solid var(--color-border-tertiary);text-align:left;cursor:pointer;transition:background .22s,backdrop-filter .22s,border-color .22s,box-shadow .22s}
+.canvas-overlay .lbl{font-size:13px;color:var(--color-text-info);letter-spacing:.06em;text-transform:uppercase;font-weight:600;margin-bottom:3px;display:block}
+.canvas-overlay:focus-visible{outline:2px solid var(--color-text-info);outline-offset:2px}
+body.glass-on .canvas-overlay{background:var(--glass-fill-strong);backdrop-filter:blur(var(--glass-blur-strong)) saturate(1.5);-webkit-backdrop-filter:blur(var(--glass-blur-strong)) saturate(1.5);border-color:var(--glass-border);box-shadow:inset 0 1px 0 var(--glass-highlight)}
+body.glass-on .card,body.glass-on .i-desc,body.glass-on .slider-wrap,body.glass-on .leg{background:var(--glass-fill);backdrop-filter:blur(var(--glass-blur-soft)) saturate(1.15);-webkit-backdrop-filter:blur(var(--glass-blur-soft)) saturate(1.15)}
+body.glass-on .tbtn.active,body.glass-on .si.active,body.glass-on .cb-toggle.active{backdrop-filter:blur(10px) saturate(1.2);-webkit-backdrop-filter:blur(10px) saturate(1.2)}
+body.glass-on .i-err{background:var(--color-state-error-bg);backdrop-filter:blur(var(--glass-blur-strong)) saturate(1.4);-webkit-backdrop-filter:blur(var(--glass-blur-strong)) saturate(1.4);border:.5px solid var(--glass-border);box-shadow:inset 0 1px 0 var(--glass-highlight)}
+body.glass-on .i-summary{background:var(--glass-fill);backdrop-filter:blur(var(--glass-blur-soft)) saturate(1.15);-webkit-backdrop-filter:blur(var(--glass-blur-soft)) saturate(1.15)}
+@media(prefers-reduced-motion:reduce){.hdr,.canvas-overlay,.card,.i-desc,.slider-wrap,.leg,.i-err,.i-summary,.tbtn,.si,.cb-toggle{transition:none}}
+canvas{display:block;width:100%;height:480px;max-height:68vh;min-height:320px;cursor:grab;touch-action:none}
+@media(max-width:720px){canvas{height:auto;aspect-ratio:4/3}}
+canvas:active{cursor:grabbing}
+.hint{position:absolute;bottom:8px;right:10px;font-size:13px;color:var(--color-text-tertiary);pointer-events:none}
+.side{position:sticky;top:76px;display:flex;flex-direction:column;gap:8px;max-height:calc(100svh - 92px);overflow:auto}
+.card{background:var(--color-background-primary);border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:14px 16px}
+.ctitle{font-size:17px;font-weight:600;color:var(--color-text-primary);margin-bottom:5px}
+.cdesc{font-size:15px;color:var(--color-text-secondary);line-height:1.6;white-space:pre-line}
+.steps{display:flex;flex-direction:column;gap:8px}
+.proof-flow{display:flex;flex-direction:column;gap:8px}
+.proof-context{display:grid;grid-template-columns:1fr;gap:6px}
+.proof-row{padding:10px 12px;border-radius:var(--border-radius-md);border:.5px solid var(--color-border-tertiary);background:var(--color-background-secondary)}
+.proof-row.proof-given{background:var(--role-given-bg);border-color:var(--geo-amber-border)}
+.proof-row.result{background:var(--role-result-bg);border-color:rgba(83,74,183,.34);transition:border-color .18s,box-shadow .18s}
+.proof-row.result.ready{border-color:var(--role-result);box-shadow:0 0 0 1px rgba(83,74,183,.18)}
+.proof-k{display:block;margin-bottom:4px;font-size:12px;font-weight:700;letter-spacing:0;color:var(--color-text-tertiary)}
+.proof-row.proof-given .proof-k{color:var(--role-given)}
+.proof-row.result .proof-k{color:var(--role-result)}
+.proof-v{font-size:14px;line-height:1.55;color:var(--color-text-primary);white-space:pre-line}
+.proof-bridge{position:relative;min-height:260px;padding:12px 0;overflow:auto;scrollbar-width:thin}
+.flow-arrow{position:absolute;inset:10px 0;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:3}
+.flow-arrow.hidden{display:none}
+.flow-arrow::before{content:"";position:absolute;top:0;bottom:0;width:2px;border-radius:2px;background:linear-gradient(to bottom,var(--role-given),var(--role-focus),var(--role-result));opacity:.24}
+.flow-arrow-mark{position:sticky;top:42%;z-index:1;display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;background:var(--color-background-primary);border:.5px solid var(--color-border-tertiary);color:var(--role-focus);font-size:24px;font-weight:700;box-shadow:0 8px 22px rgba(0,0,0,.08)}
+.proof-slots{position:relative;z-index:1;display:flex;flex-direction:column;gap:7px;padding:4px 0}
+.proof-slot{min-height:58px;width:calc(100% - 54px);padding:9px 11px;border-radius:var(--border-radius-md);border:.5px dashed var(--color-border-secondary);background:var(--color-background-primary);margin-left:auto;color:var(--role-past)}
+.proof-slot.revealed{border-style:solid;background:var(--color-background-primary);color:var(--color-text-secondary);opacity:.72}
+.proof-slot.focus{border-style:solid;border-color:var(--role-focus);background:var(--role-focus-bg);color:var(--color-text-info);opacity:1}
+.proof-slot.locked{user-select:none}
+.proof-slot.locked .slot-title,.proof-slot.locked .slot-body{filter:blur(5px);opacity:.24}
+.proof-slot.result{border-style:solid;border-color:rgba(83,74,183,.38);background:var(--role-result-bg);color:var(--role-result)}
+.proof-slot:focus-visible{outline:2px solid var(--role-focus);outline-offset:2px}
+.slot-title{font-size:12px;font-weight:700;color:inherit;margin-bottom:3px}
+.slot-body{font-size:14px;line-height:1.48;white-space:pre-line;transition:filter .18s,opacity .18s}
+.role-rule{display:flex;gap:6px;flex-wrap:wrap;font-size:12px;color:var(--color-text-secondary)}
+.role-chip{display:inline-flex;align-items:center;gap:5px;padding:4px 7px;border:.5px solid var(--color-border-tertiary);border-radius:999px;background:var(--color-background-primary)}
+.role-dot{width:8px;height:8px;border-radius:50%;background:var(--role-past)}
+.role-dot.focus{background:var(--role-focus)}
+.role-dot.result{background:var(--role-result)}
+.si{display:flex;gap:8px;align-items:flex-start;padding:8px 10px;border-radius:var(--border-radius-md);border:.5px solid var(--color-border-tertiary);background:var(--color-background-secondary);cursor:pointer;transition:background .15s,border-color .15s;width:100%;text-align:left;font:inherit;color:inherit}
+.si.past{opacity:.68;background:var(--color-background-primary)}
+.si.locked{cursor:not-allowed;color:var(--role-past);background:transparent;border-style:dashed}
+.si.result{background:var(--role-result-bg);border-color:rgba(83,74,183,.38)}
+.stab:focus-visible,.tbtn:focus-visible,.si:focus-visible,.navr button:focus-visible,.seg-btn:focus-visible,.cb-toggle:focus-visible,.abtn:focus-visible,.mode-btn:focus-visible,.mobile-menu-toggle:focus-visible{outline:2px solid var(--color-text-info);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){.stab,.tbtn,.si,.seg-btn,.mode-btn,.abtn,.pseg{transition:none}.i-err,.i-summary{animation:none}}
+.si.active{background:var(--role-focus-bg);border-color:var(--color-border-info)}
+.sn{width:22px;height:22px;border-radius:50%;background:var(--color-background-tertiary);border:.5px solid var(--color-border-secondary);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:var(--color-text-secondary);flex-shrink:0;margin-top:1px}
+.si.active .sn{background:var(--role-focus);border-color:var(--role-focus);color:var(--color-text-on-info)}
+.si.past .sn{background:var(--color-background-tertiary);color:var(--role-past)}
+.si.locked .sn{background:transparent;color:var(--role-past);border-style:dashed}
+.si.next-lock .sn{width:auto;min-width:38px;padding:0 7px;border-radius:999px}
+.si.result .sn{background:var(--role-result);border-color:var(--role-result);color:var(--color-text-on-info)}
+.si.setup{background:var(--geo-amber-tint);border-color:var(--geo-amber-border)}
+.si.setup .sn{background:var(--geo-amber);color:var(--color-text-on-info);border-color:var(--geo-amber);font-size:13px;width:auto;min-width:36px;padding:0 8px;height:22px;border-radius:11px;letter-spacing:.02em}
+.si.setup.active{background:var(--geo-amber-tint);border-color:var(--geo-amber)}
+.si.setup .st{color:var(--color-text-primary)}
+.st{font-size:15px;color:var(--color-text-secondary);line-height:1.55}
+.si.active .st{color:var(--color-text-info)}
+.navr{display:flex;gap:6px;margin-top:4px}
+.navr button{flex:1;font-size:15px;padding:7px;border-radius:var(--border-radius-md);border:.5px solid var(--color-border-secondary);background:var(--color-background-secondary);color:var(--color-text-primary);cursor:pointer}
+.navr button:disabled{opacity:.35;cursor:not-allowed}
+.leg{display:flex;gap:10px;flex-wrap:wrap;padding:8px 12px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);border:.5px solid var(--color-border-tertiary)}
+.li{display:flex;align-items:center;gap:5px;font-size:14px;color:var(--color-text-secondary)}
+.ld{width:10px;height:10px;border-radius:50%}
+.ll{width:18px;height:3px;border-radius:2px}
+.mode-toggle{display:flex;gap:0;margin-bottom:.75rem}
+.navpane .mode-toggle{margin:0}
+.mode-btn{font-size:15px;padding:6px 18px;border:.5px solid var(--color-border-secondary);background:var(--color-background-secondary);color:var(--color-text-secondary);cursor:pointer;transition:background .15s,color .15s}
+.navpane .mode-btn{flex:1;padding:7px 8px;background:var(--color-background-primary)}
+.mobile-navsheet .mode-btn{flex:1;min-height:40px}
+.mode-btn:first-child{border-radius:8px 0 0 8px}
+.mode-btn:last-child{border-radius:0 8px 8px 0}
+.mode-btn.active{background:var(--color-text-info);color:var(--color-text-on-info);border-color:var(--color-text-info)}
+.mode-btn:disabled{opacity:.35;cursor:not-allowed}
+.pbar{display:flex;gap:3px;margin-bottom:10px}
+.pseg{height:6px;border-radius:3px;flex:1;background:var(--color-border-tertiary);transition:background .3s}
+.pseg.done{background:var(--geo-violet)}
+.i-status{display:flex;align-items:center;gap:14px;margin-bottom:10px;font-size:15px;color:var(--color-text-secondary)}
+.i-count{font-size:22px;font-weight:600;color:var(--color-text-primary)}
+.i-count.err{color:var(--color-state-error)}
+.i-badge{font-size:14px;padding:4px 12px;border-radius:8px;background:var(--color-background-info);color:var(--color-text-info)}
+.i-desc{font-size:15px;color:var(--color-text-secondary);line-height:1.65;white-space:pre-line;padding:12px 14px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);border:.5px solid var(--color-border-tertiary);margin-bottom:8px}
+.i-actions{display:flex;flex-direction:column;gap:6px;margin-bottom:10px}
+.abtn{font-size:15px;padding:10px 16px;border:.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:var(--color-background-primary);color:var(--color-text-primary);cursor:pointer;text-align:left;line-height:1.55;transition:background .15s,border-color .15s;width:100%;font:inherit}
+.abtn:hover{background:var(--color-background-info);border-color:var(--color-border-info)}
+.i-err{font-size:15px;padding:10px 14px;border-radius:var(--border-radius-md);color:var(--color-state-error);background:var(--color-state-error-bg);margin-bottom:8px;animation:shake .4s ease}
+.i-summary{margin-top:10px;padding:14px 16px;background:var(--color-background-secondary);border-radius:var(--border-radius-lg);border:.5px solid var(--color-border-tertiary);animation:fade-in .35s cubic-bezier(0.22,1,0.36,1)}
+.i-summary .mark{font-size:15px;font-weight:600;color:var(--color-text-info);margin-bottom:4px;letter-spacing:.02em}
+.i-summary .fact{font-size:15px;color:var(--color-text-secondary);line-height:1.55}
+@keyframes fade-in{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
+.slider-wrap{padding:8px 16px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);border:.5px solid var(--color-border-tertiary);margin-bottom:6px}
+.slider-wrap label{font-size:14px;color:var(--color-text-secondary);display:flex;justify-content:space-between;margin-bottom:4px}
+.slider-wrap input[type=range]{width:100%;accent-color:var(--color-text-info)}
+.slider-wrap input[type=range]:focus-visible{outline:2px solid var(--color-text-info);outline-offset:2px}
+@media(max-width:720px){
+  #app{padding:.5rem .625rem 1rem}
+  .hdr{position:sticky;align-items:center;gap:8px;padding:8px .625rem;margin:-.5rem -.625rem .5rem}
+  .hdr-left{min-width:0;flex:1}
+  .hdr-left h1{font-size:16px;line-height:1.25}
+  .title-full{display:none}
+  .title-mobile{display:inline}
+  .hdr-left p{display:none}
+  .hdr-actions{gap:4px}
+  .hdr-proof-nav{order:1}
+  .hdr-proof-nav button{min-width:80px;min-height:38px;padding:0 11px}
+  .mobile-menu-toggle{order:3;min-width:40px;min-height:38px;display:inline-flex;align-items:center;justify-content:center;gap:3px;flex-direction:column;border:0;border-radius:8px;background:var(--color-background-secondary);color:var(--color-text-primary);cursor:pointer}
+  .mobile-menu-toggle span{display:block;width:18px;height:2px;border-radius:2px;background:currentColor}
+  .settings-summary{min-width:40px;min-height:38px}
+  .settings-menu{order:2;flex:0 0 auto}
+  .settings-summary{font-size:18px}
+  .settings-menu .settings{right:0;width:min(92vw,340px);display:grid;grid-template-columns:1fr auto;gap:6px;overflow-x:auto;padding:8px;scrollbar-width:none}
+  .settings-menu .settings::-webkit-scrollbar,.stage-tabs::-webkit-scrollbar,.thm-scroll::-webkit-scrollbar,.leg::-webkit-scrollbar,.navpane::-webkit-scrollbar,.side::-webkit-scrollbar{display:none}
+  .settings .seg-group{width:max-content}
+  .settings #glass-group{grid-column:1;grid-row:2}
+  .cb-toggle{grid-column:2;grid-row:1 / span 2;white-space:nowrap}
+  .seg-btn,.cb-toggle{min-height:38px;font-size:13px;padding:8px 10px}
+  .mobile-navsheet{display:none;order:3;width:100%;padding:8px;border:.5px solid var(--color-border-tertiary);border-radius:8px;background:var(--color-background-secondary)}
+  .mobile-navsheet.open{display:block}
+  .mobile-mode-toggle{display:flex;gap:0;margin-bottom:8px}
+  .mobile-navgrid{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:8px}
+  .mobile-navcol{min-width:0}
+  .mobile-navcol .nav-label{font-size:11px;margin-bottom:5px}
+  .mobile-stage-tabs,.mobile-thm-scroll{display:flex;flex-direction:column;gap:5px;max-height:min(48svh,360px);overflow:auto;scrollbar-width:none}
+  .mobile-stage-tabs::-webkit-scrollbar,.mobile-thm-scroll::-webkit-scrollbar{display:none}
+  .mobile-stage-tabs .stab,.mobile-thm-scroll .tbtn{width:100%;min-height:36px;padding:8px 9px;border-radius:8px;text-align:left;white-space:normal;font-size:12px;line-height:1.25;background:var(--color-background-primary)}
+  .mobile-thm-scroll .tbtn{font-size:13px}
+  #app{padding-bottom:1rem}
+  .workspace{display:flex;flex-direction:column;gap:8px;min-width:0}
+  .navpane{display:none}
+  .navblock{min-width:0}
+  .nav-label{font-size:11px;margin-bottom:4px}
+  .stage-tabs,.navpane .stage-tabs{display:flex;flex-direction:row;flex-wrap:nowrap;gap:6px;overflow-x:auto;margin:0 -.25rem;padding:0 .25rem .25rem;scrollbar-width:none}
+  .stab{min-height:36px;font-size:13px;padding:8px 11px;white-space:nowrap}
+  .navpane .stab{width:auto;text-align:center}
+  .thm-scroll,.navpane .thm-scroll{display:flex;flex-direction:row;gap:6px;overflow-x:auto;margin:0 -.25rem;padding:0 .25rem .25rem;scrollbar-width:none}
+  .tbtn{min-height:36px;font-size:13px;padding:8px 12px}
+  .navpane .tbtn{width:auto;text-align:center}
+  .mode-toggle,.navpane .mode-toggle{margin:0}
+  .mode-btn{flex:1;min-height:40px;font-size:14px;padding:9px 12px}
+  .mainstage{position:sticky;top:55px;z-index:9;order:1;width:100%;background:var(--color-background-primary)}
+  .mainstage::after{content:"";position:absolute;left:0;right:0;bottom:-14px;height:14px;background:var(--color-background-primary);pointer-events:none}
+  .cvwrap{border-radius:8px}
+  canvas{height:46svh;min-height:280px;max-height:420px;aspect-ratio:auto}
+  .mobile-given{display:block;margin-top:6px;padding:9px 10px;border-radius:8px;border:.5px solid var(--geo-amber-border);background:var(--geo-amber-solid)}
+  .mobile-given .proof-k{color:var(--role-given)}
+  .mobile-given .proof-v{font-size:12px;line-height:1.42;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .hint{left:10px;right:auto;bottom:7px;font-size:12px}
+  .side{position:relative;top:auto;order:2;width:100%;min-width:0;max-height:none;overflow:visible;gap:6px}
+  .card{order:1}
+  .steps{order:2}
+  #slider-area{order:3}
+  .leg{order:4}
+  .card{padding:10px 12px;border-radius:8px}
+  .ctitle{font-size:15px;margin-bottom:3px}
+  .cdesc{display:none}
+  .leg{flex-wrap:nowrap;overflow-x:auto;gap:8px;padding:7px 9px;scrollbar-width:none}
+  .li{font-size:12px;white-space:nowrap}
+  .steps{gap:6px;padding-bottom:0}
+  .si{padding:10px 11px;border-radius:8px}
+  .si.locked:not(.next-lock){display:none}
+  .sn{width:24px;height:24px;font-size:12px}
+  .si.setup .sn{height:24px;min-width:38px;border-radius:12px}
+  .st{font-size:14px;line-height:1.5}
+  .proof-flow{gap:6px}
+  .proof-context{grid-template-columns:1fr;gap:6px}
+  .proof-row{padding:8px 9px}
+  .side .proof-row.proof-given{display:none}
+  .proof-k{font-size:11px;margin-bottom:3px}
+  .proof-v{font-size:12px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .canvas-overlay{top:auto;left:10px;right:10px;bottom:28px;max-width:none;font-size:13px;line-height:1.45;padding:9px 11px}
+  .canvas-overlay .lbl{font-size:12px;margin-bottom:2px}
+  .proof-bridge{min-height:220px;max-height:none;padding:8px 0}
+  .flow-arrow{inset:6px 0}
+  .flow-arrow-mark{width:36px;height:36px;font-size:21px}
+  .proof-slots{gap:6px}
+  .proof-slot{width:calc(100% - 44px);min-height:52px;padding:8px 9px}
+  .slot-title{font-size:11px}
+  .slot-body{font-size:13px;line-height:1.42}
+  .navr button{min-height:44px;font-size:14px;padding:10px}
+  .slider-wrap{padding:9px 11px;margin-bottom:0}
+  .slider-wrap label{font-size:13px}
+  .slider-wrap input[type=range]{min-height:32px}
+  .i-status{gap:8px;flex-wrap:wrap;font-size:13px;margin-bottom:8px}
+  .i-count{font-size:18px}
+  .i-badge{font-size:12px;padding:4px 9px}
+  .i-desc,.abtn,.i-err,.i-summary .fact{font-size:14px;line-height:1.5}
+  .abtn{min-height:44px;padding:10px 12px}
+}
+@media(hover:none),(pointer:coarse){
+  .seg-btn,.cb-toggle{font-size:15px;padding:10px 14px}
+  .stab,.tbtn{font-size:15px;padding:10px 16px}
+  .mode-btn{font-size:15px;padding:11px 18px}
+  .navr button{padding:12px}
+  .si{padding:12px 12px}
+  .sn{width:26px;height:26px;font-size:14px}
+  .si.setup .sn{height:26px;min-width:42px;border-radius:13px}
+}
+@media(max-width:720px) and (hover:none),(max-width:720px) and (pointer:coarse){
+  .seg-btn,.cb-toggle{font-size:13px;padding:8px 10px}
+  .stab,.tbtn{font-size:13px;padding:8px 11px}
+  .mode-btn{font-size:14px;padding:9px 12px}
+  .navr button{padding:10px}
+  .si{padding:10px 11px}
+  .sn{width:24px;height:24px;font-size:12px}
+  .si.setup .sn{height:24px;min-width:38px;border-radius:12px}
+}
+</style>
+<div id="app">
+<div class="hdr">
+  <div class="hdr-left"><h1><span class="title-full" data-i18n="geoTitle">손끝으로 이해하는 3D 증명</span><span class="title-mobile" data-i18n="geoTitleMobile">3D증명</span></h1></div>
+  <div class="hdr-actions">
+    <div class="hdr-proof-nav" data-i18n-aria="proofNavAria" aria-label="증명 단계 이동">
+      <button type="button" id="hdr-prev" onclick="prevStep()" data-i18n-aria="prevStepAria" aria-label="이전 증명 단계" data-i18n="stepPrev">이전단계</button>
+      <button type="button" id="hdr-next" onclick="nextStep()" data-i18n-aria="nextStepAria" aria-label="다음 증명 단계" data-i18n="stepNext">다음단계</button>
+    </div>
+    <details class="settings-menu">
+      <summary class="settings-summary" data-i18n-aria="settingsLabel" aria-label="설정">⚙</summary>
+      <div class="settings">
+        <div class="seg-group" id="lang-group" role="radiogroup" data-i18n-aria="langLabel" aria-label="언어">
+          <button class="seg-btn active" role="radio" aria-checked="true" onclick="TMLang.setLang('ko')">한국어</button>
+          <button class="seg-btn" role="radio" aria-checked="false" onclick="TMLang.setLang('en')">EN</button>
+        </div>
+        <div class="seg-group" id="theme-group" role="radiogroup" aria-label="테마">
+          <button class="seg-btn" role="radio" aria-checked="false" onclick="setTheme('light')">Light</button>
+          <button class="seg-btn active" role="radio" aria-checked="true" onclick="setTheme('system')">System</button>
+          <button class="seg-btn" role="radio" aria-checked="false" onclick="setTheme('dark')">Dark</button>
+        </div>
+        <div class="seg-group" id="glass-group" role="radiogroup" data-i18n-aria="glassLabel" aria-label="시각 효과 모드">
+          <button class="seg-btn active" role="radio" aria-checked="true" onclick="setGlass('auto')">Auto</button>
+          <button class="seg-btn" role="radio" aria-checked="false" onclick="setGlass('on')">Glass</button>
+          <button class="seg-btn" role="radio" aria-checked="false" onclick="setGlass('off')">Off</button>
+        </div>
+        <button class="cb-toggle" id="cb-btn" data-i18n="colorblind" aria-pressed="false" onclick="toggleColorblind()">색각 보정</button>
+      </div>
+    </details>
+    <button type="button" class="mobile-menu-toggle" id="mobile-menu-toggle" data-i18n-aria="mobileMenuAria" aria-label="학습 메뉴" aria-expanded="false" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-navsheet" id="mobile-navsheet" data-i18n-aria="mobileMenuAria" aria-label="학습 메뉴">
+    <div class="mobile-mode-toggle" id="mobile-mode-toggle" role="radiogroup" data-i18n-aria="studyModeAria" aria-label="학습 모드">
+      <button class="mode-btn active" data-mode-btn="view" role="radio" aria-checked="true" data-i18n="viewMode" onclick="setMode('view');closeMobileMenu()">관람하기</button>
+      <button class="mode-btn" data-mode-btn="play" role="radio" aria-checked="false" data-i18n="playMode" onclick="setMode('play');closeMobileMenu()">풀어보기</button>
+    </div>
+    <div class="mobile-navgrid">
+      <div class="mobile-navcol">
+        <div class="nav-label" data-i18n="stageNavLabel">단계</div>
+        <nav class="mobile-stage-tabs" id="mobile-stage-tabs" data-i18n-aria="stageNavLabel" aria-label="단계"></nav>
+      </div>
+      <div class="mobile-navcol">
+        <div class="nav-label" data-i18n="examplesNavLabel">예제</div>
+        <nav class="mobile-thm-scroll" id="mobile-thm-scroll" data-i18n-aria="exampleListAria" aria-label="예제 목록"></nav>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="workspace">
+  <aside class="navpane" data-i18n-aria="navLocationAria" aria-label="학습 위치">
+    <div class="navblock">
+      <div class="nav-label" data-i18n="stageNavLabel">단계</div>
+      <nav class="stage-tabs" id="stage-tabs" data-i18n-aria="stageNavLabel" aria-label="단계"></nav>
+    </div>
+    <div class="navblock">
+      <div class="nav-label" data-i18n="theoremsNavLabel">정리</div>
+      <nav class="thm-scroll" id="thm-scroll" data-i18n-aria="theoremListAria" aria-label="정리 목록"></nav>
+    </div>
+    <div class="navblock">
+      <div class="nav-label" data-i18n="modeNavLabel">모드</div>
+      <div class="mode-toggle" id="mode-toggle" role="radiogroup" data-i18n-aria="studyModeAria" aria-label="학습 모드">
+        <button class="mode-btn active" id="mb-view" data-mode-btn="view" role="radio" aria-checked="true" data-i18n="viewMode" onclick="setMode('view')">관람하기</button>
+        <button class="mode-btn" id="mb-play" data-mode-btn="play" role="radio" aria-checked="false" data-i18n="playMode" onclick="setMode('play')">풀어보기</button>
+      </div>
+    </div>
+  </aside>
+  <main class="mainstage">
+    <div class="cvwrap"><canvas id="c" role="img" data-i18n-aria="canvasLabelGeo" aria-label="3D 기하 증명 시각화"></canvas><button type="button" class="canvas-overlay" id="canvas-overlay" hidden data-i18n-aria="canvasOverlayAria" aria-label="현재 단계 — 클릭 시 사이드 패널로 이동"></button><div class="hint" data-i18n="hintRotate">드래그 회전 · 스크롤 확대</div></div>
+    <div class="mobile-given" id="mobile-given" aria-live="polite"></div>
+  </main>
+  <div class="side">
+    <div class="leg" id="leg"></div>
+    <div class="steps" id="sl"></div>
+    <div id="slider-area"></div>
+  </div>
+</div>
+</div>
+<script src="../shared/theme.js?v=3"></script>
+<script src="../shared/i18n.js?v=3"></script>
+<script src="../shared/engine.js?v=3"></script>
+<script>
+const STAGES=[{"label":"1단계: 직선⊥평면","label_en":"Stage 1: Line ⊥ Plane"},{"label":"2단계: 법선·수직평면","label_en":"Stage 2: Normals & Perpendicular Planes"},{"label":"3단계: 위치관계","label_en":"Stage 3: Positional Relationships"},{"label":"4단계: 삼수선","label_en":"Stage 4: Three Perpendiculars"},{"label":"5단계: 이면각·정사영","label_en":"Stage 5: Dihedral Angles & Orthogonal Projection"}];
+
+const THEOREMS=[{"stage":0,"name":"예제1: 두 직선 수직 → 평면 수직","desc":"평면 α 위 두 직선 m,n이 O에서 만날 때\nO를 지나고 m,n에 각각 수직인 직선 l은 α⊥","legend":[{"t":"dot","c":"#534AB7","l":"점 P,P'","l_en":"Points P, P'"},{"t":"dot","c":"#1D9E75","l":"A,B,C,O","l_en":"A, B, C, O"},{"t":"line","c":"#D85A30","l":"l (수직선)","l_en":"l (perpendicular line)"},{"t":"line","c":"#BA7517","l":"m,n","l_en":"m, n"},{"t":"line","c":"#EF9F27","l":"k,g (임의)","l_en":"k, g (arbitrary)"}],"steps":[{"d":"[조건] 평면 α, 두 직선 m·n이 O에서 만남, 직선 l이 O를 지나며 m⊥l·n⊥l\n[증명] l⊥α","hl":["alpha","m","n","O","l"],"setup":true,"d_en":"[Given] Plane α, two lines m, n meeting at O, line l through O with m⊥l, n⊥l\n[Prove] l⊥α"},{"d":"평면 α 위에 두 직선 m, n이 점 O에서 만납니다.","hl":["alpha","m","n","O"],"d_en":"Two lines m, n on plane α meet at point O."},{"d":"O를 지나는 임의의 직선 k 위에 점 C(≠O)를 잡고,\nC를 지나며 O를 지나지 않는 직선 g를 그어\nm과의 교점 A, n과의 교점 B를 잡습니다.","hl":["k","A","B","C"],"d_en":"Mark a point C(≠O) on an arbitrary line k through O,\nand draw a line g through C not passing through O,\nmarking its intersection A with m and intersection B with n."},{"d":"직선 l 위에 OP=OP'인 두 점 P, P'를 잡습니다. m,n이 PP'의 수직이등분선이므로 AP=AP', BP=BP'.","hl":["P","Pp","l","AP","BP"],"d_en":"Mark two points P, P' on line l with OP=OP'. Since m, n are perpendicular bisectors of PP', AP=AP', BP=BP'."},{"d":"AB 공통, AP=AP', BP=BP'이므로\n△PAB≡△P'AB (SSS합동) → ∠PAC=∠P'AC.","hl":["AB","triangle"],"d_en":"Since AB is common, AP=AP', BP=BP',\n△PAB≡△P'AB (SSS congruence) → ∠PAC=∠P'AC."},{"d":"AC 공통, AP=AP', ∠PAC=∠P'AC이므로\n△PAC≡△P'AC (SAS합동) → CP=CP'.","hl":["CP"],"d_en":"Since AC is common, AP=AP', ∠PAC=∠P'AC,\n△PAC≡△P'AC (SAS congruence) → CP=CP'."},{"d":"△PCP'는 이등변삼각형, O는 PP'의 중점이므로\nOC⊥PP', 즉 l⊥k.\nk는 α 위의 임의의 직선이므로 l⊥α. ✓","hl":["OC","perp","done"],"d_en":"△PCP' is isosceles, and O is the midpoint of PP', so\nOC⊥PP', i.e., l⊥k.\nSince k is an arbitrary line on α, l⊥α. ✓"}],"name_en":"Example 1: Perpendicular to Two Lines → Perpendicular to the Plane","desc_en":"When two lines m, n on plane α meet at O,\na line l through O perpendicular to each of m, n satisfies l⊥α"},{"stage":0,"name":"예제2: 두 직선과 수직 → 평면 수직","desc":"평면 α 위의 서로 만나는 두 직선 m,n의 교점 O를 지나는 직선 l이\nm,n과 각각 수직이면 l⊥α (판정법)","legend":[{"t":"line","c":"#534AB7","l":"l","l_en":"l"},{"t":"line","c":"#D85A30","l":"m,n","l_en":"m, n"},{"t":"line","c":"#EF9F27","l":"k (임의)","l_en":"k (arbitrary)"},{"t":"dot","c":"#1D9E75","l":"O (교점)","l_en":"O (intersection point)"}],"steps":[{"d":"[조건] 평면 α 위의 두 직선 m·n이 O에서 만나고,\n직선 l은 O를 지나며 l⊥m, l⊥n\n[증명] l⊥α","hl":["alpha","m","n","O","l"],"setup":true,"d_en":"[Given] Two lines m, n on plane α meet at O,\nand line l passes through O with l⊥m, l⊥n\n[Prove] l⊥α"},{"d":"α 위의 두 직선 m, n이 점 O에서 만나고, l도 O를 지납니다.","hl":["alpha","m","n","O","l"],"d_en":"Two lines m, n on α meet at point O, and l also passes through O."},{"d":"l은 O에서 m,n과 각각 수직입니다.","hl":["alpha","m","n","O","l","perp"],"d_en":"l is perpendicular to each of m, n at O."},{"d":"α 위에서 O를 지나는 임의의 직선 k를 잡습니다.\n예제1의 보조구성은 이 k가 l과 수직임을 보입니다.","hl":["alpha","m","n","O","l","perp","k"],"d_en":"Take an arbitrary line k through O on α.\nThe auxiliary construction from Example 1 shows that this k is perpendicular to l."},{"d":"즉 O를 지나는 α 위의 모든 직선 k에 대해 l⊥k입니다.","hl":["alpha","m","n","O","l","perp","k"],"d_en":"That is, for every line k through O on α, l⊥k."},{"d":"평면에 수직이라는 판정 조건을 만족하므로 l⊥α. ✓","hl":["done"],"d_en":"Since the criterion for perpendicularity to a plane is satisfied, l⊥α. ✓"}],"name_en":"Example 2: Perpendicular to Two Lines → Perpendicular to the Plane","desc_en":"If a line l passes through the intersection point O of two intersecting lines m, n on plane α\nand is perpendicular to each of m, n, then l⊥α (perpendicularity criterion)"},{"stage":0,"name":"예제3: 평면 수직 → 모든 직선과 수직","desc":"l⊥α이면 직선 l은 평면 α 위의 모든 직선과 수직 (강직→약직)","legend":[{"t":"line","c":"#D85A30","l":"l (법선)","l_en":"l (normal line)"},{"t":"dot","c":"#1D9E75","l":"O (교점)","l_en":"O (intersection point)"},{"t":"line","c":"#1D9E75","l":"m (α 위)","l_en":"m (on α)"},{"t":"line","c":"#EF9F27","l":"m' (m∥m')","l_en":"m' (m∥m')"}],"steps":[{"d":"[조건] l⊥α (강직)\n[증명] α 위의 모든 직선이 l과 수직 (강직→약직)","hl":["l","alpha","O"],"setup":true,"d_en":"[Given] l⊥α (strong ⊥)\n[Prove] Every line on α is perpendicular to l (strong ⊥ → weak ⊥)"},{"d":"l⊥α(강직)이고, l과 α의 교점이 O입니다.","hl":["l","alpha","O"],"d_en":"l⊥α (strong ⊥), and the intersection point of l and α is O."},{"d":"α 위의 직선 m이 O를 지나는 경우:\n강직의 정의에 의해 m⊥l(약직).","hl":["m_through"],"d_en":"Case where a line m on α passes through O:\nBy the definition of strong ⊥, m⊥l (weak ⊥)."},{"d":"m이 O를 지나지 않는 경우:\nO를 지나고 m에 평행한 직선 m'을 α 위에 그립니다.","hl":["m_notO","mp"],"d_en":"Case where m does not pass through O:\nDraw a line m' on α through O parallel to m."},{"d":"m'은 O를 지나므로 m'⊥l(약직).\nm∥m'이므로 m⊥l(약직).","hl":["m_notO","mp","done"],"d_en":"Since m' passes through O, m'⊥l (weak ⊥).\nSince m∥m', m⊥l (weak ⊥)."},{"d":"따라서 α 위의 모든 직선은 l과 수직. ✓","hl":["all_done"],"d_en":"Therefore every line on α is perpendicular to l. ✓"}],"name_en":"Example 3: Perpendicular to a Plane → Perpendicular to Every Line","desc_en":"If l⊥α, then line l is perpendicular to every line on plane α (strong ⊥ → weak ⊥)"},{"stage":1,"name":"예제4: 법선 포함 평면 ⊥ 기준 평면","desc":"평면 α에 수직인 직선 l을 포함한 평면 β는 α⊥β","legend":[{"t":"dot","c":"#534AB7","l":"α","l_en":"α"},{"t":"dot","c":"#1D9E75","l":"β","l_en":"β"},{"t":"line","c":"#D85A30","l":"l (법선)","l_en":"l (normal line)"},{"t":"line","c":"#BA7517","l":"m=α∩β","l_en":"m=α∩β"}],"steps":[{"d":"[조건] l⊥α (강직), l을 포함하는 평면 β\n[증명] α⊥β","hl":["alpha","l","O","beta"],"setup":true,"d_en":"[Given] l⊥α (strong ⊥), plane β containing l\n[Prove] α⊥β"},{"d":"l⊥α(강직). l의 아랫점 O는 α 위이면서 β 위 → α와 β가 만남.","hl":["alpha","l","O","beta"],"d_en":"l⊥α (strong ⊥). The foot point O of l is on both α and β → α and β meet."},{"d":"α와 β의 교선을 m이라 합니다.","hl":["m"],"d_en":"Let m be the line of intersection of α and β."},{"d":"α 위에서 m에 수직인 직선 OQ를 그립니다. OQ⊥m(약직).","hl":["OQ","m"],"d_en":"Draw a line OQ on α perpendicular to m. OQ⊥m (weak ⊥)."},{"d":"l⊥α(강직)이므로 l⊥OQ(약직).","hl":["l","OQ","perp"],"d_en":"Since l⊥α (strong ⊥), l⊥OQ (weak ⊥)."},{"d":"∠POQ=90°가 이면각이므로 α⊥β. ✓","hl":["angle","done"],"d_en":"Since ∠POQ=90° is the dihedral angle, α⊥β. ✓"}],"name_en":"Example 4: A Plane Containing the Normal Line ⊥ the Base Plane","desc_en":"A plane β containing a line l perpendicular to plane α satisfies α⊥β"},{"stage":1,"name":"예제5: 두 평면 수직 → 수선이 법선","desc":"α⊥β일 때 β 위의 점 A에서 교선에 내린 수선의 발 O에 대해 AO⊥α","legend":[{"t":"dot","c":"#534AB7","l":"α","l_en":"α"},{"t":"dot","c":"#1D9E75","l":"β","l_en":"β"},{"t":"dot","c":"#D85A30","l":"A","l_en":"A"},{"t":"line","c":"#BA7517","l":"m=α∩β","l_en":"m=α∩β"}],"steps":[{"d":"[조건] α⊥β, 교선 m, β 위의 점 A (m 위에 없음)\n[증명] A에서 m에 내린 수선의 발 O에 대해 AO⊥α","hl":["alpha","beta","m","A"],"setup":true,"d_en":"[Given] α⊥β, line of intersection m, point A on β (not on m)\n[Prove] For the foot O of the perpendicular from A to m, AO⊥α"},{"d":"α⊥β이고 교선 m 위에 있지 않은 β 위의 점 A가 있습니다.","hl":["alpha","beta","m","A"],"d_en":"α⊥β, and there is a point A on β not on the line of intersection m."},{"d":"A에서 m에 내린 수선의 발 O. AO⊥m(약직).","hl":["AO","m","O"],"d_en":"Let O be the foot of the perpendicular from A to m. AO⊥m (weak ⊥)."},{"d":"α 위에서 m에 수직인 직선 BO를 그립니다.","hl":["BO","m"],"d_en":"Draw a line BO on α perpendicular to m."},{"d":"∠AOB는 이면각 = 90° → AO⊥BO.","hl":["angle90"],"d_en":"∠AOB is the dihedral angle = 90° → AO⊥BO."},{"d":"AO는 α 위의 두 직선 m, BO와 각각 수직이므로\n예제2에 의해 AO⊥α(강직). ✓","hl":["done"],"d_en":"Since AO is perpendicular to each of the two lines m, BO on α,\nby Example 2, AO⊥α (strong ⊥). ✓"}],"name_en":"Example 5: Two Planes Perpendicular → the Perpendicular Is a Normal Line","desc_en":"When α⊥β, for the foot O of the perpendicular dropped from a point A on β to the line of intersection, AO⊥α"},{"stage":1,"name":"예제6: 교선이 공통 법선","desc":"한 평면 α에 수직인 두 평면 β,γ가 만날 때 β∩γ의 교선 l은 α에 수직","legend":[{"t":"dot","c":"#534AB7","l":"α","l_en":"α"},{"t":"dot","c":"#1D9E75","l":"β","l_en":"β"},{"t":"dot","c":"#EF9F27","l":"γ","l_en":"γ"},{"t":"line","c":"#D85A30","l":"l=β∩γ","l_en":"l=β∩γ"}],"steps":[{"d":"[조건] β⊥α, γ⊥α, β∩γ의 교선 l\n[증명] l⊥α","hl":["alpha","beta","gamma","l"],"setup":true,"d_en":"[Given] β⊥α, γ⊥α, line of intersection l = β∩γ\n[Prove] l⊥α"},{"d":"β⊥α, γ⊥α. β와 γ의 교선 l 위에 α 밖의 점 A를 잡습니다.","hl":["alpha","beta","gamma","l","A"],"d_en":"β⊥α, γ⊥α. Mark a point A outside α on the line of intersection l of β and γ."},{"d":"A에서 α∩β의 교선 m에 수선의 발 H를 내립니다. 예제5에 의해 AH⊥α(강직).","hl":["m","AH"],"d_en":"Drop the foot of the perpendicular H from A to the line of intersection m of α∩β. By Example 5, AH⊥α (strong ⊥)."},{"d":"A에서 α∩γ의 교선 n에 수선의 발 I를 내립니다. 예제5에 의해 AI⊥α(강직).","hl":["n","AI"],"d_en":"Drop the foot of the perpendicular I from A to the line of intersection n of α∩γ. By Example 5, AI⊥α (strong ⊥)."},{"d":"A에서 α에 내린 수선의 발은 유일하므로 H=I=J.","hl":["HI"],"d_en":"Since the foot of the perpendicular from A to α is unique, H=I=J."},{"d":"J는 m,n 위의 점이므로 세 평면 위에 있고, AJ=l이며 AJ⊥α. ✓","hl":["done"],"d_en":"Since J is a point on both m and n, it lies on all three planes, AJ=l, and AJ⊥α. ✓"}],"name_en":"Example 6: The Line of Intersection Is a Common Normal","desc_en":"When two planes β, γ, each perpendicular to a plane α, meet, their line of intersection l = β∩γ is perpendicular to α"},{"stage":1,"name":"예제7: 평행한 법선","desc":"l∥m이고 l⊥α이면 m⊥α (평행한 직선 중 하나가 법선이면 나머지도 법선)","legend":[{"t":"line","c":"#534AB7","l":"l (법선)","l_en":"l (normal line)"},{"t":"line","c":"#D85A30","l":"m (평행선)","l_en":"m (parallel line)"},{"t":"dot","c":"#1D9E75","l":"α","l_en":"α"}],"steps":[{"d":"[조건] l⊥α (강직), l∥m\n[증명] m⊥α","hl":["alpha","l","m"],"setup":true,"d_en":"[Given] l⊥α (strong ⊥), l∥m\n[Prove] m⊥α"},{"d":"l⊥α(강직), l∥m. m은 α와 한 점 P에서 만납니다.\nP를 지나는 α 위의 두 직선 n₁, n₂를 잡습니다.","hl":["alpha","l","m","n1","n2"],"d_en":"l⊥α (strong ⊥), l∥m. m meets α at a point P.\nTake two lines n₁, n₂ on α through P."},{"d":"l⊥n₁, l⊥n₂(약직).","hl":["l_perp"],"d_en":"l⊥n₁, l⊥n₂ (weak ⊥)."},{"d":"l∥m이므로 l과 nₖ가 이루는 각 = m과 nₖ가 이루는 각.","hl":["angle_equal"],"d_en":"Since l∥m, the angle between l and nₖ equals the angle between m and nₖ."},{"d":"따라서 m⊥n₁, m⊥n₂(약직).","hl":["m_perp"],"d_en":"Therefore m⊥n₁, m⊥n₂ (weak ⊥)."},{"d":"예제2 조건 충족 → m⊥α(강직). ✓","hl":["done"],"d_en":"The condition of Example 2 is satisfied → m⊥α (strong ⊥). ✓"}],"name_en":"Example 7: Parallel Normal Lines","desc_en":"If l∥m and l⊥α, then m⊥α (if one of two parallel lines is a normal, the other is too)"},{"stage":1,"name":"예제8: 세 직선이 서로 수직","desc":"한 점 O에서 만나고 l⊥m, m⊥n, n⊥l인 세 직선 l,m,n\n두 직선으로 결정되는 평면은 나머지 직선과 수직","legend":[{"t":"line","c":"#534AB7","l":"l","l_en":"l"},{"t":"line","c":"#1D9E75","l":"m","l_en":"m"},{"t":"line","c":"#D85A30","l":"n","l_en":"n"},{"t":"dot","c":"#BA7517","l":"O","l_en":"O"}],"steps":[{"d":"[조건] 한 점 O에서 만나는 세 직선 l, m, n이 서로 수직\n[증명] 각 쌍이 결정하는 평면은 나머지 직선과 수직","hl":["l","m","n","O"],"setup":true,"d_en":"[Given] Three lines l, m, n meeting at one point O are mutually perpendicular\n[Prove] The plane determined by each pair is perpendicular to the remaining line"},{"d":"한 점 O에서 만나는 세 직선 l,m,n이 서로 수직입니다.","hl":["l","m","n","O"],"d_en":"Three lines l, m, n meeting at one point O are mutually perpendicular."},{"d":"l과 m이 결정하는 평면 α, m과 n이 결정하는 평면 β, n과 l이 결정하는 평면 γ.","hl":["alpha","beta","gamma"],"d_en":"Let α be the plane determined by l and m, β the plane determined by m and n, and γ the plane determined by n and l."},{"d":"n⊥l, n⊥m이므로 예제2에 의해 n⊥α(강직).","hl":["n_perp_alpha"],"d_en":"Since n⊥l and n⊥m, by Example 2, n⊥α (strong ⊥)."},{"d":"l⊥m, l⊥n이므로 l⊥β(강직).","hl":["l_perp_beta"],"d_en":"Since l⊥m and l⊥n, l⊥β (strong ⊥)."},{"d":"m⊥n, m⊥l이므로 m⊥γ(강직). ✓","hl":["done"],"d_en":"Since m⊥n and m⊥l, m⊥γ (strong ⊥). ✓"}],"name_en":"Example 8: Three Mutually Perpendicular Lines","desc_en":"Three lines l, m, n meeting at one point O, with l⊥m, m⊥n, n⊥l\nThe plane determined by any two of the lines is perpendicular to the remaining line"},{"stage":1,"name":"예제9: 법선끼리는 평행","desc":"서로 다른 두 직선 l,m이 각각 평면 α에 수직이면 l∥m","legend":[{"t":"line","c":"#534AB7","l":"l","l_en":"l"},{"t":"line","c":"#D85A30","l":"m","l_en":"m"},{"t":"dot","c":"#1D9E75","l":"α","l_en":"α"},{"t":"line","c":"#BA7517","l":"보조선 a","l_en":"auxiliary line a"}],"steps":[{"d":"[조건] l⊥α, m⊥α (각각 강직)\n[증명] l∥m","hl":["alpha","l","m"],"setup":true,"d_en":"[Given] l⊥α, m⊥α (each strong ⊥)\n[Prove] l∥m"},{"d":"l과 α의 교점을 O, m과 α의 교점을 P라 합니다.","hl":["alpha","l","m"],"d_en":"Let O be the intersection of l and α, and P the intersection of m and α."},{"d":"P를 지나고 l에 평행한 직선 a를 그립니다.","hl":["a"],"d_en":"Draw a line a through P parallel to l."},{"d":"l⊥α이고 a∥l이므로 예제7에 의해 a⊥α.","hl":["a","perp"],"d_en":"Since l⊥α and a∥l, by Example 7, a⊥α."},{"d":"m도 P를 지나며 m⊥α입니다. 한 점 P에서 α에 내린 수선은 하나뿐이므로 a=m.","hl":["m_a"],"d_en":"m also passes through P and m⊥α. Since there is only one perpendicular to α from a point P, a=m."},{"d":"a∥l이고 a=m이므로 l∥m. ✓","hl":["done"],"d_en":"Since a∥l and a=m, l∥m. ✓"}],"name_en":"Example 9: Normal Lines to the Same Plane Are Parallel","desc_en":"If two distinct lines l, m are each perpendicular to plane α, then l∥m"},{"stage":2,"name":"예제10: 꼬인 위치 판정","desc":"직선 l과 l 위에 없는 점 P가 결정하는 평면 α.\nQ∉α이면 l과 PQ는 꼬인 위치","legend":[{"t":"line","c":"#D85A30","l":"l","l_en":"l"},{"t":"dot","c":"#534AB7","l":"P","l_en":"P"},{"t":"dot","c":"#1D9E75","l":"Q","l_en":"Q"},{"t":"dot","c":"#BA7517","l":"α","l_en":"α"}],"steps":[{"d":"[조건] 직선 l, l 위에 없는 점 P → 평면 α 결정, Q∉α\n[증명] l과 PQ는 꼬인 위치","hl":["alpha","l","P","Q"],"setup":true,"d_en":"[Given] Line l and a point P not on l determine plane α, Q∉α\n[Prove] l and PQ are in skew position"},{"d":"l과 l 위에 없는 점 P가 평면 α를 결정합니다.","hl":["alpha","l","P"],"d_en":"Line l and a point P not on l determine a plane α."},{"d":"귀류법: l과 PQ가 꼬인 위치에 있지 않다고 가정.","hl":["PQ","assume"],"d_en":"By contradiction: suppose l and PQ are not in skew position."},{"d":"그러면 l과 PQ는 한 평면 β를 결정합니다. l⊂β, P∈β.","hl":["beta"],"d_en":"Then l and PQ determine a single plane β. l⊂β, P∈β."},{"d":"l과 P가 결정하는 평면은 α이므로 α=β.","hl":["same_plane"],"d_en":"Since the plane determined by l and P is α, α=β."},{"d":"그러면 Q∈α가 되어 모순! 가정이 거짓 → 꼬인 위치. ✓","hl":["done"],"d_en":"Then Q∈α, a contradiction! The assumption is false → skew position. ✓"}],"name_en":"Example 10: Determining Skew Position","desc_en":"Line l and a point P not on l determine a plane α.\nIf Q∉α, then l and PQ are in skew position"},{"stage":2,"name":"예제11: 평행선 포함 평면과 평행","desc":"l∥m이고 α가 m을 포함하고 l을 포함하지 않으면 α∥l","legend":[{"t":"line","c":"#534AB7","l":"l","l_en":"l"},{"t":"line","c":"#D85A30","l":"m","l_en":"m"},{"t":"dot","c":"#1D9E75","l":"α","l_en":"α"}],"steps":[{"d":"[조건] l∥m, m⊂α, l⊄α\n[증명] l∥α","hl":["alpha","l","m"],"setup":true,"d_en":"[Given] l∥m, m⊂α, l⊄α\n[Prove] l∥α"},{"d":"l∥m, m⊂α, l⊄α. l과 α의 위치관계를 따집니다.","hl":["alpha","l","m"],"d_en":"l∥m, m⊂α, l⊄α. Consider the positional relationship between l and α."},{"d":"귀류법: l이 α와 점 P에서 만난다고 가정.","hl":["assume","P"],"d_en":"By contradiction: suppose l meets α at a point P."},{"d":"α 위에서 P를 지나고 m에 평행한 직선은 하나뿐입니다.","hl":["Pm_alpha"],"d_en":"On α, there is only one line through P parallel to m."},{"d":"그 직선은 l과 같아야 하므로 l⊂α가 되어 조건 l⊄α에 모순입니다.","hl":["contradiction"],"d_en":"That line must equal l, so l⊂α, which contradicts the condition l⊄α."},{"d":"가정이 거짓 → l∥α. ✓","hl":["done"],"d_en":"The assumption is false → l∥α. ✓"}],"name_en":"Example 11: A Plane Containing a Parallel Line Is Parallel to the Other Line","desc_en":"If l∥m and α contains m but not l, then α∥l"},{"stage":2,"name":"예제12: 교선과 평행한 직선","desc":"l∥α이고 l⊂β, β∩α=m이면 m∥l","legend":[{"t":"line","c":"#D85A30","l":"l","l_en":"l"},{"t":"dot","c":"#534AB7","l":"α","l_en":"α"},{"t":"dot","c":"#1D9E75","l":"β","l_en":"β"},{"t":"line","c":"#BA7517","l":"m=α∩β","l_en":"m=α∩β"}],"steps":[{"d":"[조건] l∥α, l⊂β, β∩α=m\n[증명] m∥l","hl":["alpha","beta","l"],"setup":true,"d_en":"[Given] l∥α, l⊂β, β∩α=m\n[Prove] m∥l"},{"d":"l∥α이고 l을 포함하는 평면 β. α와 β의 교선 m.","hl":["alpha","beta","l","m"],"d_en":"l∥α, and β is a plane containing l. Let m be the line of intersection of α and β."},{"d":"l과 m은 한 평면 β에 있으므로 평행하거나 만납니다.","hl":["same_beta"],"d_en":"Since l and m lie in the same plane β, they are either parallel or they meet."},{"d":"귀류법: l과 m이 점 P에서 만난다고 가정.","hl":["assume","P"],"d_en":"By contradiction: suppose l and m meet at a point P."},{"d":"P∈m이므로 P∈α. 그러면 P는 l과 α의 교점 → l∥α에 모순!","hl":["contradiction"],"d_en":"Since P∈m, P∈α. Then P is an intersection point of l and α → contradicting l∥α!"},{"d":"가정이 거짓 → l∥m. ✓","hl":["done"],"d_en":"The assumption is false → l∥m. ✓"}],"name_en":"Example 12: A Line Parallel to the Line of Intersection","desc_en":"If l∥α, l⊂β, and β∩α=m, then m∥l"},{"stage":2,"name":"예제13: 평행한 교선","desc":"평면 γ가 α∩β의 교선 l에 평행하고 α,β와 각각 m,n을 공유하면 m∥n","legend":[{"t":"dot","c":"#534AB7","l":"α","l_en":"α"},{"t":"dot","c":"#1D9E75","l":"β","l_en":"β"},{"t":"dot","c":"#EF9F27","l":"γ","l_en":"γ"},{"t":"line","c":"#D85A30","l":"l,m,n","l_en":"l,m,n"}],"steps":[{"d":"[조건] α∩β=l, γ∥l, γ∩α=m, γ∩β=n\n[증명] m∥n","hl":["alpha","beta","gamma","l"],"setup":true,"d_en":"[Given] α∩β=l, γ∥l, γ∩α=m, γ∩β=n\n[Prove] m∥n"},{"d":"α∩β=l, γ∥l. γ∩α=m, γ∩β=n.","hl":["alpha","beta","gamma","l","m","n"],"d_en":"α∩β=l, γ∥l. γ∩α=m, γ∩β=n."},{"d":"예제12에 의해: l∥γ이고 l⊂β, β∩γ=n → l∥n.","hl":["l_n"],"d_en":"By Example 12: l∥γ and l⊂β, β∩γ=n → l∥n."},{"d":"마찬가지로 l∥γ이고 l⊂α, α∩γ=m → l∥m.","hl":["l_m"],"d_en":"Similarly, l∥γ and l⊂α, α∩γ=m → l∥m."},{"d":"l∥m, l∥n이므로 m∥n. ✓","hl":["done"],"d_en":"Since l∥m, l∥n, m∥n. ✓"}],"name_en":"Example 13: Parallel Intersection Lines","desc_en":"If plane γ is parallel to the intersection line l of α∩β, and shares lines m, n with α, β respectively, then m∥n"},{"stage":2,"name":"예제14: 평행선과 평면 교선","desc":"평행한 두 직선 l,m에 대해 α(l포함,m제외)와 β(m포함,l제외)의 교선 n은 l,m과 평행","legend":[{"t":"line","c":"#534AB7","l":"l","l_en":"l"},{"t":"line","c":"#D85A30","l":"m","l_en":"m"},{"t":"line","c":"#1D9E75","l":"n=α∩β","l_en":"n=α∩β"}],"steps":[{"d":"[조건] l∥m, l⊂α, m⊄α, m⊂β, l⊄β, α∩β=n\n[증명] n이 l,m과 평행","hl":["alpha","beta","l","m"],"setup":true,"d_en":"[Given] l∥m, l⊂α, m⊄α, m⊂β, l⊄β, α∩β=n\n[Prove] n is parallel to l, m"},{"d":"l∥m. l⊂α(m제외), m⊂β(l제외). α와 β의 교선 n.","hl":["alpha","beta","l","m","n"],"d_en":"l∥m. l⊂α (excluding m), m⊂β (excluding l). n is the intersection line of α and β."},{"d":"β는 m을 포함하고 l을 포함하지 않으므로 예제11에 의해 l∥β.","hl":["l_beta"],"d_en":"Since β contains m but not l, by Example 11, l∥β."},{"d":"l∥β이므로 l과 n은 만나지 않고, l,n⊂α이므로 예제12에 의해 l∥n.","hl":["l_n"],"d_en":"Since l∥β, l and n do not meet, and since l,n⊂α, by Example 12, l∥n."},{"d":"마찬가지로 m∥α이므로 m과 n은 만나지 않고, m,n⊂β → m∥n.","hl":["m_n"],"d_en":"Similarly, since m∥α, m and n do not meet, and m,n⊂β → m∥n."},{"d":"따라서 n∥l, n∥m. ✓","hl":["done"],"d_en":"Therefore n∥l, n∥m. ✓"}],"name_en":"Example 14: Parallel Lines and Plane Intersection","desc_en":"For two parallel lines l, m, the intersection line n of α (containing l, not m) and β (containing m, not l) is parallel to both l and m"},{"stage":2,"name":"예제15: 평면에 포함된 직선과 평행 평면","desc":"평행한 두 평면 α,β에 대해 직선 l이 α에 포함되면 l∥β","legend":[{"t":"dot","c":"#534AB7","l":"α","l_en":"α"},{"t":"dot","c":"#1D9E75","l":"β","l_en":"β"},{"t":"line","c":"#D85A30","l":"l⊂α","l_en":"l⊂α"}],"steps":[{"d":"[조건] α∥β, l⊂α\n[증명] l∥β","hl":["alpha","beta","l"],"setup":true,"d_en":"[Given] α∥β, l⊂α\n[Prove] l∥β"},{"d":"α∥β, l⊂α. l과 β의 위치관계를 따집니다.","hl":["alpha","beta","l"],"d_en":"α∥β, l⊂α. We examine the positional relationship between l and β."},{"d":"귀류법①: l이 β와 점 P에서 만난다고 가정 → P∈α∩β → α∥β에 모순.","hl":["assume1"],"d_en":"Proof by contradiction ①: Suppose l meets β at point P → P∈α∩β → contradicts α∥β."},{"d":"귀류법②: l이 β에 포함된다고 가정 → l이 α∩β의 교선 → α∥β에 모순.","hl":["assume2"],"d_en":"Proof by contradiction ②: Suppose l is contained in β → l is the intersection line of α∩β → contradicts α∥β."},{"d":"두 가정 모두 거짓 → l∥β. ✓","hl":["done"],"d_en":"Both assumptions are false → l∥β. ✓"}],"name_en":"Example 15: A Line Contained in a Plane and a Parallel Plane","desc_en":"For two parallel planes α, β, if line l is contained in α, then l∥β"},{"stage":2,"name":"예제16: 한 점에서 만나는 두 직선이 평행한 평면","desc":"α 밖의 점 P에서 만나는 두 직선 l,m이 모두 α에 평행하면\nl,m이 포함하는 평면 β∥α","legend":[{"t":"dot","c":"#534AB7","l":"α","l_en":"α"},{"t":"dot","c":"#1D9E75","l":"β","l_en":"β"},{"t":"line","c":"#D85A30","l":"l,m","l_en":"l,m"},{"t":"dot","c":"#BA7517","l":"P","l_en":"P"}],"steps":[{"d":"[조건] P∉α, 두 직선 l·m이 P에서 만남, l∥α, m∥α\n[증명] l·m이 결정하는 평면 β∥α","hl":["alpha","l","m","P"],"setup":true,"d_en":"[Given] P∉α, two lines l, m meet at P, l∥α, m∥α\n[Prove] The plane β determined by l, m satisfies β∥α"},{"d":"P∉α, l과 m은 P에서 만나고 l∥α, m∥α. l,m이 결정하는 평면 β.","hl":["alpha","beta","l","m","P"],"d_en":"P∉α, l and m meet at P, and l∥α, m∥α. Let β be the plane determined by l, m."},{"d":"귀류법: α와 β가 평행하지 않다고 가정 → 교선 n이 존재.","hl":["assume","n"],"d_en":"Proof by contradiction: Suppose α and β are not parallel → an intersection line n exists."},{"d":"l∥α이므로 l 위의 점은 α 위에 없으므로 l과 n은 만나지 않습니다.\n마찬가지로 m과 n도 만나지 않습니다.","hl":["no_meet"],"d_en":"Since l∥α, no point of l lies on α, so l and n do not meet.\nSimilarly, m and n do not meet."},{"d":"l,n⊂β이고 만나지 않으므로 l∥n. 마찬가지로 m∥n.","hl":["l_n","m_n"],"d_en":"Since l, n⊂β and they do not meet, l∥n. Similarly, m∥n."},{"d":"β 위에서 P를 지나고 n에 평행한 직선은 유일한데 l=m이 되어 모순! → β∥α. ✓","hl":["done"],"d_en":"On β, the line through P parallel to n is unique, so l=m, a contradiction! → β∥α. ✓"}],"name_en":"Example 16: A Plane Determined by Two Intersecting Lines Both Parallel to Another Plane","desc_en":"If two lines l, m meeting at a point P outside α are both parallel to α,\nthen the plane β containing l, m satisfies β∥α"},{"stage":2,"name":"예제17: 평행 평면과 직선","desc":"α∥β이고 직선 l이 α와 한 점에서 만나면 l은 β와도 한 점에서 만남","legend":[{"t":"dot","c":"#534AB7","l":"α","l_en":"α"},{"t":"dot","c":"#1D9E75","l":"β","l_en":"β"},{"t":"line","c":"#D85A30","l":"l","l_en":"l"}],"steps":[{"d":"[조건] α∥β, 직선 l이 α와 점 P에서 만남\n[증명] l은 β와도 한 점에서 만남","hl":["alpha","beta","l","P"],"setup":true,"d_en":"[Given] α∥β, line l meets α at point P\n[Prove] l also meets β at one point"},{"d":"α∥β, l이 α와 점 P에서 만납니다. l과 β의 위치관계를 따집니다.","hl":["alpha","beta","l","P"],"d_en":"α∥β, l meets α at point P. We examine the positional relationship between l and β."},{"d":"귀류법①: l이 β에 포함된다고 가정 → l 위의 P가 β 위에 있어야 함. 그런데 P∈α, α∥β → 모순.","hl":["assume1"],"d_en":"Proof by contradiction ①: Suppose l is contained in β → then P on l must lie on β. But P∈α and α∥β → contradiction."},{"d":"귀류법②: l∥β라고 가정. α 위에서 P를 지나고 l과 다른 직선 r을 잡습니다.\nα∥β이므로 r∥β이고, l과 r이 결정하는 평면 γ를 만듭니다.","hl":["assume2","gamma"],"d_en":"Proof by contradiction ②: Suppose l∥β. On α, take a line r through P different from l.\nSince α∥β, r∥β, and let γ be the plane determined by l and r."},{"d":"예제16에 의해 β∥γ. P를 지나고 β에 평행한 평면은 α뿐이므로 γ=α.","hl":["gamma_alpha"],"d_en":"By Example 16, β∥γ. Since α is the only plane through P parallel to β, γ=α."},{"d":"그러면 l⊂α인데 l이 α와 한 점에서 만난다는 조건에 모순! → l은 β와 한 점에서 만남. ✓","hl":["done"],"d_en":"Then l⊂α, which contradicts the condition that l meets α at one point! → l meets β at one point. ✓"}],"name_en":"Example 17: Parallel Planes and a Line","desc_en":"If α∥β and line l meets α at one point, then l also meets β at one point"},{"stage":2,"name":"예제18: 두 평행 평면 사이의 교선 평행","desc":"서로 평행한 두 평면 α,β에 대해 평면 γ가 α,β와 각각 만날 때 교선끼리 평행","legend":[{"t":"dot","c":"#534AB7","l":"α","l_en":"α"},{"t":"dot","c":"#1D9E75","l":"β","l_en":"β"},{"t":"dot","c":"#EF9F27","l":"γ","l_en":"γ"},{"t":"line","c":"#D85A30","l":"교선 l,m","l_en":"intersection lines l,m"}],"steps":[{"d":"[조건] α∥β, 평면 γ가 α·β와 각각 만남\n[증명] γ∩α와 γ∩β의 교선이 평행","hl":["alpha","beta","gamma"],"setup":true,"d_en":"[Given] α∥β, plane γ meets each of α, β\n[Prove] The intersection lines γ∩α and γ∩β are parallel"},{"d":"α∥β. γ∩α=l, γ∩β=m.","hl":["alpha","beta","gamma","l","m"],"d_en":"α∥β. γ∩α=l, γ∩β=m."},{"d":"α∥β이므로 α에 포함된 직선과 β에 포함된 직선은 서로 만나지 않습니다.","hl":["no_meet"],"d_en":"Since α∥β, a line contained in α and a line contained in β never meet."},{"d":"따라서 l(⊂α)과 m(⊂β)은 만나지 않습니다.","hl":["l_m_no_meet"],"d_en":"Therefore l(⊂α) and m(⊂β) do not meet."},{"d":"l과 m은 한 평면 γ 위의 만나지 않는 두 직선이므로 l∥m. ✓","hl":["done"],"d_en":"Since l and m are two non-intersecting lines on a single plane γ, l∥m. ✓"}],"name_en":"Example 18: Parallel Intersection Lines Between Two Parallel Planes","desc_en":"For two mutually parallel planes α, β, when plane γ meets each of α, β, the two intersection lines are parallel"},{"stage":2,"name":"예제19: 두 평행 평면과 세 번째 평면","desc":"α∥β이고 γ가 α와 만나면 γ는 β와도 만남","legend":[{"t":"dot","c":"#534AB7","l":"α","l_en":"α"},{"t":"dot","c":"#1D9E75","l":"β","l_en":"β"},{"t":"dot","c":"#EF9F27","l":"γ","l_en":"γ"}],"steps":[{"d":"[조건] α∥β, γ가 α와 교선 l에서 만남\n[증명] γ는 β와도 만남","hl":["alpha","beta","gamma"],"setup":true,"d_en":"[Given] α∥β, γ meets α at line of intersection l\n[Prove] γ also meets β"},{"d":"α∥β, γ가 α와 교선 l을 가집니다.","hl":["alpha","beta","gamma","l"],"d_en":"α∥β, and γ has line of intersection l with α."},{"d":"귀류법: γ와 β가 만나지 않는다고 가정 → γ∥β.","hl":["assume"],"d_en":"Proof by contradiction: Suppose γ and β do not meet → γ∥β."},{"d":"교선 l 위의 점 P를 잡습니다. P를 지나 β와 평행한 평면은 하나뿐입니다.","hl":["m","P"],"d_en":"Take a point P on the line of intersection l. There is only one plane through P parallel to β."},{"d":"α와 γ가 모두 P를 지나며 β와 평행하게 되어 α=γ가 됩니다.\n이는 두 평면이 교선 l에서 만난다는 조건과 모순입니다.","hl":["alpha_gamma"],"d_en":"Both α and γ pass through P and are parallel to β, so α=γ.\nThis contradicts the condition that the two planes meet at line of intersection l."},{"d":"가정이 거짓 → γ는 β와 만남. ✓","hl":["done"],"d_en":"The assumption is false → γ meets β. ✓"}],"name_en":"Example 19: Two Parallel Planes and a Third Plane","desc_en":"If α∥β and γ meets α, then γ also meets β"},{"stage":2,"name":"예제20: 평행 관계의 추이성","desc":"서로 다른 세 평면 α,β,γ에 대해 α∥β, β∥γ이면 α∥γ","legend":[{"t":"dot","c":"#534AB7","l":"α","l_en":"α"},{"t":"dot","c":"#1D9E75","l":"β","l_en":"β"},{"t":"dot","c":"#EF9F27","l":"γ","l_en":"γ"}],"steps":[{"d":"[조건] α∥β, β∥γ\n[증명] α∥γ (평행의 추이성)","hl":["alpha","beta","gamma"],"setup":true,"d_en":"[Given] α∥β, β∥γ\n[Prove] α∥γ (transitivity of parallelism)"},{"d":"α∥β, β∥γ입니다. α와 γ가 만난다고 가정합니다.","hl":["alpha","beta","gamma","assume1"],"d_en":"α∥β and β∥γ. Suppose α and γ meet."},{"d":"교선 위의 한 점 P를 잡으면, P를 지나 β와 평행한 평면은 하나뿐입니다.","hl":["l","assume1"],"d_en":"Taking a point P on the line of intersection, there is only one plane through P parallel to β."},{"d":"그런데 α와 γ가 모두 P를 지나며 β와 평행하므로 α=γ가 됩니다.","hl":["assume2"],"d_en":"But both α and γ pass through P and are parallel to β, so α=γ."},{"d":"세 평면이 서로 다르다는 조건에 모순 → α와 γ는 만나지 않습니다.","hl":["assume2"],"d_en":"This contradicts the condition that the three planes are distinct → α and γ do not meet."},{"d":"따라서 α∥γ. ✓","hl":["done"],"d_en":"Therefore α∥γ. ✓"}],"name_en":"Example 20: Transitivity of Parallelism","desc_en":"For three distinct planes α, β, γ, if α∥β and β∥γ, then α∥γ"},{"stage":3,"name":"삼수선 정리 ①","desc":"PO⊥α, OH⊥l 이면 PH⊥l","legend":[{"t":"dot","c":"#534AB7","l":"P (평면 밖)","l_en":"P (outside the plane)"},{"t":"dot","c":"#1D9E75","l":"O,H (평면 위)","l_en":"O, H (on the plane)"},{"t":"line","c":"#D85A30","l":"l","l_en":"l"},{"t":"line","c":"#EF9F27","l":"PHO 평면","l_en":"plane PHO"}],"steps":[{"d":"[조건] PO⊥α (강직), l⊂α, O∈α, H∈l, OH⊥l\n[증명] PH⊥l","hl":["alpha","PO","l","P","H","OH"],"setup":true,"d_en":"[Given] PO⊥α (strong ⊥), l⊂α, O∈α, H∈l, OH⊥l\n[Prove] PH⊥l"},{"d":"PO⊥α(강직). l은 α에 포함되므로 PO⊥l(약직).","hl":["PO","alpha","l","perp1"],"d_en":"PO⊥α (strong ⊥). Since l is contained in α, PO⊥l (weak ⊥)."},{"d":"조건에서 OH⊥l(약직).","hl":["OH","l"],"d_en":"From the given, OH⊥l (weak ⊥)."},{"d":"H를 지나고 PO와 평행한 직선 p를 평면PHO 위에 그립니다.\np∥PO이므로 p⊥l, 또 OH⊥l입니다.","hl":["plane_PHO","helper_p","l"],"d_en":"Draw a line p through H parallel to PO on plane PHO.\nSince p∥PO, p⊥l; also OH⊥l."},{"d":"p와 OH는 H에서 만나고 둘 다 l에 수직이므로\n예제2에 의해 l⊥평면PHO(강직).","hl":["plane_PHO","helper_p","OH","l"],"d_en":"p and OH meet at H and are both perpendicular to l,\nso by Example 2, l⊥plane PHO (strong ⊥)."},{"d":"PH는 평면PHO에 포함되므로 l⊥PH(약직). ✓","hl":["PH","done"],"d_en":"Since PH is contained in plane PHO, l⊥PH (weak ⊥). ✓"}],"name_en":"Three Perpendiculars Theorem ①","desc_en":"If PO⊥α and OH⊥l, then PH⊥l"},{"stage":3,"name":"삼수선 정리 ②","desc":"PO⊥α, PH⊥l 이면 OH⊥l","legend":[{"t":"dot","c":"#534AB7","l":"P","l_en":"P"},{"t":"dot","c":"#1D9E75","l":"O,H","l_en":"O, H"},{"t":"line","c":"#D85A30","l":"l","l_en":"l"},{"t":"line","c":"#EF9F27","l":"PHO 평면","l_en":"plane PHO"}],"steps":[{"d":"[조건] PO⊥α (강직), l⊂α, O∈α, H∈l, PH⊥l\n[증명] OH⊥l","hl":["alpha","PO","l","P","H","PH"],"setup":true,"d_en":"[Given] PO⊥α (strong ⊥), l⊂α, O∈α, H∈l, PH⊥l\n[Prove] OH⊥l"},{"d":"PO⊥α(강직), l⊂α → PO⊥l(약직).","hl":["PO","alpha","l","perp1"],"d_en":"PO⊥α (strong ⊥), l⊂α → PO⊥l (weak ⊥)."},{"d":"조건에서 PH⊥l(약직).","hl":["PH","l"],"d_en":"From the given, PH⊥l (weak ⊥)."},{"d":"H를 지나고 PO와 평행한 직선 p를 평면PHO 위에 그립니다.\np∥PO이므로 p⊥l, 또 PH⊥l입니다.","hl":["plane_PHO","helper_p","l"],"d_en":"Draw a line p through H parallel to PO on plane PHO.\nSince p∥PO, p⊥l; also PH⊥l."},{"d":"p와 PH는 H에서 만나고 둘 다 l에 수직이므로\n예제2에 의해 l⊥평면PHO(강직).","hl":["plane_PHO","helper_p","PH","l"],"d_en":"p and PH meet at H and are both perpendicular to l,\nso by Example 2, l⊥plane PHO (strong ⊥)."},{"d":"OH⊂평면PHO이므로 l⊥OH(약직). ✓","hl":["OH","done"],"d_en":"Since OH⊂plane PHO, l⊥OH (weak ⊥). ✓"}],"name_en":"Three Perpendiculars Theorem ②","desc_en":"If PO⊥α and PH⊥l, then OH⊥l"},{"stage":3,"name":"삼수선 정리 ③","desc":"PH⊥l, OH⊥l, PO⊥OH 이면 PO⊥α","legend":[{"t":"dot","c":"#534AB7","l":"P","l_en":"P"},{"t":"dot","c":"#1D9E75","l":"O,H","l_en":"O, H"},{"t":"line","c":"#D85A30","l":"l","l_en":"l"},{"t":"line","c":"#534AB7","l":"PO (법선)","l_en":"PO (normal line)"}],"steps":[{"d":"[조건] l⊂α, O∈α, H∈l, PH⊥l, OH⊥l, PO⊥OH\n[증명] PO⊥α","hl":["alpha","l","PH","OH","PO","P","H","O"],"setup":true,"d_en":"[Given] l⊂α, O∈α, H∈l, PH⊥l, OH⊥l, PO⊥OH\n[Prove] PO⊥α"},{"d":"PH⊥l(약직), OH⊥l(약직).","hl":["PH","OH","l"],"d_en":"PH⊥l (weak ⊥), OH⊥l (weak ⊥)."},{"d":"l은 PH와 OH에 모두 수직 → l⊥평면PHO(강직).","hl":["plane_PHO","l"],"d_en":"l is perpendicular to both PH and OH → l⊥plane PHO (strong ⊥)."},{"d":"따라서 PO⊂평면PHO이므로 l⊥PO(약직).","hl":["PO","l"],"d_en":"Therefore, since PO⊂plane PHO, l⊥PO (weak ⊥)."},{"d":"O를 지나고 l과 평행한 직선 q를 α 위에 그립니다.\nPO⊥l이므로 PO⊥q입니다.","hl":["PO","OH","l_perp","helper_q"],"d_en":"Draw a line q through O parallel to l on α.\nSince PO⊥l, PO⊥q."},{"d":"PO는 O에서 만나는 α 위의 두 직선 OH, q와 각각 수직이므로\n예제2에 의해 PO⊥α(강직). ✓","hl":["done","helper_q"],"d_en":"PO is perpendicular to each of the two lines OH and q on α that meet at O,\nso by Example 2, PO⊥α (strong ⊥). ✓"}],"name_en":"Three Perpendiculars Theorem ③","desc_en":"If PH⊥l, OH⊥l, and PO⊥OH, then PO⊥α"},{"stage":3,"name":"예제22: 수선의 발 일치","desc":"직선 l에서 만나는 두 평면 α,β. P에서 각 평면에 내린 수선의 발 A,B에서\n각각 l에 내린 수선의 발이 일치함을 보이시오","legend":[{"t":"dot","c":"#534AB7","l":"P","l_en":"P"},{"t":"dot","c":"#D85A30","l":"A (α 위)","l_en":"A (on α)"},{"t":"dot","c":"#1D9E75","l":"B (β 위)","l_en":"B (on β)"},{"t":"line","c":"#BA7517","l":"l=α∩β","l_en":"l=α∩β"}],"steps":[{"d":"[조건] 직선 l에서 만나는 두 평면 α·β, 점 P\n[증명] P에서 각 평면에 내린 수선의 발에서 l에 내린 수선의 발이 일치","hl":["alpha","beta","l","P"],"setup":true,"d_en":"[Given] Two planes α, β meeting at line l, and a point P\n[Prove] The feet of the perpendiculars dropped to l from the feet of the perpendiculars from P to each plane coincide"},{"d":"P에서 α에 내린 수선의 발 A, β에 내린 수선의 발 B.","hl":["alpha","beta","l","P","A","B"],"d_en":"Let A be the foot of the perpendicular from P to α, and B the foot of the perpendicular from P to β."},{"d":"A에서 l에 내린 수선의 발을 H, B에서 l에 내린 수선의 발을 I라 합니다.","hl":["H","I","AH","BI"],"d_en":"Let H be the foot of the perpendicular from A to l, and I the foot of the perpendicular from B to l."},{"d":"PA⊥α이고 AH⊥l. 삼수선 정리①에 의해 PH⊥l.","hl":["PH"],"d_en":"PA⊥α and AH⊥l. By the Three Perpendiculars Theorem ①, PH⊥l."},{"d":"PB⊥β이고 BI⊥l. 삼수선 정리①에 의해 PI⊥l.","hl":["PI"],"d_en":"PB⊥β and BI⊥l. By the Three Perpendiculars Theorem ①, PI⊥l."},{"d":"H와 I는 모두 P에서 l에 내린 수선의 발 → 수선의 발은 유일 → H=I. ✓","hl":["done"],"d_en":"Both H and I are the foot of the perpendicular from P to l → the foot of the perpendicular is unique → H=I. ✓"}],"name_en":"Example 22: Coincidence of Feet of Perpendiculars","desc_en":"Two planes α, β meeting at line l. From P, drop perpendiculars to each plane with feet A, B;\nshow that the feet of the perpendiculars dropped from A and B to l coincide"},{"stage":4,"key":"dihedral-angle","name":"이면각 체험","desc":"교선 위에서 기준점을 옮겨 보세요.\n어디서 재든 이면각은 같은 숫자입니다.","legend":[{"t":"line","c":"#BA7517","l":"교선 l","l_en":"Edge line l"},{"t":"dot","c":"#D85A30","l":"기준점 A","l_en":"Reference point A"},{"t":"line","c":"#534AB7","l":"반평면 α'","l_en":"Half-plane α'"},{"t":"line","c":"#1D9E75","l":"반평면 β'","l_en":"Half-plane β'"}],"sliders":[{"key":"dihedral-angle","label":"이면각 크기","min":10,"max":170,"default":60,"step":1,"format":v=>v+'°',"label_en":"Dihedral angle size"},{"key":"dihedral-pt","label":"기준점 위치","min":-60,"max":60,"default":0,"step":1,"format":v=>(v>=0?'+':'')+v,"label_en":"Reference point position"}],"steps":[{"d":"[체험] 두 반평면이 교선 l에서 만나고 있습니다.\n기준점을 옮기고, 이면각 크기를 바꿔 보세요.","hl":["alpha","beta","l","A","m1","m2","arc"],"setup":true,"d_en":"[Try] Two half-planes meet at the edge line l.\nMove the reference point and change the dihedral angle size."},{"d":"기준점을 어디로 옮겨도 이면각의 크기는 같습니다.\n이것이 이면각이 well-defined인 이유예요.","hl":["alpha","beta","l","A","m1","m2","arc","done"],"d_en":"Wherever you move the reference point, the dihedral angle stays the same size.\nThis is why the dihedral angle is well-defined."}],"name_en":"Dihedral Angle Exploration","desc_en":"Move the reference point along the edge line.\nNo matter where you measure it, the dihedral angle is the same number."},{"stage":4,"key":"dihedral-angle-proof","name":"이면각 well-defined 증명","desc":"이면각의 크기가 측정 자리에 무관함을 증명하세요.","legend":[{"t":"dot","c":"#D85A30","l":"기준점 A","l_en":"Reference point A"},{"t":"dot","c":"#EF9F27","l":"기준점 B","l_en":"Reference point B"},{"t":"line","c":"#534AB7","l":"m₁,n₁ (α' 위)","l_en":"m₁, n₁ (on α')"},{"t":"line","c":"#1D9E75","l":"m₂,n₂ (β' 위)","l_en":"m₂, n₂ (on β')"},{"t":"line","c":"#BA7517","l":"교선 l","l_en":"Edge line l"}],"sliders":[{"key":"dihedral-angle","label":"이면각 크기","min":10,"max":170,"default":60,"step":1,"format":v=>v+'°',"label_en":"Dihedral angle size"},{"key":"dihedral-pt","label":"기준점 A 위치","min":-60,"max":10,"default":-20,"step":1,"format":v=>(v>=0?'+':'')+v,"label_en":"Reference point A position"}],"steps":[{"d":"[조건] 교선 l 위의 두 점 A, B에서 이면각을 잽니다.\n[증명] ∠(m₁,m₂) = ∠(n₁,n₂)","hl":["alpha","beta","l","A","B","m1","m2","n1","n2"],"setup":true,"d_en":"[Given] The dihedral angle is measured at two points A, B on the edge line l.\n[Prove] ∠(m₁,m₂) = ∠(n₁,n₂)"},{"d":"A에서 교선에 수직인 두 반직선 m₁(α' 위), m₂(β' 위)를 긋습니다.","hl":["alpha","beta","l","A","m1","m2"],"d_en":"At A, draw two rays perpendicular to the edge line: m₁ (on α'), m₂ (on β')."},{"d":"B에서도 같은 방식으로 n₁(α' 위), n₂(β' 위)를 긋습니다.","hl":["alpha","beta","l","A","B","m1","m2","n1","n2"],"d_en":"At B, draw n₁ (on α'), n₂ (on β') the same way."},{"d":"m₁과 n₁은 같은 반평면 α' 위에서 교선에 수직 → 방향이 같음 → m₁ ∥ n₁.\nm₂와 n₂도 마찬가지로 m₂ ∥ n₂.","hl":["alpha","beta","l","A","B","m1","m2","n1","n2","parallel"],"d_en":"m₁ and n₁ are both perpendicular to the edge line within the same half-plane α' → same direction → m₁ ∥ n₁.\nLikewise, m₂ ∥ n₂."},{"d":"m₁ ∥ n₁, m₂ ∥ n₂이면\n대응각에 의해 ∠(m₁,m₂) = ∠(n₁,n₂).\n이면각은 측정 자리에 무관합니다. ✓","hl":["alpha","beta","l","A","B","m1","m2","n1","n2","arc","parallel","done"],"d_en":"If m₁ ∥ n₁ and m₂ ∥ n₂,\nthen by corresponding angles, ∠(m₁,m₂) = ∠(n₁,n₂).\nThe dihedral angle does not depend on where it is measured. ✓"}],"name_en":"Proof that the Dihedral Angle is Well-Defined","desc_en":"Prove that the size of the dihedral angle does not depend on where it is measured."},{"stage":4,"key":"orthogonal-projection","name":"정사영 체험","desc":"도형을 기울여 보세요.\n기울일수록 그림자(정사영)가 줄어들고,\n그 비율이 cos θ입니다.","legend":[{"t":"line","c":"#534AB7","l":"원래 도형 S","l_en":"Original figure S"},{"t":"line","c":"#1D9E75","l":"정사영 S'","l_en":"Orthogonal projection S'"},{"t":"line","c":"#EF9F27","l":"기울기 θ","l_en":"Tilt θ"}],"sliders":[{"key":"proj-angle","label":"기울기 θ","min":0,"max":85,"default":30,"step":1,"format":v=>v+'°',"label_en":"Tilt θ"}],"steps":[{"d":"[체험] 삼각형을 기울여 보세요.\n평면 위의 그림자(정사영)가 줄어드는 모습을 관찰하세요.","hl":["alpha","tri","shadow","angle","proj_lines","values"],"setup":true,"d_en":"[Try] Tilt the triangle.\nObserve how its shadow (orthogonal projection) on the plane shrinks."},{"d":"기울기가 0°이면 그림자 = 원래 도형.\n기울기가 90°에 가까워지면 그림자가 선분으로 찌그러집니다.\n비율은 항상 cos θ.","hl":["alpha","tri","shadow","angle","proj_lines","values","done"],"d_en":"When the tilt is 0°, the shadow equals the original figure.\nAs the tilt approaches 90°, the shadow collapses into a line segment.\nThe ratio is always cos θ."}],"name_en":"Orthogonal Projection Exploration","desc_en":"Tilt the figure.\nThe more you tilt it, the smaller its shadow (orthogonal projection) becomes,\nand that ratio is cos θ."},{"stage":4,"key":"orthogonal-projection-proof","name":"정사영 넓이 S'=Scosθ 증명","desc":"정사영의 넓이가 S'=S cos θ임을 증명하세요.","legend":[{"t":"line","c":"#534AB7","l":"원래 도형 S","l_en":"Original figure S"},{"t":"line","c":"#1D9E75","l":"정사영 S'","l_en":"Orthogonal projection S'"},{"t":"line","c":"#D85A30","l":"법선 벡터 n⃗","l_en":"Normal vector n⃗"},{"t":"line","c":"#EF9F27","l":"기울기 θ","l_en":"Tilt θ"}],"sliders":[{"key":"proj-angle","label":"기울기 θ","min":10,"max":80,"default":40,"step":1,"format":v=>v+'°',"label_en":"Tilt θ"}],"steps":[{"d":"[조건] 도형 S가 평면 α와 이면각 θ를 이룸\n[증명] 정사영의 넓이 S' = S cos θ","hl":["alpha","tri","shadow"],"setup":true,"d_en":"[Given] Figure S forms a dihedral angle θ with plane α\n[Prove] The area of the orthogonal projection S' = S cos θ"},{"d":"도형을 작은 삼각형들로 나누면,\n각 삼각형의 넓이 변화율만 확인해도 전체 넓이 변화율을 알 수 있습니다.","hl":["alpha","tri","shadow","cross"],"d_en":"If we divide the figure into small triangles,\nchecking the rate of area change for each triangle tells us the rate of area change for the whole figure."},{"d":"각 삼각형에서 교선 방향과 평행한 밑변을 잡습니다.\n정사영에서 이 밑변 길이는 변하지 않고,\n밑변에 수직인 높이 성분만 cos θ배가 됩니다.","hl":["alpha","tri","shadow","proj_lines","angle"],"d_en":"In each triangle, take a base parallel to the edge line direction.\nIn the projection, this base length does not change,\nand only the height component perpendicular to the base is scaled by cos θ."},{"d":"따라서 각 삼각형의 정사영 넓이는\n½ × 밑변 × (높이 × cos θ) = 원래 넓이 × cos θ.\n합해도 S' = S cos θ입니다.","hl":["alpha","tri","shadow","proj_lines","angle","values"],"d_en":"So the projected area of each triangle is\n½ × base × (height × cos θ) = original area × cos θ.\nSumming them, S' = S cos θ."},{"d":"따라서 S' = S cos θ. ✓\n\n기울기가 클수록 그림자가 줄어드는 이유가\ncos θ 한 글자에 들어 있습니다.","hl":["alpha","tri","shadow","proj_lines","angle","values","cross","done"],"d_en":"Therefore S' = S cos θ. ✓\n\nThe reason the shadow shrinks more as the tilt increases\nis captured entirely in that single term, cos θ."}],"name_en":"Proof that the Projected Area is S'=S cos θ","desc_en":"Prove that the area of the orthogonal projection is S' = S cos θ."}];
+
+const INTERACTIVE={"0":{"optimal":6,"states":{"start":{"desc":"l⊥α를 증명하세요.\n핵심: α 위의 모든 직선과 l이 수직임을 보여야 합니다.","hl":["alpha","m","n","O","l"],"actions":[{"label":"α 위에 O를 지나는 임의의 직선 k를 긋고 k 위에 점 C(≠O)를 잡는다","next":"drew_k","correct":true,"label_en":"Draw an arbitrary line k through O on α, and mark a point C(≠O) on k"},{"label":"l 위에 점을 잡는다","next":null,"msg":"먼저 α 위에서 임의의 직선을 그어 일반성을 확보하세요.","label_en":"Mark a point on l","msg_en":"First draw an arbitrary line on α to secure generality."},{"label":"l⊥α라고 결론짓는다","next":null,"msg":"α 위의 \"모든\" 직선과 수직임을 보여야 합니다!","label_en":"Conclude that l⊥α","msg_en":"You must show perpendicularity to \"every\" line on α!"}],"desc_en":"Prove that l⊥α.\nKey idea: you must show l is perpendicular to every line on α."},"drew_k":{"desc":"k 위에 점 C(≠O)를 잡았습니다.\nC를 지나며 O를 지나지 않는 직선 g를 그어\nA=g∩m, B=g∩n을 잡습니다.","hl":["alpha","m","n","O","l","k","A","B","C"],"actions":[{"label":"l 위에 OP=OP'인 두 점 P, P'를 잡는다","next":"marked_pp","correct":true,"label_en":"Mark two points P, P' on l with OP=OP'"},{"label":"l⊥k라고 결론짓는다","next":null,"msg":"아직 l⊥k를 보이지 못했습니다.","label_en":"Conclude that l⊥k","msg_en":"You haven't shown l⊥k yet."},{"label":"삼각형 합동을 적용한다","next":null,"msg":"어떤 삼각형? 먼저 보조 점을 잡아야 합니다.","label_en":"Apply triangle congruence","msg_en":"Which triangles? You need to mark auxiliary points first."}],"desc_en":"You marked a point C(≠O) on k.\nDraw a line g through C not passing through O,\nand mark A=g∩m, B=g∩n."},"marked_pp":{"desc":"l 위에 OP=OP'인 점 P, P'를 잡았습니다.\nm,n은 PP'의 수직이등분선이므로\nAP=AP', BP=BP'.","hl":["alpha","m","n","O","l","k","A","B","C","P","Pp","AP","BP"],"actions":[{"label":"△PAB≡△P'AB (SSS합동) → ∠PAC=∠P'AC","next":"tri1","correct":true,"label_en":"△PAB≡△P'AB (SSS congruence) → ∠PAC=∠P'AC"},{"label":"CP=CP'라고 결론짓는다","next":null,"msg":"아직 근거가 없습니다. 삼각형 합동을 먼저!","label_en":"Conclude that CP=CP'","msg_en":"There's no basis yet. Establish triangle congruence first!"},{"label":"OC⊥PP'라고 결론짓는다","next":null,"msg":"아직 근거가 부족합니다.","label_en":"Conclude that OC⊥PP'","msg_en":"The basis is still insufficient."}],"desc_en":"You marked points P, P' on l with OP=OP'.\nSince m, n are perpendicular bisectors of PP',\nAP=AP', BP=BP'."},"tri1":{"desc":"△PAB≡△P'AB (SSS합동)\n→ 대응각 ∠PAC=∠P'AC","hl":["alpha","m","n","O","l","k","A","B","C","P","Pp","AP","BP","AB","triangle"],"actions":[{"label":"△PAC≡△P'AC (SAS합동) → CP=CP'","next":"tri2","correct":true,"label_en":"△PAC≡△P'AC (SAS congruence) → CP=CP'"},{"label":"OC⊥PP'라고 결론짓는다","next":null,"msg":"CP=CP'를 먼저 보여야 합니다.","label_en":"Conclude that OC⊥PP'","msg_en":"You must show CP=CP' first."}],"desc_en":"△PAB≡△P'AB (SSS congruence)\n→ corresponding angles ∠PAC=∠P'AC"},"tri2":{"desc":"AC 공통, AP=AP', ∠PAC=∠P'AC\n→ △PAC≡△P'AC (SAS합동)\n→ CP=CP'","hl":["alpha","m","n","O","l","k","A","B","C","P","Pp","AP","BP","AB","triangle","CP"],"actions":[{"label":"△PCP' 이등변, O는 PP' 중점 → OC⊥PP'","next":"final","correct":true,"label_en":"△PCP' isosceles, O is midpoint of PP' → OC⊥PP'"},{"label":"l⊥α라고 결론짓는다","next":null,"msg":"OC⊥l을 먼저 보이세요!","label_en":"Conclude that l⊥α","msg_en":"First show OC⊥l!"}],"desc_en":"AC common, AP=AP', ∠PAC=∠P'AC\n→ △PAC≡△P'AC (SAS congruence)\n→ CP=CP'"},"final":{"desc":"OC⊥PP', 즉 l⊥k.\nk는 α 위의 임의의 직선이므로 l⊥α ✓","hl":["alpha","m","n","O","l","k","A","B","C","P","Pp","AP","BP","AB","triangle","CP","OC","perp","done"],"actions":[],"desc_en":"OC⊥PP', i.e., l⊥k.\nSince k is an arbitrary line on α, l⊥α ✓"}}},"2":{"optimal":3,"states":{"start":{"desc":"l⊥α(강직)일 때,\nα 위의 모든 직선이 l과 수직임을 보이세요.","hl":["l","alpha","O"],"actions":[{"label":"α 위의 직선 m이 O를 지나는 경우를 확인한다","next":"case1","correct":true,"label_en":"Check the case where a line m on α passes through O"},{"label":"α 위의 직선 m이 O를 지나지 않는 경우부터 확인한다","next":null,"msg":"O를 지나는 간단한 경우부터 먼저!","label_en":"Check the case where a line m on α does not pass through O first","msg_en":"Start with the simpler case of passing through O first!"},{"label":"모든 직선 ⊥ l이라고 바로 결론","next":null,"msg":"경우를 나눠서 증명해야 합니다.","label_en":"Conclude directly that every line ⊥ l","msg_en":"You need to prove this by splitting into cases."}],"desc_en":"Given l⊥α (strong ⊥),\nshow that every line on α is perpendicular to l."},"case1":{"desc":"m이 O를 지나는 경우:\n강직의 정의에 의해 m⊥l(약직) ✓\n\n이제 O를 지나지 않는 경우를 처리해야 합니다.","hl":["l","alpha","O","m_through"],"actions":[{"label":"O를 지나고 m에 평행한 직선 m'을 α 위에 긋는다","next":"case2","correct":true,"label_en":"Draw a line m' on α through O parallel to m"},{"label":"증명 완료라고 결론","next":null,"msg":"O를 지나지 않는 경우도 보여야 합니다!","label_en":"Conclude that the proof is complete","msg_en":"You still need to show the case where it doesn't pass through O!"}],"desc_en":"Case where m passes through O:\nBy the definition of strong ⊥, m⊥l (weak ⊥) ✓\n\nNow you need to handle the case where m does not pass through O."},"case2":{"desc":"m이 O를 지나지 않으므로,\nO를 지나고 m에 평행한 m'을 α 위에 그렸습니다.\nm'은 O를 지나므로 m'⊥l(약직).","hl":["l","alpha","O","m_notO","mp"],"actions":[{"label":"m∥m'이고 m'⊥l → m⊥l (평행선의 수직 보존)","next":"final","correct":true,"label_en":"m∥m' and m'⊥l → m⊥l (perpendicularity preserved under parallel lines)"},{"label":"m⊥l이라고 바로 결론","next":null,"msg":"m∥m'과 m'⊥l로부터 이끌어내세요.","label_en":"Conclude directly that m⊥l","msg_en":"Derive it from m∥m' and m'⊥l."}],"desc_en":"Since m does not pass through O,\nyou drew m' on α through O parallel to m.\nSince m' passes through O, m'⊥l (weak ⊥)."},"final":{"desc":"모든 경우에서 m⊥l.\n따라서 α 위의 모든 직선은 l과 수직 ✓","hl":["l","alpha","O","m_notO","mp","done","all_done"],"actions":[],"desc_en":"In every case, m⊥l.\nTherefore every line on α is perpendicular to l ✓"}}},"20":{"optimal":5,"states":{"start":{"desc":"PH⊥l을 증명하세요.\n주어진 것: PO⊥α, l⊂α, O∈α, H∈l, OH⊥l","hl":["alpha","PO","l","P","H","OH"],"actions":[{"label":"PO⊥α이므로 PO⊥l (강직→약직)","next":"po_perp","correct":true,"label_en":"Since PO⊥α, PO⊥l (strong ⊥ → weak ⊥)"},{"label":"PH⊥l이라고 바로 결론짓는다","next":null,"msg":"근거가 필요합니다!","label_en":"Conclude PH⊥l immediately","msg_en":"You need justification!"},{"label":"평면 PHO를 생각한다","next":null,"msg":"먼저 l과의 수직 관계를 정리하세요.","label_en":"Consider plane PHO","msg_en":"First organize the perpendicularity relations with l."}],"desc_en":"Prove PH⊥l.\nGiven: PO⊥α, l⊂α, O∈α, H∈l, OH⊥l"},"po_perp":{"desc":"PO⊥α(강직), l⊂α\n→ PO⊥l(약직) ✓\n\n예제2를 쓰려면 H에서 만나는 두 수직선을 만들어야 합니다.","hl":["alpha","PO","l","P","H","OH","perp1"],"actions":[{"label":"H를 지나고 PO와 평행한 보조선 p를 평면PHO 위에 긋는다","next":"helper_p","correct":true,"label_en":"Draw an auxiliary line p through H parallel to PO on plane PHO"},{"label":"PO와 OH만으로 예제2를 바로 적용한다","next":null,"msg":"PO는 l과 H에서 만나지 않습니다. H를 지나는 평행 보조선이 필요합니다.","label_en":"Apply Example 2 directly using only PO and OH","msg_en":"PO does not meet l at H. You need an auxiliary line through H parallel to it."}],"desc_en":"PO⊥α (strong ⊥), l⊂α\n→ PO⊥l (weak ⊥) ✓\n\nTo use Example 2, you need two perpendicular lines meeting at H."},"helper_p":{"desc":"H를 지나고 PO와 평행한 보조선 p를 그렸습니다.\np∥PO, PO⊥l 이므로 p⊥l.\n또 OH⊥l입니다.","hl":["alpha","PO","l","P","H","OH","perp1","plane_PHO","helper_p"],"actions":[{"label":"p와 OH는 H에서 만나고 둘 다 l에 수직 → l⊥평면PHO","next":"plane_perp","correct":true,"label_en":"p and OH meet at H and are both perpendicular to l → l⊥plane PHO"},{"label":"PH⊥l이라고 결론짓는다","next":null,"msg":"먼저 l⊥평면PHO를 보이세요.","label_en":"Conclude PH⊥l","msg_en":"First show l⊥plane PHO."}],"desc_en":"You drew an auxiliary line p through H parallel to PO.\nSince p∥PO and PO⊥l, p⊥l.\nAlso OH⊥l."},"plane_perp":{"desc":"p와 OH는 평면PHO 위에서 H에서 만나고,\n둘 다 l에 수직입니다.\n→ l⊥평면PHO (강직)\n\nPH는 평면PHO에 포함됩니다.","hl":["alpha","PO","l","P","H","OH","perp1","plane_PHO","helper_p"],"actions":[{"label":"PH⊂평면PHO이므로 l⊥PH (강직→약직)","next":"final","correct":true,"label_en":"Since PH⊂plane PHO, l⊥PH (strong ⊥ → weak ⊥)"},{"label":"OH⊥PH라고 결론짓는다","next":null,"msg":"증명할 것은 l⊥PH입니다.","label_en":"Conclude OH⊥PH","msg_en":"What you need to prove is l⊥PH."}],"desc_en":"p and OH meet at H on plane PHO,\nand both are perpendicular to l.\n→ l⊥plane PHO (strong ⊥)\n\nPH is contained in plane PHO."},"final":{"desc":"l⊥PH (약직) ✓\n삼수선 정리① 증명 완료!","hl":["alpha","PO","l","P","H","OH","perp1","plane_PHO","PH","done"],"actions":[],"desc_en":"l⊥PH (weak ⊥) ✓\nProof of the Three Perpendiculars Theorem ① complete!"}}},"21":{"optimal":5,"states":{"start":{"desc":"OH⊥l을 증명하세요.\n주어진 것: PO⊥α, l⊂α, O∈α, H∈l, PH⊥l","hl":["alpha","PO","l","P","H","PH","perp1"],"actions":[{"label":"PO⊥α이므로 PO⊥l (강직→약직)","next":"po_perp","correct":true,"label_en":"Since PO⊥α, PO⊥l (strong ⊥ → weak ⊥)"},{"label":"OH⊥l이라고 바로 결론짓는다","next":null,"msg":"근거가 필요합니다!","label_en":"Conclude OH⊥l immediately","msg_en":"You need justification!"},{"label":"평면 PHO를 생각한다","next":null,"msg":"먼저 l과의 수직 관계를 정리하세요.","label_en":"Consider plane PHO","msg_en":"First organize the perpendicularity relations with l."}],"desc_en":"Prove OH⊥l.\nGiven: PO⊥α, l⊂α, O∈α, H∈l, PH⊥l"},"po_perp":{"desc":"PO⊥α(강직), l⊂α\n→ PO⊥l(약직) ✓\n\n예제2를 쓰려면 H에서 만나는 두 수직선을 만들어야 합니다.","hl":["alpha","PO","l","P","H","PH"],"actions":[{"label":"H를 지나고 PO와 평행한 보조선 p를 평면PHO 위에 긋는다","next":"helper_p","correct":true,"label_en":"Draw an auxiliary line p through H parallel to PO on plane PHO"},{"label":"PO와 PH만으로 예제2를 바로 적용한다","next":null,"msg":"PO는 l과 H에서 만나지 않습니다. H를 지나는 평행 보조선이 필요합니다.","label_en":"Apply Example 2 directly using only PO and PH","msg_en":"PO does not meet l at H. You need an auxiliary line through H parallel to it."}],"desc_en":"PO⊥α (strong ⊥), l⊂α\n→ PO⊥l (weak ⊥) ✓\n\nTo use Example 2, you need two perpendicular lines meeting at H."},"helper_p":{"desc":"H를 지나고 PO와 평행한 보조선 p를 그렸습니다.\np∥PO, PO⊥l 이므로 p⊥l.\n또 PH⊥l입니다.","hl":["alpha","PO","l","P","H","PH","plane_PHO","helper_p"],"actions":[{"label":"p와 PH는 H에서 만나고 둘 다 l에 수직 → l⊥평면PHO","next":"plane_perp","correct":true,"label_en":"p and PH meet at H and are both perpendicular to l → l⊥plane PHO"},{"label":"OH⊥l이라고 결론짓는다","next":null,"msg":"먼저 l⊥평면PHO를 보이세요.","label_en":"Conclude OH⊥l","msg_en":"First show l⊥plane PHO."}],"desc_en":"You drew an auxiliary line p through H parallel to PO.\nSince p∥PO and PO⊥l, p⊥l.\nAlso PH⊥l."},"plane_perp":{"desc":"p와 PH는 평면PHO 위에서 H에서 만나고,\n둘 다 l에 수직입니다.\n→ l⊥평면PHO (강직)\n\nOH는 평면PHO에 포함됩니다.","hl":["alpha","PO","l","P","H","PH","plane_PHO","helper_p"],"actions":[{"label":"OH⊂평면PHO이므로 l⊥OH (강직→약직)","next":"final","correct":true,"label_en":"Since OH⊂plane PHO, l⊥OH (strong ⊥ → weak ⊥)"}],"desc_en":"p and PH meet at H on plane PHO,\nand both are perpendicular to l.\n→ l⊥plane PHO (strong ⊥)\n\nOH is contained in plane PHO."},"final":{"desc":"l⊥OH (약직) ✓\n삼수선 정리② 증명 완료!","hl":["alpha","PO","l","P","H","PH","plane_PHO","OH","done"],"actions":[],"desc_en":"l⊥OH (weak ⊥) ✓\nProof of the Three Perpendiculars Theorem ② complete!"}}},"25":{"optimal":4,"states":{"start":{"desc":"이면각의 크기가 측정 자리에 무관함을 보이세요.\n교선 위의 두 점 A, B에서 이면각을 잽니다.","hl":["alpha","beta","l","A","B"],"actions":[{"label":"A에서 교선에 수직인 반직선 m₁, m₂를 긋는다","next":"drew_m","correct":true,"label_en":"Draw rays m₁, m₂ perpendicular to the edge line at A"},{"label":"∠(m₁,m₂)=∠(n₁,n₂)라고 바로 결론","next":null,"msg":"먼저 두 점에서 반직선을 그어야 합니다.","label_en":"Conclude ∠(m₁,m₂)=∠(n₁,n₂) right away","msg_en":"You must first draw the rays at both points."},{"label":"이면각의 정의를 확인한다","next":null,"msg":"반직선을 직접 그어서 비교해 봅시다.","label_en":"Check the definition of the dihedral angle","msg_en":"Let's draw the rays directly and compare."}],"desc_en":"Show that the size of the dihedral angle does not depend on where it is measured.\nThe dihedral angle is measured at two points A, B on the edge line."},"drew_m":{"desc":"A에서 교선에 수직인 두 반직선:\nm₁ (α' 위), m₂ (β' 위)\n\n이제 B에서도 같은 작업이 필요합니다.","hl":["alpha","beta","l","A","m1","m2"],"actions":[{"label":"B에서도 교선에 수직인 반직선 n₁, n₂를 긋는다","next":"drew_n","correct":true,"label_en":"Draw rays n₁, n₂ perpendicular to the edge line at B"},{"label":"m₁ ∥ n₁이라고 결론짓는다","next":null,"msg":"n₁을 아직 그리지 않았습니다.","label_en":"Conclude m₁ ∥ n₁","msg_en":"n₁ has not been drawn yet."}],"desc_en":"Two rays perpendicular to the edge line at A:\nm₁ (on α'), m₂ (on β')\n\nNow the same needs to be done at B."},"drew_n":{"desc":"B에서 교선에 수직인 두 반직선:\nn₁ (α' 위), n₂ (β' 위)\n\n이제 m과 n의 관계를 파악해야 합니다.","hl":["alpha","beta","l","A","B","m1","m2","n1","n2"],"actions":[{"label":"m₁ ∥ n₁, m₂ ∥ n₂ (같은 반평면, 같은 수직 방향)","next":"parallel","correct":true,"label_en":"m₁ ∥ n₁, m₂ ∥ n₂ (same half-plane, same perpendicular direction)"},{"label":"∠(m₁,m₂) = ∠(n₁,n₂)라고 결론짓는다","next":null,"msg":"평행 관계를 먼저 보이세요!","label_en":"Conclude ∠(m₁,m₂) = ∠(n₁,n₂)","msg_en":"Show the parallel relationship first!"}],"desc_en":"Two rays perpendicular to the edge line at B:\nn₁ (on α'), n₂ (on β')\n\nNow we need to determine the relationship between m and n."},"parallel":{"desc":"m₁ ∥ n₁ (같은 반평면 위, 교선에 수직인 방향 유일)\nm₂ ∥ n₂ (마찬가지)\n\n평행한 두 쌍이 만드는 각은?","hl":["alpha","beta","l","A","B","m1","m2","n1","n2","parallel"],"actions":[{"label":"대응각: ∠(m₁,m₂) = ∠(n₁,n₂) → well-defined ✓","next":"final","correct":true,"label_en":"Corresponding angles: ∠(m₁,m₂) = ∠(n₁,n₂) → well-defined ✓"},{"label":"엇각: ∠(m₁,m₂) + ∠(n₁,n₂) = 180°","next":null,"msg":"같은 쪽 반직선이므로 대응각입니다.","label_en":"Alternate angles: ∠(m₁,m₂) + ∠(n₁,n₂) = 180°","msg_en":"These are rays on the same side, so they are corresponding angles."}],"desc_en":"m₁ ∥ n₁ (on the same half-plane, the perpendicular direction to the edge line is unique)\nm₂ ∥ n₂ (likewise)\n\nWhat angle do these two parallel pairs form?"},"final":{"desc":"이면각의 크기는 측정 자리에 무관합니다 ✓\n\nm₁∥n₁, m₂∥n₂ → 대응각이 같음","hl":["alpha","beta","l","A","B","m1","m2","n1","n2","arc","parallel","done"],"actions":[],"desc_en":"The size of the dihedral angle does not depend on where it is measured ✓\n\nm₁∥n₁, m₂∥n₂ → corresponding angles are equal"}}},"27":{"optimal":4,"states":{"start":{"desc":"S' = S cos θ를 증명하세요.\n도형 S가 평면 α와 이면각 θ를 이룹니다.","hl":["alpha","tri","shadow"],"actions":[{"label":"도형을 작은 삼각형들로 나누어 생각한다","next":"cross_area","correct":true,"label_en":"Consider dividing the figure into small triangles"},{"label":"S' = S cos θ라고 바로 결론","next":null,"msg":"왜 cos θ인지를 보여야 합니다.","label_en":"Conclude S' = S cos θ right away","msg_en":"You need to show why it's cos θ."},{"label":"정사영의 정의를 확인한다","next":null,"msg":"넓이를 먼저 식으로 적어 봅시다.","label_en":"Check the definition of orthogonal projection","msg_en":"Let's first write the area as an expression."}],"desc_en":"Prove S' = S cos θ.\nFigure S forms a dihedral angle θ with plane α."},"cross_area":{"desc":"도형을 삼각형으로 나누면 전체 넓이는 삼각형 넓이의 합입니다.\n각 삼각형에서 같은 비율로 줄어드는지만 보면 됩니다.","hl":["alpha","tri","shadow","cross"],"actions":[{"label":"교선과 평행한 밑변은 유지되고, 수직 높이 성분만 cos θ배가 됨","next":"height_shrink","correct":true,"label_en":"The base parallel to the edge line is preserved, and only the perpendicular height component is scaled by cos θ"},{"label":"정사영: 모든 변이 cos θ배","next":null,"msg":"교선과 평행한 방향의 길이는 변하지 않습니다.","label_en":"Orthogonal projection: every side is scaled by cos θ","msg_en":"Lengths parallel to the edge line direction do not change."}],"desc_en":"Dividing the figure into triangles, the total area is the sum of the triangles' areas.\nWe just need to check whether each triangle shrinks by the same ratio."},"height_shrink":{"desc":"교선과 평행한 밑변은 그대로이고,\n그 밑변에 수직인 높이 성분만 cos θ배로 줄어듭니다.\n\n각 삼각형의 넓이는?","hl":["alpha","tri","shadow","proj_lines","angle"],"actions":[{"label":"각 삼각형의 정사영 넓이 = 원래 넓이 × cos θ","next":"final","correct":true,"label_en":"The projected area of each triangle = original area × cos θ"},{"label":"S' = S cos²θ","next":null,"msg":"밑변은 줄어들지 않으므로 cos θ가 한 번만 곱해집니다.","label_en":"S' = S cos²θ","msg_en":"Since the base does not shrink, cos θ is multiplied only once."}],"desc_en":"The base parallel to the edge line stays the same,\nand only the height component perpendicular to that base shrinks by a factor of cos θ.\n\nWhat is the area of each triangle?"},"final":{"desc":"각 삼각형 넓이가 cos θ배가 되고, 합해도 같은 비율입니다.\n따라서 S' = S cos θ ✓","hl":["alpha","tri","shadow","proj_lines","angle","values","cross","done"],"actions":[],"desc_en":"Each triangle's area becomes cos θ times, and the sum keeps the same ratio.\nTherefore S' = S cos θ ✓"}}}};
+
+let curStage=0, curThm=0, curStep=0;
+let mode='view';
+let iState='start', iHistory=[], iTotal=0, iWrong=0, iCorrect=0, iError=null;
+
+/* ── 캔버스에 직접 그리는 하드코딩 라벨의 영문 번역 ── */
+const CANVAS_LABELS_EN={
+  'l과 PQ 꼬인 위치 ✓':'l and PQ are skew ✓',
+  'l⊂α가 되어 모순!':'l⊂α, contradiction!',
+  'P∈α → l∥α에 모순!':'P∈α → contradicts l∥α!',
+  'l∩β=P → P∈α∩β → 모순!':'l∩β=P → P∈α∩β → contradiction!',
+  'l⊂β → l=교선 → 모순!':'l⊂β → l = line of intersection → contradiction!',
+  'l,m와 n 만나지 않음':'l, m and n do not meet',
+  'γ=α → l⊂α? 모순!':'γ=α → l⊂α? Contradiction!',
+  'l∩β=한 점 ✓':'l∩β = one point ✓',
+  'l(⊂α)과 m(⊂β) 만나지 않음':'l(⊂α) and m(⊂β) do not meet',
+  'γ에서 만나지 않음 → l∥m':'do not meet in γ → l∥m',
+  'γ=α → α와 γ가 만남에 모순!':'γ=α → contradicts α and γ meeting!',
+  'α와 γ가 만난다고 가정':'Assume α and γ meet',
+  'P를 지나 β∥인 평면이 둘? 모순':'Two planes through P parallel to β? Contradiction',
+  '이면각 = ':'Dihedral angle = ',
+  '수직 단면':'Perpendicular cross-section',
+};
+function clabel(korean){ return TMLang.lang()==='en' ? (CANVAS_LABELS_EN[korean]||korean) : korean; }
+
+/* ── 테마: shared 모듈 위임 ── */
+function P(){ return TMTheme.palette(); }
+function isDark(){ return TMTheme.isDark(); }
+function setTheme(t){ TMTheme.setTheme(t); }
+function toggleColorblind(){ TMTheme.toggleColorblind(); }
+function setGlass(m){ TMTheme.setGlass(m); }
+
+/* ── Canvas step overlay ── */
+function theoremShortName(thm){
+  return TMLang.field(thm,'name').split(':')[0];
+}
+
+function displayProofText(text){
+  const s=String(text);
+  if(TMLang.lang()==='ko'){
+    return s
+      .replace(/\[조건\]/g,`[${TMLang.t('givenLabel')}]`)
+      .replace(/\[증명\]/g,`[${TMLang.t('proveLabel')}]`)
+      .replace(/\[결과\]/g,`[${TMLang.t('proveLabel')}]`);
+  }
+  return s
+    .replace(/\[Given\]/g,`[${TMLang.t('givenLabel')}]`)
+    .replace(/\[Prove\]/g,`[${TMLang.t('proveLabel')}]`)
+    .replace(/\[Try\]/g,'[Try]');
+}
+
+function updateCanvasOverlay(){
+  const ov=document.getElementById('canvas-overlay');
+  if(!ov) return;
+  let lbl='', txt='';
+  if(mode==='view'){
+    const thm=THEOREMS[curThm];
+    if(!thm){ ov.hidden=true; return; }
+    lbl=theoremShortName(thm);
+    txt=TMLang.field(thm,'desc');
+  } else {
+    const inter=INTERACTIVE[curThm];
+    if(!inter){ ov.hidden=true; return; }
+    const st=inter.states[iState];
+    lbl=st.actions.length===0?TMLang.t('doneLabel'):TMLang.t('solveLabel');
+    txt=TMLang.field(st,'desc');
+  }
+  ov.innerHTML='';
+  const lblEl=document.createElement('span'); lblEl.className='lbl'; lblEl.textContent=lbl;
+  ov.appendChild(lblEl);
+  txt.split('\n').forEach((line,i)=>{
+    if(i>0) ov.appendChild(document.createElement('br'));
+    ov.appendChild(document.createTextNode(line));
+  });
+  ov.hidden=false;
+  ov.onclick=()=>{
+    const active=document.querySelector('.si.active');
+    if(active){ active.scrollIntoView({block:'nearest',behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'}); active.focus(); }
+  };
+}
+
+function tc(){return isDark()?'#F2EECB':'#1a1a1a'}
+function canvasBg(){return isDark()?'#111827':'#faf9f6'}
+
+/* Overlay avoidance — overlay sits at the top-left corner, so labels
+   should only ever push to the right and below it.
+   Strategy:
+   1. Inside the core keepout (overlay + pad + label half): push the
+      label's center to the right edge (bx). Slides down along the right
+      edge as natural ly grows.
+   2. In a slide-zone strip just below the keepout: smoothstep-blend the
+      pushed x from `bx` back to natural `lx` over `slide` pixels.
+   This produces a continuous path right-edge → corner → bottom, with
+   no snap when natural position drops below the overlay. */
+function avoidOverlay(x,y,w,h){
+  const ov=document.getElementById('canvas-overlay');
+  if(!ov||ov.hidden) return [x,y];
+  const cs=getComputedStyle(ov);
+  if(cs.display==='none'||cs.visibility==='hidden') return [x,y];
+  const orect=ov.getBoundingClientRect();
+  if(orect.width===0) return [x,y];
+  const crect=canvas.getBoundingClientRect();
+  const ox=orect.left-crect.left, oy=orect.top-crect.top;
+  const ow=orect.width, oh=orect.height;
+  const pad=10;
+  // expanded keepout for the label CENTER (Minkowski sum: overlay + pad + label half)
+  const ax=ox-pad-w/2;
+  const ay=oy-pad-h/2;
+  const bx=ox+ow+pad+w/2;
+  const by=oy+oh+pad+h/2;
+  // slide-zone height below the keepout — must be ≥ slidePad for smooth release
+  const slide=Math.min(48, oh*0.6+pad+h/2);
+  const byExt=by+slide;
+  // label center
+  const lx=x+w/2, ly=y-h/2;
+  // outside the avoidance zone entirely?
+  if(lx<ax||lx>bx||ly<ay||ly>byExt) return [x,y];
+  if(ly<=by){
+    // core keepout — slide along the right edge
+    return [bx-w/2, ly+h/2];
+  }
+  // slide zone — blend pushed x back to natural lx as ly drops past by
+  const t=(ly-by)/slide;
+  const ts=t*t*(3-2*t); // smoothstep
+  const exitX=bx*(1-ts)+lx*ts;
+  return [exitX-w/2, ly+h/2];
+}
+
+/* ── 엔진: shared 모듈 위임 ── */
+const E = TMEngine.create({
+  canvas: document.getElementById('c'),
+  getBg: () => canvasBg(),
+  getTextColor: () => tc(),
+  avoidLabel: (x, y, w, h) => avoidOverlay(x, y, w, h),
+});
+const canvas = E.canvas, ctx = E.ctx;
+const FONT_MATH = E.fonts.MATH, FONT_MATH_LBL = E.fonts.MATH_LBL, FONT_UI = E.fonts.UI;
+function p3(x, y, z) { return E.project(x, y, z); }
+function line3(ax, ay, az, bx, by, bz, col, w, dash) { E.line(ax, ay, az, bx, by, bz, col, w, dash); }
+function dot3(x, y, z, col, r, label) { E.dot(x, y, z, col, r, label); }
+function plane3(corners, col, a) { E.plane(corners, col, a); }
+function txt3(x, y, z, text, col, size) { E.text(x, y, z, text, col, size); }
+function rqa3(vx, vy, vz, ax, ay, az, bx, by, bz, col) { E.rightAngle(vx, vy, vz, ax, ay, az, bx, by, bz, col || P().D); }
+function haloText(text, x, y, color, font, haloW) { E.haloText(text, x, y, color, font, haloW); }
+
+function has(tag){
+  if(mode==='play'&&INTERACTIVE[curThm]){
+    const st=INTERACTIVE[curThm].states[iState];
+    return st?st.hl.includes(tag):false;
+  }
+  return THEOREMS[curThm].steps[curStep].hl.includes(tag);
+}
+
+/* — plane occlusion: screen-space clip against projected plane polygon — */
+const PLANE_Y=-5;
+const PLANE_CORNERS=[[-110,-5,-110],[-110,-5,110],[110,-5,110],[110,-5,-110]];
+let _occPoly=null;
+
+function camAbovePlane(){return Math.cos(E.state.rotY)*Math.sin(E.state.rotX)>0;}
+function behindPlane(y){return camAbovePlane()?y<PLANE_Y:y>PLANE_Y;}
+function occPoly(){
+  if(!_occPoly) _occPoly=PLANE_CORNERS.map(c=>p3(c[0],c[1],c[2]));
+  return _occPoly;
+}
+
+/* draw behind-plane element: inside plane polygon → blur+fade, outside → normal */
+function drawOccBehind(fn){
+  const poly=occPoly();
+  const W=canvas.width/devicePixelRatio, H=canvas.height/devicePixelRatio;
+  // 1) clipped to plane polygon: blur
+  ctx.save();
+  ctx.beginPath();
+  poly.forEach(([px,py],i)=>{i===0?ctx.moveTo(px,py):ctx.lineTo(px,py);});
+  ctx.closePath();
+  ctx.clip();
+  ctx.filter='blur(2.5px)'; ctx.globalAlpha=0.16;
+  fn();
+  ctx.restore();
+  // 2) clipped to OUTSIDE plane polygon: draw normal
+  ctx.save();
+  ctx.beginPath();
+  ctx.rect(0,0,W,H);
+  poly.forEach(([px,py],i)=>{i===0?ctx.moveTo(px,py):ctx.lineTo(px,py);});
+  ctx.closePath();
+  ctx.clip('evenodd');
+  fn();
+  ctx.restore();
+}
+
+function line3occ(ax,ay,az,bx,by,bz,col,w,dash){
+  const aB=behindPlane(ay),bB=behindPlane(by);
+  if(!aB&&!bB){line3(ax,ay,az,bx,by,bz,col,w,dash);return;}
+  if(aB&&bB){drawOccBehind(()=>line3(ax,ay,az,bx,by,bz,col,w,dash));return;}
+  const dy=by-ay;
+  if(Math.abs(dy)<.001){line3(ax,ay,az,bx,by,bz,col,w,dash);return;}
+  const t=(PLANE_Y-ay)/dy,mx=ax+t*(bx-ax),mz=az+t*(bz-az);
+  if(aB){
+    drawOccBehind(()=>line3(ax,ay,az,mx,PLANE_Y,mz,col,w,dash));
+    line3(mx,PLANE_Y,mz,bx,by,bz,col,w,dash);
+  }else{
+    line3(ax,ay,az,mx,PLANE_Y,mz,col,w,dash);
+    drawOccBehind(()=>line3(mx,PLANE_Y,mz,bx,by,bz,col,w,dash));
+  }
+}
+
+function dot3occ(x,y,z,col,r,label){
+  if(behindPlane(y)) drawOccBehind(()=>dot3(x,y,z,col,r,label));
+  else dot3(x,y,z,col,r,label);
+}
+
+function txt3occ(x,y,z,text,col,size){
+  if(behindPlane(y)) drawOccBehind(()=>txt3(x,y,z,text,col,size));
+  else txt3(x,y,z,text,col,size);
+}
+
+function drawGeneric(){
+  const thm=THEOREMS[curThm];
+  const h=has;
+  if(thm.stage===4){
+    // stage 4 scenes manage their own geometry — skip the generic alpha/axes background
+    drawStage4(thm);
+    return;
+  }
+  // generic 3-axis display
+  const cols=[P().A,P().B,P().C];
+  plane3([[-110,-5,-110],[-110,-5,110],[110,-5,110],[110,-5,-110]],P().muted,0.1);
+  txt3(-108,-5,-108,'α',P().muted,12);
+  // draw axes
+  line3(0,-5,0,80,-5,0,cols[0],1.5,[2,3]);
+  line3(0,-5,0,0,75,0,cols[1],1.5);
+  line3(0,-5,0,0,-5,80,cols[2],1.5,[2,3]);
+  dot3(0,-5,0,tc(),3);
+  // stage-specific scenes
+  if(thm.stage===0) drawStage0(thm);
+  else if(thm.stage===1) drawStage1(thm);
+  else if(thm.stage===2) drawStage2(thm);
+  else drawStage3(thm);
+}
+
+function drawStage0(thm){
+  const h=has, ti=THEOREMS.indexOf(thm)-0; // index within all theorems
+  const localIdx=THEOREMS.slice(0,ti).filter(t=>t.stage===0).length + (thm.stage===0?0:0);
+  // pick sub-scene by thm name
+  if(thm.name.includes('예제1')) drawEx1();
+  else if(thm.name.includes('예제2')) drawEx2();
+  else drawEx3();
+}
+
+function drawEx1(){
+  const h=has;
+  // Corrected geometry: k through O, C on k, line g(≠O) through C meets m at A, n at B
+  // A=(75,-5,0) on m, B=(0,-5,60) on n, C≈(41,-5,27) on k, collinear on g
+  plane3([[-110,-5,-110],[-110,-5,110],[110,-5,110],[110,-5,-110]],P().A,h('alpha')?0.22:0.1);
+  // m,n on alpha
+  line3(-90,-5,0,90,-5,0,h('m')?P().D:P().muted,h('m')?2:1);
+  line3(0,-5,-80,0,-5,80,h('n')?P().D:P().muted,h('n')?2:1);
+  txt3(93,-5,0,'m',P().D,14); txt3(0,-5,83,'n',P().D,14);
+  // O
+  dot3(0,-5,0,P().B,5,h('O')?'O':null);
+  // k through O (direction ≈(3,0,2))
+  if(h('k')) { line3(-50,-5,-33,60,-5,40,P().E,1.5); txt3(63,-5,42,'k',P().E,14); }
+  // C on k
+  if(h('C')||h('triangle')) dot3(41,-5,27,P().B,4,'C');
+  // g: line through A,C,B (NOT through O)
+  if(h('A')||h('triangle')) line3(75,-5,0,0,-5,60,P().E,1.5);
+  // A on m, B on n
+  if(h('A')||h('triangle')) dot3(75,-5,0,P().B,4,'A');
+  if(h('B')||h('triangle')) dot3(0,-5,60,P().B,4,'B');
+  // l vertical — occluded portions blur through α
+  // P=(0,50,0), P'=(0,-60,0) → OP=OP'=55
+  const lCol=h('l')?P().C:P().muted;
+  const ppIntroduced=h('P')||h('Pp')||h('AP')||h('BP')||h('AB')||h('triangle')||h('CP')||h('OC')||h('perp')||h('done');
+  const ppActive=h('P')||h('Pp')||h('AP')||h('BP');
+  const ppLineCol=ppActive?lCol:P().muted;
+  line3occ(0,-5,0,0,60,0,lCol,h('l')?2.5:1.5);
+  if(ppIntroduced) dot3occ(0,50,0,ppActive?P().A:P().muted,5,'P');
+  if(ppIntroduced) {
+    line3occ(0,-5,0,0,-70,0,ppLineCol,ppActive&&h('l')?2.5:1.5);
+    dot3occ(0,-60,0,ppActive?P().A:P().muted,5,'P\'');
+  }
+  // PA=PA', PB=PB' lines
+  if(h('AP')) { line3occ(75,-5,0,0,50,0,P().B,1.5,[3,3]); line3occ(75,-5,0,0,-60,0,P().B,1.5,[3,3]); }
+  if(h('BP')) { line3occ(0,-5,60,0,50,0,P().B,1.5,[3,3]); line3occ(0,-5,60,0,-60,0,P().B,1.5,[3,3]); }
+  if(h('AB')||h('triangle')) line3(75,-5,0,0,-5,60,P().E,2);
+  // CP=CP' lines
+  if(h('CP')) { line3occ(41,-5,27,0,50,0,P().E,1.5,[3,3]); line3occ(41,-5,27,0,-60,0,P().E,1.5,[3,3]); }
+  // OC segment on k
+  if(h('OC')) line3(0,-5,0,41,-5,27,P().C,2);
+  if(h('done')) txt3occ(10,63,0,'l⊥k ∀k → l⊥α ✓',P().B,14);
+}
+
+function drawEx2(){
+  const h=has;
+  plane3([[-110,-5,-110],[-110,-5,110],[110,-5,110],[110,-5,-110]],P().A,h('alpha')?0.22:0.1);
+  // m,n
+  line3(-90,-5,0,90,-5,0,h('m')?P().C:P().muted,2);
+  line3(0,-5,-80,0,-5,80,h('n')?P().C:P().muted,2);
+  dot3(0,-5,0,P().B,5,h('O')?'O':null);
+  if(h('k')) { line3(-70,-5,-45,70,-5,45,P().E,2,[3,3]); txt3(73,-5,47,'k',P().E,12); }
+  // l
+  if(h('l')) line3(0,-5,0,0,85,0,P().A,2.5);
+  if(h('perp')) {
+    rqa3(0,-5,0,0,30,0,28,-5,0,P().A);
+    rqa3(0,-5,0,0,30,0,0,-5,28,P().A);
+  }
+  if(h('done')) txt3(0,90,0,'l⊥α ✓',P().B,12);
+}
+
+function drawEx3(){
+  const h=has;
+  plane3([[-110,-5,-110],[-110,-5,110],[110,-5,110],[110,-5,-110]],P().A,h('alpha')?0.22:0.1);
+  dot3(0,-5,0,P().B,5,'O');
+  line3(0,-5,0,0,85,0,P().C,2.5);
+  txt3(4,88,0,'l',P().C,13);
+  // Case 1: m passes through O
+  if(h('m_through')) { line3(-70,-5,0,70,-5,0,P().B,2); txt3(73,-5,0,'m',P().B,12); }
+  // Case 2: m does NOT pass through O — m relocates to offset
+  if(h('m_notO')) { line3(-70,-5,40,70,-5,40,P().B,2); txt3(73,-5,40,'m',P().B,12); }
+  // m' through O, parallel to m (same direction, z=0)
+  if(h('mp')) { line3(-70,-5,0,70,-5,0,P().E,1.5,[3,3]); txt3(73,-5,3,'m\'',P().E,12); }
+  if(h('all_done')) txt3(-80,50,0,'∀m⊥l ✓',P().B,13);
+}
+
+function drawStage1(thm){
+  if(thm.name.includes('예제4')) drawEx4();
+  else if(thm.name.includes('예제5')) drawEx5();
+  else if(thm.name.includes('예제6')) drawEx6();
+  else if(thm.name.includes('예제7')) drawEx7();
+  else if(thm.name.includes('예제8')) drawEx8();
+  else drawEx9();
+}
+
+function drawEx4(){
+  const h=has;
+  plane3([[-110,-5,-110],[-110,-5,110],[110,-5,110],[110,-5,-110]],P().A,h('alpha')?0.22:0.1);
+  if(h('beta')) plane3([[-60,-5,0],[-60,85,0],[60,85,0],[60,-5,0]],P().B,0.2);
+  if(h('m')) line3(-100,-5,0,100,-5,0,P().D,2);
+  line3(0,-5,0,0,85,0,h('l')?P().C:P().muted,2.5);
+  dot3(0,-5,0,P().B,5,'O'); dot3(0,85,0,P().C,6,h('l')?'P':null);
+  if(h('OQ')) { line3(0,-5,0,0,-5,65,P().E,2); dot3(0,-5,65,P().E,4,'Q'); }
+  if(h('perp')) rqa3(0,-5,0,0,85,0,0,-5,60,P().A);
+  if(h('angle')) txt3(5,30,20,'∠POQ=90°',P().B,12);
+  if(h('done')) txt3(-80,70,0,'α⊥β ✓',P().B,13);
+  txt3(-108,-5,-108,'α',P().muted,12);
+}
+
+function drawEx5(){
+  const h=has;
+  plane3([[-110,-5,-110],[-110,-5,110],[110,-5,110],[110,-5,-110]],P().A,h('alpha')?0.22:0.1);
+  if(h('beta')) plane3([[-80,-5,0],[-80,90,0],[80,90,0],[80,-5,0]],P().B,0.18);
+  line3(-90,-5,0,90,-5,0,h('m')?P().D:P().muted,h('m')?2:1);
+  dot3(0,-5,0,P().B,5,h('O')?'O':null);
+  dot3(0,50,0,P().C,6,h('A')?'A':null);
+  if(h('AO')||h('angle90')) line3(0,50,0,0,-5,0,P().C,2);
+  if(h('BO')||h('angle90')) { line3(0,-5,0,0,-5,50,P().E,2); dot3(0,-5,50,P().E,4,'B'); }
+  if(h('angle90')) rqa3(0,-5,0,0,50,0,0,-5,40,P().A);
+  if(h('done')) txt3(10,60,0,'AO⊥α ✓',P().B,12);
+  txt3(-108,-5,-108,'α',P().muted,12);
+}
+
+function drawEx6(){
+  const h=has;
+  plane3([[-110,-5,-110],[-110,-5,110],[110,-5,110],[110,-5,-110]],P().A,h('alpha')?0.2:0.1);
+  if(h('beta')) plane3([[-90,-5,0],[-90,80,0],[90,80,0],[90,-5,0]],P().B,0.18);
+  if(h('gamma')) plane3([[0,-5,-90],[0,80,-90],[0,80,90],[0,-5,90]],P().E,0.18);
+  if(h('m')) line3(-90,-5,0,90,-5,0,P().B,1.5,[2,4]);
+  if(h('n')) line3(0,-5,-90,0,-5,90,P().E,1.5,[2,4]);
+  // l = beta and gamma intersection
+  line3(0,-5,0,0,80,0,h('l')?P().C:P().muted,2.5);
+  txt3(4,83,0,'l',P().C,13);
+  dot3(0,60,0,P().A,5,h('A')?'A':null);
+  if(h('AH')) { line3(0,60,0,0,-5,0,P().B,1.5,[3,3]); dot3(0,-5,0,P().B,4,'H'); }
+  if(h('AI')) { line3(0,60,0,0,-5,0,P().E,1.5,[3,3]); dot3(0,-5,0,P().E,4,'I'); }
+  if(h('HI')) { dot3(0,-5,0,P().D,5,'J'); txt3(5,-5,0,'H=I=J',P().D,11); }
+  if(h('done')) txt3(-80,70,0,'l⊥α ✓',P().B,13);
+  txt3(-108,-5,-108,'α',P().muted,12);
+}
+
+function drawEx7(){
+  const h=has;
+  plane3([[-110,-5,-110],[-110,-5,110],[110,-5,110],[110,-5,-110]],P().A,h('alpha')?0.22:0.1);
+  line3(-40,-5,0,-40,80,0,h('l')?P().A:P().muted,2.5);
+  txt3(-36,83,0,'l',P().A,13);
+  line3(40,-5,0,40,80,0,h('m')?P().C:P().muted,2.5);
+  txt3(44,83,0,'m',P().C,13);
+  if(h('n1')) line3(-70,-5,0,110,-5,0,P().E,1.5);
+  if(h('n2')) line3(-40,-5,-80,120,-5,80,P().E,1.5,[3,3]);
+  if(h('n1')) txt3(112,-5,0,'n₁',P().E,12);
+  if(h('n2')) txt3(122,-5,82,'n₂',P().E,12);
+  if(h('angle_equal')) txt3(-80,50,0,'∠ln₁=∠mn₁',P().D,11);
+  if(h('m_perp')) txt3(45,50,0,'m⊥n₁,n₂',P().B,11);
+  if(h('done')) txt3(-40,90,0,'m⊥α ✓',P().B,13);
+  txt3(-108,-5,-108,'α',P().muted,12);
+}
+
+function drawEx8(){
+  const h=has;
+  // 3 planes as alpha/beta/gamma
+  if(h('alpha')) plane3([[-90,-5,-90],[-90,-5,90],[90,-5,90],[90,-5,-90]],P().A,0.2);
+  if(h('beta')) plane3([[-90,-5,0],[-90,80,0],[90,80,0],[90,-5,0]],P().B,0.18);
+  if(h('gamma')) plane3([[0,-5,-80],[0,80,-80],[0,80,80],[0,-5,80]],P().E,0.18);
+  dot3(0,-5,0,P().D,6,h('O')?'O':null);
+  // l along x, m along y, n along z
+  line3(-80,-5,0,80,-5,0,h('l')?P().A:P().muted,h('l')?2.5:1,[]);
+  txt3(83,-5,0,'l',P().A,13);
+  line3(0,-5,0,0,80,0,h('m')?P().B:P().muted,h('m')?2.5:1);
+  txt3(4,83,0,'m',P().B,13);
+  line3(0,-5,0,0,-5,80,h('n')?P().C:P().muted,h('n')?2.5:1);
+  txt3(4,-5,83,'n',P().C,13);
+  if(h('n_perp_alpha')) txt3(-80,60,0,'n⊥α ✓',P().C,12);
+  if(h('l_perp_beta')) txt3(-80,60,0,'l⊥β ✓',P().A,12);
+  if(h('done')) txt3(-80,70,0,'m⊥γ ✓',P().B,12);
+}
+
+function drawEx9(){
+  const h=has;
+  plane3([[-110,-5,-110],[-110,-5,110],[110,-5,110],[110,-5,-110]],P().A,h('alpha')?0.22:0.1);
+  line3(-30,-5,0,-30,80,0,h('l')?P().A:P().muted,2.5);
+  txt3(-26,83,0,'l',P().A,13);
+  line3(40,-5,0,40,80,0,h('m')?P().C:P().muted,2.5);
+  txt3(44,83,0,'m',P().C,13);
+  dot3(-30,-5,0,P().A,4,'O');
+  dot3(40,-5,0,P().C,4,'P');
+  if(h('a')||h('perp')||h('m_a')) { line3(40,-5,0,40,80,0,P().D,1.5,[4,4]); txt3(32,83,0,'a',P().D,13); }
+  if(h('perp')) txt3(10,62,0,'a⊥α',P().D,12);
+  if(h('m_a')) txt3(10,50,0,'a=m',P().C,12);
+  if(h('done')) txt3(-40,90,0,'l∥m ✓',P().B,13);
+  txt3(-108,-5,-108,'α',P().muted,12);
+}
+
+function drawStage2(thm){
+  const name=thm.name;
+  if(name.includes('예제10')) drawEx10();
+  else if(name.includes('예제11')) drawEx11();
+  else if(name.includes('예제12')) drawEx12();
+  else if(name.includes('예제13')) drawEx13();
+  else if(name.includes('예제14')) drawEx14();
+  else if(name.includes('예제15')) drawEx15();
+  else if(name.includes('예제16')) drawEx16();
+  else if(name.includes('예제17')) drawEx17();
+  else if(name.includes('예제18')) drawEx18();
+  else if(name.includes('예제19')) drawEx19();
+  else drawEx20();
+}
+
+function baseAlpha(col,a){
+  plane3([[-110,-5,-110],[-110,-5,110],[110,-5,110],[110,-5,-110]],col||P().A,a||0.15);
+  txt3(-108,-5,-108,'α',P().muted,12);
+}
+
+function drawEx10(){
+  const h=has;
+  baseAlpha(P().A,h('alpha')?0.22:0.12);
+  line3(-90,-5,0,90,-5,0,h('l')?P().C:P().muted,2);
+  txt3(93,-5,0,'l',P().C,13);
+  dot3(-30,-5,45,P().A,5,h('P')?'P':null);
+  dot3(40,55,30,P().B,5,h('Q')&&!h('done')?'Q':null);
+  if(h('PQ')||h('assume')) line3(-30,-5,45,40,55,30,P().B,2,[3,3]);
+  if(h('beta')) plane3([[-90,-5,0],[-30,-5,45],[40,55,30],[90,-5,0]],P().E,0.18);
+  if(h('same_plane')) txt3(-60,50,0,'α=β?',P().D,12);
+  if(h('done')) txt3(-60,70,0,clabel('l과 PQ 꼬인 위치 ✓'),P().B,12);
+}
+
+function drawEx11(){
+  const h=has;
+  baseAlpha(P().A,h('alpha')?0.22:0.12);
+  // m on alpha
+  line3(-80,-5,0,80,-5,0,P().C,2); txt3(83,-5,0,'m',P().C,13);
+  // l parallel above
+  line3(-80,50,0,80,50,0,h('l')?P().A:P().muted,2.5); txt3(83,50,0,'l',P().A,13);
+  if(h('P')) dot3(60,50,0,P().D,5,'P');
+  if(h('assume')) { dot3(60,-5,0,P().D,5); line3(60,50,0,60,-5,0,P().D,1.5,[2,3]); }
+  if(h('contradiction')) txt3(-80,70,0,clabel('l⊂α가 되어 모순!'),P().C,11);
+  if(h('done')) txt3(-60,80,0,'l∥α ✓',P().B,13);
+}
+
+function drawEx12(){
+  const h=has;
+  baseAlpha(P().A,h('alpha')?0.22:0.12);
+  if(h('beta')) plane3([[-90,-5,0],[-90,80,0],[90,80,0],[90,-5,0]],P().B,0.2);
+  txt3(4,83,0,'β',P().B,12);
+  // l on beta parallel to alpha
+  line3(-80,50,0,80,50,0,h('l')?P().C:P().muted,2.5); txt3(83,50,0,'l',P().C,13);
+  // m = intersection
+  if(h('m')) line3(-90,-5,0,90,-5,0,P().D,2);
+  if(h('m')) txt3(93,-5,0,'m',P().D,13);
+  if(h('P')||h('assume')) dot3(60,-5,0,P().D,5,'P');
+  if(h('contradiction')) txt3(-80,65,0,clabel('P∈α → l∥α에 모순!'),P().C,11);
+  if(h('done')) txt3(-60,80,0,'l∥m ✓',P().B,13);
+}
+
+function drawEx13(){
+  const h=has;
+  // alpha: y=-5, beta: z=0, gamma: z=y+55. All intersections run in x direction.
+  plane3([[-110,-5,-110],[-110,-5,110],[110,-5,110],[110,-5,-110]],P().A,0.12);
+  if(h('beta')) plane3([[-90,-65,0],[-90,75,0],[90,75,0],[90,-65,0]],P().B,0.18);
+  if(h('gamma')) plane3([[-90,-55,0],[-90,55,110],[90,55,110],[90,-55,0]],P().E,0.18);
+  // l = alpha and beta intersection
+  if(h('l')) line3(-100,-5,0,100,-5,0,P().C,2); txt3(103,-5,0,'l',P().C,13);
+  // m = gamma and alpha intersection
+  if(h('m')) line3(-100,-5,50,100,-5,50,P().B,2,[2,4]); txt3(103,-5,50,'m',P().B,12);
+  // n = gamma and beta intersection
+  if(h('n')) line3(-100,-55,0,100,-55,0,P().E,2,[2,4]); txt3(103,-55,0,'n',P().E,12);
+  if(h('l_n')) txt3(-90,60,0,'l∥n',P().E,12);
+  if(h('l_m')) txt3(-90,50,0,'l∥m',P().B,12);
+  if(h('done')) txt3(-80,75,0,'m∥n ✓',P().B,13);
+  txt3(-108,-5,-108,'α',P().muted,12);
+}
+
+function drawEx14(){
+  const h=has;
+  // alpha contains l and n. beta contains m and n. All three lines run in x direction.
+  if(h('alpha')) plane3([[-90,20,-50],[-90,70,-50],[90,70,-50],[90,20,-50]],P().A,0.2);
+  if(h('beta')) plane3([[-90,20,-50],[-90,-10,50],[90,-10,50],[90,20,-50]],P().B,0.2);
+  // l on alpha, m on beta
+  line3(-80,50,-50,80,50,-50,P().A,2.5); txt3(83,50,-50,'l',P().A,13);
+  line3(-80,-10,50,80,-10,50,P().C,2.5); txt3(83,-10,50,'m',P().C,13);
+  // n = alpha and beta intersection
+  if(h('n')) line3(-80,20,-50,80,20,-50,P().B,2); txt3(83,20,-50,'n',P().B,13);
+  if(h('l_beta')) txt3(-80,75,0,'l∥β',P().A,12);
+  if(h('l_n')) txt3(-80,65,0,'l∥n',P().A,12);
+  if(h('m_n')) txt3(-80,55,0,'m∥n',P().C,12);
+  if(h('done')) txt3(-80,80,0,'n∥l, n∥m ✓',P().B,13);
+}
+
+function drawEx15(){
+  const h=has;
+  // alpha bottom, beta top
+  plane3([[-110,-5,-110],[-110,-5,110],[110,-5,110],[110,-5,-110]],P().A,h('alpha')?0.22:0.12);
+  plane3([[-110,60,-110],[-110,60,110],[110,60,110],[110,60,-110]],P().B,h('beta')?0.22:0.12);
+  txt3(-108,-5,-108,'α',P().muted,12); txt3(-108,60,-108,'β',P().muted,12);
+  // l on alpha
+  line3(-80,-5,0,80,-5,0,h('l')?P().C:P().muted,2.5); txt3(83,-5,0,'l',P().C,13);
+  if(h('assume1')) txt3(-80,25,0,clabel('l∩β=P → P∈α∩β → 모순!'),P().C,10);
+  if(h('assume2')) txt3(-80,40,0,clabel('l⊂β → l=교선 → 모순!'),P().C,10);
+  if(h('done')) txt3(-60,80,0,'l∥β ✓',P().B,13);
+}
+
+function drawEx16(){
+  const h=has;
+  baseAlpha(P().A,h('alpha')?0.22:0.12);
+  if(h('beta')) plane3([[-90,60,-90],[-90,60,90],[90,60,90],[90,60,-90]],P().B,0.2);
+  dot3(0,60,0,P().D,6,h('P')?'P':null);
+  // l, m from P
+  line3(0,60,0,-85,60,-45,h('l')?P().C:P().muted,2); txt3(-88,60,-47,'l',P().C,13);
+  line3(0,60,0,85,60,45,h('m')?P().C:P().muted,2); txt3(88,60,47,'m',P().C,13);
+  if(h('n')||h('assume')) { line3(-90,-5,0,90,-5,0,P().E,1.5,[3,3]); txt3(93,-5,0,'n',P().E,12); }
+  if(h('no_meet')) txt3(-90,40,0,clabel('l,m와 n 만나지 않음'),P().D,10);
+  if(h('l_n')) txt3(-90,30,0,'l∥n',P().A,11);
+  if(h('m_n')) txt3(-90,20,0,'m∥n',P().C,11);
+  if(h('done')) txt3(-70,80,0,'β∥α ✓',P().B,13);
+}
+
+function drawEx17(){
+  const h=has;
+  plane3([[-110,-5,-110],[-110,-5,110],[110,-5,110],[110,-5,-110]],P().A,h('alpha')?0.22:0.12);
+  plane3([[-110,55,-110],[-110,55,110],[110,55,110],[110,55,-110]],P().B,h('beta')?0.22:0.12);
+  txt3(-108,-5,-108,'α',P().muted,12); txt3(-108,55,-108,'β',P().muted,12);
+  // l through alpha
+  line3(-30,-30,0,-30,90,0,h('l')?P().C:P().muted,2.5); txt3(-26,93,0,'l',P().C,13);
+  dot3(-30,-5,0,P().A,5,h('P')?'P':null);
+  if(h('gamma')) plane3([[-90,-5,0],[-90,90,0],[90,90,0],[90,-5,0]],P().E,0.18);
+  if(h('gamma_alpha')) txt3(-80,70,0,clabel('γ=α → l⊂α? 모순!'),P().C,10);
+  if(h('done')) txt3(-70,80,0,clabel('l∩β=한 점 ✓'),P().B,13);
+}
+
+function drawEx18(){
+  const h=has;
+  plane3([[-110,-5,-110],[-110,-5,110],[110,-5,110],[110,-5,-110]],P().A,h('alpha')?0.22:0.12);
+  plane3([[-110,60,-110],[-110,60,110],[110,60,110],[110,60,-110]],P().B,h('beta')?0.22:0.12);
+  txt3(-108,-5,-108,'α',P().muted,12); txt3(-108,60,-108,'β',P().muted,12);
+  if(h('gamma')) plane3([[-80,-30,0],[-80,90,0],[80,90,0],[80,-30,0]],P().E,0.2);
+  if(h('l')) { line3(-80,-5,0,80,-5,0,P().C,2); txt3(83,-5,0,'l=γ∩α',P().C,11); }
+  if(h('m')) { line3(-80,60,0,80,60,0,P().B,2); txt3(83,60,0,'m=γ∩β',P().B,11); }
+  if(h('no_meet')) txt3(-80,25,0,clabel('l(⊂α)과 m(⊂β) 만나지 않음'),P().D,10);
+  if(h('l_m_no_meet')||h('done')) txt3(-80,35,0,clabel('γ에서 만나지 않음 → l∥m'),P().D,10);
+  if(h('done')) txt3(-60,80,0,'l∥m ✓',P().B,13);
+}
+
+function drawEx19(){
+  const h=has;
+  plane3([[-110,-5,-110],[-110,-5,110],[110,-5,110],[110,-5,-110]],P().A,h('alpha')?0.22:0.12);
+  plane3([[-110,60,-110],[-110,60,110],[110,60,110],[110,60,-110]],P().B,h('beta')?0.22:0.12);
+  txt3(-108,-5,-108,'α',P().muted,12); txt3(-108,60,-108,'β',P().muted,12);
+  if(h('gamma')) plane3([[-80,-30,-50],[-80,90,-50],[80,90,50],[80,-30,50]],P().E,0.2);
+  if(h('l')) { line3(-80,-5,-50,80,-5,50,P().C,2); txt3(83,-5,50,'l=γ∩α',P().C,11); }
+  if(h('m')) { dot3(-50,-5,-10,P().D,5,'P'); line3(-90,-5,-15,90,-5,15,P().D,1.5,[3,3]); txt3(93,-5,15,'m',P().D,12); }
+  if(h('alpha_gamma')) txt3(-80,40,0,clabel('γ=α → α와 γ가 만남에 모순!'),P().C,10);
+  if(h('done')) txt3(-70,80,0,'γ∩β≠∅ ✓',P().B,13);
+}
+
+function drawEx20(){
+  const h=has;
+  plane3([[-110,-5,-110],[-110,-5,110],[110,-5,110],[110,-5,-110]],P().A,h('alpha')?0.22:0.12);
+  plane3([[-110,50,-110],[-110,50,110],[110,50,110],[110,50,-110]],P().B,h('beta')?0.22:0.12);
+  plane3([[-110,100,-110],[-110,100,110],[110,100,110],[110,100,-110]],P().E,h('gamma')?0.22:0.12);
+  txt3(-108,-5,-108,'α',P().muted,12); txt3(-108,50,-108,'β',P().muted,12); txt3(-108,100,-108,'γ',P().muted,12);
+  if(h('l')||h('l_beta')) { line3(-80,-5,0,80,-5,0,P().C,2); txt3(83,-5,0,'l',P().C,13); }
+  if(h('m')||h('m_beta')) { line3(-80,-5,40,80,-5,-40,P().A,2); txt3(83,-5,-40,'m',P().A,13); }
+  if(h('assume1')) txt3(-90,25,0,clabel('α와 γ가 만난다고 가정'),P().C,10);
+  if(h('assume2')) txt3(-90,40,0,clabel('P를 지나 β∥인 평면이 둘? 모순'),P().C,10);
+  if(h('done')) txt3(-70,115,0,'α∥γ ✓',P().B,13);
+}
+
+function drawStage3(thm){
+  if(thm.name.includes('①')) drawS3_1();
+  else if(thm.name.includes('②')) drawS3_2();
+  else if(thm.name.includes('③')) drawS3_3();
+  else drawEx22();
+}
+
+function drawS3_base(h){
+  baseAlpha(h('alpha')?P().A:P().muted, h('alpha')?0.22:0.12);
+  // l
+  line3(-90,-5,0,90,-5,0,h('l')?P().C:P().muted,h('l')?2:1);
+  txt3(93,-5,0,'l',P().C,13);
+  // H lies on l, O lies on alpha away from l, P is above O.
+  dot3(50,-5,0,P().B,5,h('H')?'H':null);
+  dot3(50,-5,55,P().B,5,'O');
+  line3(50,-5,55,50,85,55,h('PO')?P().A:P().muted,h('PO')?2.5:1.5);
+  dot3(50,85,55,P().A,6,h('P')?'P':null);
+}
+
+function drawS3_1(){
+  const h=has;
+  drawS3_base(h);
+  if(h('OH')) { line3(50,-5,55,50,-5,0,P().B,2); rqa3(50,-5,0,78,-5,0,50,-5,28,P().B); }
+  if(h('perp1')) txt3(55,30,30,'PO⊥l ✓',P().C,11);
+  if(h('plane_PHO')) plane3([[50,-5,0],[50,-5,55],[50,85,55]],P().E,0.3);
+  if(h('helper_p')) { line3(50,-5,0,50,62,0,P().D,1.6,[3,3]); txt3(54,64,0,'p∥PO',P().D,11); }
+  if(h('PH')) { line3(50,-5,0,50,85,55,P().E,2); }
+  if(h('done')) txt3(58,45,28,'PH⊥l ✓',P().B,12);
+}
+
+function drawS3_2(){
+  const h=has;
+  drawS3_base(h);
+  if(h('PH')) { line3(50,-5,0,50,85,55,P().E,2,[3,3]); }
+  if(h('perp1')) txt3(55,30,30,'PO⊥l ✓',P().C,11);
+  if(h('plane_PHO')) plane3([[50,-5,0],[50,-5,55],[50,85,55]],P().E,0.3);
+  if(h('helper_p')) { line3(50,-5,0,50,62,0,P().D,1.6,[3,3]); txt3(54,64,0,'p∥PO',P().D,11); }
+  if(h('OH')) { line3(50,-5,55,50,-5,0,P().B,2); }
+  if(h('done')) txt3(58,45,28,'OH⊥l ✓',P().B,12);
+}
+
+function drawS3_3(){
+  const h=has;
+  baseAlpha(h('alpha')?P().A:P().muted, h('alpha')?0.22:0.12);
+  line3(-90,-5,0,90,-5,0,h('l')?P().C:P().muted,h('l')?2:1);
+  txt3(93,-5,0,'l',P().C,13);
+  dot3(50,-5,0,P().B,5,'H');
+  dot3(50,-5,55,P().B,5,has('O')||h('OH')?'O':null);
+  dot3(50,85,55,P().A,6,'P');
+  if(h('OH')) line3(50,-5,0,50,-5,55,P().B,2);
+  if(h('PO')) line3(50,-5,55,50,85,55,P().A,2.5);
+  if(h('PH')) line3(50,-5,0,50,85,55,P().E,1.5,[4,4]);
+  if(h('plane_PHO')) plane3([[50,-5,0],[50,-5,55],[50,85,55]],P().E,0.3);
+  if(h('helper_q')) { line3(-30,-5,55,110,-5,55,P().D,1.6,[3,3]); txt3(112,-5,55,'q∥l',P().D,11); }
+  if(h('l_perp')) txt3(58,28,34,'PO⊥l ✓',P().C,11);
+  if(h('done')) txt3(58,45,55,'PO⊥α ✓',P().B,12);
+}
+
+function drawEx22(){
+  const h=has;
+  // two planes meeting at l
+  plane3([[-110,-5,-110],[-110,-5,110],[110,-5,110],[110,-5,-110]],P().A,h('alpha')?0.22:0.12);
+  plane3([[-110,-5,0],[-110,80,0],[110,80,0],[110,-5,0]],P().B,h('beta')?0.22:0.12);
+  txt3(-108,-5,-108,'α',P().muted,12); txt3(4,83,0,'β',P().B,12);
+  // l = intersection
+  line3(-100,-5,0,100,-5,0,h('l')?P().D:P().muted,h('l')?2.2:1);
+  txt3(103,-5,0,'l',P().D,13);
+  // P above
+  dot3(40,55,40,P().A,6,h('P')?'P':null);
+  // A on alpha
+  dot3(40,-5,40,P().C,5,h('A')?'A':null);
+  if(h('A')) line3(40,55,40,40,-5,40,P().C,1.5,[2,3]);
+  // B on beta
+  dot3(40,55,0,P().B,5,h('B')?'B':null);
+  if(h('B')) line3(40,55,40,40,55,0,P().B,1.5,[2,3]);
+  // H,I on l
+  dot3(40,-5,0,P().D,5,h('H')?'H':null);
+  dot3(40,-5,0,P().E,3,h('I')?'I':null);
+  if(h('AH')) line3(40,-5,40,40,-5,0,P().C,2);
+  if(h('BI')) line3(40,55,0,40,-5,0,P().B,2);
+  if(h('PH')) { line3(40,55,40,40,-5,0,P().A,1.5,[3,3]); txt3(44,25,15,'PH⊥l',P().A,11); }
+  if(h('PI')) { line3(40,55,40,40,-5,0,P().B,1.5,[4,4]); txt3(44,35,0,'PI⊥l',P().B,11); }
+  if(h('done')) txt3(-80,70,0,'H=I ✓',P().B,13);
+}
+
+function drawStage4(thm){
+  if(thm.name.includes('이면각')) drawDihedral(thm);
+  else drawProjection(thm);
+}
+
+function drawProjection(thm){
+  const h=has;
+  const theta=(sliderVals['proj-angle']!==undefined?sliderVals['proj-angle']:30)*Math.PI/180;
+  const cosT=Math.cos(theta);
+  const sinT=Math.sin(theta);
+
+  // ground plane α
+  plane3([[-110,-5,-110],[-110,-5,110],[110,-5,110],[110,-5,-110]],
+         P().muted,0.08);
+  txt3(95,-5,95,'α',P().muted,12);
+
+  // triangle vertices
+  // base edge fixed on ground plane: baseL, baseR
+  const baseL=[-40,-5,-30], baseR=[40,-5,-30];
+  // tilted top vertex: pivots around z=-30 line on ground
+  const top=[0, -5+60*sinT, -30+60*cosT];
+
+  // shadow vertices (orthogonal projection onto y=-5 plane)
+  const shadL=[-40,-5,-30], shadR=[40,-5,-30];
+  const shadTop=[0,-5,-30+60*cosT];
+
+  // draw shadow first (behind tilted triangle)
+  if(h('shadow')){
+    plane3([shadL,shadR,shadTop],P().B,0.25);
+    // shadow label
+    const sLabelZ=-30+60*cosT*0.35;
+    txt3(8,-5,sLabelZ,"S'",P().B,13);
+  }
+
+  // tilted triangle
+  if(h('tri')){
+    plane3([baseL,baseR,top],P().A,0.3);
+    line3(baseL[0],baseL[1],baseL[2],baseR[0],baseR[1],baseR[2],P().A,2);
+    line3(baseR[0],baseR[1],baseR[2],top[0],top[1],top[2],P().A,2);
+    line3(top[0],top[1],top[2],baseL[0],baseL[1],baseL[2],P().A,2);
+    txt3(-48,-8,-30,'S',P().A,13);
+  }
+
+  // dashed projection lines (top vertex down to shadow)
+  if(h('proj_lines')){
+    line3(top[0],top[1],top[2],shadTop[0],shadTop[1],shadTop[2],P().muted,1,[4,4]);
+    // also project the two base vertices (they're already on the plane, just show a dot)
+    dot3(shadTop[0],shadTop[1],shadTop[2],P().muted,3,null);
+  }
+
+  // angle θ arc at base edge midpoint
+  if(h('angle')){
+    const arcR=25;
+    const steps=20;
+    ctx.beginPath();
+    for(let i=0;i<=steps;i++){
+      const t=i/steps*theta;
+      const ay=-5+arcR*Math.sin(t);
+      const az=-30+arcR*Math.cos(t);
+      const [sx,sy]=p3(0,ay,az);
+      i===0?ctx.moveTo(sx,sy):ctx.lineTo(sx,sy);
+    }
+    ctx.strokeStyle=P().E; ctx.lineWidth=2; ctx.setLineDash([]); ctx.stroke();
+    const degVal=Math.round(theta*180/Math.PI);
+    txt3(10,-5+arcR*Math.sin(theta/2)*0.65,-30+arcR*Math.cos(theta/2)*0.65,`θ=${degVal}°`,P().E,12);
+    // vertical reference line (dashed)
+    line3(0,-5,-30,0,-5+arcR,-30,P().muted,1,[3,3]);
+  }
+
+  // cos θ and area ratio display
+  if(h('values')){
+    const degVal=Math.round(theta*180/Math.PI);
+    txt3(-105,55,0,`cos ${degVal}° = ${cosT.toFixed(3)}`,P().D,13);
+    txt3(-105,40,0,`S'/S = ${cosT.toFixed(3)}`,P().B,13);
+  }
+
+  // cross product vector (proof step)
+  if(h('cross')){
+    // edge1 = baseR - baseL = (80,0,0)
+    // edge2 = top - baseL = (40, 60*sinT, 60*cosT)
+    // normal = edge1 × edge2 = (0*60cosT - 0*60sinT, 0*40 - 80*60cosT, 80*60sinT - 0)
+    //        = (0, -4800*cosT, 4800*sinT) → direction (0, -cosT, sinT)
+    const nLen=45;
+    const cx=(baseL[0]+baseR[0]+top[0])/3;
+    const cy=(baseL[1]+baseR[1]+top[1])/3;
+    const cz=(baseL[2]+baseR[2]+top[2])/3;
+    const nEx=cx, nEy=cy-nLen*cosT, nEz=cz+nLen*sinT;
+    line3(cx,cy,cz,nEx,nEy,nEz,P().C,2.5);
+    dot3(nEx,nEy,nEz,P().C,4,'n⃗');
+    txt3(nEx+5,nEy,nEz,'|a⃗×b⃗|=2S',P().C,11);
+  }
+
+  // final result banner
+  if(h('done')){
+    txt3(-65,72,0,"S' = S·cos θ  ✓",P().B,14);
+  }
+}
+
+function drawDihedral(thm){
+  const h=has;
+  const angleDeg=sliderVals['dihedral-angle']!==undefined?sliderVals['dihedral-angle']:60;
+  const angle=angleDeg*Math.PI/180;
+  const ptPos=sliderVals['dihedral-pt']!==undefined?sliderVals['dihedral-pt']:0;
+
+  // half-plane α' (horizontal, z ≤ 0 side)
+  const alphaCorners=[[-100,-5,0],[-100,-5,-100],[100,-5,-100],[100,-5,0]];
+  plane3(alphaCorners,h('alpha')?P().A:P().muted,h('alpha')?0.22:0.10);
+  txt3(-95,-5,-90,"α'",P().A,13);
+
+  // half-plane β' (tilted by angle around x-axis on the same dihedral side)
+  const sz=100;
+  const bz=-sz*Math.cos(angle);
+  const by=-5+sz*Math.sin(angle);
+  const betaCorners=[[-100,-5,0],[-100,by,bz],[100,by,bz],[100,-5,0]];
+  plane3(betaCorners,h('beta')?P().B:P().muted,h('beta')?0.22:0.10);
+  txt3(-95,by*0.55-3,bz*0.55,"β'",P().B,13);
+
+  // edge (교선 l)
+  line3(-100,-5,0,100,-5,0,h('l')?P().D:P().muted,h('l')?2.5:1.5);
+  txt3(103,-5,0,'l',P().D,13);
+
+  // measurement point A
+  const ax=ptPos;
+  dot3(ax,-5,0,P().C,6,h('A')?'A':null);
+
+  const rayLen=55;
+  // perpendicular rays from A
+  if(h('m1')){
+    // m1: into α' (z < 0 direction, y constant)
+    line3(ax,-5,0,ax,-5,-rayLen,P().A,2.5);
+    txt3(ax+3,-5,-rayLen-6,'m₁',P().A,12);
+    rqa3(ax,-5,0,ax,-5,-12,ax+12,-5,0,P().A);
+  }
+  if(h('m2')){
+    // m2: into β' (rotated direction: (0,sin(angle),-cos(angle)))
+    const m2z=-rayLen*Math.cos(angle);
+    const m2y=-5+rayLen*Math.sin(angle);
+    line3(ax,-5,0,ax,m2y,m2z,P().B,2.5);
+    txt3(ax+3,m2y+3,m2z+2,'m₂',P().B,12);
+    rqa3(ax,-5,0,ax,-5+12*Math.sin(angle),-12*Math.cos(angle),ax+12,-5,0,P().B);
+  }
+
+  // second measurement point B (for proof mode)
+  if(h('B')){
+    const bx=ptPos+50;
+    dot3(bx,-5,0,P().E,6,'B');
+    if(h('n1')){
+      line3(bx,-5,0,bx,-5,-rayLen,P().A,2,[4,4]);
+      txt3(bx+3,-5,-rayLen-6,'n₁',P().A,12);
+    }
+    if(h('n2')){
+      const n2z=-rayLen*Math.cos(angle);
+      const n2y=-5+rayLen*Math.sin(angle);
+      line3(bx,-5,0,bx,n2y,n2z,P().B,2,[4,4]);
+      txt3(bx+3,n2y+3,n2z+2,'n₂',P().B,12);
+    }
+  }
+
+  // angle arc at A: true circular arc from dir1=(0,0,-1) to dir2=(0,sinθ,-cosθ)
+  if(h('arc')){
+    const arcR=28;
+    const steps2=32;
+    ctx.beginPath();
+    for(let i=0;i<=steps2;i++){
+      const t=i/steps2*angle;
+      const vy=Math.sin(t)*arcR;
+      const vz=-Math.cos(t)*arcR;
+      const py=-5+vy;
+      const pz=vz;
+      const[sx,sy]=p3(ax,py,pz);
+      i===0?ctx.moveTo(sx,sy):ctx.lineTo(sx,sy);
+    }
+    ctx.strokeStyle=P().E; ctx.lineWidth=2.5; ctx.setLineDash([]); ctx.stroke();
+    // angle label — at midpoint of arc
+    const mvy=Math.sin(angle/2)*(arcR+12);
+    const mvz=-Math.cos(angle/2)*(arcR+12);
+    txt3(ax-16,-5+mvy,mvz,`θ=${Math.round(angleDeg)}°`,P().E,13);
+  }
+
+  // parallel indicator for proof mode
+  if(h('parallel')){
+    const bx=ptPos+50;
+    txt3(ptPos+25,-12,-rayLen*0.55,'m₁∥n₁',P().A,11);
+    const n2z=-rayLen*Math.cos(angle)*0.55;
+    const n2y=-5+rayLen*Math.sin(angle)*0.55;
+    txt3(ptPos+25,n2y,n2z,'m₂∥n₂',P().B,11);
+  }
+
+  if(h('done')){
+    txt3(ax-20,30,0,clabel('이면각 = ')+Math.round(angleDeg)+'° ✓',P().B,14);
+  }
+
+  if(h('arc')) drawDihedralGauge(angleDeg);
+}
+
+function drawDihedralGauge(angleDeg){
+  const angle=angleDeg*Math.PI/180;
+  const W=canvas.offsetWidth, H=canvas.offsetHeight;
+  const ox=Math.max(74,Math.min(118,W*0.14));
+  const oy=H-72;
+  const r=42;
+  const a1=-Math.PI/2;
+  const a2=a1+angle;
+  ctx.save();
+  ctx.setLineDash([]);
+  ctx.globalAlpha=0.94;
+  ctx.fillStyle=isDark()?'rgba(17,24,39,0.82)':'rgba(250,249,246,0.86)';
+  ctx.strokeStyle=isDark()?'rgba(242,238,203,0.16)':'rgba(26,26,26,0.12)';
+  roundRect(ox-58,oy-64,136,102,10);
+  ctx.fill(); ctx.stroke();
+  ctx.globalAlpha=1;
+  ctx.lineWidth=3;
+  ctx.strokeStyle=P().A;
+  ctx.beginPath(); ctx.moveTo(ox,oy); ctx.lineTo(ox+r*Math.cos(a1),oy+r*Math.sin(a1)); ctx.stroke();
+  ctx.strokeStyle=P().B;
+  ctx.beginPath(); ctx.moveTo(ox,oy); ctx.lineTo(ox+r*Math.cos(a2),oy+r*Math.sin(a2)); ctx.stroke();
+  ctx.beginPath();
+  ctx.arc(ox,oy,24,a1,a2,false);
+  ctx.strokeStyle=P().E;
+  ctx.lineWidth=2.5;
+  ctx.stroke();
+  ctx.fillStyle=P().E;
+  ctx.font=FONT_UI(13,700);
+  ctx.fillText(`${Math.round(angleDeg)}°`,ox+30,oy-26);
+  ctx.fillStyle=tc();
+  ctx.font=FONT_UI(11,600);
+  ctx.fillText(clabel('수직 단면'),ox-43,oy+25);
+  ctx.restore();
+}
+
+function roundRect(x,y,w,h,r){
+  ctx.beginPath();
+  ctx.moveTo(x+r,y);
+  ctx.arcTo(x+w,y,x+w,y+h,r);
+  ctx.arcTo(x+w,y+h,x,y+h,r);
+  ctx.arcTo(x,y+h,x,y,r);
+  ctx.arcTo(x,y,x+w,y,r);
+  ctx.closePath();
+}
+
+function render(){
+  _occPoly=null;
+  E.beginFrame(isDark());
+  drawGeneric();
+}
+
+// UI
+function buildStages(){
+  const renderStageList=(el)=>{
+  if(!el) return;
+  el.innerHTML='';
+  STAGES.forEach((s,i)=>{
+    const b=document.createElement('button');
+    b.type='button';
+    const on=i===curStage;
+    b.className='stab'+(on?' active':'');
+    if(on) b.setAttribute('aria-current','page');
+    b.textContent=TMLang.field(s,'label');
+    b.onclick=()=>{
+      curStage=i;
+      curThm=THEOREMS.findIndex(t=>t.stage===i);
+      curStep=0; sliderVals={}; iResetState(); buildUI(); render();
+      closeMobileMenu();
+    };
+    el.appendChild(b);
+  });
+  };
+  renderStageList(document.getElementById('stage-tabs'));
+  renderStageList(document.getElementById('mobile-stage-tabs'));
+}
+
+function buildThms(){
+  const renderTheoremList=(el)=>{
+  if(!el) return;
+  el.innerHTML='';
+  THEOREMS.forEach((t,i)=>{
+    if(t.stage!==curStage) return;
+    const b=document.createElement('button');
+    b.type='button';
+    const on=i===curThm;
+    b.className='tbtn'+(on?' active':'');
+    if(on) b.setAttribute('aria-current','true');
+    b.setAttribute('aria-label',TMLang.field(t,'name'));
+    b.textContent=TMLang.field(t,'name').split(':')[0];
+    b.onclick=()=>{curThm=i;curStep=0;sliderVals={};iResetState();buildUI();render();closeMobileMenu();};
+    el.appendChild(b);
+  });
+  };
+  renderTheoremList(document.getElementById('thm-scroll'));
+  renderTheoremList(document.getElementById('mobile-thm-scroll'));
+}
+
+/* ── Mode switching ── */
+function setMode(m){
+  mode=m;
+  if(m==='play') iResetState();
+  buildUI(); render();
+}
+
+function setMobileMenu(open){
+  const sheet=document.getElementById('mobile-navsheet');
+  const btn=document.getElementById('mobile-menu-toggle');
+  if(!sheet||!btn) return;
+  sheet.classList.toggle('open',open);
+  btn.setAttribute('aria-expanded',String(open));
+}
+
+function toggleMobileMenu(){
+  const sheet=document.getElementById('mobile-navsheet');
+  setMobileMenu(!(sheet&&sheet.classList.contains('open')));
+}
+
+function closeMobileMenu(){
+  setMobileMenu(false);
+}
+
+function iResetState(){
+  iState='start'; iHistory=[]; iTotal=0; iWrong=0; iCorrect=0; iError=null;
+}
+
+function iDoAction(a){
+  iError=null;
+  if(!a.next){
+    iWrong++; iTotal++;
+    iError=TMLang.field(a,'msg')||TMLang.t('defaultActionError');
+    iHistory.push({label:TMLang.field(a,'label'),type:'wrong',from:iState,to:null});
+    buildUI(); render();
+    return;
+  }
+  if(a.correct){
+    iCorrect++; iTotal++;
+    iHistory.push({label:TMLang.field(a,'label'),type:'correct',from:iState,to:a.next});
+    iState=a.next;
+    buildUI(); render();
+  }
+}
+
+function iUndo(){
+  if(!iHistory.length) return;
+  const last=iHistory.pop();
+  iError=null;
+  if(last.type==='wrong'){
+    iWrong--; iTotal--;
+  } else {
+    iTotal--;
+    if(last.type==='correct') iCorrect--;
+    iState=last.from;
+  }
+  buildUI(); render();
+}
+
+function iReset(){
+  iResetState();
+  buildUI(); render();
+}
+
+function iGetSummary(){
+  const inter=INTERACTIVE[curThm];
+  if(!inter) return null;
+  const opt=inter.optimal;
+  return {mark:TMLang.t('proofCompleteMark'),fact:TMLang.t('summaryFact')(iTotal,iWrong,opt)};
+}
+
+/* ── UI builders ── */
+// Slider state — persists across steps within the same theorem
+let sliderVals={};
+
+function buildSliders(){
+  const area=document.getElementById('slider-area');
+  area.innerHTML='';
+  const thm=THEOREMS[curThm];
+  if(!thm.sliders) return;
+  thm.sliders.forEach(s=>{
+    if(s.showWhen&&!s.showWhen()) return;
+    const val=sliderVals[s.key]!==undefined?sliderVals[s.key]:s.default;
+    sliderVals[s.key]=val;
+    const wrap=document.createElement('div');
+    wrap.className='slider-wrap';
+    wrap.innerHTML=`<label><span>${TMLang.field(s,'label')}</span><span id="sv-${s.key}">${s.format?s.format(val):val}</span></label><input type="range" min="${s.min}" max="${s.max}" step="${s.step||1}" value="${val}">`;
+    wrap.querySelector('input').oninput=e=>{
+      sliderVals[s.key]=parseFloat(e.target.value);
+      document.getElementById('sv-'+s.key).textContent=s.format?s.format(sliderVals[s.key]):sliderVals[s.key];
+      render();
+    };
+    area.appendChild(wrap);
+  });
+}
+
+function buildUI(){
+  buildStages(); buildThms(); buildModeToggle();
+  const thm=THEOREMS[curThm];
+  // legend
+  const leg=document.getElementById('leg');
+  leg.innerHTML='';
+  const cmap={'#534AB7':'A','#1D9E75':'B','#D85A30':'C','#BA7517':'D','#EF9F27':'E','#888780':'muted'};
+  thm.legend.forEach(item=>{
+    const d=document.createElement('div'); d.className='li';
+    const s=document.createElement('div');
+    s.className=item.t==='dot'?'ld':'ll';
+    const pk=cmap[item.c]; s.style.background=pk?P()[pk]:item.c;
+    const t=document.createElement('span'); t.textContent=TMLang.field(item,'l');
+    d.appendChild(s); d.appendChild(t); leg.appendChild(d);
+  });
+  // side panel content
+  const sl=document.getElementById('sl');
+  sl.innerHTML='';
+  if(mode==='view') buildViewMode(sl,thm);
+  else buildPlayMode(sl);
+  buildSliders();
+  updateCanvasOverlay();
+  updateHeaderProofNav();
+}
+
+function buildModeToggle(){
+  const hasInteractive=!!INTERACTIVE[curThm];
+  if(!hasInteractive&&mode==='play') mode='view';
+  document.querySelectorAll('[data-mode-btn]').forEach(btn=>{
+    const btnMode=btn.getAttribute('data-mode-btn');
+    const active=btnMode===mode;
+    btn.className='mode-btn'+(active?' active':'');
+    btn.setAttribute('aria-checked',String(active));
+    btn.disabled=btnMode==='play'&&!hasInteractive;
+  });
+}
+
+function esc(s){
+  return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function isMobileView(){
+  return matchMedia('(max-width:720px)').matches;
+}
+
+let lastDocumentTap={time:0,x:0,y:0};
+document.addEventListener('touchend',e=>{
+  if(e.touches.length||e.changedTouches.length!==1) return;
+  const target=e.target;
+  if(target.closest('button,a,input,select,textarea,summary,details,canvas,[role="button"],[role="radio"],.canvas-overlay')) return;
+  const touch=e.changedTouches[0];
+  const now=Date.now();
+  const dx=touch.clientX-lastDocumentTap.x;
+  const dy=touch.clientY-lastDocumentTap.y;
+  if(now-lastDocumentTap.time<320&&Math.hypot(dx,dy)<24){
+    e.preventDefault();
+  }
+  lastDocumentTap={time:now,x:touch.clientX,y:touch.clientY};
+},{passive:false});
+
+function proofParts(thm){
+  const setup=thm.steps.find(s=>s.setup);
+  const raw=setup?TMLang.field(setup,'d'):'';
+  const isEn=TMLang.lang()==='en';
+  const givenRe=isEn?/\[Given\]\s*([\s\S]*?)(?:\n\[Prove\]|$)/:/\[조건\]\s*([\s\S]*?)(?:\n\[증명\]|\n\[결과\]|$)/;
+  const resultRe=isEn?/\[Prove\]\s*([\s\S]*)/:/\[(?:증명|결과)\]\s*([\s\S]*)/;
+  const given=(raw.match(givenRe)||[])[1]||TMLang.t('checkConditions');
+  const result=(raw.match(resultRe)||[])[1]||TMLang.field(thm,'desc');
+  return {given:given.trim(),result:result.trim()};
+}
+
+function updateMobileGiven(parts){
+  const box=document.getElementById('mobile-given');
+  if(!box) return;
+  if(!parts){
+    box.hidden=true;
+    box.innerHTML='';
+    return;
+  }
+  box.hidden=false;
+  box.innerHTML=`<span class="proof-k">${TMLang.t('givenLabel')}</span><div class="proof-v">${esc(parts.given)}</div>`;
+}
+
+function updateHeaderProofNav(){
+  const prev=document.getElementById('hdr-prev');
+  const next=document.getElementById('hdr-next');
+  if(!prev||!next) return;
+  const thm=THEOREMS[curThm];
+  const viewMode=mode==='view'&&!!thm;
+  prev.disabled=!viewMode||curStep===0;
+  next.disabled=!viewMode||curStep>=thm.steps.length-1;
+  prev.setAttribute('aria-disabled',String(prev.disabled));
+  next.setAttribute('aria-disabled',String(next.disabled));
+}
+
+function buildViewMode(sl,thm){
+  const parts=proofParts(thm);
+  updateMobileGiven(parts);
+  const maxStep=thm.steps.length-1;
+  const flow=document.createElement('div');
+  flow.className='proof-flow';
+
+  const given=document.createElement('div');
+  given.className='proof-row proof-given';
+  given.innerHTML=`<span class="proof-k">${TMLang.t('givenLabel')}</span><div class="proof-v">${esc(parts.given)}</div>`;
+  flow.appendChild(given);
+
+  const bridge=document.createElement('div');
+  bridge.className='proof-bridge';
+  bridge.innerHTML=`<div class="flow-arrow${curStep>0?' hidden':''}" aria-hidden="true"><div class="flow-arrow-mark">?</div></div>`;
+  const slots=document.createElement('div');
+  slots.className='proof-slots';
+  thm.steps.forEach((step,i)=>{
+    if(step.setup) return;
+    const isFocus=i===curStep;
+    const isRevealed=i<=curStep;
+    const isResult=i===maxStep;
+    const slot=document.createElement('div');
+    slot.className='proof-slot '+(isRevealed?'revealed':'locked')+(isFocus?' focus':'')+(isResult&&isRevealed?' result':'');
+    slot.tabIndex=isRevealed?0:-1;
+    slot.setAttribute('aria-label',`${isRevealed?TMLang.t('stepAriaRevealed'):TMLang.t('stepAriaLocked')} ${TMLang.t('stepAriaSuffix')} ${i}`);
+    const title=isResult?TMLang.t('slotResult'):`Step ${i}`;
+    const body=displayProofText(TMLang.stepField(step,'d'));
+    slot.innerHTML=`<div class="slot-title">${title}</div><div class="slot-body">${esc(body)}</div>`;
+    if(!isRevealed){
+      slot.querySelector('.slot-title').setAttribute('aria-hidden','true');
+      slot.querySelector('.slot-body').setAttribute('aria-hidden','true');
+    }
+    slots.appendChild(slot);
+  });
+  bridge.appendChild(slots);
+  flow.appendChild(bridge);
+
+  const result=document.createElement('div');
+  result.className='proof-row result'+(curStep===maxStep?' ready':'');
+  result.innerHTML=`<span class="proof-k">${TMLang.t('proveLabel')}</span><div class="proof-v">${esc(parts.result)}</div>`;
+  flow.appendChild(result);
+  sl.appendChild(flow);
+
+  const rule=document.createElement('div');
+  rule.className='role-rule';
+  rule.innerHTML=`
+    <span class="role-chip"><span class="role-dot focus"></span>${TMLang.t('chipCurrent')}</span>
+    <span class="role-chip"><span class="role-dot"></span>${TMLang.t('chipOpen')}</span>
+    <span class="role-chip"><span class="role-dot result"></span>${TMLang.t('chipConclusion')}</span>
+  `;
+  sl.appendChild(rule);
+
+  const focusSlot=bridge.querySelector('.proof-slot.focus');
+  if(focusSlot&&!isMobileView()){
+    requestAnimationFrame(()=>focusSlot.scrollIntoView({block:'nearest',inline:'nearest'}));
+  }
+}
+
+function buildPlayMode(sl){
+  const parts=proofParts(THEOREMS[curThm]);
+  updateMobileGiven(parts);
+  const inter=INTERACTIVE[curThm];
+  if(!inter) return;
+  const st=inter.states[iState];
+  const isFinal=st.actions.length===0;
+
+  const playContext=document.createElement('div');
+  playContext.className='proof-flow play-context';
+  const playGiven=document.createElement('div');
+  playGiven.className='proof-row proof-given';
+  playGiven.innerHTML=`<span class="proof-k">${TMLang.t('givenLabel')}</span><div class="proof-v">${esc(parts.given)}</div>`;
+  playContext.appendChild(playGiven);
+  const playResult=document.createElement('div');
+  playResult.className='proof-row result ready';
+  playResult.innerHTML=`<span class="proof-k">${TMLang.t('proveLabel')}</span><div class="proof-v">${esc(parts.result)}</div>`;
+  playContext.appendChild(playResult);
+  sl.appendChild(playContext);
+
+  // progress bar
+  const pb=document.createElement('div'); pb.className='pbar';
+  for(let i=0;i<inter.optimal;i++){
+    const s=document.createElement('div');
+    s.className='pseg'+(i<iCorrect?' done':'');
+    if(i<iCorrect) s.style.background=P().progress;
+    pb.appendChild(s);
+  }
+  sl.appendChild(pb);
+
+  // status
+  const status=document.createElement('div'); status.className='i-status';
+  status.setAttribute('aria-live','polite');
+  status.innerHTML=`
+    <span>${TMLang.t('actionsLabel')} <span class="i-count">${iTotal}</span>${TMLang.t('countSuffix')}</span>
+    <span>${TMLang.t('mistakesLabel')} <span class="i-count err">${iWrong}</span>${TMLang.t('countSuffix')}</span>
+    <span class="i-badge">${TMLang.t('optimalBadgeTemplate')(inter.optimal)}</span>
+  `;
+  sl.appendChild(status);
+
+  // description
+  const desc=document.createElement('div'); desc.className='i-desc';
+  desc.textContent=TMLang.field(st,'desc');
+  sl.appendChild(desc);
+
+  // error
+  if(iError){
+    const err=document.createElement('div'); err.className='i-err';
+    err.textContent=iError;
+    sl.appendChild(err);
+  }
+
+  // actions
+  if(!isFinal){
+    const acts=document.createElement('div'); acts.className='i-actions';
+    st.actions.forEach(a=>{
+      const btn=document.createElement('button'); btn.className='abtn';
+      btn.textContent=TMLang.field(a,'label');
+      btn.onclick=()=>iDoAction(a);
+      acts.appendChild(btn);
+    });
+    sl.appendChild(acts);
+  }
+
+  // undo/reset row
+  const nav=document.createElement('div'); nav.className='navr';
+  nav.innerHTML=`<button onclick="iUndo()" ${iHistory.length===0?'disabled':''}>${TMLang.t('undoLabel')}</button><button onclick="iReset()">${TMLang.t('retryLabel')}</button>`;
+  sl.appendChild(nav);
+
+  // completion summary — 사실만, 보상 없음
+  if(isFinal){
+    const s=iGetSummary();
+    if(s){
+      const d=document.createElement('div'); d.className='i-summary';
+      d.setAttribute('role','status');
+      d.innerHTML=`<div class="mark">✓ ${s.mark}</div><div class="fact">${s.fact}</div>`;
+      sl.appendChild(d);
+    }
+  }
+
+  // history
+  if(iHistory.length>0){
+    const det=document.createElement('details');
+    det.style.marginTop='8px';
+    det.innerHTML=`<summary style="font-size:14px;color:var(--color-text-tertiary);cursor:pointer">${TMLang.t('historyTemplate')(iHistory.length)}</summary>`;
+    const list=document.createElement('div');
+    list.style.paddingTop='6px';
+    iHistory.forEach((h,i)=>{
+      const row=document.createElement('div');
+      row.style.cssText='font-size:13px;padding:3px 0;border-bottom:.5px solid var(--color-border-tertiary);display:flex;align-items:center;gap:6px;color:var(--color-text-secondary)';
+      const isOk=h.type==='correct';
+      row.innerHTML=`<span style="font-size:13px;font-weight:500;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:${isOk?'var(--color-background-info)':'var(--color-state-error-bg)'};color:${isOk?'var(--color-text-info)':'var(--color-state-error)'}">${isOk?i+1:'×'}</span><span style="opacity:${isOk?1:0.6}">${h.label}</span>`;
+      list.appendChild(row);
+    });
+    det.appendChild(list);
+    sl.appendChild(det);
+  }
+}
+
+function prevStep(){if(curStep>0){curStep--;buildUI();render();}}
+function nextStep(){if(curStep<THEOREMS[curThm].steps.length-1){curStep++;buildUI();render();}}
+
+document.addEventListener('keydown',e=>{
+  if(mode==='view'){
+    if(e.key==='ArrowLeft'||e.key==='ArrowUp'){prevStep();e.preventDefault();}
+    if(e.key==='ArrowRight'||e.key==='ArrowDown'){nextStep();e.preventDefault();}
+  }
+});
+
+TMTheme.init({ onChange: (kind) => { if (kind === 'colorblind') buildUI(); render(); } });
+TMLang.init({ onChange: () => { buildUI(); render(); } });
+E.attachInput({ onRender: render });
+buildUI(); render();
+if(document.fonts&&document.fonts.ready){document.fonts.ready.then(()=>render());}
+
+// URL deeplink
+(function(){
+  const params=new URLSearchParams(location.search);
+  const scene=params.get('scene');
+  const urlMode=params.get('mode');
+  if(scene){
+    const idx=THEOREMS.findIndex(t=>t.key===scene);
+    if(idx>=0){
+      curThm=idx;
+      curStage=THEOREMS[idx].stage;
+      if(urlMode==='proof-trace') setMode('play');
+      curStep=0; iResetState(); buildUI(); render();
+    }
+  }
+})();
+
+window.addEventListener('resize',render);
+</script>
+</body>
+</html>

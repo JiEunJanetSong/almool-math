@@ -1,0 +1,649 @@
+{
+  "topic": "구",
+  "mode": "3d",
+  "answer": "\\dfrac{10}{3}\\sqrt{30}",
+  "scale": 8,
+  "camera": {
+    "rotX": 0.42,
+    "rotY": -0.62,
+    "zoom": 1.05
+  },
+  "objects": [
+    {
+      "id": "xy",
+      "type": "plane",
+      "corners": [
+        [
+          -3,
+          -2,
+          0
+        ],
+        [
+          20,
+          -2,
+          0
+        ],
+        [
+          20,
+          12,
+          0
+        ],
+        [
+          -3,
+          12,
+          0
+        ]
+      ],
+      "alpha": 0.06,
+      "color": "muted",
+      "label": "xy평면",
+      "tags": [
+        "base"
+      ]
+    },
+    {
+      "id": "O",
+      "type": "point",
+      "at": [
+        0,
+        0,
+        0
+      ],
+      "label": "O",
+      "color": "text",
+      "tags": [
+        "given",
+        "sphere"
+      ]
+    },
+    {
+      "id": "A",
+      "type": "point",
+      "at": [
+        18.257419,
+        0,
+        0
+      ],
+      "label": "A",
+      "color": "B",
+      "tags": [
+        "given",
+        "c1"
+      ]
+    },
+    {
+      "id": "B",
+      "type": "point",
+      "at": [
+        0,
+        14.142136,
+        0
+      ],
+      "label": "B",
+      "color": "B",
+      "tags": [
+        "given",
+        "c2"
+      ]
+    },
+    {
+      "id": "sphereS",
+      "type": "sphere",
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "r": 10,
+      "color": "A",
+      "tags": [
+        "given",
+        "sphere"
+      ]
+    },
+    {
+      "id": "segOA",
+      "type": "segment",
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        18.257419,
+        0,
+        0
+      ],
+      "width": 2.5,
+      "color": "B",
+      "tags": [
+        "given",
+        "c1"
+      ]
+    },
+    {
+      "id": "segOB",
+      "type": "segment",
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        0,
+        14.142136,
+        0
+      ],
+      "width": 2.5,
+      "color": "B",
+      "tags": [
+        "given",
+        "c2"
+      ]
+    },
+    {
+      "id": "C",
+      "type": "point",
+      "at": [
+        0,
+        7.071068,
+        0
+      ],
+      "label": "C",
+      "color": "C",
+      "tags": [
+        "c2",
+        "centerC"
+      ]
+    },
+    {
+      "id": "C2",
+      "type": "circle",
+      "center": [
+        0,
+        7.071068,
+        0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "r": 7.071068,
+      "color": "C",
+      "width": 3,
+      "tags": [
+        "c2",
+        "circles"
+      ]
+    },
+    {
+      "id": "segCN1",
+      "type": "segment",
+      "from": [
+        0,
+        7.071068,
+        0
+      ],
+      "to": [
+        5.477226,
+        7.071068,
+        4.472136
+      ],
+      "width": 2.5,
+      "color": "C",
+      "tags": [
+        "lengths"
+      ]
+    },
+    {
+      "id": "L",
+      "type": "point",
+      "at": [
+        5.477226,
+        0,
+        0
+      ],
+      "label": "L",
+      "color": "D",
+      "tags": [
+        "c1",
+        "centerL"
+      ]
+    },
+    {
+      "id": "C1",
+      "type": "circle",
+      "center": [
+        5.477226,
+        0,
+        0
+      ],
+      "normal": [
+        1,
+        0,
+        0
+      ],
+      "r": 8.3666,
+      "color": "D",
+      "width": 3,
+      "tags": [
+        "c1",
+        "circles"
+      ]
+    },
+    {
+      "id": "N1",
+      "type": "point",
+      "at": [
+        5.477226,
+        7.071068,
+        4.472136
+      ],
+      "label": "N_1",
+      "color": "E",
+      "tags": [
+        "intersections",
+        "lengths",
+        "angle"
+      ]
+    },
+    {
+      "id": "N2",
+      "type": "point",
+      "at": [
+        5.477226,
+        7.071068,
+        -4.472136
+      ],
+      "label": "N_2",
+      "color": "E",
+      "tags": [
+        "intersections",
+        "angle"
+      ]
+    },
+    {
+      "id": "M",
+      "type": "point",
+      "at": [
+        5.477226,
+        7.071068,
+        0
+      ],
+      "label": "M",
+      "color": "E",
+      "tags": [
+        "midpoint",
+        "lengths"
+      ]
+    },
+    {
+      "id": "segN1N2",
+      "type": "segment",
+      "from": [
+        5.477226,
+        7.071068,
+        4.472136
+      ],
+      "to": [
+        5.477226,
+        7.071068,
+        -4.472136
+      ],
+      "width": 3,
+      "color": "E",
+      "tags": [
+        "intersections",
+        "angle",
+        "lengths"
+      ]
+    },
+    {
+      "id": "segON1",
+      "type": "segment",
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        5.477226,
+        7.071068,
+        4.472136
+      ],
+      "width": 2.5,
+      "color": "A",
+      "tags": [
+        "angle"
+      ]
+    },
+    {
+      "id": "segON2",
+      "type": "segment",
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        5.477226,
+        7.071068,
+        -4.472136
+      ],
+      "width": 2.5,
+      "color": "A",
+      "tags": [
+        "angle"
+      ]
+    },
+    {
+      "id": "segCM",
+      "type": "segment",
+      "from": [
+        0,
+        7.071068,
+        0
+      ],
+      "to": [
+        5.477226,
+        7.071068,
+        0
+      ],
+      "width": 3,
+      "color": "E",
+      "tags": [
+        "midpoint",
+        "lengths"
+      ]
+    },
+    {
+      "id": "segMN1",
+      "type": "segment",
+      "from": [
+        5.477226,
+        7.071068,
+        0
+      ],
+      "to": [
+        5.477226,
+        7.071068,
+        4.472136
+      ],
+      "dash": [
+        4,
+        3
+      ],
+      "color": "E",
+      "tags": [
+        "midpoint",
+        "lengths"
+      ]
+    },
+    {
+      "id": "raM",
+      "type": "rightangle",
+      "vertex": [
+        5.477226,
+        7.071068,
+        0
+      ],
+      "a": [
+        0,
+        7.071068,
+        0
+      ],
+      "b": [
+        5.477226,
+        7.071068,
+        4.472136
+      ],
+      "color": "E",
+      "tags": [
+        "lengths"
+      ]
+    },
+    {
+      "id": "segLM",
+      "type": "segment",
+      "from": [
+        5.477226,
+        0,
+        0
+      ],
+      "to": [
+        5.477226,
+        7.071068,
+        0
+      ],
+      "dash": [
+        4,
+        3
+      ],
+      "color": "D",
+      "tags": [
+        "centerL"
+      ]
+    },
+    {
+      "id": "segOL",
+      "type": "segment",
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        5.477226,
+        0,
+        0
+      ],
+      "width": 3,
+      "color": "D",
+      "tags": [
+        "centerL",
+        "answer"
+      ]
+    },
+    {
+      "id": "sampleP",
+      "type": "point",
+      "at": [
+        5.477226,
+        0,
+        8.3666
+      ],
+      "label": "P",
+      "color": "D",
+      "tags": [
+        "c1",
+        "theta"
+      ]
+    },
+    {
+      "id": "segAP",
+      "type": "segment",
+      "from": [
+        18.257419,
+        0,
+        0
+      ],
+      "to": [
+        5.477226,
+        0,
+        8.3666
+      ],
+      "width": 2.5,
+      "color": "D",
+      "tags": [
+        "theta"
+      ]
+    },
+    {
+      "id": "segOP",
+      "type": "segment",
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        5.477226,
+        0,
+        8.3666
+      ],
+      "width": 2.5,
+      "color": "D",
+      "tags": [
+        "theta"
+      ]
+    },
+    {
+      "id": "raP",
+      "type": "rightangle",
+      "vertex": [
+        5.477226,
+        0,
+        8.3666
+      ],
+      "a": [
+        18.257419,
+        0,
+        0
+      ],
+      "b": [
+        0,
+        0,
+        0
+      ],
+      "color": "D",
+      "tags": [
+        "theta"
+      ]
+    },
+    {
+      "id": "labelN",
+      "type": "label",
+      "at": [
+        7.1,
+        7.6,
+        0
+      ],
+      "text": "N_1N_2=4\\sqrt5",
+      "color": "text",
+      "tags": [
+        "lengths"
+      ]
+    },
+    {
+      "id": "labelCM",
+      "type": "label",
+      "at": [
+        2.5,
+        7.7,
+        0.4
+      ],
+      "text": "CM=\\sqrt{30}",
+      "color": "text",
+      "tags": [
+        "lengths",
+        "answer"
+      ]
+    },
+    {
+      "id": "labelAns",
+      "type": "label",
+      "at": [
+        10.2,
+        1.0,
+        4.0
+      ],
+      "text": "\\dfrac{100}{a}=\\sqrt{30}",
+      "color": "text",
+      "tags": [
+        "answer"
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "text": "$\\angle\\mathrm{BQO}=\\dfrac{\\pi}{2}$이고 $\\overline{\\mathrm{OB}}=10\\sqrt2$이므로 원 $C_2$는 중심 $\\mathrm{C}(0,\\ 5\\sqrt2,\\ 0)$, 반지름 $5\\sqrt2$인 원입니다.",
+      "show": [
+        "base",
+        "given",
+        "sphere",
+        "c2"
+      ],
+      "focus": [
+        "c2"
+      ]
+    },
+    {
+      "text": "두 교점 $\\mathrm{N_1}$, $\\mathrm{N_2}$는 구 $S$ 위에 있으므로 $\\overline{\\mathrm{ON_1}}=\\overline{\\mathrm{ON_2}}=10$입니다. $\\cos\\angle\\mathrm{N_1ON_2}=\\dfrac35$에서 코사인법칙으로 $\\overline{\\mathrm{N_1N_2}}^2=80$, 즉 $\\overline{\\mathrm{N_1N_2}}=4\\sqrt5$입니다.",
+      "show": [
+        "base",
+        "given",
+        "sphere",
+        "c2",
+        "intersections",
+        "angle"
+      ],
+      "focus": [
+        "intersections",
+        "angle"
+      ]
+    },
+    {
+      "text": "$\\mathrm{M}$을 $\\mathrm{N_1N_2}$의 중점이라 하면 $\\overline{\\mathrm{N_1M}}=2\\sqrt5$입니다. 삼각형 $\\mathrm{CN_1M}$에서 $(5\\sqrt2)^2=\\overline{\\mathrm{CM}}^2+(2\\sqrt5)^2$이므로 $\\overline{\\mathrm{CM}}=\\sqrt{30}$이고 $\\mathrm{N_1}(\\sqrt{30},\\ 5\\sqrt2,\\ 2\\sqrt5)$입니다.",
+      "show": [
+        "base",
+        "given",
+        "sphere",
+        "c2",
+        "intersections",
+        "midpoint",
+        "lengths"
+      ],
+      "focus": [
+        "midpoint",
+        "lengths"
+      ]
+    },
+    {
+      "text": "$\\angle\\mathrm{OAP}=\\theta$라 하면 삼각형 $\\mathrm{OAP}$에서 $\\sin\\theta=\\dfrac{10}{a}$입니다. 원 $C_1$의 중심 $\\mathrm{L}$은 $x$축 위에 있고, $\\mathrm{M}$에서 $x$축에 내린 수선의 발과 같으므로 $\\mathrm{L}(\\sqrt{30},\\ 0,\\ 0)$입니다.",
+      "show": [
+        "base",
+        "given",
+        "sphere",
+        "c1",
+        "c2",
+        "intersections",
+        "midpoint",
+        "centerL",
+        "theta",
+        "lengths"
+      ],
+      "focus": [
+        "centerL",
+        "theta"
+      ]
+    },
+    {
+      "text": "$\\angle\\mathrm{OPL}=\\theta$이므로 $\\overline{\\mathrm{OL}}=\\overline{\\mathrm{OP}}\\sin\\theta=10\\times\\dfrac{10}{a}$. 또 $\\overline{\\mathrm{OL}}=\\overline{\\mathrm{CM}}=\\sqrt{30}$이므로 $\\dfrac{100}{a}=\\sqrt{30}$, 따라서 $a=\\dfrac{10\\sqrt{30}}{3}$입니다.",
+      "show": [
+        "base",
+        "given",
+        "sphere",
+        "c1",
+        "c2",
+        "intersections",
+        "centerL",
+        "lengths",
+        "answer"
+      ],
+      "focus": [
+        "answer"
+      ]
+    }
+  ]
+}

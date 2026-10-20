@@ -1,0 +1,80 @@
+{
+  "topic": "자취",
+  "mode": "2d",
+  "answer": "17",
+  "scale": 14,
+  "camera": { "rotX": -1.5708, "rotY": 0, "zoom": 1.0 },
+  "objects": [
+    { "id": "axisX", "type": "segment", "from": [-9, 0, 0], "to": [9, 0, 0], "color": "muted", "tags": ["axes"] },
+    { "id": "axisY", "type": "segment", "from": [0, -2, 0], "to": [0, 9, 0], "color": "muted", "tags": ["axes"] },
+    { "id": "O", "type": "point", "at": [0, 0, 0], "label": "O", "color": "text", "tags": ["given"] },
+    { "id": "A", "type": "point", "at": [-2, 2, 0], "label": "A", "color": "B", "tags": ["given"] },
+    { "id": "B", "type": "point", "at": [2, 2, 0], "label": "B", "color": "B", "tags": ["given"] },
+    { "id": "circleA", "type": "circle", "center": [-2, 2, 0], "normal": [0, 0, 1], "r": 2, "color": "A", "tags": ["given"] },
+    { "id": "circleB", "type": "circle", "center": [2, 2, 0], "normal": [0, 0, 1], "r": 2, "color": "A", "tags": ["given"] },
+
+    { "id": "vecU", "type": "vector", "from": [0, 0, 0], "to": [1, 0, 0], "label": "u", "color": "C", "tags": ["uvec"] },
+
+    { "id": "circleO", "type": "circle", "center": [0, 0, 0], "normal": [0, 0, 1], "r": 2, "dash": [4, 3], "color": "muted", "tags": ["boundary"] },
+    { "id": "T", "type": "point", "at": [0, 2, 0], "label": "T", "color": "D", "tags": ["boundary"] },
+    { "id": "X1", "type": "point", "at": [-2, 0, 0], "label": "X1", "color": "D", "tags": ["boundary"] },
+    { "id": "X1prime", "type": "point", "at": [2, 0, 0], "label": "X1'", "color": "D", "tags": ["boundary"] },
+
+    { "id": "P1", "type": "point", "at": [-1, 3.732051, 0], "label": "P1", "color": "C", "tags": ["arcA1"] },
+    { "id": "segAP1", "type": "segment", "from": [-2, 2, 0], "to": [-1, 3.732051, 0], "dash": [3, 3], "color": "muted", "tags": ["arcA1"] },
+    { "id": "segP1T", "type": "segment", "from": [-1, 3.732051, 0], "to": [0, 2, 0], "width": 2, "color": "D", "tags": ["arcA1"] },
+    { "id": "Y1", "type": "point", "at": [-1, 5.732051, 0], "label": "Y1", "color": "E", "tags": ["arcA1"] },
+    { "id": "vecOY1", "type": "vector", "from": [0, 0, 0], "to": [-1, 5.732051, 0], "width": 1.6, "color": "E", "tags": ["arcA1"] },
+
+    { "id": "Q2", "type": "point", "at": [-3.732051, 1, 0], "label": "Q2", "color": "C", "tags": ["arcA2"] },
+    { "id": "segAQ2", "type": "segment", "from": [-2, 2, 0], "to": [-3.732051, 1, 0], "dash": [3, 3], "color": "muted", "tags": ["arcA2"] },
+    { "id": "segX1Q2", "type": "segment", "from": [-2, 0, 0], "to": [-3.732051, 1, 0], "width": 2, "color": "D", "tags": ["arcA2"] },
+    { "id": "Y2", "type": "point", "at": [-5.732051, 1, 0], "label": "Y2", "color": "E", "tags": ["arcA2"] },
+    { "id": "vecOY2", "type": "vector", "from": [0, 0, 0], "to": [-5.732051, 1, 0], "width": 1.6, "color": "E", "tags": ["arcA2"] },
+
+    { "id": "center2A", "type": "point", "at": [-4, 4, 0], "label": "2A", "color": "muted", "tags": ["range"] },
+    { "id": "center2B", "type": "point", "at": [4, 4, 0], "label": "2B", "color": "muted", "tags": ["range"] },
+    { "id": "circleYA", "type": "circle", "center": [-4, 4, 0], "normal": [0, 0, 1], "r": 3.464102, "dash": [4, 3], "color": "muted", "tags": ["range"] },
+    { "id": "circleYB", "type": "circle", "center": [4, 4, 0], "normal": [0, 0, 1], "r": 3.464102, "dash": [4, 3], "color": "muted", "tags": ["range"] },
+    { "id": "Y1prime", "type": "point", "at": [1, 5.732051, 0], "label": "Y1'", "color": "E", "tags": ["range"] },
+    { "id": "Y2prime", "type": "point", "at": [5.732051, 1, 0], "label": "Y2'", "color": "E", "tags": ["range"] },
+
+    { "id": "arcA", "type": "arc3d", "center": [-4, 4, 0], "r": 3.464102, "from": [-1.0, 5.732051, 0], "to": [-5.732051, 1.0, 0], "via": [-5.732051, 7.0, 0], "width": 3, "color": "A", "tags": ["answer"] },
+
+    { "id": "arcB", "type": "arc3d", "center": [4, 4, 0], "r": 3.464102, "from": [1.0, 5.732051, 0], "to": [5.732051, 1.0, 0], "via": [5.732051, 7.0, 0], "width": 3, "color": "A", "tags": ["answer"] },
+
+    { "id": "answerLabel", "type": "label", "at": [-3, 8.7, 0], "text": "\\dfrac{14}{3}\\sqrt3\\pi,\\quad p+q=17", "color": "text", "tags": ["answer"] }
+  ],
+  "steps": [
+    {
+      "text": "좌표평면에 두 점 $\\mathrm{A}(-2,\\ 2)$, $\\mathrm{B}(2,\\ 2)$가 있습니다. $(\\overline{\\mathrm{AX}}-2)(\\overline{\\mathrm{BX}}-2)=0$이므로 점 $\\mathrm{X}$는 중심 $\\mathrm{A}$, 반지름 $2$인 원 또는 중심 $\\mathrm{B}$, 반지름 $2$인 원 위에 있고, $\\overline{\\mathrm{AB}}=4=2+2$이므로 두 원은 점 $(0,\\ 2)$에서 외접합니다. 여기에 $\\overline{\\mathrm{OX}}\\ge2$까지 만족하는 도형 위에서 두 점 $\\mathrm{P}$, $\\mathrm{Q}$가 움직입니다.",
+      "show": ["axes", "given"],
+      "focus": ["given"]
+    },
+    {
+      "text": "$\\vec{u}=(1,\\ 0)$이므로 $\\overrightarrow{\\mathrm{OP}}\\cdot\\vec{u}$, $\\overrightarrow{\\mathrm{OQ}}\\cdot\\vec{u}$는 각각 $\\mathrm{P}$, $\\mathrm{Q}$의 $x$좌표입니다. 조건 (가) $\\left(\\overrightarrow{\\mathrm{OP}}\\cdot\\vec{u}\\right)\\left(\\overrightarrow{\\mathrm{OQ}}\\cdot\\vec{u}\\right)\\ge0$은 두 $x$좌표가 같은 부호(또는 $0$)라는 뜻입니다. $\\mathrm{A}$ 중심 원은 $x\\in[-4,\\ 0]$, $\\mathrm{B}$ 중심 원은 $x\\in[0,\\ 4]$이므로 $\\mathrm{P}$, $\\mathrm{Q}$는 같은 원 위에 있어야 합니다.",
+      "show": ["axes", "given", "uvec"],
+      "focus": ["uvec"]
+    },
+    {
+      "text": "원점과 $\\mathrm{A}(-2,\\ 2)$ 사이의 거리는 $2\\sqrt2$이므로 $\\mathrm{A}$ 중심 원의 일부는 $\\overline{\\mathrm{OX}}<2$입니다. 원 $x^2+y^2=4$와 $(x+2)^2+(y-2)^2=4$를 연립하면 $y=x+2$이고, 대입하면 $x=0$ 또는 $x=-2$이므로 교점은 $\\mathrm{T}(0,\\ 2)$와 $\\mathrm{X_1}(-2,\\ 0)$입니다. 따라서 $\\mathrm{A}$ 중심 원에서 유효한 부분은 원점에서 먼 쪽으로 도는 $270^{\\circ}$ 호이고, 대칭에 의해 $\\mathrm{B}$ 중심 원도 $\\mathrm{T}$와 $\\mathrm{X_1'}(2,\\ 0)$ 사이의 $270^{\\circ}$ 호가 유효합니다.",
+      "show": ["axes", "given", "uvec", "boundary"],
+      "focus": ["boundary"]
+    },
+    {
+      "text": "$\\mathrm{P}=\\mathrm{A}+2(\\cos\\alpha,\\ \\sin\\alpha)$, $\\mathrm{Q}=\\mathrm{A}+2(\\cos\\beta,\\ \\sin\\beta)$로 놓으면 $\\overline{\\mathrm{PQ}}^2=8-8\\cos(\\alpha-\\beta)=4$에서 $\\cos(\\alpha-\\beta)=\\dfrac12$, 즉 $|\\alpha-\\beta|=60^{\\circ}$입니다. $\\overrightarrow{\\mathrm{OY}}=\\overrightarrow{\\mathrm{OP}}+\\overrightarrow{\\mathrm{OQ}}$이므로 $\\mathrm{Y}=\\mathrm{P}+\\mathrm{Q}=2\\mathrm{A}+2\\sqrt3(\\cos\\gamma,\\ \\sin\\gamma)$, $\\gamma=\\dfrac{\\alpha+\\beta}{2}$입니다. 예를 들어 $\\alpha=60^{\\circ}$, $\\beta=0^{\\circ}$이면 $\\mathrm{P_1}(-1,\\ 2+\\sqrt3)$, $\\mathrm{Q}=\\mathrm{T}(0,\\ 2)$이고 $\\mathrm{Y_1}=\\mathrm{P_1}+\\mathrm{T}=(-1,\\ 4+\\sqrt3)$입니다. 즉 $\\mathrm{Y}$는 중심 $2\\mathrm{A}(-4,\\ 4)$, 반지름 $2\\sqrt3$인 원 위를 움직입니다.",
+      "show": ["axes", "given", "uvec", "boundary", "arcA1"],
+      "focus": ["arcA1"]
+    },
+    {
+      "text": "$\\alpha,\\ \\beta\\in[0^{\\circ},\\ 270^{\\circ}]$이고 $\\alpha-\\beta=60^{\\circ}$이므로 $\\beta\\in[0^{\\circ},\\ 210^{\\circ}]$, 즉 $\\gamma=\\beta+30^{\\circ}\\in[30^{\\circ},\\ 240^{\\circ}]$($210^{\\circ}$ 범위)입니다. 다른 끝은 $\\alpha=270^{\\circ}$, $\\beta=210^{\\circ}$일 때로 $\\mathrm{P}=\\mathrm{X_1}(-2,\\ 0)$, $\\mathrm{Q_2}=\\mathrm{A}+2(\\cos210^{\\circ},\\ \\sin210^{\\circ})=(-2-\\sqrt3,\\ 1)$, $\\mathrm{Y_2}=\\mathrm{X_1}+\\mathrm{Q_2}=(-4-\\sqrt3,\\ 1)$입니다. 대칭에 의해 $\\mathrm{B}$ 중심 원에서도 같은 크기의 $210^{\\circ}$ 호가 나오며 끝점은 $\\mathrm{Y_1'}(1,\\ 4+\\sqrt3)$, $\\mathrm{Y_2'}(4+\\sqrt3,\\ 1)$입니다.",
+      "show": ["axes", "given", "uvec", "boundary", "arcA1", "arcA2", "range"],
+      "focus": ["arcA2", "range"]
+    },
+    {
+      "text": "따라서 $\\mathrm{Y}$의 자취는 반지름 $2\\sqrt3$인 원의 $210^{\\circ}\\left(=\\dfrac{7}{6}\\pi\\right)$ 호 두 개이고, 호 하나의 길이는 $2\\sqrt3\\times\\dfrac{7}{6}\\pi=\\dfrac{7\\sqrt3}{3}\\pi$이므로 전체 길이는 $2\\times\\dfrac{7\\sqrt3}{3}\\pi=\\dfrac{14}{3}\\sqrt3\\pi$입니다. $p=3$, $q=14$이고 $p+q=17$입니다.",
+      "show": ["axes", "given", "uvec", "boundary", "arcA1", "arcA2", "range", "answer"],
+      "focus": ["answer"]
+    }
+  ]
+}

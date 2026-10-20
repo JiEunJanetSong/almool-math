@@ -1,0 +1,516 @@
+{
+  "topic": "자취",
+  "mode": "2d",
+  "answer": "30",
+  "scale": 23,
+  "camera": {
+    "rotX": -1.5708,
+    "rotY": 0,
+    "zoom": 1.05
+  },
+  "objects": [
+    {
+      "id": "axisX",
+      "type": "segment",
+      "from": [
+        -5,
+        0,
+        0
+      ],
+      "to": [
+        8.8,
+        0,
+        0
+      ],
+      "color": "muted",
+      "tags": [
+        "axes"
+      ]
+    },
+    {
+      "id": "axisY",
+      "type": "segment",
+      "from": [
+        0,
+        -1,
+        0
+      ],
+      "to": [
+        0,
+        6.7,
+        0
+      ],
+      "color": "muted",
+      "tags": [
+        "axes"
+      ]
+    },
+    {
+      "id": "ellipse",
+      "type": "ellipse",
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "rx": 4,
+      "ry": 3.464102,
+      "color": "A",
+      "width": 2.5,
+      "tags": [
+        "given",
+        "ellipse"
+      ]
+    },
+    {
+      "id": "majorAxis",
+      "type": "segment",
+      "from": [
+        -4,
+        0,
+        0
+      ],
+      "to": [
+        4,
+        0,
+        0
+      ],
+      "color": "muted",
+      "tags": [
+        "given",
+        "axis"
+      ]
+    },
+    {
+      "id": "minorAxis",
+      "type": "segment",
+      "from": [
+        0,
+        -3.464102,
+        0
+      ],
+      "to": [
+        0,
+        3.464102,
+        0
+      ],
+      "dash": [
+        4,
+        4
+      ],
+      "color": "muted",
+      "tags": [
+        "given",
+        "axis"
+      ]
+    },
+    {
+      "id": "F",
+      "type": "point",
+      "at": [
+        2,
+        0,
+        0
+      ],
+      "label": "F",
+      "color": "B",
+      "tags": [
+        "given",
+        "foci",
+        "smallTriangle"
+      ]
+    },
+    {
+      "id": "Fp",
+      "type": "point",
+      "at": [
+        -2,
+        0,
+        0
+      ],
+      "label": "F'",
+      "color": "B",
+      "tags": [
+        "given",
+        "foci",
+        "smallTriangle",
+        "bigTriangle"
+      ]
+    },
+    {
+      "id": "P",
+      "type": "point",
+      "at": [
+        2,
+        3,
+        0
+      ],
+      "label": "P",
+      "color": "C",
+      "tags": [
+        "given",
+        "tangent"
+      ]
+    },
+    {
+      "id": "segPF",
+      "type": "segment",
+      "from": [
+        2,
+        3,
+        0
+      ],
+      "to": [
+        2,
+        0,
+        0
+      ],
+      "dash": [
+        4,
+        3
+      ],
+      "color": "muted",
+      "tags": [
+        "given"
+      ]
+    },
+    {
+      "id": "lineTangent",
+      "type": "segment",
+      "from": [
+        -4.5,
+        6.25,
+        0
+      ],
+      "to": [
+        8.5,
+        -0.25,
+        0
+      ],
+      "color": "C",
+      "width": 2.5,
+      "tags": [
+        "tangent",
+        "bigTriangle"
+      ]
+    },
+    {
+      "id": "S",
+      "type": "point",
+      "at": [
+        8,
+        0,
+        0
+      ],
+      "label": "S",
+      "color": "C",
+      "tags": [
+        "tangent",
+        "bigTriangle",
+        "ratio"
+      ]
+    },
+    {
+      "id": "lineParallel",
+      "type": "segment",
+      "from": [
+        -3.2,
+        2.6,
+        0
+      ],
+      "to": [
+        4.4,
+        -1.2,
+        0
+      ],
+      "dash": [
+        5,
+        4
+      ],
+      "color": "D",
+      "tags": [
+        "parallel",
+        "smallTriangle"
+      ]
+    },
+    {
+      "id": "Q",
+      "type": "point",
+      "at": [
+        -2.854102,
+        2.427051,
+        0
+      ],
+      "label": "Q",
+      "color": "D",
+      "tags": [
+        "parallel",
+        "smallTriangle"
+      ]
+    },
+    {
+      "id": "segFQ",
+      "type": "segment",
+      "from": [
+        2,
+        0,
+        0
+      ],
+      "to": [
+        -2.854102,
+        2.427051,
+        0
+      ],
+      "color": "D",
+      "width": 2.5,
+      "tags": [
+        "smallTriangle"
+      ]
+    },
+    {
+      "id": "segFpQ",
+      "type": "segment",
+      "from": [
+        -2,
+        0,
+        0
+      ],
+      "to": [
+        -2.854102,
+        2.427051,
+        0
+      ],
+      "color": "D",
+      "width": 2.5,
+      "tags": [
+        "smallTriangle",
+        "bigTriangle"
+      ]
+    },
+    {
+      "id": "segFFp",
+      "type": "segment",
+      "from": [
+        2,
+        0,
+        0
+      ],
+      "to": [
+        -2,
+        0,
+        0
+      ],
+      "color": "D",
+      "width": 2.5,
+      "tags": [
+        "smallTriangle",
+        "ratio"
+      ]
+    },
+    {
+      "id": "R",
+      "type": "point",
+      "at": [
+        -4.135255,
+        6.067627,
+        0
+      ],
+      "label": "R",
+      "color": "E",
+      "tags": [
+        "bigTriangle",
+        "answer"
+      ]
+    },
+    {
+      "id": "segSR",
+      "type": "segment",
+      "from": [
+        8,
+        0,
+        0
+      ],
+      "to": [
+        -4.135255,
+        6.067627,
+        0
+      ],
+      "color": "E",
+      "width": 3,
+      "tags": [
+        "bigTriangle",
+        "answer"
+      ]
+    },
+    {
+      "id": "segSFp",
+      "type": "segment",
+      "from": [
+        8,
+        0,
+        0
+      ],
+      "to": [
+        -2,
+        0,
+        0
+      ],
+      "color": "E",
+      "width": 3,
+      "tags": [
+        "bigTriangle",
+        "ratio",
+        "answer"
+      ]
+    },
+    {
+      "id": "segRFp",
+      "type": "segment",
+      "from": [
+        -4.135255,
+        6.067627,
+        0
+      ],
+      "to": [
+        -2,
+        0,
+        0
+      ],
+      "color": "E",
+      "width": 3,
+      "tags": [
+        "bigTriangle",
+        "answer"
+      ]
+    },
+    {
+      "id": "labelTangent",
+      "type": "label",
+      "at": [
+        5.2,
+        1.9,
+        0
+      ],
+      "text": "l:\\ x+2y=8",
+      "color": "text",
+      "tags": [
+        "tangent"
+      ]
+    },
+    {
+      "id": "labelRatio",
+      "type": "label",
+      "at": [
+        2.1,
+        -0.55,
+        0
+      ],
+      "text": "\\overline{\\mathrm{FF'}}=4,\\ \\overline{\\mathrm{SF'}}=10",
+      "color": "text",
+      "tags": [
+        "ratio"
+      ]
+    },
+    {
+      "id": "labelPerimeterSmall",
+      "type": "label",
+      "at": [
+        -4.4,
+        2.95,
+        0
+      ],
+      "text": "\\overline{\\mathrm{FQ}}+\\overline{\\mathrm{F'Q}}=8",
+      "color": "text",
+      "tags": [
+        "smallTriangle"
+      ]
+    },
+    {
+      "id": "answerLabel",
+      "type": "label",
+      "at": [
+        1.1,
+        6.25,
+        0
+      ],
+      "text": "\\dfrac{5}{2}\\times12=30",
+      "color": "text",
+      "tags": [
+        "answer"
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "text": "타원 $\\dfrac{x^2}{16}+\\dfrac{y^2}{12}=1$에서 $a=4$, $b=2\\sqrt3$이므로 $c=\\sqrt{16-12}=2$입니다. 따라서 두 초점은 $\\mathrm{F}(2,\\ 0)$, $\\mathrm{F'}(-2,\\ 0)$이고, 점 $\\mathrm{P}(2,\\ 3)$은 타원 위의 점입니다.",
+      "show": [
+        "axes",
+        "given",
+        "foci"
+      ],
+      "focus": [
+        "ellipse",
+        "foci",
+        "given"
+      ]
+    },
+    {
+      "text": "점 $\\mathrm{P}(2,\\ 3)$에서의 접선은 $\\dfrac{2x}{16}+\\dfrac{3y}{12}=1$, 즉 $x+2y=8$입니다. 따라서 접선 $l$의 기울기는 $-\\dfrac12$이고, $x$절편은 $\\mathrm{S}(8,\\ 0)$입니다.",
+      "show": [
+        "axes",
+        "given",
+        "foci",
+        "tangent"
+      ],
+      "focus": [
+        "tangent"
+      ]
+    },
+    {
+      "text": "점 $\\mathrm{F}$를 지나고 $l$과 평행한 직선은 $y=1-\\dfrac{x}{2}$입니다. 이 직선과 타원의 제$2$사분면 교점을 $\\mathrm{Q}$라 하면 $\\mathrm{Q}\\left(\\dfrac{1-3\\sqrt5}{2},\\ \\dfrac{3+3\\sqrt5}{4}\\right)$입니다.",
+      "show": [
+        "axes",
+        "given",
+        "foci",
+        "tangent",
+        "parallel",
+        "smallTriangle"
+      ],
+      "focus": [
+        "parallel",
+        "smallTriangle"
+      ]
+    },
+    {
+      "text": "$\\overline{\\mathrm{SF'}}=10$, $\\overline{\\mathrm{FF'}}=4$이므로 두 삼각형 $\\mathrm{SRF'}$, $\\mathrm{FQF'}$의 닮음비는 $10:4=5:2$입니다. 여기서 $\\mathrm{SR}\\parallel\\mathrm{FQ}$이고, $\\mathrm{S},\\mathrm{F},\\mathrm{F'}$는 모두 $x$축 위에 있습니다.",
+      "show": [
+        "axes",
+        "given",
+        "foci",
+        "tangent",
+        "smallTriangle",
+        "bigTriangle",
+        "ratio"
+      ],
+      "focus": [
+        "bigTriangle",
+        "ratio"
+      ]
+    },
+    {
+      "text": "타원의 정의에 의해 $\\overline{\\mathrm{FQ}}+\\overline{\\mathrm{F'Q}}=8$이고 $\\overline{\\mathrm{FF'}}=4$이므로 삼각형 $\\mathrm{FQF'}$의 둘레는 $12$입니다. 따라서 삼각형 $\\mathrm{SRF'}$의 둘레는 $\\dfrac{5}{2}\\times12=30$입니다.",
+      "show": [
+        "axes",
+        "given",
+        "foci",
+        "smallTriangle",
+        "bigTriangle",
+        "ratio",
+        "answer"
+      ],
+      "focus": [
+        "answer"
+      ]
+    }
+  ]
+}

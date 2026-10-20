@@ -1,0 +1,86 @@
+{
+  "topic": "정사영",
+  "mode": "3d",
+  "answer": "24",
+  "scale": 18,
+  "camera": { "rotX": 0.38, "rotY": -0.55, "zoom": 1.04 },
+  "objects": [
+    { "id": "basePlane", "type": "plane", "corners": [[-4.5, -6, 0], [7, -6, 0], [7, 6, 0], [-4.5, 6, 0]], "alpha": 0.08, "color": "muted", "label": "평면 BCD", "tags": ["base", "given"] },
+    { "id": "triBCD", "type": "plane", "corners": [[6, 0, 0], [-3, 5.196152, 0], [-3, -5.196152, 0]], "alpha": 0.13, "color": "muted", "tags": ["given", "tetra"] },
+    { "id": "O", "type": "point", "at": [0, 0, 0], "label": "O", "color": "E", "tags": ["given", "center", "radius"] },
+    { "id": "A", "type": "point", "at": [0, 0, 8.485281], "label": "A", "color": "B", "tags": ["given", "tetra"] },
+    { "id": "B", "type": "point", "at": [6, 0, 0], "label": "B", "color": "B", "tags": ["given", "tetra"] },
+    { "id": "C", "type": "point", "at": [-3, 5.196152, 0], "label": "C", "color": "B", "tags": ["given", "tetra"] },
+    { "id": "D", "type": "point", "at": [-3, -5.196152, 0], "label": "D", "color": "B", "tags": ["given", "tetra"] },
+    { "id": "sphereS", "type": "sphere", "center": [0, 0, 0], "r": 6, "color": "A", "tags": ["given", "sphere"] },
+    { "id": "baseCircle", "type": "circle", "center": [0, 0, 0], "normal": [0, 0, 1], "r": 6, "dash": [5, 4], "color": "A", "tags": ["sphere", "base", "radius"] },
+    { "id": "segAB", "type": "segment", "from": [0, 0, 8.485281], "to": [6, 0, 0], "width": 2.5, "color": "B", "tags": ["given", "tetra", "intersection"] },
+    { "id": "segAC", "type": "segment", "from": [0, 0, 8.485281], "to": [-3, 5.196152, 0], "width": 2.5, "color": "B", "tags": ["given", "tetra", "intersection"] },
+    { "id": "segAD", "type": "segment", "from": [0, 0, 8.485281], "to": [-3, -5.196152, 0], "width": 2.5, "color": "B", "tags": ["given", "tetra", "intersection"] },
+    { "id": "segBC", "type": "segment", "from": [6, 0, 0], "to": [-3, 5.196152, 0], "width": 2.5, "color": "B", "tags": ["given", "tetra"] },
+    { "id": "segCD", "type": "segment", "from": [-3, 5.196152, 0], "to": [-3, -5.196152, 0], "width": 2.5, "color": "B", "tags": ["given", "tetra"] },
+    { "id": "segDB", "type": "segment", "from": [-3, -5.196152, 0], "to": [6, 0, 0], "width": 2.5, "color": "B", "tags": ["given", "tetra"] },
+    { "id": "segOA", "type": "segment", "from": [0, 0, 0], "to": [0, 0, 8.485281], "dash": [4, 4], "color": "E", "tags": ["setup", "height"] },
+    { "id": "segOB", "type": "segment", "from": [0, 0, 0], "to": [6, 0, 0], "width": 2.5, "color": "E", "tags": ["setup", "radius"] },
+    { "id": "segOC", "type": "segment", "from": [0, 0, 0], "to": [-3, 5.196152, 0], "dash": [4, 4], "color": "E", "tags": ["setup", "radius"] },
+    { "id": "segOD", "type": "segment", "from": [0, 0, 0], "to": [-3, -5.196152, 0], "dash": [4, 4], "color": "E", "tags": ["setup", "radius"] },
+
+    { "id": "P", "type": "point", "at": [2, 0, 5.656854], "label": "P", "color": "C", "tags": ["intersection", "pqr", "alpha", "projectionTriangle"] },
+    { "id": "Q", "type": "point", "at": [-1, 1.732051, 5.656854], "label": "Q", "color": "C", "tags": ["intersection", "pqr"] },
+    { "id": "R", "type": "point", "at": [-1, -1.732051, 5.656854], "label": "R", "color": "C", "tags": ["intersection", "pqr"] },
+    { "id": "segAP", "type": "segment", "from": [0, 0, 8.485281], "to": [2, 0, 5.656854], "width": 3, "color": "C", "tags": ["intersection"] },
+    { "id": "segAQ", "type": "segment", "from": [0, 0, 8.485281], "to": [-1, 1.732051, 5.656854], "width": 3, "color": "C", "tags": ["intersection"] },
+    { "id": "segAR", "type": "segment", "from": [0, 0, 8.485281], "to": [-1, -1.732051, 5.656854], "width": 3, "color": "C", "tags": ["intersection"] },
+    { "id": "triPQR", "type": "plane", "corners": [[2, 0, 5.656854], [-1, 1.732051, 5.656854], [-1, -1.732051, 5.656854]], "alpha": 0.24, "color": "C", "tags": ["pqr", "areaPQR"] },
+    { "id": "segPQ", "type": "segment", "from": [2, 0, 5.656854], "to": [-1, 1.732051, 5.656854], "width": 3, "color": "C", "tags": ["pqr", "areaPQR", "sidePQR"] },
+    { "id": "segQR", "type": "segment", "from": [-1, 1.732051, 5.656854], "to": [-1, -1.732051, 5.656854], "width": 3, "color": "C", "tags": ["pqr", "areaPQR", "sidePQR"] },
+    { "id": "segRP", "type": "segment", "from": [-1, -1.732051, 5.656854], "to": [2, 0, 5.656854], "width": 3, "color": "C", "tags": ["pqr", "areaPQR", "sidePQR"] },
+    { "id": "labelPQR", "type": "label", "at": [0, 0, 6.25], "text": "[PQR]=3\\sqrt3", "color": "text", "tags": ["areaPQR"] },
+    { "id": "labelSide", "type": "label", "at": [0.45, 1.1, 5.95], "text": "PQ=2\\sqrt3", "color": "text", "tags": ["sidePQR"] },
+
+    { "id": "alphaPlane", "type": "plane", "corners": [[-3.656854, 4.6, 7.656854], [7.656854, 4.6, 3.656854], [7.656854, -4.6, 3.656854], [-3.656854, -4.6, 7.656854]], "alpha": 0.18, "color": "D", "label": "α", "tags": ["alpha", "projection"] },
+    { "id": "segOP", "type": "segment", "from": [0, 0, 0], "to": [2, 0, 5.656854], "width": 3, "color": "E", "tags": ["alpha", "normal", "radius"] },
+    { "id": "raAlpha", "type": "rightangle", "vertex": [2, 0, 5.656854], "a": [0, 0, 0], "b": [-3.656854, 0, 7.656854], "color": "D", "tags": ["alpha", "normal"] },
+    { "id": "Qalpha", "type": "point", "at": [-0.666667, 1.732051, 6.599663], "label": "Q'", "color": "D", "tags": ["projection", "projectedPQR", "projectionTriangle"] },
+    { "id": "Ralpha", "type": "point", "at": [-0.666667, -1.732051, 6.599663], "label": "R'", "color": "D", "tags": ["projection", "projectedPQR", "projectionTriangle"] },
+    { "id": "segQQalpha", "type": "segment", "from": [-1, 1.732051, 5.656854], "to": [-0.666667, 1.732051, 6.599663], "dash": [4, 4], "color": "D", "tags": ["projection", "projectedPQR"] },
+    { "id": "segRRalpha", "type": "segment", "from": [-1, -1.732051, 5.656854], "to": [-0.666667, -1.732051, 6.599663], "dash": [4, 4], "color": "D", "tags": ["projection", "projectedPQR"] },
+    { "id": "triProjected", "type": "plane", "corners": [[2, 0, 5.656854], [-0.666667, 1.732051, 6.599663], [-0.666667, -1.732051, 6.599663]], "alpha": 0.28, "color": "D", "tags": ["projectedPQR", "answer"] },
+    { "id": "segPQalpha", "type": "segment", "from": [2, 0, 5.656854], "to": [-0.666667, 1.732051, 6.599663], "width": 3, "color": "D", "tags": ["projectedPQR", "answer"] },
+    { "id": "segQalphaRalpha", "type": "segment", "from": [-0.666667, 1.732051, 6.599663], "to": [-0.666667, -1.732051, 6.599663], "width": 3, "color": "D", "tags": ["projectedPQR", "answer"] },
+    { "id": "segRalphaP", "type": "segment", "from": [-0.666667, -1.732051, 6.599663], "to": [2, 0, 5.656854], "width": 3, "color": "D", "tags": ["projectedPQR", "answer"] },
+    { "id": "labelCos", "type": "label", "at": [2.55, -3.8, 5.2], "text": "\\cos\\theta=\\dfrac{2\\sqrt2}{3}", "color": "text", "tags": ["normal", "projection"] },
+    { "id": "labelAnswer", "type": "label", "at": [0.25, -3.35, 7.25], "text": "k=2\\sqrt6,\\quad k^2=24", "color": "text", "tags": ["answer"] }
+  ],
+  "steps": [
+    {
+      "text": "정삼각형 $\\mathrm{BCD}$의 외심을 $\\mathrm{O}$라 하면 구 $S$의 반지름이 $6$이므로 정사면체의 한 변은 $6\\sqrt3$입니다. $\\mathrm{O}$를 원점, $\\mathrm{BCD}$를 $xy$평면에 두어 $\\mathrm{B}(6,0,0)$, $\\mathrm{C}(-3,3\\sqrt3,0)$, $\\mathrm{D}(-3,-3\\sqrt3,0)$, $\\mathrm{A}(0,0,6\\sqrt2)$로 잡습니다.",
+      "show": ["base", "given", "tetra", "sphere", "setup", "radius", "height"],
+      "focus": ["tetra", "radius", "height"]
+    },
+    {
+      "text": "$\\mathrm{P}=(1-t)\\mathrm{A}+t\\mathrm{B}$라 두면 $|\\mathrm{OP}|^2=36t^2+72(1-t)^2=36$이고, $3t^2-4t+1=0$입니다. $t=1$은 점 $\\mathrm{B}$이므로 $t=\\dfrac13$이고, 대칭성에 의해 $\\mathrm{P},\\mathrm{Q},\\mathrm{R}$은 각각 $\\mathrm{A}$에서 각 꼭짓점 쪽으로 $\\dfrac13$ 지점입니다.",
+      "show": ["base", "given", "tetra", "sphere", "intersection", "pqr"],
+      "focus": ["intersection", "pqr"]
+    },
+    {
+      "text": "$\\mathrm{P}(2,0,4\\sqrt2)$, $\\mathrm{Q}(-1,\\sqrt3,4\\sqrt2)$, $\\mathrm{R}(-1,-\\sqrt3,4\\sqrt2)$입니다. 세 점의 $z$좌표가 같고 $\\overline{\\mathrm{PQ}}=\\overline{\\mathrm{QR}}=\\overline{\\mathrm{RP}}=2\\sqrt3$이므로 $[\\mathrm{PQR}]=3\\sqrt3$입니다.",
+      "show": ["base", "given", "sphere", "pqr", "areaPQR", "sidePQR"],
+      "focus": ["areaPQR", "sidePQR"],
+      "camera": { "rotX": 0.28, "rotY": -0.4, "zoom": 1.18 }
+    },
+    {
+      "text": "점 $\\mathrm{P}$에서의 접평면 $\\alpha$의 법선벡터는 반지름 $\\overrightarrow{\\mathrm{OP}}=(2,0,4\\sqrt2)$입니다. 삼각형 $\\mathrm{PQR}$의 법선벡터는 $(0,0,1)$이므로 두 평면 사이의 각 $\\theta$에 대하여 $\\cos\\theta=\\dfrac{4\\sqrt2}{6}=\\dfrac{2\\sqrt2}{3}$입니다.",
+      "show": ["base", "given", "sphere", "pqr", "areaPQR", "alpha", "normal", "projection"],
+      "focus": ["alpha", "normal", "projection"]
+    },
+    {
+      "text": "따라서 삼각형 $\\mathrm{PQR}$의 평면 $\\alpha$ 위로의 정사영 넓이는 $k=3\\sqrt3\\times\\dfrac{2\\sqrt2}{3}=2\\sqrt6$입니다. 그러므로 $k^2=24$입니다.",
+      "show": ["given", "sphere", "pqr", "areaPQR", "alpha", "projection", "projectedPQR", "projectionTriangle", "answer"],
+      "focus": ["projectedPQR", "answer"]
+    }
+  ],
+  "theorems": [
+    { "key": "orthogonal-projection-proof", "label": "정사영 넓이 S'=S cos θ" }
+  ]
+}

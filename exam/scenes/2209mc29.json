@@ -1,0 +1,75 @@
+{
+  "topic": "정사영",
+  "mode": "3d",
+  "answer": "127",
+  "scale": 12,
+  "camera": { "rotX": 0.36, "rotY": -0.55, "zoom": 1.1 },
+  "objects": [
+    { "id": "zxPlane", "type": "plane", "corners": [[-3, 0, -17], [7, 0, -17], [7, 0, 4], [-3, 0, 4]], "alpha": 0.06, "color": "muted", "label": "zx평면", "tags": ["base"] },
+    { "id": "S1", "type": "sphere", "center": [0, 0, 2], "r": 2, "color": "A", "tags": ["given", "s1"] },
+    { "id": "S2", "type": "sphere", "center": [0, 0, -7], "r": 7, "color": "B", "tags": ["given", "s2"] },
+    { "id": "O1", "type": "point", "at": [0, 0, 2], "label": "O_1", "color": "A", "tags": ["given", "s1"] },
+    { "id": "O2", "type": "point", "at": [0, 0, -7], "label": "O_2", "color": "B", "tags": ["given", "s2", "circleC", "angle"] },
+    { "id": "A", "type": "point", "at": [2.236068, 0, 0], "label": "A", "color": "C", "tags": ["given", "alpha"] },
+
+    { "id": "alphaPlane", "type": "plane", "corners": [[2.203646, -6, 0.289989], [3.759202, -6, -13.623323], [3.759202, 6, -13.623323], [2.203646, 6, 0.289989]], "alpha": 0.14, "color": "C", "label": "α", "tags": ["alpha", "circleC"] },
+    { "id": "T", "type": "point", "at": [1.987616, 0, 2.222222], "label": "T", "color": "D", "tags": ["alpha", "tangentS1"] },
+    { "id": "segAT", "type": "segment", "from": [2.236068, 0, 0], "to": [1.987616, 0, 2.222222], "width": 2.5, "color": "C", "tags": ["alpha", "tangentS1"] },
+    { "id": "segO1T", "type": "segment", "from": [0, 0, 2], "to": [1.987616, 0, 2.222222], "dash": [4, 4], "color": "D", "tags": ["tangentS1"] },
+    { "id": "raT", "type": "rightangle", "vertex": [1.987616, 0, 2.222222], "a": [2.236068, 0, 0], "b": [0, 0, 2], "color": "D", "tags": ["tangentS1"] },
+    { "id": "labelAlpha", "type": "label", "at": [4.15, -4.4, -5.8], "text": "\\alpha: x+\\dfrac{z}{4\\sqrt5}=\\sqrt5", "color": "text", "tags": ["alpha"] },
+
+    { "id": "H", "type": "point", "at": [2.981424, 0, -6.666667], "label": "H", "color": "E", "tags": ["circleC", "angle"] },
+    { "id": "circleC", "type": "circle", "center": [2.981424, 0, -6.666667], "normal": [8.944272, 0, 1], "r": 6.324555, "color": "E", "tags": ["circleC"] },
+    { "id": "segO2H", "type": "segment", "from": [0, 0, -7], "to": [2.981424, 0, -6.666667], "dash": [4, 4], "width": 2.5, "color": "D", "tags": ["circleC", "angle"] },
+    { "id": "labelOH", "type": "label", "at": [1.45, -0.45, -6.35], "text": "O_2H=3", "color": "text", "tags": ["circleC", "angle"] },
+    { "id": "labelC", "type": "label", "at": [4.25, 4.6, -10.2], "text": "C: r=2\\sqrt{10}", "color": "text", "tags": ["circleC"] },
+
+    { "id": "B", "type": "point", "at": [3.684152, 0, -12.95206], "label": "B", "color": "A", "tags": ["lowest", "beta", "angle"] },
+    { "id": "segHB", "type": "segment", "from": [2.981424, 0, -6.666667], "to": [3.684152, 0, -12.95206], "width": 3, "color": "A", "tags": ["lowest", "angle"] },
+    { "id": "segO2B", "type": "segment", "from": [0, 0, -7], "to": [3.684152, 0, -12.95206], "width": 2.5, "color": "B", "tags": ["beta", "angle"] },
+    { "id": "raH", "type": "rightangle", "vertex": [2.981424, 0, -6.666667], "a": [0, 0, -7], "b": [3.684152, 0, -12.95206], "color": "D", "tags": ["angle"] },
+    { "id": "labelHB", "type": "label", "at": [3.65, -0.45, -9.9], "text": "HB=2\\sqrt{10}", "color": "text", "tags": ["lowest", "angle"] },
+    { "id": "labelOB", "type": "label", "at": [1.45, 0.5, -10.35], "text": "O_2B=7", "color": "text", "tags": ["beta", "angle"] },
+
+    { "id": "betaPlane", "type": "plane", "corners": [[9.636213, -6, -9.267908], [-2.267908, -6, -16.636213], [-2.267908, 6, -16.636213], [9.636213, 6, -9.267908]], "alpha": 0.14, "color": "D", "label": "β", "tags": ["beta", "projectionArea"] },
+    { "id": "normalAlpha", "type": "vector", "from": [0, 0, -7], "to": [2.981424, 0, -6.666667], "label": "n_\\alpha", "width": 3, "color": "C", "tags": ["angle"] },
+    { "id": "normalBeta", "type": "vector", "from": [0, 0, -7], "to": [3.684152, 0, -12.95206], "label": "n_\\beta", "width": 3, "color": "D", "tags": ["angle"] },
+    { "id": "answerLabel", "type": "label", "at": [-2.2, 4.8, -3.6], "text": "40\\pi\\times\\dfrac{3}{7}=\\dfrac{120}{7}\\pi,\\quad p+q=127", "color": "text", "tags": ["projectionArea", "answer"] }
+  ],
+  "steps": [
+    {
+      "text": "두 구 $S_1:x^2+y^2+(z-2)^2=4$, $S_2:x^2+y^2+(z+7)^2=49$와 점 $\\mathrm{A}(\\sqrt5,\\ 0,\\ 0)$가 주어져 있습니다. 평면 $\\alpha$는 $\\mathrm{A}$를 지나고 $zx$평면에 수직입니다.",
+      "show": ["base", "given"],
+      "focus": ["given"]
+    },
+    {
+      "text": "$\\alpha$의 방정식을 $x+mz=\\sqrt5$로 두면 중심 $\\mathrm{O_1}(0,\\ 0,\\ 2)$에서 $\\alpha$까지의 거리가 $2$이므로 $m=\\dfrac{1}{4\\sqrt5}$입니다. 따라서 접점은 $\\mathrm{T}\\left(\\dfrac{8\\sqrt5}{9},\\ 0,\\ \\dfrac{20}{9}\\right)$입니다.",
+      "show": ["base", "given", "alpha", "tangentS1"],
+      "focus": ["alpha", "tangentS1"]
+    },
+    {
+      "text": "$S_2$의 중심 $\\mathrm{O_2}(0,\\ 0,\\ -7)$에서 $\\alpha$까지의 거리는 $3$입니다. 수선의 발은 $\\mathrm{H}\\left(\\dfrac{4\\sqrt5}{3},\\ 0,\\ -\\dfrac{20}{3}\\right)$이고, 원 $C=S_2\\cap\\alpha$의 반지름은 $\\sqrt{7^2-3^2}=2\\sqrt{10}$입니다.",
+      "show": ["base", "given", "alpha", "circleC"],
+      "focus": ["circleC"]
+    },
+    {
+      "text": "원 $C$에서 $z$좌표가 가장 작은 점은 $\\mathrm{B}=\\mathrm{H}+2\\sqrt{10}\\left(\\dfrac19,\\ 0,\\ -\\dfrac{4\\sqrt5}{9}\\right)$입니다. 평면 $\\beta$는 구 $S_2$가 $\\mathrm{B}$에서 접하는 평면이므로 법선 방향은 $\\overrightarrow{\\mathrm{O_2B}}$입니다.",
+      "show": ["base", "given", "alpha", "circleC", "lowest", "beta"],
+      "focus": ["lowest", "beta"]
+    },
+    {
+      "text": "$\\overline{\\mathrm{O_2H}}=3$, $\\overline{\\mathrm{HB}}=2\\sqrt{10}$, $\\overline{\\mathrm{O_2B}}=7$이고 $\\mathrm{O_2H}\\perp\\mathrm{HB}$입니다. 두 평면 $\\alpha$, $\\beta$가 이루는 각의 코사인은 두 법선의 코사인과 같으므로 $\\cos\\theta=\\dfrac{3}{7}$입니다.",
+      "show": ["base", "circleC", "lowest", "beta", "angle"],
+      "focus": ["angle"]
+    },
+    {
+      "text": "원 $C$의 넓이는 $(2\\sqrt{10})^2\\pi=40\\pi$입니다. 따라서 원 $C$의 평면 $\\beta$ 위로의 정사영의 넓이는 $40\\pi\\times\\dfrac37=\\dfrac{120}{7}\\pi$이므로 $p=7$, $q=120$, $p+q=127$입니다.",
+      "show": ["base", "circleC", "lowest", "beta", "angle", "projectionArea", "answer"],
+      "focus": ["projectionArea", "answer"]
+    }
+  ],
+  "theorems": [
+    { "key": "orthogonal-projection-proof", "label": "정사영 넓이 S'=S cos θ" }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "topic": "자취",
+  "mode": "2d",
+  "answer": "13",
+  "scale": 42,
+  "camera": { "rotX": -1.5708, "rotY": 0, "zoom": 1.05 },
+  "objects": [
+    { "id": "axisX", "type": "segment", "from": [-2.2, 0, 0], "to": [3.1, 0, 0], "color": "muted", "tags": ["axes"] },
+    { "id": "axisY", "type": "segment", "from": [0, -2.2, 0], "to": [0, 3.6, 0], "color": "muted", "tags": ["axes"] },
+    { "id": "O", "type": "point", "at": [0, 0, 0], "label": "O", "color": "text", "tags": ["given"] },
+    { "id": "lineP", "type": "segment", "from": [-1.4, 2.8, 0], "to": [1.4, -2.8, 0], "width": 3, "color": "D", "tags": ["given", "lineP", "translations"] },
+    { "id": "ellipseQ", "type": "ellipse", "center": [0, 0, 0], "rx": 1.224745, "ry": 1.732051, "width": 3, "color": "A", "tags": ["given", "ellipse"] },
+    { "id": "P0", "type": "point", "at": [0.4, -0.8, 0], "label": "P", "color": "D", "tags": ["translations"] },
+    { "id": "Q0", "type": "point", "at": [1, 1, 0], "label": "Q", "color": "C", "tags": ["translations", "tangent"] },
+    { "id": "X0", "type": "point", "at": [1.4, 0.2, 0], "label": "X=P+Q", "color": "E", "tags": ["translations"] },
+    { "id": "vecOP", "type": "vector", "from": [0, 0, 0], "to": [0.4, -0.8, 0], "label": "OP", "color": "D", "tags": ["translations"] },
+    { "id": "vecPQ", "type": "vector", "from": [0.4, -0.8, 0], "to": [1.4, 0.2, 0], "label": "OQ", "color": "C", "tags": ["translations"] },
+    { "id": "ellipseMoved", "type": "ellipse", "center": [0.4, -0.8, 0], "rx": 1.224745, "ry": 1.732051, "dash": [4, 3], "width": 2.5, "color": "C", "tags": ["translations"] },
+    { "id": "upperTangent", "type": "segment", "from": [-0.3, 3.6, 0], "to": [2.2, -1.4, 0], "width": 3, "color": "B", "tags": ["tangent", "region", "answer"] },
+    { "id": "lowerTangent", "type": "segment", "from": [-2.2, 1.4, 0], "to": [0.3, -3.6, 0], "dash": [5, 4], "width": 2.5, "color": "muted", "tags": ["tangent", "strip"] },
+    { "id": "stripShade", "type": "plane", "corners": [[-0.3, 3.6, 0], [2.2, -1.4, 0], [0.3, -3.6, 0], [-2.2, 1.4, 0]], "alpha": 0.08, "color": "B", "tags": ["strip"] },
+    { "id": "T", "type": "point", "at": [1, 1, 0], "label": "P'", "color": "E", "tags": ["tangent"] },
+    { "id": "triRegion", "type": "plane", "corners": [[0, 0, 0], [1.5, 0, 0], [0, 3, 0]], "alpha": 0.20, "color": "A", "tags": ["region", "answer"] },
+    { "id": "segXint", "type": "segment", "from": [0, 0, 0], "to": [1.5, 0, 0], "width": 3, "color": "A", "tags": ["region", "answer"] },
+    { "id": "segYint", "type": "segment", "from": [0, 0, 0], "to": [0, 3, 0], "width": 3, "color": "A", "tags": ["region", "answer"] },
+    { "id": "labelLine", "type": "label", "at": [-1.75, 3.05, 0], "text": "2x+y=0", "color": "text", "tags": ["lineP"] },
+    { "id": "labelEllipse", "type": "label", "at": [-2.05, -1.65, 0], "text": "2x^2+y^2=3", "color": "text", "tags": ["ellipse"] },
+    { "id": "labelTangent", "type": "label", "at": [0.85, 1.8, 0], "text": "l:y=-2x+3", "color": "text", "tags": ["tangent"] },
+    { "id": "labelArea", "type": "label", "at": [0.45, 0.75, 0], "text": "\\dfrac12\\cdot\\dfrac32\\cdot3=\\dfrac94", "color": "text", "tags": ["answer"] },
+    { "id": "answerLabel", "type": "label", "at": [1.25, 3.25, 0], "text": "p+q=4+9=13", "color": "text", "tags": ["answer"] }
+  ],
+  "steps": [
+    {
+      "text": "점 $\\mathrm{P}$는 직선 $2x+y=0$, 즉 $y=-2x$ 위를 움직이고 점 $\\mathrm{Q}$는 원점을 중심으로 하는 타원 $2x^2+y^2=3$ 위를 움직입니다.",
+      "show": ["axes", "given", "lineP", "ellipse"],
+      "focus": ["lineP", "ellipse"]
+    },
+    {
+      "text": "$\\overrightarrow{\\mathrm{OX}}=\\overrightarrow{\\mathrm{OP}}+\\overrightarrow{\\mathrm{OQ}}$이므로, 점 $\\mathrm{X}$는 직선 $y=-2x$ 위의 각 점을 중심으로 타원을 평행이동한 도형 위를 움직입니다.",
+      "show": ["axes", "given", "lineP", "ellipse", "translations"],
+      "focus": ["translations"]
+    },
+    {
+      "text": "이 평행이동들의 외곽은 타원에 접하고 직선 $y=-2x$와 평행한 접선으로 정해집니다. 기울기가 $-2$인 접선 $y=-2x+b$를 타원에 대입하면 접할 때 $b=\\pm3$입니다.",
+      "show": ["axes", "lineP", "ellipse", "translations", "tangent", "strip"],
+      "focus": ["tangent", "strip"]
+    },
+    {
+      "text": "$x\\ge0$, $y\\ge0$인 영역을 만들 위쪽 접선은 $y=-2x+3$입니다. 접점은 $\\mathrm{P'}(1,\\ 1)$이고, 이 접선과 두 좌표축이 구하는 영역의 경계를 이룹니다.",
+      "show": ["axes", "ellipse", "tangent", "strip", "region"],
+      "focus": ["tangent", "region"]
+    },
+    {
+      "text": "직선 $y=-2x+3$의 $x$절편은 $\\dfrac32$, $y$절편은 $3$입니다. 따라서 영역의 넓이는 $\\dfrac12\\times\\dfrac32\\times3=\\dfrac94$입니다.",
+      "show": ["axes", "tangent", "region", "answer"],
+      "focus": ["answer"]
+    },
+    {
+      "text": "$\\dfrac{q}{p}=\\dfrac94$이므로 $p=4$, $q=9$입니다. 따라서 $p+q=13$입니다.",
+      "show": ["axes", "tangent", "region", "answer"],
+      "focus": ["answer"]
+    }
+  ]
+}

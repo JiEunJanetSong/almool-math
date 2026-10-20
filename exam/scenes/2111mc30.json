@@ -1,0 +1,81 @@
+{
+  "topic": "정사영",
+  "mode": "3d",
+  "answer": "23",
+  "scale": 22,
+  "camera": { "rotX": 0.36, "rotY": -0.55, "zoom": 1.08 },
+  "objects": [
+    { "id": "xy", "type": "plane", "corners": [[-4, -2, 0], [9, -2, 0], [9, 9, 0], [-4, 9, 0]], "alpha": 0.08, "color": "muted", "label": "xy평면", "tags": ["base"] },
+    { "id": "OPCplane", "type": "plane", "corners": [[-1.333333, -1.490712, 0], [5.333333, 5.962848, 0], [5.333333, 5.962848, 8], [-1.333333, -1.490712, 8]], "alpha": 0.10, "color": "D", "label": "평면 OPC", "tags": ["opc", "given"] },
+    { "id": "O", "type": "point", "at": [0, 0, 0], "label": "O", "color": "B", "tags": ["given", "projection"] },
+    { "id": "P", "type": "point", "at": [0, 0, 1], "label": "P", "color": "B", "tags": ["given", "pqr"] },
+    { "id": "C", "type": "point", "at": [2, 2.236068, 5], "label": "C", "color": "B", "tags": ["given"] },
+    { "id": "Cp", "type": "point", "at": [2, 2.236068, 0], "label": "C'", "color": "E", "tags": ["projection", "maxArea"] },
+    { "id": "sphereS", "type": "sphere", "center": [2, 2.236068, 5], "r": 5, "color": "A", "tags": ["given", "sphere"] },
+    { "id": "segOP", "type": "segment", "from": [0, 0, 0], "to": [0, 0, 1], "width": 2.5, "color": "B", "tags": ["given"] },
+    { "id": "segOCp", "type": "segment", "from": [0, 0, 0], "to": [2, 2.236068, 0], "width": 2.5, "color": "E", "tags": ["projection", "maxArea"] },
+    { "id": "segPC", "type": "segment", "from": [0, 0, 1], "to": [2, 2.236068, 5], "width": 2.5, "color": "B", "tags": ["given", "pqrLengths"] },
+    { "id": "segCCp", "type": "segment", "from": [2, 2.236068, 5], "to": [2, 2.236068, 0], "dash": [4, 4], "color": "E", "tags": ["projection"] },
+    { "id": "circleOPC", "type": "circle", "center": [2, 2.236068, 5], "normal": [2.236068, -2, 0], "r": 5, "color": "C", "tags": ["circleOPC", "given"] },
+    { "id": "shadowSphere", "type": "circle", "center": [2, 2.236068, 0], "normal": [0, 0, 1], "r": 5, "dash": [5, 4], "color": "A", "tags": ["sphereShadow", "projection", "maxArea"] },
+    { "id": "q1Track", "type": "segment", "from": [-1.333333, -1.490712, 0], "to": [5.333333, 5.962848, 0], "width": 3, "color": "C", "tags": ["qTrack", "projection", "maxArea"] },
+    { "id": "Q1", "type": "point", "at": [5.333333, 5.962848, 0], "label": "Q_1", "color": "C", "tags": ["maxArea", "projection", "triangleShadow"] },
+    { "id": "Q", "type": "point", "at": [5.333333, 5.962848, 5], "label": "Q", "color": "C", "tags": ["maxPoints", "pqr", "pqrLengths"] },
+    { "id": "R1", "type": "point", "at": [-1.72678, 5.569401, 0], "label": "R_1", "color": "A", "tags": ["maxArea", "projection", "triangleShadow"] },
+    { "id": "R", "type": "point", "at": [-1.72678, 5.569401, 5], "label": "R", "color": "A", "tags": ["maxPoints", "pqr", "pqrLengths"] },
+    { "id": "segQ1R1", "type": "segment", "from": [5.333333, 5.962848, 0], "to": [-1.72678, 5.569401, 0], "width": 3, "color": "A", "tags": ["maxArea", "triangleShadow"] },
+    { "id": "segOQ1", "type": "segment", "from": [0, 0, 0], "to": [5.333333, 5.962848, 0], "width": 3, "color": "C", "tags": ["maxArea", "triangleShadow"] },
+    { "id": "segOR1", "type": "segment", "from": [0, 0, 0], "to": [-1.72678, 5.569401, 0], "width": 3, "color": "A", "tags": ["triangleShadow"] },
+    { "id": "triOQ1R1", "type": "plane", "corners": [[0, 0, 0], [5.333333, 5.962848, 0], [-1.72678, 5.569401, 0]], "alpha": 0.20, "color": "A", "tags": ["triangleShadow", "areaShadow"] },
+    { "id": "segQQ1", "type": "segment", "from": [5.333333, 5.962848, 5], "to": [5.333333, 5.962848, 0], "dash": [4, 4], "color": "C", "tags": ["maxPoints", "projection"] },
+    { "id": "segRR1", "type": "segment", "from": [-1.72678, 5.569401, 5], "to": [-1.72678, 5.569401, 0], "dash": [4, 4], "color": "A", "tags": ["maxPoints", "projection"] },
+    { "id": "segCQ", "type": "segment", "from": [2, 2.236068, 5], "to": [5.333333, 5.962848, 5], "width": 2.5, "color": "C", "tags": ["maxPoints"] },
+    { "id": "segCR", "type": "segment", "from": [2, 2.236068, 5], "to": [-1.72678, 5.569401, 5], "width": 2.5, "color": "A", "tags": ["maxPoints", "pqrLengths"] },
+    { "id": "raPCR", "type": "rightangle", "vertex": [2, 2.236068, 5], "a": [0, 0, 1], "b": [-1.72678, 5.569401, 5], "color": "D", "tags": ["pqrLengths"] },
+    { "id": "triPQR", "type": "plane", "corners": [[0, 0, 1], [5.333333, 5.962848, 5], [-1.72678, 5.569401, 5]], "alpha": 0.20, "color": "C", "tags": ["pqr", "areaPQR"] },
+    { "id": "segPQ", "type": "segment", "from": [0, 0, 1], "to": [5.333333, 5.962848, 5], "width": 3, "color": "C", "tags": ["pqr", "pqrLengths"] },
+    { "id": "segQR", "type": "segment", "from": [5.333333, 5.962848, 5], "to": [-1.72678, 5.569401, 5], "width": 3, "color": "A", "tags": ["pqr", "pqrLengths"] },
+    { "id": "segPR", "type": "segment", "from": [0, 0, 1], "to": [-1.72678, 5.569401, 5], "width": 3, "color": "B", "tags": ["pqr", "pqrLengths"] },
+    { "id": "labelMax", "type": "label", "at": [2.1, 6.4, 0.35], "text": "[OQ_1R_1]=20", "color": "text", "tags": ["areaShadow"] },
+    { "id": "labelPQR", "type": "label", "at": [1.9, 4.7, 6.0], "text": "[PQR]=10\\sqrt6", "color": "text", "tags": ["areaPQR"] },
+    { "id": "labelAnswer", "type": "label", "at": [-2.7, 7.4, 3.3], "text": "20\\cos\\theta=\\dfrac{20}{3}\\sqrt6", "color": "text", "tags": ["answer"] }
+  ],
+  "steps": [
+    {
+      "text": "평면 $\\mathrm{OPC}$가 $xy$평면과 수직이므로 구 $S$와 평면 $\\mathrm{OPC}$의 교선인 원도 $xy$평면과 수직입니다. 따라서 $\\mathrm{Q_1}$은 $xy$평면에서 직선 $\\mathrm{OC'}$ 위의 선분을 움직이고, $\\overline{\\mathrm{C'Q_1}}\\le 5$입니다.",
+      "show": ["base", "given", "opc", "circleOPC", "projection", "qTrack"],
+      "focus": ["opc", "circleOPC", "qTrack"]
+    },
+    {
+      "text": "구의 $xy$평면 위로의 정사영은 중심 $\\mathrm{C'}(2,\\ \\sqrt5)$, 반지름 $5$인 원입니다. 그러므로 $\\mathrm{R_1}$은 이 원 위를 움직입니다.",
+      "show": ["base", "given", "opc", "circleOPC", "projection", "qTrack", "sphereShadow"],
+      "focus": ["sphereShadow", "projection"],
+      "camera": { "rotX": -1.5708, "rotY": 0, "zoom": 1.05 }
+    },
+    {
+      "text": "점 $\\mathrm{R_1}$과 직선 $\\mathrm{OC'}$ 사이의 거리를 $d$라 하면 $[\\mathrm{OQ_1R_1}]=\\dfrac12\\overline{\\mathrm{OQ_1}}d$입니다. $\\overline{\\mathrm{OQ_1}}$와 $d$가 모두 최대일 때 $\\overline{\\mathrm{OQ_1}}=8$, $d=5$이므로 최댓값은 $20$입니다.",
+      "show": ["base", "projection", "qTrack", "sphereShadow", "maxArea", "triangleShadow", "areaShadow"],
+      "focus": ["maxArea", "triangleShadow", "areaShadow"],
+      "camera": { "rotX": -1.5708, "rotY": 0, "zoom": 1.05 }
+    },
+    {
+      "text": "이때 $\\mathrm{Q}$는 $\\mathrm{C}$를 지나고 직선 $\\mathrm{OC'}$과 평행한 직선이 구 $S$와 만나는 점이고, $\\mathrm{R}$는 $\\mathrm{C}$를 지나고 직선 $\\mathrm{OC'}$과 수직이며 $xy$평면과 평행한 직선이 구 $S$와 만나는 점입니다.",
+      "show": ["base", "given", "sphere", "opc", "circleOPC", "projection", "qTrack", "sphereShadow", "maxArea", "maxPoints"],
+      "focus": ["maxPoints"],
+      "camera": { "rotX": 0.36, "rotY": -0.55, "zoom": 1.08 }
+    },
+    {
+      "text": "직선 $\\mathrm{PC}$와 직선 $\\mathrm{CR}$은 수직이므로 $\\overline{\\mathrm{PR}}=5\\sqrt2$입니다. 또한 $\\overline{\\mathrm{PQ}}=\\sqrt{\\overline{\\mathrm{OQ_1}}^2+(\\overline{\\mathrm{QQ_1}}-\\overline{\\mathrm{OP}})^2}=4\\sqrt5$, $\\overline{\\mathrm{QR}}=\\overline{\\mathrm{Q_1R_1}}=5\\sqrt2$이므로 $[\\mathrm{PQR}]=10\\sqrt6$입니다.",
+      "show": ["base", "projection", "triangleShadow", "areaShadow", "maxPoints", "pqr", "pqrLengths", "areaPQR"],
+      "focus": ["pqrLengths", "areaPQR"]
+    },
+    {
+      "text": "두 평면 $\\mathrm{PQR}$, $\\mathrm{OQ_1R_1}$이 이루는 예각을 $\\theta$라 하면 $\\cos\\theta=\\dfrac{20}{10\\sqrt6}=\\dfrac{\\sqrt6}{3}$입니다. 따라서 정사영의 넓이는 $20\\cos\\theta=\\dfrac{20}{3}\\sqrt6$이고 $p+q=23$입니다.",
+      "show": ["base", "projection", "triangleShadow", "areaShadow", "pqr", "areaPQR", "answer"],
+      "focus": ["answer"]
+    }
+  ],
+  "theorems": [
+    { "key": "orthogonal-projection-proof", "label": "정사영 넓이 S'=S cos θ" }
+  ]
+}

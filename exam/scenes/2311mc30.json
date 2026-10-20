@@ -1,0 +1,79 @@
+{
+  "topic": "벡터연산",
+  "mode": "2d",
+  "answer": "147",
+  "scale": 34,
+  "camera": { "rotX": -1.5708, "rotY": 0, "zoom": 1.08 },
+  "objects": [
+    { "id": "axisX", "type": "segment", "from": [-3.2, 0, 0], "to": [4.2, 0, 0], "color": "muted", "tags": ["axes"] },
+    { "id": "axisY", "type": "segment", "from": [0, -0.8, 0], "to": [0, 4.3, 0], "color": "muted", "tags": ["axes"] },
+    { "id": "A", "type": "point", "at": [0, 3.464102, 0], "label": "A", "color": "B", "tags": ["given", "abc", "vectors"] },
+    { "id": "B", "type": "point", "at": [-2, 0, 0], "label": "B", "color": "B", "tags": ["given", "abc", "vectors"] },
+    { "id": "C", "type": "point", "at": [2, 0, 0], "label": "C", "color": "B", "tags": ["given", "abc", "vectors"] },
+    { "id": "triABC", "type": "plane", "corners": [[0, 3.464102, 0], [-2, 0, 0], [2, 0, 0]], "alpha": 0.12, "color": "muted", "tags": ["given", "abc"] },
+    { "id": "segAB", "type": "segment", "from": [0, 3.464102, 0], "to": [-2, 0, 0], "width": 3, "color": "B", "tags": ["given", "abc", "vectors"] },
+    { "id": "segBC", "type": "segment", "from": [-2, 0, 0], "to": [2, 0, 0], "width": 3, "color": "B", "tags": ["given", "abc", "vectors"] },
+    { "id": "segCA", "type": "segment", "from": [2, 0, 0], "to": [0, 3.464102, 0], "width": 3, "color": "B", "tags": ["given", "abc", "vectors"] },
+    { "id": "D", "type": "point", "at": [-0.5, 2.598076, 0], "label": "D", "color": "C", "tags": ["division", "circles", "def", "vectors"] },
+    { "id": "E", "type": "point", "at": [-1, 0, 0], "label": "E", "color": "C", "tags": ["division", "circles", "def", "vectors"] },
+    { "id": "F", "type": "point", "at": [1.5, 0.866025, 0], "label": "F", "color": "C", "tags": ["division", "circles", "def", "vectors"] },
+    { "id": "triDEF", "type": "plane", "corners": [[-0.5, 2.598076, 0], [-1, 0, 0], [1.5, 0.866025, 0]], "alpha": 0.18, "color": "A", "tags": ["def", "areaDEF", "answer"] },
+    { "id": "segDE", "type": "segment", "from": [-0.5, 2.598076, 0], "to": [-1, 0, 0], "width": 3, "color": "A", "tags": ["def", "areaDEF"] },
+    { "id": "segEF", "type": "segment", "from": [-1, 0, 0], "to": [1.5, 0.866025, 0], "width": 3, "color": "A", "tags": ["def", "areaDEF"] },
+    { "id": "segFD", "type": "segment", "from": [1.5, 0.866025, 0], "to": [-0.5, 2.598076, 0], "width": 3, "color": "A", "tags": ["def", "areaDEF"] },
+    { "id": "circleD", "type": "circle", "center": [-0.5, 2.598076, 0], "normal": [0, 0, 1], "r": 1, "dash": [5, 4], "color": "C", "tags": ["circles"] },
+    { "id": "circleE", "type": "circle", "center": [-1, 0, 0], "normal": [0, 0, 1], "r": 1, "dash": [5, 4], "color": "C", "tags": ["circles"] },
+    { "id": "circleF", "type": "circle", "center": [1.5, 0.866025, 0], "normal": [0, 0, 1], "r": 1, "dash": [5, 4], "color": "C", "tags": ["circles"] },
+    { "id": "P", "type": "point", "at": [0.5, 2.598076, 0], "label": "P", "color": "E", "tags": ["max", "pqr", "vectors"] },
+    { "id": "Q", "type": "point", "at": [0, 0, 0], "label": "Q", "color": "E", "tags": ["max", "pqr", "vectors"] },
+    { "id": "R", "type": "point", "at": [2.5, 0.866025, 0], "label": "R", "color": "E", "tags": ["max", "pqr", "vectors"] },
+    { "id": "triPQR", "type": "plane", "corners": [[0.5, 2.598076, 0], [0, 0, 0], [2.5, 0.866025, 0]], "alpha": 0.20, "color": "E", "tags": ["pqr", "areaPQR", "answer"] },
+    { "id": "segPQ", "type": "segment", "from": [0.5, 2.598076, 0], "to": [0, 0, 0], "width": 3, "color": "E", "tags": ["pqr", "areaPQR"] },
+    { "id": "segQR", "type": "segment", "from": [0, 0, 0], "to": [2.5, 0.866025, 0], "width": 3, "color": "E", "tags": ["pqr", "areaPQR"] },
+    { "id": "segRP", "type": "segment", "from": [2.5, 0.866025, 0], "to": [0.5, 2.598076, 0], "width": 3, "color": "E", "tags": ["pqr", "areaPQR"] },
+    { "id": "vecDP", "type": "vector", "from": [-0.5, 2.598076, 0], "to": [0.5, 2.598076, 0], "label": "DP", "width": 3, "color": "D", "tags": ["max", "unitVectors"] },
+    { "id": "vecEQ", "type": "vector", "from": [-1, 0, 0], "to": [0, 0, 0], "label": "EQ", "width": 3, "color": "D", "tags": ["max", "unitVectors"] },
+    { "id": "vecFR", "type": "vector", "from": [1.5, 0.866025, 0], "to": [2.5, 0.866025, 0], "label": "FR", "width": 3, "color": "D", "tags": ["max", "unitVectors"] },
+    { "id": "vecPD", "type": "vector", "from": [0.5, 2.598076, 0], "to": [-0.5, 2.598076, 0], "label": "PD", "dash": [4, 3], "color": "A", "tags": ["vectors"] },
+    { "id": "vecQE", "type": "vector", "from": [0, 0, 0], "to": [-1, 0, 0], "label": "QE", "dash": [4, 3], "color": "A", "tags": ["vectors"] },
+    { "id": "vecRF", "type": "vector", "from": [2.5, 0.866025, 0], "to": [1.5, 0.866025, 0], "label": "RF", "dash": [4, 3], "color": "A", "tags": ["vectors"] },
+    { "id": "vecAX", "type": "vector", "from": [0, 3.464102, 0], "to": [-3, 3.464102, 0], "label": "AX", "width": 3, "color": "A", "tags": ["sumVector"] },
+    { "id": "X", "type": "point", "at": [-3, 3.464102, 0], "label": "X", "color": "A", "tags": ["sumVector"] },
+    { "id": "labelZero", "type": "label", "at": [-3.1, 1.1, 0], "text": "DB+EC+FA=\\dfrac34(AB+BC+CA)=0", "color": "text", "tags": ["vectors"] },
+    { "id": "labelSameDir", "type": "label", "at": [1.55, 3.55, 0], "text": "|DP+EQ+FR|\\le 3", "color": "text", "tags": ["max"] },
+    { "id": "labelDE", "type": "label", "at": [-1.55, 1.2, 0], "text": "DE^2=7", "color": "text", "tags": ["areaDEF"] },
+    { "id": "labelAnswer", "type": "label", "at": [1.15, -0.62, 0], "text": "S=\\dfrac{7\\sqrt3}{4},\\quad 16S^2=147", "color": "text", "tags": ["answer"] }
+  ],
+  "steps": [
+    {
+      "text": "한 변의 길이가 $4$인 정삼각형을 $\\mathrm{A}(0,2\\sqrt3)$, $\\mathrm{B}(-2,0)$, $\\mathrm{C}(2,0)$으로 둡니다. 그러면 $\\mathrm{D}$, $\\mathrm{E}$, $\\mathrm{F}$는 각각 세 변을 $1:3$으로 내분하는 점입니다.",
+      "show": ["axes", "given", "abc", "division"],
+      "focus": ["abc", "division"]
+    },
+    {
+      "text": "조건 (가)에 의해 $\\mathrm{P}$, $\\mathrm{Q}$, $\\mathrm{R}$는 각각 $\\mathrm{D}$, $\\mathrm{E}$, $\\mathrm{F}$를 중심으로 하는 반지름 $1$인 원 위에 있습니다.",
+      "show": ["axes", "given", "abc", "division", "circles"],
+      "focus": ["circles"]
+    },
+    {
+      "text": "조건 (나)를 분해하면 $\\overrightarrow{\\mathrm{AX}}=(\\overrightarrow{\\mathrm{PD}}+\\overrightarrow{\\mathrm{QE}}+\\overrightarrow{\\mathrm{RF}})+(\\overrightarrow{\\mathrm{DB}}+\\overrightarrow{\\mathrm{EC}}+\\overrightarrow{\\mathrm{FA}})$입니다. 그런데 $\\overrightarrow{\\mathrm{DB}}+\\overrightarrow{\\mathrm{EC}}+\\overrightarrow{\\mathrm{FA}}=\\dfrac34(\\overrightarrow{\\mathrm{AB}}+\\overrightarrow{\\mathrm{BC}}+\\overrightarrow{\\mathrm{CA}})=\\vec{0}$입니다.",
+      "show": ["axes", "abc", "division", "vectors"],
+      "focus": ["vectors"]
+    },
+    {
+      "text": "따라서 $\\overrightarrow{\\mathrm{AX}}=-(\\overrightarrow{\\mathrm{DP}}+\\overrightarrow{\\mathrm{EQ}}+\\overrightarrow{\\mathrm{FR}})$입니다. 세 벡터의 길이가 모두 $1$이므로 $|\\overrightarrow{\\mathrm{AX}}|$가 최대가 되려면 세 벡터 $\\overrightarrow{\\mathrm{DP}}$, $\\overrightarrow{\\mathrm{EQ}}$, $\\overrightarrow{\\mathrm{FR}}$가 모두 같은 방향이어야 합니다.",
+      "show": ["axes", "abc", "division", "circles", "max", "unitVectors", "sumVector"],
+      "focus": ["unitVectors", "sumVector"]
+    },
+    {
+      "text": "일관성을 해치지 않고 세 벡터를 $\\mathrm{BC}$와 평행하게 잡으면 $\\mathrm{PQR}$는 $\\mathrm{DEF}$를 평행이동한 삼각형입니다. 따라서 $S=[\\mathrm{PQR}]=[\\mathrm{DEF}]$입니다.",
+      "show": ["axes", "abc", "division", "def", "pqr", "unitVectors", "areaPQR", "areaDEF"],
+      "focus": ["areaPQR", "areaDEF"]
+    },
+    {
+      "text": "삼각형 $\\mathrm{DBE}$에서 $\\angle\\mathrm{DBE}=\\dfrac{\\pi}{3}$이므로 $\\overline{\\mathrm{DE}}^2=3^2+1^2-2\\cdot3\\cdot1\\cdot\\cos\\dfrac{\\pi}{3}=7$입니다. 같은 방법으로 $\\triangle\\mathrm{DEF}$는 한 변의 길이가 $\\sqrt7$인 정삼각형이므로 $S=\\dfrac{7\\sqrt3}{4}$, $16S^2=147$입니다.",
+      "show": ["axes", "abc", "division", "def", "pqr", "areaPQR", "areaDEF", "answer"],
+      "focus": ["answer"]
+    }
+  ]
+}

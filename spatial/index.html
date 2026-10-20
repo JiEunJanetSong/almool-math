@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="description" content="Interactive diagrams for lines and transformations — Ghana SHS Additional Mathematics, Strand 2 (Geometric Reasoning and Measurement), Spatial Sense.">
+<title>Spatial Sense — Interactive Pilot</title>
+<meta name="theme-color" content="#f5f5f4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111827" media="(prefers-color-scheme: dark)">
+</head>
+<body class="theme-system">
+<noscript><div style="padding:1.25rem;font-family:-apple-system,sans-serif">This tool draws diagrams with JavaScript. Please enable JavaScript.</div></noscript>
+<style>
+:root,.theme-light{
+  --font-sans:'Pretendard Variable','Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  --color-text-primary:#1a1a1a;--color-text-secondary:#555;--color-text-tertiary:#999;
+  --color-text-info:#1a6fb5;--color-text-on-info:#f5f5f4;
+  --color-background-primary:#fff;--color-background-secondary:#f5f5f4;--color-background-tertiary:#eee;
+  --color-background-info:rgba(26,111,181,0.08);
+  --color-background-good:rgba(29,158,117,0.10);--color-text-good:#1D9E75;
+  --color-border-primary:#ccc;--color-border-secondary:#ddd;--color-border-tertiary:#e8e8e8;
+  --color-border-info:rgba(26,111,181,0.3);
+  --border-radius-lg:10px;--border-radius-md:8px;
+}
+.theme-dark{
+  --color-text-primary:oklch(93% 0.018 91);--color-text-secondary:oklch(78% 0.028 92);--color-text-tertiary:oklch(58% 0.028 92);
+  --color-text-info:oklch(82% 0.14 220);--color-text-on-info:oklch(18% 0.035 248);
+  --color-background-primary:oklch(18% 0.036 248);--color-background-secondary:oklch(23% 0.038 248);--color-background-tertiary:oklch(29% 0.04 248);
+  --color-background-info:oklch(82% 0.14 220 / .12);
+  --color-background-good:oklch(78% 0.16 158 / .14);--color-text-good:oklch(78% 0.16 158);
+  --color-border-primary:oklch(50% 0.05 248);--color-border-secondary:oklch(38% 0.045 248);--color-border-tertiary:oklch(31% 0.04 248);
+  --color-border-info:oklch(82% 0.14 220 / .36);
+}
+@media(prefers-color-scheme:dark){.theme-system{
+  --color-text-primary:oklch(93% 0.018 91);--color-text-secondary:oklch(78% 0.028 92);--color-text-tertiary:oklch(58% 0.028 92);
+  --color-text-info:oklch(82% 0.14 220);--color-text-on-info:oklch(18% 0.035 248);
+  --color-background-primary:oklch(18% 0.036 248);--color-background-secondary:oklch(23% 0.038 248);--color-background-tertiary:oklch(29% 0.04 248);
+  --color-background-info:oklch(82% 0.14 220 / .12);
+  --color-background-good:oklch(78% 0.16 158 / .14);--color-text-good:oklch(78% 0.16 158);
+  --color-border-primary:oklch(50% 0.05 248);--color-border-secondary:oklch(38% 0.045 248);--color-border-tertiary:oklch(31% 0.04 248);
+  --color-border-info:oklch(82% 0.14 220 / .36);
+}}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{touch-action:manipulation}
+body{background:var(--color-background-primary);color:var(--color-text-primary);font-family:var(--font-sans)}
+#app{padding:1rem 1.25rem;max-width:1200px;margin:0 auto}
+.hdr{padding:12px 0 16px;border-bottom:.5px solid var(--color-border-tertiary);margin-bottom:14px}
+.hdr .eyebrow{font-size:12px;font-weight:600;color:var(--color-text-info);letter-spacing:.04em;text-transform:uppercase}
+.hdr h1{font-size:22px;font-weight:600;margin-top:4px}
+.hdr p{font-size:14px;color:var(--color-text-secondary);margin-top:6px;line-height:1.5}
+.workspace{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,320px);gap:16px;align-items:start}
+@media(max-width:760px){.workspace{grid-template-columns:1fr}}
+.cvwrap{position:relative;background:var(--color-background-secondary);border-radius:var(--border-radius-lg);border:.5px solid var(--color-border-tertiary);overflow:hidden}
+#c{width:100%;height:min(64svh,560px);display:block;cursor:grab;touch-action:none}
+.hint{position:absolute;right:10px;bottom:8px;font-size:12px;color:var(--color-text-tertiary);pointer-events:none}
+.side{display:flex;flex-direction:column;gap:12px}
+.card{padding:14px;border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);background:var(--color-background-secondary)}
+.card .card-k{font-size:12px;font-weight:600;color:var(--color-text-tertiary);margin-bottom:10px;text-transform:uppercase;letter-spacing:.03em}
+.readout{display:flex;justify-content:space-between;align-items:center;padding:6px 0;font-size:14.5px}
+.readout b{font-weight:600;font-variant-numeric:tabular-nums}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:20px;font-size:13px;font-weight:600}
+.badge.yes{background:var(--color-background-good);color:var(--color-text-good)}
+.badge.no{background:var(--color-background-tertiary);color:var(--color-text-tertiary)}
+.divider{height:.5px;background:var(--color-border-tertiary);margin:8px 0}
+.prompt{font-size:14px;line-height:1.6;color:var(--color-text-secondary)}
+.tabs{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}
+.tab{font-size:14px;padding:6px 14px;border-radius:20px;border:.5px solid var(--color-border-secondary);background:var(--color-background-secondary);color:var(--color-text-secondary);cursor:pointer}
+.tab.active{background:var(--color-background-info);color:var(--color-text-info);border-color:var(--color-border-info);font-weight:600}
+.tab-group-label{width:100%;font-size:11px;font-weight:600;color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:.04em;margin:6px 0 -2px}
+.tab-group-label:first-child{margin-top:0}
+.slider-row{margin-top:10px}
+.slider-row input[type=range]{width:100%;margin-top:6px}
+</style>
+<div id="app">
+  <header class="hdr">
+    <div class="eyebrow">Strand 2 · Geometric Reasoning and Measurement · Spatial Sense (pilot)</div>
+    <h1 id="page-title">Properties of Lines</h1>
+    <p id="page-desc">Drag the colored points to move each line. Watch how the slope, parallel/perpendicular check, and midpoint update live.</p>
+  </header>
+  <div class="tabs" id="tabs"></div>
+  <div class="workspace">
+    <div class="mainstage">
+      <div class="cvwrap">
+        <canvas id="c" role="img" aria-label="Interactive coordinate-plane diagram"></canvas>
+        <div class="hint">Drag the points · Scroll to zoom</div>
+      </div>
+    </div>
+    <aside class="side">
+      <div class="card" id="line1-card">
+        <div class="card-k">Line 1 (A–B)</div>
+        <div class="readout"><span>Slope</span><b id="m1">—</b></div>
+        <div class="readout"><span>Midpoint</span><b id="mid1">—</b></div>
+      </div>
+      <div class="card" id="line2-card">
+        <div class="card-k">Line 2 (C–D)</div>
+        <div class="readout"><span>Slope</span><b id="m2">—</b></div>
+      </div>
+      <div class="card" id="check-card">
+        <div class="card-k">Check</div>
+        <div class="readout"><span>Product of slopes</span><b id="prod">—</b></div>
+        <div class="divider"></div>
+        <div class="readout"><span>Parallel?</span><span class="badge" id="badge-parallel">—</span></div>
+        <div class="readout"><span>Perpendicular?</span><span class="badge" id="badge-perp">—</span></div>
+      </div>
+      <div class="card" id="transform-card">
+        <div class="card-k" id="transform-title">Transform</div>
+        <div id="transform-readouts"></div>
+        <div class="slider-row" id="slider-row" hidden>
+          <label style="font-size:13px;color:var(--color-text-secondary)" id="slider-label">Value</label>
+          <input type="range" id="param-slider">
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-k">Try this</div>
+        <p class="prompt" id="prompt"></p>
+      </div>
+    </aside>
+  </div>
+</div>
+<script src="../shared/theme.js"></script>
+<script src="../shared/engine.js"></script>
+<script>
+'use strict';
+
+const GRID_MIN = -8, GRID_MAX = 8;
+const SHAPE = { S1: [-3, -3], S2: [2, -3], S3: [-1, 3] }; // fixed base triangle for transform scenes
+
+const SCENES = {
+  parallel: {
+    kind: 'lines', label: 'Parallel', group: 'Lines',
+    prompt: 'Drag line 2 (orange) so it looks parallel to line 1 (violet). What do you notice about the two slopes when the lines are parallel?',
+    showLine2: true, showMidpoint: false,
+    points: { A: [-4, -2], B: [2, 3], C: [-3, 2], D: [3, 6] },
+  },
+  perpendicular: {
+    kind: 'lines', label: 'Perpendicular', group: 'Lines',
+    prompt: 'Drag line 2 (orange) so it looks perpendicular to line 1 (violet) — the lines should cross at a right angle. What do you notice about the product of the two slopes?',
+    showLine2: true, showMidpoint: false,
+    points: { A: [-4, -2], B: [2, 3], C: [-1, -4], D: [3, 4] },
+  },
+  midpoint: {
+    kind: 'lines', label: 'Midpoint', group: 'Lines',
+    prompt: 'Drag A and B. The midpoint marker (jade) always sits exactly halfway between them. Try to predict its coordinates before checking the readout.',
+    showLine2: false, showMidpoint: true,
+    points: { A: [-5, -3], B: [4, 5] },
+  },
+  translate: {
+    kind: 'translate', label: 'Translation', group: 'Transformations',
+    prompt: 'Drag the tip of the vector (jade, labeled V) to translate the triangle. Every vertex moves by the same (dx, dy) — the shape and size never change.',
+    points: { V: [1, 5] },
+  },
+  reflect: {
+    kind: 'reflect', label: 'Reflection', group: 'Transformations',
+    prompt: 'Drag the two points defining the mirror line (jade). The reflected triangle always stays the same distance from the line as the original, on the opposite side.',
+    points: { M1: [0, -6], M2: [1, 6] },
+  },
+  rotate: {
+    kind: 'rotate', label: 'Rotation', group: 'Transformations',
+    prompt: 'Drag the center of rotation (jade, labeled O), then use the slider to change the angle. Every vertex sweeps through the same angle around the center.',
+    points: { O: [4, -4] },
+    param: { key: 'angle', min: -180, max: 180, step: 5, default: 60, format: v => v.toFixed(0) + '°', label: 'Angle of rotation' },
+  },
+  dilate: {
+    kind: 'dilate', label: 'Dilation', group: 'Transformations',
+    prompt: 'Drag the center of dilation (jade, labeled O), then use the slider to change the scale factor. Every distance from the center is multiplied by the same factor.',
+    points: { O: [4, -4] },
+    param: { key: 'scale', min: 0.25, max: 3, step: 0.25, default: 1.5, format: v => v.toFixed(2), label: 'Scale factor (k)' },
+  },
+};
+
+let curScene = 'parallel';
+let pts = {};
+let sceneParam = 0;
+let dragKey = null;
+
+function shapeCentroid() {
+  return [(SHAPE.S1[0] + SHAPE.S2[0] + SHAPE.S3[0]) / 3, (SHAPE.S1[1] + SHAPE.S2[1] + SHAPE.S3[1]) / 3];
+}
+function translatePt(p, dx, dy) { return [p[0] + dx, p[1] + dy]; }
+function rotatePt(p, o, angleDeg) {
+  const rad = angleDeg * Math.PI / 180, dx = p[0] - o[0], dy = p[1] - o[1];
+  return [o[0] + dx * Math.cos(rad) - dy * Math.sin(rad), o[1] + dx * Math.sin(rad) + dy * Math.cos(rad)];
+}
+function dilatePt(p, o, k) { return [o[0] + k * (p[0] - o[0]), o[1] + k * (p[1] - o[1])]; }
+function reflectPt(p, m1, m2) {
+  const dx = m2[0] - m1[0], dy = m2[1] - m1[1];
+  const len2 = dx * dx + dy * dy;
+  if (len2 < 1e-9) return p.slice();
+  const vx = p[0] - m1[0], vy = p[1] - m1[1];
+  const t = (vx * dx + vy * dy) / len2;
+  const projx = m1[0] + t * dx, projy = m1[1] + t * dy;
+  return [2 * projx - p[0], 2 * projy - p[1]];
+}
+
+function transformedShape() {
+  const s = SCENES[curScene];
+  const base = [SHAPE.S1, SHAPE.S2, SHAPE.S3];
+  if (s.kind === 'translate') {
+    const h = shapeCentroid();
+    const dx = pts.V[0] - h[0], dy = pts.V[1] - h[1];
+    return base.map(p => translatePt(p, dx, dy));
+  }
+  if (s.kind === 'reflect') return base.map(p => reflectPt(p, pts.M1, pts.M2));
+  if (s.kind === 'rotate') return base.map(p => rotatePt(p, pts.O, sceneParam));
+  if (s.kind === 'dilate') return base.map(p => dilatePt(p, pts.O, sceneParam));
+  return null;
+}
+
+function loadScene(key) {
+  curScene = key;
+  const s = SCENES[key];
+  pts = {};
+  for (const [k, v] of Object.entries(s.points)) pts[k] = v.slice();
+  sceneParam = s.param ? s.param.default : 0;
+
+  const isLines = s.kind === 'lines';
+  document.getElementById('line1-card').hidden = !isLines;
+  document.getElementById('line2-card').hidden = !(isLines && s.showLine2);
+  document.getElementById('check-card').hidden = !(isLines && s.showLine2);
+  document.getElementById('transform-card').hidden = isLines;
+
+  if (!isLines) {
+    document.getElementById('transform-title').textContent = s.label;
+    const sliderRow = document.getElementById('slider-row');
+    sliderRow.hidden = !s.param;
+    if (s.param) {
+      const input = document.getElementById('param-slider');
+      input.min = s.param.min; input.max = s.param.max; input.step = s.param.step; input.value = sceneParam;
+      document.getElementById('slider-label').textContent = s.param.label;
+    }
+  }
+
+  document.getElementById('page-title').textContent = s.group === 'Lines' ? 'Properties of Lines' : 'Geometric Transformations';
+  document.getElementById('page-desc').textContent = s.group === 'Lines'
+    ? 'Drag the colored points to move each line. Watch how the slope, parallel/perpendicular check, and midpoint update live.'
+    : 'A fixed triangle (violet) and its transformed image (jade). Drag the transformation’s control points and use the slider where available.';
+  document.getElementById('prompt').textContent = s.prompt;
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.key === key));
+  updateReadouts();
+  render();
+}
+
+function buildTabs() {
+  const wrap = document.getElementById('tabs');
+  wrap.innerHTML = '';
+  let lastGroup = null;
+  Object.entries(SCENES).forEach(([key, s]) => {
+    if (s.group !== lastGroup) {
+      const label = document.createElement('div');
+      label.className = 'tab-group-label';
+      label.textContent = s.group;
+      wrap.appendChild(label);
+      lastGroup = s.group;
+    }
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'tab' + (key === curScene ? ' active' : '');
+    b.textContent = s.label;
+    b.dataset.key = key;
+    b.onclick = () => loadScene(key);
+    wrap.appendChild(b);
+  });
+}
+
+function slope(p, q) {
+  const dx = q[0] - p[0], dy = q[1] - p[1];
+  if (Math.abs(dx) < 1e-6) return null; // vertical
+  return dy / dx;
+}
+function fmt(n) {
+  if (n === null) return 'undefined (vertical)';
+  const r = Math.round(n * 100) / 100;
+  return Object.is(r, -0) ? '0' : String(r);
+}
+function fmtPt(p) { return `(${fmt(p[0])}, ${fmt(p[1])})`; }
+
+function setTransformReadouts(rows) {
+  const box = document.getElementById('transform-readouts');
+  box.innerHTML = '';
+  rows.forEach(([label, value]) => {
+    const row = document.createElement('div');
+    row.className = 'readout';
+    row.innerHTML = `<span>${label}</span><b>${value}</b>`;
+    box.appendChild(row);
+  });
+}
+
+function updateReadouts() {
+  const s = SCENES[curScene];
+  if (s.kind === 'lines') {
+    const m1 = slope(pts.A, pts.B);
+    document.getElementById('m1').textContent = fmt(m1);
+    const midAB = [(pts.A[0] + pts.B[0]) / 2, (pts.A[1] + pts.B[1]) / 2];
+    document.getElementById('mid1').textContent = fmtPt(midAB);
+    if (s.showLine2) {
+      const m2 = slope(pts.C, pts.D);
+      document.getElementById('m2').textContent = fmt(m2);
+      const prod = (m1 !== null && m2 !== null) ? m1 * m2 : null;
+      document.getElementById('prod').textContent = prod === null ? '—' : fmt(prod);
+      const isParallel = m1 !== null && m2 !== null && Math.abs(m1 - m2) < 0.03;
+      const isPerp = prod !== null && Math.abs(prod + 1) < 0.06;
+      const pb = document.getElementById('badge-parallel');
+      pb.textContent = isParallel ? 'Yes' : 'No';
+      pb.className = 'badge ' + (isParallel ? 'yes' : 'no');
+      const qb = document.getElementById('badge-perp');
+      qb.textContent = isPerp ? 'Yes' : 'No';
+      qb.className = 'badge ' + (isPerp ? 'yes' : 'no');
+    }
+    return;
+  }
+  if (s.kind === 'translate') {
+    const h = shapeCentroid();
+    const dx = pts.V[0] - h[0], dy = pts.V[1] - h[1];
+    setTransformReadouts([['Vector (dx, dy)', `(${fmt(dx)}, ${fmt(dy)})`]]);
+  } else if (s.kind === 'reflect') {
+    setTransformReadouts([['Mirror line slope', fmt(slope(pts.M1, pts.M2))]]);
+  } else if (s.kind === 'rotate') {
+    setTransformReadouts([['Angle', s.param.format(sceneParam)], ['Center O', fmtPt(pts.O)]]);
+  } else if (s.kind === 'dilate') {
+    setTransformReadouts([['Scale factor k', s.param.format(sceneParam)], ['Center O', fmtPt(pts.O)]]);
+  }
+}
+
+const E = TMEngine.create({
+  canvas: document.getElementById('c'),
+  getBg: () => TMTheme.isDark() ? '#111827' : '#faf9f6',
+  getTextColor: () => TMTheme.isDark() ? '#F2EECB' : '#1a1a1a',
+});
+E.state.rotX = -Math.PI / 2;
+E.state.rotY = 0;
+E.state.zoom = 1;
+const SCALE = 22; // px per data unit at zoom=1, before E.state.sc scaling
+
+function toScreen(x, y) {
+  return E.project(x * SCALE, 0, y * SCALE);
+}
+function toData(px, py) {
+  const dpr = window.devicePixelRatio || 1;
+  const W = E.canvas.width / dpr, H = E.canvas.height / dpr;
+  const sc = E.state.sc;
+  const x = (px - W / 2) / (SCALE * sc);
+  const y = -(py - H / 2) / (SCALE * sc);
+  return [x, y];
+}
+
+function drawGrid() {
+  const ctx = E.ctx;
+  ctx.save();
+  ctx.strokeStyle = TMTheme.isDark() ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.07)';
+  ctx.lineWidth = 1;
+  for (let i = GRID_MIN; i <= GRID_MAX; i++) {
+    const [x1, y1] = toScreen(i, GRID_MIN);
+    const [x2, y2] = toScreen(i, GRID_MAX);
+    ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+    const [x3, y3] = toScreen(GRID_MIN, i);
+    const [x4, y4] = toScreen(GRID_MAX, i);
+    ctx.beginPath(); ctx.moveTo(x3, y3); ctx.lineTo(x4, y4); ctx.stroke();
+  }
+  ctx.strokeStyle = TMTheme.isDark() ? 'rgba(255,255,255,0.22)' : 'rgba(0,0,0,0.2)';
+  ctx.lineWidth = 1.4;
+  const [ax1, ay1] = toScreen(GRID_MIN, 0), [ax2, ay2] = toScreen(GRID_MAX, 0);
+  ctx.beginPath(); ctx.moveTo(ax1, ay1); ctx.lineTo(ax2, ay2); ctx.stroke();
+  const [bx1, by1] = toScreen(0, GRID_MIN), [bx2, by2] = toScreen(0, GRID_MAX);
+  ctx.beginPath(); ctx.moveTo(bx1, by1); ctx.lineTo(bx2, by2); ctx.stroke();
+  ctx.restore();
+}
+
+function extendLine(p, q) {
+  const m = slope(p, q);
+  if (m === null) return [[p[0], GRID_MIN], [p[0], GRID_MAX]];
+  const b = p[1] - m * p[0];
+  return [[GRID_MIN, m * GRID_MIN + b], [GRID_MAX, m * GRID_MAX + b]];
+}
+
+function renderLines(pal, s) {
+  const [e1a, e1b] = extendLine(pts.A, pts.B);
+  E.line(e1a[0] * SCALE, 0, e1a[1] * SCALE, e1b[0] * SCALE, 0, e1b[1] * SCALE, pal.A, 2.5);
+  E.dot(pts.A[0] * SCALE, 0, pts.A[1] * SCALE, pal.A, 7, 'A');
+  E.dot(pts.B[0] * SCALE, 0, pts.B[1] * SCALE, pal.A, 7, 'B');
+  if (s.showLine2) {
+    const [e2a, e2b] = extendLine(pts.C, pts.D);
+    E.line(e2a[0] * SCALE, 0, e2a[1] * SCALE, e2b[0] * SCALE, 0, e2b[1] * SCALE, pal.C, 2.5);
+    E.dot(pts.C[0] * SCALE, 0, pts.C[1] * SCALE, pal.C, 7, 'C');
+    E.dot(pts.D[0] * SCALE, 0, pts.D[1] * SCALE, pal.C, 7, 'D');
+  }
+  if (s.showMidpoint) {
+    const mid = [(pts.A[0] + pts.B[0]) / 2, (pts.A[1] + pts.B[1]) / 2];
+    E.dot(mid[0] * SCALE, 0, mid[1] * SCALE, pal.B, 6, 'M');
+  }
+}
+
+function renderTransform(pal, s) {
+  const base = [SHAPE.S1, SHAPE.S2, SHAPE.S3];
+  const baseCorners = base.map(p => [p[0] * SCALE, 0, p[1] * SCALE]);
+  E.plane(baseCorners, pal.A, 0.18);
+  base.forEach((p, i) => E.dot(p[0] * SCALE, 0, p[1] * SCALE, pal.A, 5, ['P', 'Q', 'R'][i]));
+
+  const image = transformedShape();
+  if (image) {
+    const imgCorners = image.map(p => [p[0] * SCALE, 0, p[1] * SCALE]);
+    E.plane(imgCorners, pal.B, 0.2);
+    image.forEach((p, i) => E.dot(p[0] * SCALE, 0, p[1] * SCALE, pal.B, 5, ["P'", "Q'", "R'"][i]));
+  }
+
+  if (s.kind === 'translate') {
+    const h = shapeCentroid();
+    E.line(h[0] * SCALE, 0, h[1] * SCALE, pts.V[0] * SCALE, 0, pts.V[1] * SCALE, pal.C, 2.5);
+    E.dot(pts.V[0] * SCALE, 0, pts.V[1] * SCALE, pal.C, 6, 'V');
+  } else if (s.kind === 'reflect') {
+    const [ea, eb] = extendLine(pts.M1, pts.M2);
+    E.line(ea[0] * SCALE, 0, ea[1] * SCALE, eb[0] * SCALE, 0, eb[1] * SCALE, pal.C, 2, [6, 4]);
+    E.dot(pts.M1[0] * SCALE, 0, pts.M1[1] * SCALE, pal.C, 6, 'M1');
+    E.dot(pts.M2[0] * SCALE, 0, pts.M2[1] * SCALE, pal.C, 6, 'M2');
+  } else if (s.kind === 'rotate' || s.kind === 'dilate') {
+    E.dot(pts.O[0] * SCALE, 0, pts.O[1] * SCALE, pal.C, 7, 'O');
+  }
+}
+
+function render() {
+  const pal = TMTheme.palette();
+  const dark = TMTheme.isDark();
+  E.beginFrame(dark);
+  drawGrid();
+  const s = SCENES[curScene];
+  if (s.kind === 'lines') renderLines(pal, s);
+  else renderTransform(pal, s);
+}
+
+function hitTest(px, py) {
+  let best = null, bestDist = 26;
+  for (const k of Object.keys(pts)) {
+    const [sx, sy] = toScreen(pts[k][0], pts[k][1]);
+    const d = Math.hypot(sx - px, sy - py);
+    if (d < bestDist) { bestDist = d; best = k; }
+  }
+  return best;
+}
+
+function snap(v) {
+  return Math.round(v * 4) / 4; // snap to quarter-unit grid
+}
+
+function eventPos(e) {
+  const rect = E.canvas.getBoundingClientRect();
+  const t = e.touches ? e.touches[0] : e;
+  return [t.clientX - rect.left, t.clientY - rect.top];
+}
+
+E.canvas.addEventListener('mousedown', e => {
+  const [px, py] = eventPos(e);
+  dragKey = hitTest(px, py);
+  if (dragKey) E.canvas.style.cursor = 'grabbing';
+});
+E.canvas.addEventListener('mousemove', e => {
+  if (!dragKey) return;
+  const [px, py] = eventPos(e);
+  const [dx, dy] = toData(px, py);
+  pts[dragKey] = [snap(dx), snap(dy)];
+  updateReadouts(); render();
+});
+window.addEventListener('mouseup', () => { dragKey = null; E.canvas.style.cursor = 'grab'; });
+
+E.canvas.addEventListener('touchstart', e => {
+  const [px, py] = eventPos(e);
+  dragKey = hitTest(px, py);
+  if (dragKey) e.preventDefault();
+}, { passive: false });
+E.canvas.addEventListener('touchmove', e => {
+  if (!dragKey) return;
+  e.preventDefault();
+  const [px, py] = eventPos(e);
+  const [dx, dy] = toData(px, py);
+  pts[dragKey] = [snap(dx), snap(dy)];
+  updateReadouts(); render();
+}, { passive: false });
+E.canvas.addEventListener('touchend', () => { dragKey = null; });
+
+E.canvas.addEventListener('wheel', e => {
+  E.state.zoom = Math.max(0.6, Math.min(2, E.state.zoom * (e.deltaY > 0 ? 0.92 : 1.08)));
+  render(); e.preventDefault();
+}, { passive: false });
+
+document.getElementById('param-slider').addEventListener('input', e => {
+  sceneParam = parseFloat(e.target.value);
+  updateReadouts(); render();
+});
+
+TMTheme.init({ onChange: render });
+window.addEventListener('resize', render);
+
+buildTabs();
+loadScene('parallel');
+</script>
+</body>
+</html>

@@ -1,0 +1,473 @@
+{
+  "topic": "자취",
+  "mode": "2d",
+  "answer": "25",
+  "scale": 16,
+  "camera": {
+    "rotX": -1.5708,
+    "rotY": 0,
+    "zoom": 1.04
+  },
+  "objects": [
+    {
+      "id": "axisX",
+      "type": "segment",
+      "from": [
+        -10.5,
+        0,
+        0
+      ],
+      "to": [
+        10.5,
+        0,
+        0
+      ],
+      "color": "muted",
+      "tags": [
+        "axes"
+      ]
+    },
+    {
+      "id": "axisY",
+      "type": "segment",
+      "from": [
+        0,
+        -8.5,
+        0
+      ],
+      "to": [
+        0,
+        9.5,
+        0
+      ],
+      "color": "muted",
+      "tags": [
+        "axes"
+      ]
+    },
+    {
+      "id": "O",
+      "type": "point",
+      "at": [
+        0,
+        0,
+        0
+      ],
+      "label": "O",
+      "color": "text",
+      "tags": [
+        "given"
+      ]
+    },
+    {
+      "id": "ellipseMid",
+      "type": "ellipse",
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "rx": 1.118034,
+      "ry": 1,
+      "width": 3,
+      "color": "A",
+      "tags": [
+        "ellipsePart",
+        "given"
+      ]
+    },
+    {
+      "id": "hyperbolaOuter",
+      "type": "hyperbola",
+      "form": "y2-x2",
+      "a": 1,
+      "b": 1.118034,
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "span": 2.8,
+      "branch": "both",
+      "width": 3,
+      "color": "C",
+      "tags": [
+        "hyperbolaPart",
+        "given",
+        "answer"
+      ]
+    },
+    {
+      "id": "C",
+      "type": "point",
+      "at": [
+        0.5,
+        0,
+        0
+      ],
+      "label": "C",
+      "color": "B",
+      "tags": [
+        "ellipsePart",
+        "fociCD"
+      ]
+    },
+    {
+      "id": "D",
+      "type": "point",
+      "at": [
+        -0.5,
+        0,
+        0
+      ],
+      "label": "D",
+      "color": "B",
+      "tags": [
+        "ellipsePart",
+        "fociCD"
+      ]
+    },
+    {
+      "id": "A",
+      "type": "point",
+      "at": [
+        0,
+        1.5,
+        0
+      ],
+      "label": "A",
+      "color": "D",
+      "tags": [
+        "hyperbolaPart",
+        "fociAB",
+        "triangleABQ"
+      ]
+    },
+    {
+      "id": "B",
+      "type": "point",
+      "at": [
+        0,
+        -1.5,
+        0
+      ],
+      "label": "B",
+      "color": "D",
+      "tags": [
+        "hyperbolaPart",
+        "fociAB",
+        "triangleABQ"
+      ]
+    },
+    {
+      "id": "segCD",
+      "type": "segment",
+      "from": [
+        -0.5,
+        0,
+        0
+      ],
+      "to": [
+        0.5,
+        0,
+        0
+      ],
+      "dash": [
+        4,
+        3
+      ],
+      "color": "muted",
+      "tags": [
+        "ellipsePart",
+        "fociCD"
+      ]
+    },
+    {
+      "id": "segAB",
+      "type": "segment",
+      "from": [
+        0,
+        1.5,
+        0
+      ],
+      "to": [
+        0,
+        -1.5,
+        0
+      ],
+      "width": 3,
+      "color": "D",
+      "tags": [
+        "fociAB",
+        "triangleABQ",
+        "answer"
+      ]
+    },
+    {
+      "id": "lineY1",
+      "type": "segment",
+      "from": [
+        -2.2,
+        1,
+        0
+      ],
+      "to": [
+        2.2,
+        1,
+        0
+      ],
+      "dash": [
+        5,
+        4
+      ],
+      "color": "muted",
+      "tags": [
+        "split"
+      ]
+    },
+    {
+      "id": "lineYneg1",
+      "type": "segment",
+      "from": [
+        -2.2,
+        -1,
+        0
+      ],
+      "to": [
+        2.2,
+        -1,
+        0
+      ],
+      "dash": [
+        5,
+        4
+      ],
+      "color": "muted",
+      "tags": [
+        "split"
+      ]
+    },
+    {
+      "id": "Q",
+      "type": "point",
+      "at": [
+        8.122329,
+        7.333333,
+        0
+      ],
+      "label": "Q",
+      "color": "E",
+      "tags": [
+        "pointQ",
+        "triangleABQ",
+        "answer"
+      ]
+    },
+    {
+      "id": "circleAQ",
+      "type": "circle",
+      "center": [
+        0,
+        1.5,
+        0
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "r": 10,
+      "dash": [
+        5,
+        4
+      ],
+      "color": "D",
+      "tags": [
+        "pointQ"
+      ]
+    },
+    {
+      "id": "segAQ",
+      "type": "segment",
+      "from": [
+        0,
+        1.5,
+        0
+      ],
+      "to": [
+        8.122329,
+        7.333333,
+        0
+      ],
+      "width": 3,
+      "color": "D",
+      "tags": [
+        "pointQ",
+        "triangleABQ",
+        "answer"
+      ]
+    },
+    {
+      "id": "segBQ",
+      "type": "segment",
+      "from": [
+        0,
+        -1.5,
+        0
+      ],
+      "to": [
+        8.122329,
+        7.333333,
+        0
+      ],
+      "width": 3,
+      "color": "E",
+      "tags": [
+        "pointQ",
+        "triangleABQ",
+        "answer"
+      ]
+    },
+    {
+      "id": "labelEllipse",
+      "type": "label",
+      "at": [
+        -5.2,
+        -3.4,
+        0
+      ],
+      "text": "\\dfrac{x^2}{a^2}+y^2=1",
+      "color": "text",
+      "tags": [
+        "ellipsePart"
+      ]
+    },
+    {
+      "id": "labelA",
+      "type": "label",
+      "at": [
+        1.1,
+        1.95,
+        0
+      ],
+      "text": "a=\\dfrac{\\sqrt5}{2},\\ c=\\dfrac12",
+      "color": "text",
+      "tags": [
+        "ellipsePart"
+      ]
+    },
+    {
+      "id": "labelHyperbola",
+      "type": "label",
+      "at": [
+        -9.7,
+        7.9,
+        0
+      ],
+      "text": "\\dfrac{4x^2}{5}-y^2=-1",
+      "color": "text",
+      "tags": [
+        "hyperbolaPart"
+      ]
+    },
+    {
+      "id": "labelDistances",
+      "type": "label",
+      "at": [
+        3.25,
+        3.1,
+        0
+      ],
+      "text": "AQ=10,\\ BQ=12",
+      "color": "text",
+      "tags": [
+        "pointQ",
+        "answer"
+      ]
+    },
+    {
+      "id": "answerLabel",
+      "type": "label",
+      "at": [
+        1.25,
+        -7.6,
+        0
+      ],
+      "text": "AB+AQ+BQ=3+10+12=25",
+      "color": "text",
+      "tags": [
+        "answer"
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "text": "$|y^2-1|=\\dfrac{x^2}{a^2}$에서 $-1\\le y\\le1$인 부분은 $\\dfrac{x^2}{a^2}+y^2=1$인 타원입니다.",
+      "show": [
+        "axes",
+        "given",
+        "ellipsePart",
+        "split"
+      ],
+      "focus": [
+        "ellipsePart"
+      ]
+    },
+    {
+      "text": "이 타원 위의 모든 점 $\\mathrm{P}$에 대하여 $\\overline{\\mathrm{PC}}+\\overline{\\mathrm{PD}}=\\sqrt5$이므로 장축의 길이 $2a=\\sqrt5$입니다. 따라서 $a=\\dfrac{\\sqrt5}{2}$이고, 초점 거리에서 $c^2=a^2-1=\\dfrac14$이므로 $c=\\dfrac12$입니다.",
+      "show": [
+        "axes",
+        "ellipsePart",
+        "fociCD",
+        "split"
+      ],
+      "focus": [
+        "ellipsePart",
+        "fociCD"
+      ]
+    },
+    {
+      "text": "따라서 $\\mathrm{A}=\\left(0,\\ \\dfrac32\\right)$, $\\mathrm{B}=\\left(0,\\ -\\dfrac32\\right)$입니다. $|y|>1$인 부분은 $\\dfrac{4x^2}{5}-y^2=-1$인 쌍곡선이고, 두 초점은 바로 $\\mathrm{A}$, $\\mathrm{B}$입니다.",
+      "show": [
+        "axes",
+        "ellipsePart",
+        "hyperbolaPart",
+        "fociCD",
+        "fociAB",
+        "split"
+      ],
+      "focus": [
+        "hyperbolaPart",
+        "fociAB"
+      ]
+    },
+    {
+      "text": "제 $1$사분면의 점 $\\mathrm{Q}$에서 $\\overline{\\mathrm{AQ}}=10$입니다. 쌍곡선의 정의에 의해 위쪽 가지에서는 $\\overline{\\mathrm{BQ}}-\\overline{\\mathrm{AQ}}=2$이므로 $\\overline{\\mathrm{BQ}}=12$입니다.",
+      "show": [
+        "axes",
+        "hyperbolaPart",
+        "fociAB",
+        "pointQ",
+        "triangleABQ"
+      ],
+      "focus": [
+        "pointQ",
+        "triangleABQ"
+      ]
+    },
+    {
+      "text": "그러므로 삼각형 $\\mathrm{ABQ}$의 둘레는 $\\overline{\\mathrm{AB}}+\\overline{\\mathrm{BQ}}+\\overline{\\mathrm{QA}}=2\\times\\dfrac32+12+10=25$입니다.",
+      "show": [
+        "axes",
+        "hyperbolaPart",
+        "fociAB",
+        "pointQ",
+        "triangleABQ",
+        "answer"
+      ],
+      "focus": [
+        "answer"
+      ]
+    }
+  ]
+}

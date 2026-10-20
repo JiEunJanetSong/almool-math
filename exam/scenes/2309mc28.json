@@ -1,0 +1,76 @@
+{
+  "topic": "정사영",
+  "mode": "3d",
+  "answer": "6",
+  "scale": 28,
+  "camera": { "rotX": 0.34, "rotY": -0.52, "zoom": 1.08 },
+  "objects": [
+    { "id": "xyPlane", "type": "plane", "corners": [[-4.6, -5, 0], [7.2, -5, 0], [7.2, 5, 0], [-4.6, 5, 0]], "alpha": 0.08, "color": "muted", "label": "xy평면", "tags": ["base", "given"] },
+    { "id": "O", "type": "point", "at": [0, 0, 0], "label": "O", "color": "text", "tags": ["given", "circleC", "lengths"] },
+    { "id": "A", "type": "point", "at": [0, 0, 1], "label": "A", "color": "B", "tags": ["given", "sphereS", "lengths", "angle"] },
+    { "id": "M", "type": "point", "at": [1.732051, 0, 0], "label": "M", "color": "E", "tags": ["chord", "lengths", "circleK", "angle"] },
+    { "id": "P", "type": "point", "at": [1.732051, 3.464102, 0], "label": "P", "color": "C", "tags": ["chord", "triangle", "projection"] },
+    { "id": "Q", "type": "point", "at": [1.732051, -3.464102, 0], "label": "Q", "color": "C", "tags": ["chord", "triangle", "projection"] },
+    { "id": "B", "type": "point", "at": [3.464102, 0, 3], "label": "B", "color": "A", "tags": ["maxB", "triangle", "circleK", "areaBPQ"] },
+    { "id": "Bp", "type": "point", "at": [3.464102, 0, 0], "label": "B'", "color": "D", "tags": ["projection", "answer"] },
+    { "id": "sphereS", "type": "sphere", "center": [0, 0, 1], "r": 4, "color": "A", "tags": ["given", "sphereS"] },
+    { "id": "circleC", "type": "circle", "center": [0, 0, 0], "normal": [0, 0, 1], "r": 3.872983, "width": 3, "color": "C", "tags": ["given", "circleC"] },
+    { "id": "segAO", "type": "segment", "from": [0, 0, 1], "to": [0, 0, 0], "dash": [4, 3], "color": "B", "tags": ["lengths", "angle"] },
+    { "id": "segOM", "type": "segment", "from": [0, 0, 0], "to": [1.732051, 0, 0], "width": 2.5, "color": "E", "tags": ["lengths", "angle"] },
+    { "id": "segAM", "type": "segment", "from": [0, 0, 1], "to": [1.732051, 0, 0], "width": 3, "color": "E", "tags": ["chord", "lengths", "angle"] },
+    { "id": "segPM", "type": "segment", "from": [1.732051, 3.464102, 0], "to": [1.732051, 0, 0], "dash": [4, 3], "color": "C", "tags": ["chord", "lengths"] },
+    { "id": "segQM", "type": "segment", "from": [1.732051, -3.464102, 0], "to": [1.732051, 0, 0], "dash": [4, 3], "color": "C", "tags": ["chord"] },
+    { "id": "segPQ", "type": "segment", "from": [1.732051, 3.464102, 0], "to": [1.732051, -3.464102, 0], "width": 3, "color": "C", "tags": ["chord", "triangle", "projection", "areaBPQ"] },
+    { "id": "raM", "type": "rightangle", "vertex": [1.732051, 0, 0], "a": [0, 3.464102, 0], "b": [-1.732051, 0, 1], "color": "D", "tags": ["chord", "lengths"] },
+    { "id": "sphereT", "type": "sphere", "center": [1.732051, 0, 0], "r": 3.464102, "color": "D", "tags": ["sphereT", "circleK"] },
+    { "id": "circleK", "type": "circle", "center": [1.732051, 0, 0], "normal": [1.732051, 0, -1], "r": 3.464102, "width": 3, "color": "D", "tags": ["circleK", "maxB"] },
+    { "id": "segBM", "type": "segment", "from": [3.464102, 0, 3], "to": [1.732051, 0, 0], "width": 3, "color": "A", "tags": ["maxB", "areaBPQ", "angle"] },
+    { "id": "segAB", "type": "segment", "from": [0, 0, 1], "to": [3.464102, 0, 3], "width": 2.5, "color": "B", "tags": ["maxB", "angle"] },
+    { "id": "segBBp", "type": "segment", "from": [3.464102, 0, 3], "to": [3.464102, 0, 0], "dash": [4, 3], "color": "D", "tags": ["projection", "answer"] },
+    { "id": "segMBp", "type": "segment", "from": [1.732051, 0, 0], "to": [3.464102, 0, 0], "width": 3, "color": "D", "tags": ["projection", "answer"] },
+    { "id": "triBPQ", "type": "plane", "corners": [[3.464102, 0, 3], [1.732051, 3.464102, 0], [1.732051, -3.464102, 0]], "alpha": 0.22, "color": "A", "tags": ["triangle", "areaBPQ"] },
+    { "id": "triProj", "type": "plane", "corners": [[3.464102, 0, 0], [1.732051, 3.464102, 0], [1.732051, -3.464102, 0]], "alpha": 0.24, "color": "D", "tags": ["projection", "answer"] },
+    { "id": "segBprimeP", "type": "segment", "from": [3.464102, 0, 0], "to": [1.732051, 3.464102, 0], "width": 2.5, "color": "D", "tags": ["projection", "answer"] },
+    { "id": "segBprimeQ", "type": "segment", "from": [3.464102, 0, 0], "to": [1.732051, -3.464102, 0], "width": 2.5, "color": "D", "tags": ["projection", "answer"] },
+    { "id": "labelLengths", "type": "label", "at": [-3.8, 4.2, 0.2], "text": "OM=\\sqrt3,\\ PM=2\\sqrt3", "color": "text", "tags": ["lengths"] },
+    { "id": "labelArea", "type": "label", "at": [2.5, -4.4, 1.4], "text": "[BPQ]=12", "color": "text", "tags": ["areaBPQ"] },
+    { "id": "labelAnswer", "type": "label", "at": [3.55, 3.4, 0.35], "text": "\\dfrac12\\cdot4\\sqrt3\\cdot\\sqrt3=6", "color": "text", "tags": ["answer"] }
+  ],
+  "steps": [
+    {
+      "text": "구 $S$의 방정식은 $x^2+y^2+(z-1)^2=16$이고, $xy$평면과 만나서 생기는 원은 $C:x^2+y^2=15$입니다.",
+      "show": ["base", "given", "sphereS", "circleC"],
+      "focus": ["sphereS", "circleC"]
+    },
+    {
+      "text": "선분 $\\mathrm{PQ}$의 중점을 $\\mathrm{M}$이라 하면 $\\overline{\\mathrm{AM}}=2$입니다. $\\overline{\\mathrm{AO}}=1$이므로 $\\overline{\\mathrm{OM}}=\\sqrt{2^2-1}=\\sqrt3$이고, $\\overline{\\mathrm{PM}}=\\sqrt{4^2-2^2}=2\\sqrt3$입니다.",
+      "show": ["base", "given", "circleC", "chord", "lengths"],
+      "focus": ["chord", "lengths"],
+      "camera": { "rotX": 0.3, "rotY": -0.45, "zoom": 1.12 }
+    },
+    {
+      "text": "선분 $\\mathrm{PQ}$를 지름으로 하는 구 $T$의 중심은 $\\mathrm{M}$이고 반지름은 $2\\sqrt3$입니다. 구 $S$와 구 $T$의 교선은 중심이 $\\mathrm{M}$이고 반지름이 $2\\sqrt3$인 원입니다.",
+      "show": ["base", "given", "sphereS", "chord", "sphereT", "circleK"],
+      "focus": ["sphereT", "circleK"]
+    },
+    {
+      "text": "삼각형 $\\mathrm{BPQ}$의 넓이가 최대가 되려면 점 $\\mathrm{B}$에서 직선 $\\mathrm{PQ}$까지의 거리가 최대여야 하므로 $\\mathrm{B}$는 $\\mathrm{M}$을 지나는 수직이등분선 위에 있습니다. 따라서 높이는 $\\overline{\\mathrm{BM}}=2\\sqrt3$이고 $[BPQ]=\\dfrac12\\times4\\sqrt3\\times2\\sqrt3=12$입니다.",
+      "show": ["base", "given", "chord", "circleK", "maxB", "triangle", "areaBPQ"],
+      "focus": ["maxB", "areaBPQ"]
+    },
+    {
+      "text": "평면 $\\mathrm{BPQ}$와 $xy$평면이 이루는 각을 $\\theta$라 하면 $\\theta=\\angle\\mathrm{MAO}$입니다. $\\overline{\\mathrm{AM}}=2$, $\\overline{\\mathrm{AO}}=1$이므로 $\\cos\\theta=\\dfrac12$입니다.",
+      "show": ["base", "given", "chord", "maxB", "triangle", "angle", "projection"],
+      "focus": ["angle", "projection"]
+    },
+    {
+      "text": "따라서 정사영 넓이의 최댓값은 $[BPQ]\\cos\\theta=12\\times\\dfrac12=6$입니다.",
+      "show": ["base", "given", "chord", "triangle", "projection", "answer"],
+      "focus": ["answer"],
+      "camera": { "rotX": -1.5708, "rotY": 0, "zoom": 1.06 }
+    }
+  ],
+  "theorems": [
+    { "key": "orthogonal-projection-proof", "label": "정사영 넓이 S'=S cos θ" }
+  ]
+}

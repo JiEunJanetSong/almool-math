@@ -1,0 +1,65 @@
+{
+  "topic": "내적",
+  "mode": "2d",
+  "answer": "29",
+  "scale": 14,
+  "camera": { "rotX": -1.5708, "rotY": 0, "zoom": 1 },
+  "objects": [
+    { "id": "axisX", "type": "segment", "from": [-1, 0, 0], "to": [11, 0, 0], "color": "muted", "tags": ["axes"] },
+    { "id": "axisY", "type": "segment", "from": [0, -1, 0], "to": [0, 11, 0], "color": "muted", "tags": ["axes"] },
+    { "id": "O", "type": "point", "at": [0, 0, 0], "label": "O", "color": "text", "tags": ["given"] },
+    { "id": "A", "type": "point", "at": [2, 6, 0], "label": "A", "color": "B", "tags": ["given", "strip"] },
+    { "id": "B", "type": "point", "at": [6, 2, 0], "label": "B", "color": "B", "tags": ["given", "strip"] },
+    { "id": "C", "type": "point", "at": [4, 4, 0], "label": "C", "color": "B", "tags": ["given", "circleLocus"] },
+    { "id": "D", "type": "point", "at": [8, 6, 0], "label": "D", "color": "B", "tags": ["given", "lineLocus"] },
+    { "id": "segAB", "type": "segment", "from": [2, 6, 0], "to": [6, 2, 0], "width": 3, "color": "B", "tags": ["given", "strip"] },
+    { "id": "vecOC", "type": "vector", "from": [0, 0, 0], "to": [4, 4, 0], "label": "OC", "color": "C", "tags": ["condA"] },
+    { "id": "lineDX", "type": "segment", "from": [3.5, 10.5, 0], "to": [10.5, 3.5, 0], "width": 3, "color": "A", "tags": ["lineLocus", "candidate"] },
+    { "id": "circleCX", "type": "circle", "center": [4, 4, 0], "normal": [0, 0, 1], "r": 3, "width": 3, "color": "A", "tags": ["circleLocus", "candidate"] },
+    { "id": "upperStrip", "type": "segment", "from": [-0.5, 3.5, 0], "to": [7, 11, 0], "dash": [5, 4], "width": 2.5, "color": "D", "tags": ["strip"] },
+    { "id": "lowerStrip", "type": "segment", "from": [3.5, -0.5, 0], "to": [10.5, 6.5, 0], "dash": [5, 4], "width": 2.5, "color": "D", "tags": ["strip"] },
+    { "id": "stripShade", "type": "plane", "corners": [[-0.5, 3.5, 0], [7, 11, 0], [10.5, 6.5, 0], [3.5, -0.5, 0]], "alpha": 0.10, "color": "D", "tags": ["strip"] },
+    { "id": "Q", "type": "point", "at": [5, 9, 0], "label": "Q", "color": "E", "tags": ["extreme", "answer"] },
+    { "id": "R", "type": "point", "at": [4, 1, 0], "label": "R", "color": "E", "tags": ["extreme", "answer"] },
+    { "id": "vecOQ", "type": "vector", "from": [0, 0, 0], "to": [5, 9, 0], "label": "OQ", "width": 3, "color": "C", "tags": ["answer"] },
+    { "id": "vecOR", "type": "vector", "from": [0, 0, 0], "to": [4, 1, 0], "label": "OR", "width": 3, "color": "C", "tags": ["answer"] },
+    { "id": "qGuide", "type": "segment", "from": [5, 9, 0], "to": [2, 6, 0], "dash": [3, 3], "color": "E", "tags": ["extreme"] },
+    { "id": "rGuide", "type": "segment", "from": [4, 1, 0], "to": [6, 3, 0], "dash": [3, 3], "color": "E", "tags": ["extreme"] },
+    { "id": "lineLabel", "type": "label", "at": [8.2, 5.6, 0], "text": "y=-x+14", "color": "text", "tags": ["lineLocus"] },
+    { "id": "circleLabel", "type": "label", "at": [5.7, 6.9, 0], "text": "(x-4)^2+(y-4)^2=9", "color": "text", "tags": ["circleLocus"] },
+    { "id": "stripLabel", "type": "label", "at": [8.1, 9.1, 0], "text": "-4\\le y-x\\le4", "color": "text", "tags": ["strip"] },
+    { "id": "answerLabel", "type": "label", "at": [0.6, 10.4, 0], "text": "(5,9)\\cdot(4,1)=29", "color": "text", "tags": ["answer"] }
+  ],
+  "steps": [
+    {
+      "text": "조건 (가)의 첫 인수는 $\\overrightarrow{\\mathrm{DX}}\\cdot\\overrightarrow{\\mathrm{OC}}=0$입니다. $\\overrightarrow{\\mathrm{OC}}=(4,\\ 4)$이므로 $\\mathrm{D}(8,\\ 6)$을 지나고 기울기가 $-1$인 직선, 즉 $y=-x+14$가 나옵니다.",
+      "show": ["axes", "given", "condA", "lineLocus"],
+      "focus": ["condA", "lineLocus"]
+    },
+    {
+      "text": "조건 (가)의 둘째 인수는 $|\\overrightarrow{\\mathrm{CX}}|=3$입니다. 따라서 다른 자취는 중심 $\\mathrm{C}(4,\\ 4)$, 반지름 $3$인 원 $(x-4)^2+(y-4)^2=9$입니다.",
+      "show": ["axes", "given", "condA", "lineLocus", "circleLocus"],
+      "focus": ["circleLocus"]
+    },
+    {
+      "text": "조건 (나)에서 $\\overrightarrow{\\mathrm{PX}}$가 $\\overrightarrow{\\mathrm{OC}}$와 평행하므로 점 $\\mathrm{X}$는 선분 $\\mathrm{AB}$의 각 점을 지나고 기울기가 $1$인 직선들 위에 있습니다. $\\mathrm{A}$, $\\mathrm{B}$를 지나는 두 경계는 $y=x+4$, $y=x-4$이므로 가능한 부분은 $-4\\le y-x\\le4$입니다.",
+      "show": ["axes", "given", "candidate", "strip"],
+      "focus": ["strip"]
+    },
+    {
+      "text": "직선 자취 $y=-x+14$에서 $-4\\le y-x\\le4$를 적용하면 $5\\le x\\le9$입니다. 따라서 이 직선 부분에서 $y$좌표가 최대인 점은 $y=x+4$와의 교점 $\\mathrm{Q}(5,\\ 9)$입니다.",
+      "show": ["axes", "given", "candidate", "strip", "extreme"],
+      "focus": ["extreme"]
+    },
+    {
+      "text": "원 자취의 가장 낮은 점은 $\\mathrm{R}(4,\\ 1)$이고 $y-x=-3$이므로 조건 (나)의 띠 안에 있습니다. 직선 부분의 최솟값 $y=5$보다 작으므로 전체에서 $y$좌표가 최소인 점은 $\\mathrm{R}(4,\\ 1)$입니다.",
+      "show": ["axes", "given", "candidate", "strip", "extreme"],
+      "focus": ["extreme"]
+    },
+    {
+      "text": "따라서 $\\overrightarrow{\\mathrm{OQ}}\\cdot\\overrightarrow{\\mathrm{OR}}=(5,\\ 9)\\cdot(4,\\ 1)=20+9=29$입니다.",
+      "show": ["axes", "given", "candidate", "strip", "extreme", "answer"],
+      "focus": ["answer"]
+    }
+  ]
+}

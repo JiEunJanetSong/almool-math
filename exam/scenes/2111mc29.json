@@ -1,0 +1,599 @@
+{
+  "topic": "내적",
+  "mode": "2d",
+  "answer": "100",
+  "scale": 30,
+  "camera": {
+    "rotX": -1.5708,
+    "rotY": 0,
+    "zoom": 1.1
+  },
+  "objects": [
+    {
+      "id": "axisX",
+      "type": "segment",
+      "from": [
+        -2,
+        0,
+        0
+      ],
+      "to": [
+        5,
+        0,
+        0
+      ],
+      "color": "muted",
+      "tags": [
+        "axes"
+      ]
+    },
+    {
+      "id": "axisY",
+      "type": "segment",
+      "from": [
+        0,
+        -2,
+        0
+      ],
+      "to": [
+        0,
+        3.5,
+        0
+      ],
+      "color": "muted",
+      "tags": [
+        "axes"
+      ]
+    },
+    {
+      "id": "quadOACB",
+      "type": "plane",
+      "corners": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1.414214,
+          0,
+          0
+        ],
+        [
+          2.121321,
+          2.738613,
+          0
+        ],
+        [
+          0.707107,
+          2.738613,
+          0
+        ]
+      ],
+      "alpha": 0.12,
+      "color": "muted",
+      "tags": [
+        "given"
+      ]
+    },
+    {
+      "id": "O",
+      "type": "point",
+      "at": [
+        0,
+        0,
+        0
+      ],
+      "label": "O",
+      "color": "text",
+      "tags": [
+        "given"
+      ]
+    },
+    {
+      "id": "A",
+      "type": "point",
+      "at": [
+        1.414214,
+        0,
+        0
+      ],
+      "label": "A",
+      "color": "B",
+      "tags": [
+        "given",
+        "mmax"
+      ]
+    },
+    {
+      "id": "B",
+      "type": "point",
+      "at": [
+        0.707107,
+        2.738613,
+        0
+      ],
+      "label": "B",
+      "color": "B",
+      "tags": [
+        "given"
+      ]
+    },
+    {
+      "id": "C",
+      "type": "point",
+      "at": [
+        2.121321,
+        2.738613,
+        0
+      ],
+      "label": "C",
+      "color": "B",
+      "tags": [
+        "given"
+      ]
+    },
+    {
+      "id": "vecOA",
+      "type": "vector",
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        1.414214,
+        0,
+        0
+      ],
+      "label": "OA",
+      "color": "B",
+      "tags": [
+        "given"
+      ]
+    },
+    {
+      "id": "vecOB",
+      "type": "vector",
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        0.707107,
+        2.738613,
+        0
+      ],
+      "label": "OB",
+      "color": "B",
+      "tags": [
+        "given"
+      ]
+    },
+    {
+      "id": "segAC",
+      "type": "segment",
+      "from": [
+        1.414214,
+        0,
+        0
+      ],
+      "to": [
+        2.121321,
+        2.738613,
+        0
+      ],
+      "color": "muted",
+      "tags": [
+        "given"
+      ]
+    },
+    {
+      "id": "segCB",
+      "type": "segment",
+      "from": [
+        2.121321,
+        2.738613,
+        0
+      ],
+      "to": [
+        0.707107,
+        2.738613,
+        0
+      ],
+      "color": "muted",
+      "tags": [
+        "given"
+      ]
+    },
+    {
+      "id": "arcAOB",
+      "type": "arc",
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "a": [
+        0.5,
+        0,
+        0
+      ],
+      "b": [
+        0.125,
+        0.484123,
+        0
+      ],
+      "r": 22,
+      "tags": [
+        "given"
+      ]
+    },
+    {
+      "id": "vecOC",
+      "type": "vector",
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        2.121321,
+        2.738613,
+        0
+      ],
+      "label": "OC",
+      "color": "C",
+      "dash": [
+        4,
+        3
+      ],
+      "tags": [
+        "oc"
+      ]
+    },
+    {
+      "id": "F",
+      "type": "point",
+      "at": [
+        0.53033,
+        0.684653,
+        0
+      ],
+      "label": "F",
+      "color": "E",
+      "tags": [
+        "locus",
+        "mmin"
+      ]
+    },
+    {
+      "id": "segOF",
+      "type": "segment",
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        0.53033,
+        0.684653,
+        0
+      ],
+      "dash": [
+        3,
+        3
+      ],
+      "color": "muted",
+      "tags": [
+        "locus"
+      ]
+    },
+    {
+      "id": "segAF",
+      "type": "segment",
+      "from": [
+        1.414214,
+        0,
+        0
+      ],
+      "to": [
+        0.53033,
+        0.684653,
+        0
+      ],
+      "color": "E",
+      "width": 3,
+      "tags": [
+        "locus"
+      ]
+    },
+    {
+      "id": "rightangleF",
+      "type": "rightangle",
+      "vertex": [
+        0.53033,
+        0.684653,
+        0
+      ],
+      "a": [
+        0.316228,
+        -0.244949,
+        0
+      ],
+      "b": [
+        -0.244949,
+        -0.316228,
+        0
+      ],
+      "color": "D",
+      "tags": [
+        "locus"
+      ]
+    },
+    {
+      "id": "circleX",
+      "type": "circle",
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "r": 1.414214,
+      "color": "A",
+      "tags": [
+        "xcircle"
+      ]
+    },
+    {
+      "id": "vec3OPmax",
+      "type": "vector",
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        4.242642,
+        0,
+        0
+      ],
+      "label": "3OP",
+      "color": "C",
+      "tags": [
+        "mmax"
+      ]
+    },
+    {
+      "id": "Xmax",
+      "type": "point",
+      "at": [
+        -1.414214,
+        0,
+        0
+      ],
+      "label": "X",
+      "color": "D",
+      "tags": [
+        "mmax"
+      ]
+    },
+    {
+      "id": "vecOXmax",
+      "type": "vector",
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        -1.414214,
+        0,
+        0
+      ],
+      "label": "OX",
+      "color": "D",
+      "tags": [
+        "mmax"
+      ]
+    },
+    {
+      "id": "diffMax",
+      "type": "segment",
+      "from": [
+        -1.414214,
+        0,
+        0
+      ],
+      "to": [
+        4.242642,
+        0,
+        0
+      ],
+      "dash": [
+        4,
+        3
+      ],
+      "color": "A",
+      "width": 3,
+      "tags": [
+        "mmax"
+      ]
+    },
+    {
+      "id": "vec3OPmin",
+      "type": "vector",
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        1.59099,
+        2.053959,
+        0
+      ],
+      "color": "C",
+      "tags": [
+        "mmin"
+      ]
+    },
+    {
+      "id": "Xmin",
+      "type": "point",
+      "at": [
+        0.866025,
+        1.118034,
+        0
+      ],
+      "label": "X",
+      "color": "D",
+      "tags": [
+        "mmin"
+      ]
+    },
+    {
+      "id": "vecOXmin",
+      "type": "vector",
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        0.866025,
+        1.118034,
+        0
+      ],
+      "label": "OX",
+      "color": "D",
+      "tags": [
+        "mmin"
+      ]
+    },
+    {
+      "id": "diffMin",
+      "type": "segment",
+      "from": [
+        0.866025,
+        1.118034,
+        0
+      ],
+      "to": [
+        1.59099,
+        2.053959,
+        0
+      ],
+      "dash": [
+        4,
+        3
+      ],
+      "color": "A",
+      "width": 3,
+      "tags": [
+        "mmin"
+      ]
+    },
+    {
+      "id": "answerLabel",
+      "type": "label",
+      "at": [
+        2.6,
+        -1.2,
+        0
+      ],
+      "text": "M\\times m=6\\sqrt{6}-8,\\ a^2+b^2=100",
+      "color": "text",
+      "tags": [
+        "answer"
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "text": "$\\overrightarrow{\\mathrm{OP}}=s\\overrightarrow{\\mathrm{OA}}+t\\overrightarrow{\\mathrm{OB}}\\ (0\\le s\\le1,\\ 0\\le t\\le1)$이므로 점 $\\mathrm{P}$는 평행사변형 $\\mathrm{OACB}$의 경계 또는 내부의 점입니다. $\\overline{\\mathrm{OA}}=\\sqrt{2}$, $\\overline{\\mathrm{OB}}=2\\sqrt{2}$, $\\cos(\\angle\\mathrm{AOB})=\\dfrac{1}{4}$이므로 $\\overrightarrow{\\mathrm{OA}}\\cdot\\overrightarrow{\\mathrm{OB}}=\\sqrt{2}\\times2\\sqrt{2}\\times\\dfrac{1}{4}=1$입니다.",
+      "show": [
+        "axes",
+        "given"
+      ],
+      "focus": [
+        "given"
+      ]
+    },
+    {
+      "text": "$\\overrightarrow{\\mathrm{OP}}\\cdot\\overrightarrow{\\mathrm{OB}}+\\overrightarrow{\\mathrm{BP}}\\cdot\\overrightarrow{\\mathrm{BC}}=\\overrightarrow{\\mathrm{OP}}\\cdot\\overrightarrow{\\mathrm{OB}}+(\\overrightarrow{\\mathrm{OP}}-\\overrightarrow{\\mathrm{OB}})\\cdot\\overrightarrow{\\mathrm{OA}}=\\overrightarrow{\\mathrm{OP}}\\cdot(\\overrightarrow{\\mathrm{OA}}+\\overrightarrow{\\mathrm{OB}})-\\overrightarrow{\\mathrm{OA}}\\cdot\\overrightarrow{\\mathrm{OB}}=\\overrightarrow{\\mathrm{OP}}\\cdot\\overrightarrow{\\mathrm{OC}}-1=2$이므로 (나)의 식은 $\\overrightarrow{\\mathrm{OP}}\\cdot\\overrightarrow{\\mathrm{OC}}=3$으로 정리됩니다.",
+      "show": [
+        "axes",
+        "given",
+        "oc"
+      ],
+      "focus": [
+        "oc"
+      ]
+    },
+    {
+      "text": "$\\overline{\\mathrm{OC}}^2=\\overline{\\mathrm{OA}}^2+\\overline{\\mathrm{OB}}^2+2\\overrightarrow{\\mathrm{OA}}\\cdot\\overrightarrow{\\mathrm{OB}}=2+8+2=12$이므로 $\\overline{\\mathrm{OC}}=2\\sqrt{3}$이고, $\\overrightarrow{\\mathrm{OP}}\\cdot\\overrightarrow{\\mathrm{OC}}=3$인 점 $\\mathrm{P}$는 직선 $\\mathrm{OC}$와 수직이고 $\\mathrm{O}$로부터 거리가 $\\dfrac{3}{2\\sqrt{3}}=\\dfrac{\\sqrt{3}}{2}$인 직선 위에 있습니다. $\\overrightarrow{\\mathrm{OA}}\\cdot\\overrightarrow{\\mathrm{OC}}=2+1=3$이므로 이 직선은 점 $\\mathrm{A}$를 지나며, 평행사변형 내부에서 점 $\\mathrm{P}$는 $\\mathrm{A}$에서 직선 $\\mathrm{OC}$에 내린 수선의 발 $\\mathrm{F}\\left(\\overline{\\mathrm{OF}}=\\dfrac{\\sqrt{3}}{2}\\right)$까지의 선분 위를 움직입니다.",
+      "show": [
+        "axes",
+        "given",
+        "oc",
+        "locus"
+      ],
+      "focus": [
+        "locus"
+      ]
+    },
+    {
+      "text": "점 $\\mathrm{X}$는 $\\mathrm{O}$를 중심으로 하고 $\\mathrm{A}$를 지나는 반지름 $\\sqrt{2}$인 원 위를 움직입니다. $\\av{3\\overrightarrow{\\mathrm{OP}}-\\overrightarrow{\\mathrm{OX}}}$는 $\\overline{\\mathrm{OP}}$가 최대($\\mathrm{P}=\\mathrm{A}$, $\\overline{\\mathrm{OP}}=\\sqrt{2}$)이고 $\\overrightarrow{\\mathrm{OX}}$가 $\\overrightarrow{\\mathrm{OP}}$와 반대 방향일 때 최댓값 $M=3\\sqrt{2}+\\sqrt{2}=4\\sqrt{2}$를 가집니다.",
+      "show": [
+        "axes",
+        "given",
+        "oc",
+        "locus",
+        "xcircle",
+        "mmax"
+      ],
+      "focus": [
+        "xcircle",
+        "mmax"
+      ]
+    },
+    {
+      "text": "반대로 $\\av{3\\overrightarrow{\\mathrm{OP}}-\\overrightarrow{\\mathrm{OX}}}$는 $\\overline{\\mathrm{OP}}$가 최소($\\mathrm{P}=\\mathrm{F}$, $\\overline{\\mathrm{OP}}=\\dfrac{\\sqrt{3}}{2}$)이고 $\\overrightarrow{\\mathrm{OX}}$가 $\\overrightarrow{\\mathrm{OP}}$와 같은 방향일 때 최솟값 $m=\\dfrac{3\\sqrt{3}}{2}-\\sqrt{2}$를 가집니다.",
+      "show": [
+        "axes",
+        "given",
+        "oc",
+        "locus",
+        "xcircle",
+        "mmax",
+        "mmin"
+      ],
+      "focus": [
+        "mmin"
+      ]
+    },
+    {
+      "text": "따라서 $M\\times m=4\\sqrt{2}\\times\\left(\\dfrac{3\\sqrt{3}}{2}-\\sqrt{2}\\right)=6\\sqrt{6}-8$이므로 $a=6$, $b=-8$이고 $a^2+b^2=36+64=100$입니다.",
+      "show": [
+        "axes",
+        "given",
+        "oc",
+        "locus",
+        "xcircle",
+        "mmax",
+        "mmin",
+        "answer"
+      ],
+      "focus": [
+        "answer"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,563 @@
+{
+  "topic": "자취",
+  "mode": "2d",
+  "answer": "11",
+  "scale": 11,
+  "camera": {
+    "rotX": -1.5708,
+    "rotY": 0,
+    "zoom": 1.06
+  },
+  "objects": [
+    {
+      "id": "axis1",
+      "type": "segment",
+      "from": [
+        -9,
+        0,
+        0
+      ],
+      "to": [
+        9,
+        0,
+        0
+      ],
+      "color": "muted",
+      "tags": [
+        "case1",
+        "axes"
+      ]
+    },
+    {
+      "id": "axis2",
+      "type": "segment",
+      "from": [
+        -7,
+        -11,
+        0
+      ],
+      "to": [
+        10,
+        -11,
+        0
+      ],
+      "color": "muted",
+      "tags": [
+        "case2",
+        "axes"
+      ]
+    },
+    {
+      "id": "hyp1",
+      "type": "hyperbola",
+      "form": "x2-y2",
+      "a": 3,
+      "b": 6.324555,
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "span": 0.88,
+      "branch": "both",
+      "width": 3,
+      "color": "A",
+      "tags": [
+        "given",
+        "case1",
+        "hyperbola"
+      ]
+    },
+    {
+      "id": "hyp2",
+      "type": "hyperbola",
+      "form": "x2-y2",
+      "a": 3,
+      "b": 2.645751,
+      "center": [
+        0,
+        -11,
+        0
+      ],
+      "span": 1.15,
+      "branch": "both",
+      "width": 3,
+      "color": "D",
+      "tags": [
+        "given",
+        "case2",
+        "hyperbola"
+      ]
+    },
+    {
+      "id": "F1",
+      "type": "point",
+      "at": [
+        7,
+        0,
+        0
+      ],
+      "label": "F",
+      "color": "B",
+      "tags": [
+        "case1",
+        "foci1",
+        "isosc1"
+      ]
+    },
+    {
+      "id": "Fp1",
+      "type": "point",
+      "at": [
+        -7,
+        0,
+        0
+      ],
+      "label": "F'",
+      "color": "B",
+      "tags": [
+        "case1",
+        "foci1",
+        "isosc1"
+      ]
+    },
+    {
+      "id": "F2",
+      "type": "point",
+      "at": [
+        4,
+        -11,
+        0
+      ],
+      "label": "F",
+      "color": "B",
+      "tags": [
+        "case2",
+        "foci2",
+        "isosc2"
+      ]
+    },
+    {
+      "id": "Fp2",
+      "type": "point",
+      "at": [
+        -4,
+        -11,
+        0
+      ],
+      "label": "F'",
+      "color": "B",
+      "tags": [
+        "case2",
+        "foci2",
+        "isosc2"
+      ]
+    },
+    {
+      "id": "P1",
+      "type": "point",
+      "at": [
+        4.714286,
+        7.666519,
+        0
+      ],
+      "label": "P",
+      "color": "C",
+      "tags": [
+        "case1",
+        "points1",
+        "isosc1",
+        "perimeter1"
+      ]
+    },
+    {
+      "id": "Q1",
+      "type": "point",
+      "at": [
+        -3.221198,
+        2.473071,
+        0
+      ],
+      "label": "Q",
+      "color": "E",
+      "tags": [
+        "case1",
+        "points1",
+        "perimeter1"
+      ]
+    },
+    {
+      "id": "P2",
+      "type": "point",
+      "at": [
+        8.25,
+        -4.222279,
+        0
+      ],
+      "label": "P",
+      "color": "C",
+      "tags": [
+        "case2",
+        "points2",
+        "isosc2",
+        "perimeter2"
+      ]
+    },
+    {
+      "id": "Q2",
+      "type": "point",
+      "at": [
+        -3.057692,
+        -10.478637,
+        0
+      ],
+      "label": "Q",
+      "color": "E",
+      "tags": [
+        "case2",
+        "points2",
+        "perimeter2"
+      ]
+    },
+    {
+      "id": "segF1Fp1",
+      "type": "segment",
+      "from": [
+        -7,
+        0,
+        0
+      ],
+      "to": [
+        7,
+        0,
+        0
+      ],
+      "width": 3,
+      "color": "B",
+      "tags": [
+        "case1",
+        "foci1",
+        "isosc1"
+      ]
+    },
+    {
+      "id": "segF2Fp2",
+      "type": "segment",
+      "from": [
+        -4,
+        -11,
+        0
+      ],
+      "to": [
+        4,
+        -11,
+        0
+      ],
+      "width": 3,
+      "color": "B",
+      "tags": [
+        "case2",
+        "foci2",
+        "isosc2"
+      ]
+    },
+    {
+      "id": "line1",
+      "type": "segment",
+      "from": [
+        -7,
+        0,
+        0
+      ],
+      "to": [
+        4.714286,
+        7.666519,
+        0
+      ],
+      "width": 3,
+      "color": "C",
+      "tags": [
+        "case1",
+        "line1",
+        "perimeter1"
+      ]
+    },
+    {
+      "id": "line2",
+      "type": "segment",
+      "from": [
+        -4,
+        -11,
+        0
+      ],
+      "to": [
+        8.25,
+        -4.222279,
+        0
+      ],
+      "width": 3,
+      "color": "C",
+      "tags": [
+        "case2",
+        "line2",
+        "perimeter2"
+      ]
+    },
+    {
+      "id": "segP1F",
+      "type": "segment",
+      "from": [
+        4.714286,
+        7.666519,
+        0
+      ],
+      "to": [
+        7,
+        0,
+        0
+      ],
+      "width": 2.5,
+      "color": "C",
+      "tags": [
+        "case1",
+        "isosc1",
+        "perimeter1"
+      ]
+    },
+    {
+      "id": "segQ1F",
+      "type": "segment",
+      "from": [
+        -3.221198,
+        2.473071,
+        0
+      ],
+      "to": [
+        7,
+        0,
+        0
+      ],
+      "dash": [
+        4,
+        3
+      ],
+      "width": 2.5,
+      "color": "E",
+      "tags": [
+        "case1",
+        "perimeter1"
+      ]
+    },
+    {
+      "id": "segP2F",
+      "type": "segment",
+      "from": [
+        8.25,
+        -4.222279,
+        0
+      ],
+      "to": [
+        4,
+        -11,
+        0
+      ],
+      "width": 2.5,
+      "color": "C",
+      "tags": [
+        "case2",
+        "isosc2",
+        "perimeter2"
+      ]
+    },
+    {
+      "id": "segQ2F",
+      "type": "segment",
+      "from": [
+        -3.057692,
+        -10.478637,
+        0
+      ],
+      "to": [
+        4,
+        -11,
+        0
+      ],
+      "dash": [
+        4,
+        3
+      ],
+      "width": 2.5,
+      "color": "E",
+      "tags": [
+        "case2",
+        "perimeter2"
+      ]
+    },
+    {
+      "id": "labelHyp1",
+      "type": "label",
+      "at": [
+        -8.6,
+        8.6,
+        0
+      ],
+      "text": "c=7:\\ a=3,\\ b^2=40",
+      "color": "text",
+      "tags": [
+        "result1"
+      ]
+    },
+    {
+      "id": "labelHyp2",
+      "type": "label",
+      "at": [
+        -8.6,
+        -2.2,
+        0
+      ],
+      "text": "c=4:\\ a=3,\\ b^2=7",
+      "color": "text",
+      "tags": [
+        "result2"
+      ]
+    },
+    {
+      "id": "labelPerim1",
+      "type": "label",
+      "at": [
+        1.2,
+        5.6,
+        0
+      ],
+      "text": "PF'=FF'=14,\\ PF=8",
+      "color": "text",
+      "tags": [
+        "result1"
+      ]
+    },
+    {
+      "id": "labelPerim2",
+      "type": "label",
+      "at": [
+        1.1,
+        -5.6,
+        0
+      ],
+      "text": "PF=FF'=8,\\ PF'=14",
+      "color": "text",
+      "tags": [
+        "result2"
+      ]
+    },
+    {
+      "id": "labelAnswer",
+      "type": "label",
+      "at": [
+        5.8,
+        -13.7,
+        0
+      ],
+      "text": "c=7,\\ 4\\quad\\Rightarrow\\quad 7+4=11",
+      "color": "text",
+      "tags": [
+        "answer"
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "text": "주축의 길이가 $6$이므로 쌍곡선의 $a$는 $3$입니다. 두 점 $\\mathrm{P}$, $\\mathrm{Q}$는 모두 같은 쌍곡선 위에 있고, $\\mathrm{Q}$는 직선 $\\mathrm{PF'}$ 위에 있습니다.",
+      "show": [
+        "axes",
+        "given",
+        "hyperbola",
+        "foci1",
+        "foci2"
+      ],
+      "focus": [
+        "hyperbola",
+        "foci1",
+        "foci2"
+      ]
+    },
+    {
+      "text": "$\\overline{\\mathrm{QF'}}=a$, $\\overline{\\mathrm{PQ}}=b$라 두면 쌍곡선의 정의에서 $\\overline{\\mathrm{QF}}=a+6$, $\\overline{\\mathrm{PF}}=a+b-6$입니다. 삼각형 $\\mathrm{PQF}$의 둘레가 $28$이므로 $b+(a+b-6)+(a+6)=28$, 즉 $a+b=14$입니다.",
+      "show": [
+        "axes",
+        "case1",
+        "case2",
+        "foci1",
+        "foci2",
+        "points1",
+        "points2",
+        "line1",
+        "line2",
+        "perimeter1",
+        "perimeter2"
+      ],
+      "focus": [
+        "perimeter1",
+        "perimeter2"
+      ]
+    },
+    {
+      "text": "첫 번째 이등변 경우는 $\\overline{\\mathrm{FF'}}=\\overline{\\mathrm{PF'}}$입니다. $\\overline{\\mathrm{PF'}}=a+b=14$이므로 $2c=14$, 따라서 $c=7$입니다.",
+      "show": [
+        "axes",
+        "case1",
+        "hyperbola",
+        "foci1",
+        "points1",
+        "line1",
+        "isosc1",
+        "perimeter1",
+        "result1"
+      ],
+      "focus": [
+        "isosc1",
+        "perimeter1",
+        "result1"
+      ]
+    },
+    {
+      "text": "두 번째 이등변 경우는 $\\overline{\\mathrm{FF'}}=\\overline{\\mathrm{PF}}$입니다. $\\overline{\\mathrm{PF'}}=14$이고 쌍곡선의 정의에서 $\\overline{\\mathrm{PF'}}-\\overline{\\mathrm{PF}}=6$이므로 $\\overline{\\mathrm{PF}}=8$입니다. 따라서 $2c=8$, $c=4$입니다.",
+      "show": [
+        "axes",
+        "case2",
+        "hyperbola",
+        "foci2",
+        "points2",
+        "line2",
+        "isosc2",
+        "perimeter2",
+        "result2"
+      ],
+      "focus": [
+        "isosc2",
+        "perimeter2",
+        "result2"
+      ]
+    },
+    {
+      "text": "조건을 만족시키는 모든 $c$의 값은 $7$과 $4$입니다. 그러므로 그 합은 $7+4=11$입니다.",
+      "show": [
+        "axes",
+        "case1",
+        "case2",
+        "hyperbola",
+        "foci1",
+        "foci2",
+        "points1",
+        "points2",
+        "perimeter1",
+        "perimeter2",
+        "answer",
+        "result1",
+        "result2"
+      ],
+      "focus": [
+        "answer"
+      ]
+    }
+  ]
+}

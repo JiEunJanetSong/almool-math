@@ -1,0 +1,62 @@
+{
+  "topic": "자취",
+  "mode": "2d",
+  "answer": "-\\dfrac{3}{4}",
+  "scale": 28,
+  "camera": { "rotX": -1.5708, "rotY": 0, "zoom": 1.05 },
+  "objects": [
+    { "id": "axisX", "type": "segment", "from": [-1.7, 0, 0], "to": [5.5, 0, 0], "color": "muted", "tags": ["axes"] },
+    { "id": "axisY", "type": "segment", "from": [0, -1.2, 0], "to": [0, 6.2, 0], "color": "muted", "tags": ["axes"] },
+    { "id": "C1", "type": "parabola", "form": "y2=4px", "p": 1, "vertex": [0, 0, 0], "span": 4.8, "color": "A", "width": 2.5, "tags": ["given", "c1"] },
+    { "id": "C2", "type": "parabola", "form": "y2=4px", "p": 1.25, "vertex": [0.25, 3, 0], "span": 4.7, "color": "B", "width": 2.5, "tags": ["given", "c2", "uniqueCase"] },
+    { "id": "directrixCommon", "type": "segment", "from": [-1, -0.9, 0], "to": [-1, 6, 0], "dash": [5, 4], "color": "muted", "tags": ["directrix", "coincide"] },
+    { "id": "V1", "type": "point", "at": [0, 0, 0], "label": "V_1", "color": "text", "tags": ["given", "c1"] },
+    { "id": "F1", "type": "point", "at": [1, 0, 0], "label": "F_1", "color": "C", "tags": ["given", "focus", "c1"] },
+    { "id": "V2", "type": "point", "at": [0.25, 3, 0], "label": "V_2", "color": "B", "tags": ["c2", "uniqueCase"] },
+    { "id": "F2", "type": "point", "at": [1.5, 3, 0], "label": "F_2", "color": "C", "tags": ["focus", "c2", "uniqueCase"] },
+    { "id": "A", "type": "point", "at": [0.641177, 1.601471, 0], "label": "A", "color": "E", "tags": ["intersection", "distanceRule", "uniqueCase"] },
+    { "id": "D", "type": "point", "at": [-1, 1.601471, 0], "label": "D", "color": "D", "tags": ["directrix", "distanceRule"] },
+    { "id": "segAF1", "type": "segment", "from": [0.641177, 1.601471, 0], "to": [1, 0, 0], "color": "C", "width": 3, "tags": ["distanceRule"] },
+    { "id": "segAF2", "type": "segment", "from": [0.641177, 1.601471, 0], "to": [1.5, 3, 0], "color": "C", "width": 3, "tags": ["distanceRule"] },
+    { "id": "segAD", "type": "segment", "from": [0.641177, 1.601471, 0], "to": [-1, 1.601471, 0], "color": "D", "width": 3, "tags": ["distanceRule", "coincide"] },
+    { "id": "rightangleD", "type": "rightangle", "vertex": [-1, 1.601471, 0], "a": [1, 0, 0], "b": [0, 1, 0], "color": "D", "tags": ["distanceRule"] },
+    { "id": "labelC1", "type": "label", "at": [4.2, 4.2, 0], "text": "C_1:y^2=4x", "color": "A", "tags": ["given", "c1"] },
+    { "id": "labelC2", "type": "label", "at": [3.15, 5.65, 0], "text": "C_2:(y-3)^2=5\\left(x-\\dfrac14\\right)", "color": "B", "tags": ["c2", "uniqueCase"] },
+    { "id": "labelDirectrix", "type": "label", "at": [-1.55, 5.65, 0], "text": "x=-1", "color": "text", "tags": ["directrix", "coincide"] },
+    { "id": "pAxisX", "type": "segment", "from": [0.55, -0.35, 0], "to": [2.25, -0.35, 0], "color": "muted", "tags": ["equationGraph"] },
+    { "id": "pAxisY", "type": "segment", "from": [0.55, -0.35, 0], "to": [0.55, 1.25, 0], "color": "muted", "tags": ["equationGraph"] },
+    { "id": "fGraph", "type": "parabola", "form": "x2=4py", "p": 0.25, "vertex": [0.75, 0, 0], "span": 1.55, "color": "E", "dash": [4, 3], "tags": ["equationGraph", "tangent"] },
+    { "id": "linePMinus1", "type": "segment", "from": [0.55, -0.45, 0], "to": [2.25, 1.25, 0], "color": "D", "width": 2.5, "tags": ["equationGraph", "tangent"] },
+    { "id": "T", "type": "point", "at": [1.25, 0.25, 0], "label": "T", "color": "E", "tags": ["equationGraph", "tangent", "answer"] },
+    { "id": "tangentLabel", "type": "label", "at": [1.42, 0.62, 0], "text": "p=\\dfrac54", "color": "text", "tags": ["equationGraph", "tangent"] },
+    { "id": "eqLabel", "type": "label", "at": [2.55, 1.55, 0], "text": "(x+a)^2=x-1", "color": "text", "tags": ["equationGraph", "equation"] },
+    { "id": "answerLabel", "type": "label", "at": [2.72, 0.92, 0], "text": "(2a-1)^2-4(a^2+1)=0,\\ a=-\\dfrac34", "color": "text", "tags": ["answer", "equation"] }
+  ],
+  "steps": [
+    {
+      "text": "두 포물선 $C_1:y^2=4x$, $C_2:(y-3)^2=4p\\{x-f(p)\\}$가 제$1$사분면에서 만나는 점을 $\\mathrm{A}$라 합니다. $C_1$의 초점은 $\\mathrm{F_1}(1,\\ 0)$, 준선은 $x=-1$입니다.",
+      "show": ["axes", "given", "c1", "c2", "focus", "directrix"],
+      "focus": ["c1", "c2", "focus"]
+    },
+    {
+      "text": "$\\overline{\\mathrm{AF_1}}=\\overline{\\mathrm{AF_2}}$이므로, 포물선의 정의에 의해 점 $\\mathrm{A}$에서 $C_1$의 준선까지의 거리와 $C_2$의 준선까지의 거리가 같습니다. 따라서 두 포물선의 준선은 서로 일치해야 합니다.",
+      "show": ["axes", "given", "c1", "c2", "focus", "directrix", "distanceRule"],
+      "focus": ["distanceRule", "coincide"]
+    },
+    {
+      "text": "$C_2$의 꼭짓점은 $(f(p),\\ 3)$이고 꼭짓점과 준선 사이의 거리는 $p$입니다. 공통 준선이 $x=-1$이므로 $f(p)-p=-1$, 즉 $p=f(p)+1$입니다.",
+      "show": ["axes", "given", "c1", "c2", "directrix", "coincide", "uniqueCase"],
+      "focus": ["c2", "coincide", "uniqueCase"]
+    },
+    {
+      "text": "문제의 조건은 $p\\ge1$에서 $p=f(p)+1$이 오직 하나의 실근을 갖는 것입니다. 이는 $x\\ge1$에서 $f(x)=x-1$, 즉 $y=(x+a)^2$와 $y=x-1$이 한 점에서 접하는 경우입니다.",
+      "show": ["axes", "equationGraph", "tangent"],
+      "focus": ["equationGraph", "tangent"]
+    },
+    {
+      "text": "$(x+a)^2=x-1$을 정리하면 $x^2+(2a-1)x+a^2+1=0$입니다. 중근 조건에서 $(2a-1)^2-4(a^2+1)=0$이므로 $a=-\\dfrac34$입니다.",
+      "show": ["axes", "equationGraph", "tangent", "equation", "answer"],
+      "focus": ["answer", "tangent"]
+    }
+  ]
+}

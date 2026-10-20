@@ -1,0 +1,566 @@
+{
+  "topic": "자취",
+  "mode": "2d",
+  "answer": "10",
+  "scale": 13,
+  "camera": {
+    "rotX": -1.5708,
+    "rotY": 0,
+    "zoom": 1.06
+  },
+  "objects": [
+    {
+      "id": "axisX",
+      "type": "segment",
+      "from": [
+        -11,
+        0,
+        0
+      ],
+      "to": [
+        7.5,
+        0,
+        0
+      ],
+      "color": "muted",
+      "tags": [
+        "axes"
+      ]
+    },
+    {
+      "id": "axisY",
+      "type": "segment",
+      "from": [
+        0,
+        -5.6,
+        0
+      ],
+      "to": [
+        0,
+        7.6,
+        0
+      ],
+      "color": "muted",
+      "tags": [
+        "axes"
+      ]
+    },
+    {
+      "id": "hyperbola",
+      "type": "hyperbola",
+      "form": "x2-y2",
+      "a": 3,
+      "b": 4,
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "span": 1.15,
+      "branch": "both",
+      "width": 3,
+      "color": "A",
+      "tags": [
+        "given",
+        "hyperbola"
+      ]
+    },
+    {
+      "id": "asymPos",
+      "type": "segment",
+      "from": [
+        -6,
+        -8,
+        0
+      ],
+      "to": [
+        6,
+        8,
+        0
+      ],
+      "dash": [
+        5,
+        4
+      ],
+      "color": "muted",
+      "tags": [
+        "asymptotes",
+        "locus"
+      ]
+    },
+    {
+      "id": "asymNeg",
+      "type": "segment",
+      "from": [
+        -6,
+        8,
+        0
+      ],
+      "to": [
+        6,
+        -8,
+        0
+      ],
+      "dash": [
+        5,
+        4
+      ],
+      "color": "muted",
+      "tags": [
+        "asymptotes",
+        "locus"
+      ]
+    },
+    {
+      "id": "F",
+      "type": "point",
+      "at": [
+        5,
+        0,
+        0
+      ],
+      "label": "F",
+      "color": "B",
+      "tags": [
+        "given",
+        "foci"
+      ]
+    },
+    {
+      "id": "Fp",
+      "type": "point",
+      "at": [
+        -5,
+        0,
+        0
+      ],
+      "label": "F'",
+      "color": "B",
+      "tags": [
+        "given",
+        "foci",
+        "locus",
+        "answer"
+      ]
+    },
+    {
+      "id": "focusAxis",
+      "type": "segment",
+      "from": [
+        -5,
+        0,
+        0
+      ],
+      "to": [
+        5,
+        0,
+        0
+      ],
+      "dash": [
+        4,
+        3
+      ],
+      "color": "muted",
+      "tags": [
+        "foci"
+      ]
+    },
+    {
+      "id": "P",
+      "type": "point",
+      "at": [
+        5,
+        5.333333,
+        0
+      ],
+      "label": "P",
+      "color": "C",
+      "tags": [
+        "division",
+        "pointP"
+      ]
+    },
+    {
+      "id": "Q",
+      "type": "point",
+      "at": [
+        -0.588235,
+        2.352941,
+        0
+      ],
+      "label": "Q",
+      "color": "E",
+      "tags": [
+        "division",
+        "locus"
+      ]
+    },
+    {
+      "id": "segFpP",
+      "type": "segment",
+      "from": [
+        -5,
+        0,
+        0
+      ],
+      "to": [
+        5,
+        5.333333,
+        0
+      ],
+      "width": 3,
+      "color": "C",
+      "tags": [
+        "division",
+        "pointP"
+      ]
+    },
+    {
+      "id": "segFQ",
+      "type": "segment",
+      "from": [
+        5,
+        0,
+        0
+      ],
+      "to": [
+        -0.588235,
+        2.352941,
+        0
+      ],
+      "dash": [
+        4,
+        3
+      ],
+      "color": "D",
+      "tags": [
+        "division"
+      ]
+    },
+    {
+      "id": "segQP",
+      "type": "segment",
+      "from": [
+        -0.588235,
+        2.352941,
+        0
+      ],
+      "to": [
+        5,
+        5.333333,
+        0
+      ],
+      "width": 3,
+      "color": "E",
+      "tags": [
+        "division"
+      ]
+    },
+    {
+      "id": "segFpQ",
+      "type": "segment",
+      "from": [
+        -5,
+        0,
+        0
+      ],
+      "to": [
+        -0.588235,
+        2.352941,
+        0
+      ],
+      "width": 3,
+      "color": "E",
+      "tags": [
+        "division",
+        "locus"
+      ]
+    },
+    {
+      "id": "circleQ",
+      "type": "circle",
+      "center": [
+        -5,
+        0,
+        0
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "r": 5,
+      "width": 3,
+      "color": "C",
+      "tags": [
+        "locus",
+        "answer"
+      ]
+    },
+    {
+      "id": "wedgeTop",
+      "type": "segment",
+      "from": [
+        -5,
+        0,
+        0
+      ],
+      "to": [
+        1.1,
+        8.133333,
+        0
+      ],
+      "dash": [
+        5,
+        4
+      ],
+      "color": "muted",
+      "tags": [
+        "locus"
+      ]
+    },
+    {
+      "id": "wedgeBot",
+      "type": "segment",
+      "from": [
+        -5,
+        0,
+        0
+      ],
+      "to": [
+        1.1,
+        -8.133333,
+        0
+      ],
+      "dash": [
+        5,
+        4
+      ],
+      "color": "muted",
+      "tags": [
+        "locus"
+      ]
+    },
+    {
+      "id": "A",
+      "type": "point",
+      "at": [
+        -9,
+        -3,
+        0
+      ],
+      "label": "A",
+      "color": "D",
+      "tags": [
+        "pointA",
+        "answer"
+      ]
+    },
+    {
+      "id": "Qmax",
+      "type": "point",
+      "at": [
+        -1,
+        3,
+        0
+      ],
+      "label": "Q_0",
+      "color": "E",
+      "tags": [
+        "max",
+        "answer"
+      ]
+    },
+    {
+      "id": "segAFp",
+      "type": "segment",
+      "from": [
+        -9,
+        -3,
+        0
+      ],
+      "to": [
+        -5,
+        0,
+        0
+      ],
+      "dash": [
+        4,
+        3
+      ],
+      "width": 3,
+      "color": "D",
+      "tags": [
+        "answer"
+      ]
+    },
+    {
+      "id": "segFpQmax",
+      "type": "segment",
+      "from": [
+        -5,
+        0,
+        0
+      ],
+      "to": [
+        -1,
+        3,
+        0
+      ],
+      "dash": [
+        4,
+        3
+      ],
+      "width": 3,
+      "color": "E",
+      "tags": [
+        "answer"
+      ]
+    },
+    {
+      "id": "segAQmax",
+      "type": "segment",
+      "from": [
+        -9,
+        -3,
+        0
+      ],
+      "to": [
+        -1,
+        3,
+        0
+      ],
+      "width": 3,
+      "color": "A",
+      "tags": [
+        "max",
+        "answer"
+      ]
+    },
+    {
+      "id": "labelHyp",
+      "type": "label",
+      "at": [
+        1.0,
+        -4.8,
+        0
+      ],
+      "text": "\\dfrac{x^2}{9}-\\dfrac{y^2}{16}=1",
+      "color": "text",
+      "tags": [
+        "hyperbola"
+      ]
+    },
+    {
+      "id": "labelDivision",
+      "type": "label",
+      "at": [
+        -2.2,
+        4.5,
+        0
+      ],
+      "text": "F'Q=5",
+      "color": "text",
+      "tags": [
+        "locus"
+      ]
+    },
+    {
+      "id": "labelCircle",
+      "type": "label",
+      "at": [
+        -10.4,
+        5.9,
+        0
+      ],
+      "text": "(x+5)^2+y^2=25",
+      "color": "text",
+      "tags": [
+        "locus"
+      ]
+    },
+    {
+      "id": "answerLabel",
+      "type": "label",
+      "at": [
+        -10.2,
+        -4.7,
+        0
+      ],
+      "text": "AQ_{\\max}=10",
+      "color": "text",
+      "tags": [
+        "answer"
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "text": "두 초점이 $\\mathrm{F}(5,\\ 0)$, $\\mathrm{F'}(-5,\\ 0)$이고 주축의 길이가 $6$이므로 쌍곡선의 방정식은 $\\dfrac{x^2}{3^2}-\\dfrac{y^2}{4^2}=1$입니다.",
+      "show": [
+        "axes",
+        "given",
+        "hyperbola",
+        "foci",
+        "asymptotes"
+      ],
+      "focus": [
+        "hyperbola",
+        "foci"
+      ]
+    },
+    {
+      "text": "$|\\overrightarrow{\\mathrm{FP}}|=k$라 하면 $(k+1)\\overrightarrow{\\mathrm{F'Q}}=5\\overrightarrow{\\mathrm{QP}}$입니다. 따라서 $\\mathrm{P}$, $\\mathrm{Q}$, $\\mathrm{F'}$는 한 직선 위에 있고, $\\mathrm{Q}$는 선분 $\\mathrm{F'P}$를 $5:(k+1)$로 내분합니다.",
+      "show": [
+        "axes",
+        "hyperbola",
+        "foci",
+        "division",
+        "pointP"
+      ],
+      "focus": [
+        "division"
+      ]
+    },
+    {
+      "text": "쌍곡선의 정의에서 $\\overline{\\mathrm{PF'}}=k+6$이므로 $\\overline{\\mathrm{QF'}}=5$입니다. 따라서 $\\mathrm{Q}$는 $\\mathrm{F'}$ 중심, 반지름 $5$인 원 위의 점입니다.",
+      "show": [
+        "axes",
+        "hyperbola",
+        "foci",
+        "division",
+        "locus"
+      ],
+      "focus": [
+        "locus"
+      ]
+    },
+    {
+      "text": "$\\mathrm{P}$가 쌍곡선 위를 움직이므로 $\\mathrm{Q}$는 $\\mathrm{F'}$ 중심의 원 중 기울기가 $-\\dfrac43$보다 크고 $\\dfrac43$보다 작은 직선 사이의 부분에 존재합니다. 자취의 방정식은 $(x+5)^2+y^2=25$입니다.",
+      "show": [
+        "axes",
+        "hyperbola",
+        "foci",
+        "asymptotes",
+        "locus"
+      ],
+      "focus": [
+        "locus"
+      ]
+    },
+    {
+      "text": "점 $\\mathrm{A}(-9,\\ -3)$는 이 원 위에 있으므로 $|\\overrightarrow{\\mathrm{AQ}}|$의 최댓값은 직선 $\\mathrm{AQ}$가 원의 중심 $\\mathrm{F'}$를 지날 때의 지름 $10$입니다.",
+      "show": [
+        "axes",
+        "foci",
+        "locus",
+        "pointA",
+        "max",
+        "answer"
+      ],
+      "focus": [
+        "answer"
+      ]
+    }
+  ]
+}

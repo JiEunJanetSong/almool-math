@@ -1,0 +1,534 @@
+{
+  "topic": "자취",
+  "mode": "2d",
+  "answer": "63",
+  "scale": 15,
+  "camera": {
+    "rotX": -1.5708,
+    "rotY": 0,
+    "zoom": 1.08
+  },
+  "objects": [
+    {
+      "id": "axisX",
+      "type": "segment",
+      "from": [
+        -6,
+        0,
+        0
+      ],
+      "to": [
+        10.5,
+        0,
+        0
+      ],
+      "color": "muted",
+      "tags": [
+        "axes"
+      ]
+    },
+    {
+      "id": "axisY",
+      "type": "segment",
+      "from": [
+        0,
+        -1.2,
+        0
+      ],
+      "to": [
+        0,
+        8.5,
+        0
+      ],
+      "color": "muted",
+      "tags": [
+        "axes",
+        "directrix"
+      ]
+    },
+    {
+      "id": "O",
+      "type": "point",
+      "at": [
+        0,
+        0,
+        0
+      ],
+      "label": "O",
+      "color": "text",
+      "tags": [
+        "given",
+        "axes"
+      ]
+    },
+    {
+      "id": "F",
+      "type": "point",
+      "at": [
+        4,
+        0,
+        0
+      ],
+      "label": "F",
+      "color": "B",
+      "tags": [
+        "given",
+        "foci",
+        "parabolaDef"
+      ]
+    },
+    {
+      "id": "Fp",
+      "type": "point",
+      "at": [
+        -4,
+        0,
+        0
+      ],
+      "label": "F'",
+      "color": "B",
+      "tags": [
+        "given",
+        "foci",
+        "hyperbolaDef"
+      ]
+    },
+    {
+      "id": "focusAxis",
+      "type": "segment",
+      "from": [
+        -4,
+        0,
+        0
+      ],
+      "to": [
+        4,
+        0,
+        0
+      ],
+      "dash": [
+        4,
+        3
+      ],
+      "color": "muted",
+      "tags": [
+        "foci"
+      ]
+    },
+    {
+      "id": "hyperbolaC",
+      "type": "hyperbola",
+      "form": "x2-y2",
+      "a": 3,
+      "b": 2.645751,
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "span": 1.82,
+      "branch": "both",
+      "width": 3,
+      "color": "A",
+      "tags": [
+        "given",
+        "hyperbola",
+        "answer"
+      ]
+    },
+    {
+      "id": "asymPos",
+      "type": "segment",
+      "from": [
+        -5.5,
+        -4.849,
+        0
+      ],
+      "to": [
+        10,
+        8.819,
+        0
+      ],
+      "dash": [
+        5,
+        4
+      ],
+      "color": "muted",
+      "tags": [
+        "hyperbola"
+      ]
+    },
+    {
+      "id": "asymNeg",
+      "type": "segment",
+      "from": [
+        -5.5,
+        4.849,
+        0
+      ],
+      "to": [
+        10,
+        -8.819,
+        0
+      ],
+      "dash": [
+        5,
+        4
+      ],
+      "color": "muted",
+      "tags": [
+        "hyperbola"
+      ]
+    },
+    {
+      "id": "parabola",
+      "type": "parabola",
+      "form": "y2=4px",
+      "p": 2,
+      "vertex": [
+        2,
+        0,
+        0
+      ],
+      "span": 8.4,
+      "width": 2.5,
+      "color": "D",
+      "tags": [
+        "parabola",
+        "parabolaDef"
+      ]
+    },
+    {
+      "id": "vertexParabola",
+      "type": "point",
+      "at": [
+        2,
+        0,
+        0
+      ],
+      "label": "V",
+      "color": "D",
+      "tags": [
+        "parabola"
+      ]
+    },
+    {
+      "id": "P",
+      "type": "point",
+      "at": [
+        9,
+        7.483315,
+        0
+      ],
+      "label": "P",
+      "color": "E",
+      "tags": [
+        "pointP",
+        "ratio",
+        "distances",
+        "answer"
+      ]
+    },
+    {
+      "id": "H",
+      "type": "point",
+      "at": [
+        0,
+        7.483315,
+        0
+      ],
+      "label": "H",
+      "color": "E",
+      "tags": [
+        "pointP",
+        "ratio",
+        "distances"
+      ]
+    },
+    {
+      "id": "segPH",
+      "type": "segment",
+      "from": [
+        9,
+        7.483315,
+        0
+      ],
+      "to": [
+        0,
+        7.483315,
+        0
+      ],
+      "width": 3,
+      "color": "E",
+      "tags": [
+        "ratio",
+        "distances"
+      ]
+    },
+    {
+      "id": "segHF",
+      "type": "segment",
+      "from": [
+        0,
+        7.483315,
+        0
+      ],
+      "to": [
+        4,
+        0,
+        0
+      ],
+      "width": 3,
+      "color": "C",
+      "tags": [
+        "ratio",
+        "distances"
+      ]
+    },
+    {
+      "id": "segPF",
+      "type": "segment",
+      "from": [
+        9,
+        7.483315,
+        0
+      ],
+      "to": [
+        4,
+        0,
+        0
+      ],
+      "width": 3,
+      "color": "D",
+      "tags": [
+        "parabolaDef",
+        "distances"
+      ]
+    },
+    {
+      "id": "segPFp",
+      "type": "segment",
+      "from": [
+        9,
+        7.483315,
+        0
+      ],
+      "to": [
+        -4,
+        0,
+        0
+      ],
+      "width": 3,
+      "color": "A",
+      "tags": [
+        "distances",
+        "answer"
+      ]
+    },
+    {
+      "id": "segFO",
+      "type": "segment",
+      "from": [
+        4,
+        0,
+        0
+      ],
+      "to": [
+        0,
+        0,
+        0
+      ],
+      "width": 2.5,
+      "color": "C",
+      "tags": [
+        "ratio"
+      ]
+    },
+    {
+      "id": "raH",
+      "type": "rightangle",
+      "vertex": [
+        0,
+        7.483315,
+        0
+      ],
+      "a": [
+        9,
+        7.483315,
+        0
+      ],
+      "b": [
+        0,
+        0,
+        0
+      ],
+      "color": "E",
+      "tags": [
+        "ratio"
+      ]
+    },
+    {
+      "id": "angleArc",
+      "type": "arc",
+      "center": [
+        0,
+        7.483315,
+        0
+      ],
+      "a": [
+        1,
+        0,
+        0
+      ],
+      "b": [
+        0.471405,
+        -0.881917,
+        0
+      ],
+      "r": 24,
+      "label": "\\theta",
+      "color": "C",
+      "tags": [
+        "ratio"
+      ]
+    },
+    {
+      "id": "labelEq1",
+      "type": "label",
+      "at": [
+        -5.6,
+        7.8,
+        0
+      ],
+      "text": "a^2+b^2=16",
+      "color": "text",
+      "tags": [
+        "equations"
+      ]
+    },
+    {
+      "id": "labelEq2",
+      "type": "label",
+      "at": [
+        -5.6,
+        7.15,
+        0
+      ],
+      "text": "P=(9,\\ 2\\sqrt{14})",
+      "color": "text",
+      "tags": [
+        "equations"
+      ]
+    },
+    {
+      "id": "labelEq3",
+      "type": "label",
+      "at": [
+        -5.6,
+        6.5,
+        0
+      ],
+      "text": "PF=9,\\ PF'=15",
+      "color": "text",
+      "tags": [
+        "equations"
+      ]
+    },
+    {
+      "id": "labelAns",
+      "type": "label",
+      "at": [
+        4.6,
+        5.9,
+        0
+      ],
+      "text": "2a=15-9,\\ b^2=7",
+      "color": "text",
+      "tags": [
+        "answer"
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "text": "쌍곡선 $\\dfrac{x^2}{a^2}-\\dfrac{y^2}{b^2}=1$의 초점이 $(\\pm4,\\ 0)$이므로 $a^2+b^2=16$입니다. 또 초점이 $\\mathrm{F}(4,\\ 0)$이고 준선이 $x=0$인 포물선은 $y^2=8(x-2)$입니다.",
+      "show": [
+        "axes",
+        "given",
+        "foci",
+        "directrix",
+        "hyperbola",
+        "parabola"
+      ],
+      "focus": [
+        "hyperbola",
+        "parabola",
+        "equations"
+      ]
+    },
+    {
+      "text": "포물선의 정의에 의하여 $\\overline{\\mathrm{PF}}=\\overline{\\mathrm{PH}}$입니다. $\\angle\\mathrm{PHF}=\\theta$라 하면 $\\overline{\\mathrm{PH}}:\\overline{\\mathrm{HF}}=3:2\\sqrt2$이므로 $\\cos\\theta=\\dfrac{\\sqrt2}{3}$, $\\sin\\theta=\\dfrac{\\sqrt7}{3}$입니다.",
+      "show": [
+        "axes",
+        "given",
+        "directrix",
+        "parabola",
+        "pointP",
+        "ratio",
+        "parabolaDef"
+      ],
+      "focus": [
+        "ratio",
+        "parabolaDef"
+      ]
+    },
+    {
+      "text": "$\\overline{\\mathrm{PH}}=3k$, $\\overline{\\mathrm{HF}}=2\\sqrt2k$라 하면 $\\overline{\\mathrm{OF}}=\\overline{\\mathrm{FH}}\\cos\\theta=\\dfrac{4k}{3}=4$이므로 $k=3$입니다. 따라서 $\\overline{\\mathrm{FH}}=6\\sqrt2$, $\\overline{\\mathrm{PH}}=\\overline{\\mathrm{PF}}=9$입니다.",
+      "show": [
+        "axes",
+        "given",
+        "pointP",
+        "ratio",
+        "distances"
+      ],
+      "focus": [
+        "distances",
+        "ratio"
+      ]
+    },
+    {
+      "text": "$\\overline{\\mathrm{OH}}=\\overline{\\mathrm{FH}}\\sin\\theta=6\\sqrt2\\times\\dfrac{\\sqrt7}{3}=2\\sqrt{14}$이므로 $\\mathrm{P}(9,\\ 2\\sqrt{14})$입니다. 또 $\\mathrm{F'}(-4,\\ 0)$이므로 $\\overline{\\mathrm{PF'}}=\\sqrt{13^2+(2\\sqrt{14})^2}=15$입니다.",
+      "show": [
+        "axes",
+        "given",
+        "foci",
+        "hyperbola",
+        "parabola",
+        "pointP",
+        "distances",
+        "equations"
+      ],
+      "focus": [
+        "pointP",
+        "distances"
+      ]
+    },
+    {
+      "text": "쌍곡선의 정의에 의하여 $\\overline{\\mathrm{PF'}}-\\overline{\\mathrm{PF}}=2a$이므로 $2a=15-9$, $a=3$입니다. $a^2+b^2=16$에 대입하면 $b^2=7$이고, 따라서 $a^2b^2=63$입니다.",
+      "show": [
+        "axes",
+        "given",
+        "foci",
+        "hyperbola",
+        "parabola",
+        "pointP",
+        "distances",
+        "answer",
+        "equations"
+      ],
+      "focus": [
+        "answer"
+      ]
+    }
+  ]
+}

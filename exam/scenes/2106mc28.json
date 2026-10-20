@@ -1,0 +1,64 @@
+{
+  "topic": "자취",
+  "mode": "2d",
+  "answer": "\\sqrt{3}-1",
+  "scale": 90,
+  "camera": { "rotX": -1.5708, "rotY": 0, "zoom": 1.05 },
+  "objects": [
+    { "id": "axisX", "type": "segment", "from": [-0.35, 0, 0], "to": [1.75, 0, 0], "color": "muted", "tags": ["axes"] },
+    { "id": "axisY", "type": "segment", "from": [0, -0.9, 0], "to": [0, 0.9, 0], "color": "muted", "tags": ["axes"] },
+    { "id": "ellipse", "type": "ellipse", "center": [0.732051, 0, 0], "rx": 0.732051, "ry": 0.68125, "color": "A", "width": 2.5, "tags": ["given", "ellipse"] },
+    { "id": "circleO", "type": "circle", "center": [0, 0, 0], "normal": [0, 0, 1], "r": 1, "color": "D", "width": 2.5, "tags": ["given", "circle"] },
+    { "id": "majorAxis", "type": "segment", "from": [0, 0, 0], "to": [1.464102, 0, 0], "color": "muted", "tags": ["given", "axisMajor"] },
+    { "id": "O", "type": "point", "at": [0, 0, 0], "label": "O", "color": "B", "tags": ["given", "centerCircle"] },
+    { "id": "V", "type": "point", "at": [1.464102, 0, 0], "label": "V", "color": "B", "tags": ["given"] },
+    { "id": "C", "type": "point", "at": [0.732051, 0, 0], "label": "C", "color": "text", "tags": ["given", "ellipseCenter"] },
+    { "id": "F", "type": "point", "at": [1, 0, 0], "label": "F", "color": "C", "tags": ["given", "focus"] },
+    { "id": "Fp", "type": "point", "at": [0.464102, 0, 0], "label": "F'", "color": "C", "tags": ["given", "focus"] },
+    { "id": "P", "type": "point", "at": [0.732051, 0.68125, 0], "label": "P", "color": "E", "tags": ["given", "minorVertex", "height"] },
+    { "id": "Pp", "type": "point", "at": [0.732051, -0.68125, 0], "label": "P'", "color": "E", "tags": ["given", "minorVertex"] },
+    { "id": "H", "type": "point", "at": [0.732051, 0, 0], "label": "H", "color": "E", "tags": ["height"] },
+    { "id": "segOP", "type": "segment", "from": [0, 0, 0], "to": [0.732051, 0.68125, 0], "color": "D", "width": 3, "tags": ["circleLengths", "height"] },
+    { "id": "segOPp", "type": "segment", "from": [0, 0, 0], "to": [0.732051, -0.68125, 0], "color": "D", "dash": [4, 3], "tags": ["circleLengths"] },
+    { "id": "segOF", "type": "segment", "from": [0, 0, 0], "to": [1, 0, 0], "color": "D", "width": 3, "tags": ["circleLengths", "focusLengths"] },
+    { "id": "segOFp", "type": "segment", "from": [0, 0, 0], "to": [0.464102, 0, 0], "color": "muted", "dash": [4, 3], "tags": ["focusLengths"] },
+    { "id": "segPF", "type": "segment", "from": [0.732051, 0.68125, 0], "to": [1, 0, 0], "color": "C", "dash": [4, 3], "tags": ["ellipseLengths"] },
+    { "id": "segPFp", "type": "segment", "from": [0.732051, 0.68125, 0], "to": [0.464102, 0, 0], "color": "C", "width": 3, "tags": ["ellipseLengths", "equation"] },
+    { "id": "segPH", "type": "segment", "from": [0.732051, 0.68125, 0], "to": [0.732051, 0, 0], "color": "E", "width": 3, "tags": ["height", "equation"] },
+    { "id": "segOH", "type": "segment", "from": [0, 0, 0], "to": [0.732051, 0, 0], "color": "E", "dash": [4, 3], "tags": ["height"] },
+    { "id": "segFpH", "type": "segment", "from": [0.464102, 0, 0], "to": [0.732051, 0, 0], "color": "E", "dash": [4, 3], "tags": ["height", "equation"] },
+    { "id": "rightangleH", "type": "rightangle", "vertex": [0.732051, 0, 0], "a": [0, 1, 0], "b": [1, 0, 0], "color": "E", "tags": ["height"] },
+    { "id": "labelOF", "type": "label", "at": [0.43, -0.16, 0], "text": "\\overline{\\mathrm{OF}}=1", "color": "text", "tags": ["focusLengths"] },
+    { "id": "labelPF", "type": "label", "at": [0.88, 0.39, 0], "text": "a", "color": "text", "tags": ["ellipseLengths"] },
+    { "id": "labelPFp", "type": "label", "at": [0.52, 0.39, 0], "text": "a", "color": "text", "tags": ["ellipseLengths"] },
+    { "id": "labelEq", "type": "label", "at": [0.18, 0.83, 0], "text": "1-a^2=a^2-(1-a)^2", "color": "text", "tags": ["equation", "answer"] },
+    { "id": "answerLabel", "type": "label", "at": [1.1, -0.78, 0], "text": "a=\\sqrt{3}-1", "color": "text", "tags": ["answer"] }
+  ],
+  "steps": [
+    {
+      "text": "타원의 왼쪽 꼭짓점을 원의 중심 $\\mathrm{O}$로 두고, 장축을 $x$축 위에 놓습니다. 반지름 $1$인 원은 타원의 두 다른 꼭짓점 $\\mathrm{P}$, $\\mathrm{P'}$와 한 초점 $\\mathrm{F}$를 지납니다.",
+      "show": ["axes", "given"],
+      "focus": ["ellipse", "circle", "minorVertex", "focus"]
+    },
+    {
+      "text": "점 $\\mathrm{P}$가 타원의 한 꼭짓점이므로 $\\overline{\\mathrm{PF}}=\\overline{\\mathrm{PF'}}=a$입니다. 또 원이 초점 $\\mathrm{F}$를 지나므로 $\\overline{\\mathrm{OF}}=1$이고, 장축의 길이가 $2a$이므로 $\\overline{\\mathrm{OF'}}=2a-1$입니다.",
+      "show": ["axes", "given", "circleLengths", "focusLengths", "ellipseLengths"],
+      "focus": ["circleLengths", "focusLengths", "ellipseLengths"]
+    },
+    {
+      "text": "점 $\\mathrm{P}$에서 선분 $\\mathrm{FF'}$에 내린 수선의 발을 $\\mathrm{H}$라 하면, $\\overline{\\mathrm{OH}}=a$이고 $\\overline{\\mathrm{F'H}}=a-(2a-1)=1-a$입니다.",
+      "show": ["axes", "given", "circleLengths", "focusLengths", "ellipseLengths", "height"],
+      "focus": ["height"]
+    },
+    {
+      "text": "직각삼각형 $\\mathrm{OPH}$에서 $\\overline{\\mathrm{PH}}^2=\\overline{\\mathrm{OP}}^2-\\overline{\\mathrm{OH}}^2=1-a^2$이고, 직각삼각형 $\\mathrm{F'PH}$에서 $\\overline{\\mathrm{PH}}^2=\\overline{\\mathrm{PF'}}^2-\\overline{\\mathrm{F'H}}^2=a^2-(1-a)^2$입니다.",
+      "show": ["axes", "given", "circleLengths", "ellipseLengths", "height", "equation"],
+      "focus": ["equation"]
+    },
+    {
+      "text": "따라서 $1-a^2=a^2-(1-a)^2$이므로 $a^2+2a-2=0$입니다. $a>0$이므로 $a=-1+\\sqrt{3}=\\sqrt{3}-1$입니다.",
+      "show": ["axes", "given", "circleLengths", "ellipseLengths", "height", "equation", "answer"],
+      "focus": ["answer"]
+    }
+  ]
+}

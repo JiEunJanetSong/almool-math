@@ -1,0 +1,60 @@
+{
+  "topic": "자취",
+  "mode": "2d",
+  "answer": "6",
+  "scale": 35,
+  "camera": { "rotX": -1.5708, "rotY": 0, "zoom": 1.05 },
+  "objects": [
+    { "id": "axisX", "type": "segment", "from": [-2.3, 0, 0], "to": [3.6, 0, 0], "color": "muted", "tags": ["axes"] },
+    { "id": "axisY", "type": "segment", "from": [0, -0.6, 0], "to": [0, 5.1, 0], "color": "muted", "tags": ["axes"] },
+    { "id": "parabola", "type": "parabola", "form": "y2=4px", "p": 1.68573, "vertex": [0, 0, 0], "span": 4.8, "color": "A", "width": 2.5, "tags": ["given"] },
+    { "id": "directrix", "type": "segment", "from": [-1.68573, -0.45, 0], "to": [-1.68573, 4.9, 0], "dash": [5, 4], "color": "muted", "tags": ["directrix"] },
+    { "id": "O", "type": "point", "at": [0, 0, 0], "label": "O", "color": "text", "tags": ["given"] },
+    { "id": "F", "type": "point", "at": [1.68573, 0, 0], "label": "F", "color": "B", "tags": ["given"] },
+    { "id": "S", "type": "point", "at": [-1.68573, 4.582576, 0], "label": "S", "color": "D", "tags": ["linePQ"] },
+    { "id": "Q", "type": "point", "at": [0.960022, 0, 0], "label": "Q", "color": "C", "tags": ["triangle", "k"] },
+    { "id": "R", "type": "point", "at": [1.68573, 1.256963, 0], "label": "R", "color": "C", "tags": ["triangle", "k"] },
+    { "id": "P", "type": "point", "at": [0.234313, 1.256963, 0], "label": "P", "color": "C", "tags": ["triangle", "parabolaPoint"] },
+    { "id": "H", "type": "point", "at": [-1.68573, 1.256963, 0], "label": "H", "color": "E", "tags": ["directrix", "distance"] },
+    { "id": "segPQ", "type": "segment", "from": [0.960022, 0, 0], "to": [0.234313, 1.256963, 0], "color": "C", "width": 2.5, "tags": ["triangle", "linePQ"] },
+    { "id": "segQR", "type": "segment", "from": [0.960022, 0, 0], "to": [1.68573, 1.256963, 0], "color": "C", "width": 2.5, "tags": ["triangle", "k"] },
+    { "id": "segPR", "type": "segment", "from": [0.234313, 1.256963, 0], "to": [1.68573, 1.256963, 0], "color": "C", "width": 2.5, "tags": ["triangle", "k"] },
+    { "id": "segQF", "type": "segment", "from": [0.960022, 0, 0], "to": [1.68573, 0, 0], "color": "D", "width": 3, "tags": ["k", "answer"] },
+    { "id": "segRF", "type": "segment", "from": [1.68573, 1.256963, 0], "to": [1.68573, 0, 0], "dash": [4, 3], "color": "D", "tags": ["k"] },
+    { "id": "segPF", "type": "segment", "from": [0.234313, 1.256963, 0], "to": [1.68573, 0, 0], "dash": [4, 3], "color": "E", "tags": ["focusDistance"] },
+    { "id": "segPH", "type": "segment", "from": [0.234313, 1.256963, 0], "to": [-1.68573, 1.256963, 0], "color": "E", "width": 2.5, "tags": ["distance"] },
+    { "id": "segHS", "type": "segment", "from": [-1.68573, 1.256963, 0], "to": [-1.68573, 4.582576, 0], "color": "D", "width": 2.5, "tags": ["distance"] },
+    { "id": "segSP", "type": "segment", "from": [-1.68573, 4.582576, 0], "to": [0.234313, 1.256963, 0], "dash": [4, 3], "color": "D", "tags": ["linePQ"] },
+    { "id": "rightangleH", "type": "rightangle", "vertex": [-1.68573, 1.256963, 0], "a": [1, 0, 0], "b": [0, 1, 0], "color": "E", "tags": ["distance"] },
+    { "id": "angleQ", "type": "arc", "center": [0.960022, 0, 0], "a": [-0.5, 0.866025, 0], "b": [0.5, 0.866025, 0], "r": 24, "label": "60°", "color": "D", "tags": ["triangle"] },
+    { "id": "labelK", "type": "label", "at": [1.27, -0.34, 0], "text": "k", "color": "D", "tags": ["k", "answer"] },
+    { "id": "answerLabel", "type": "label", "at": [0.15, 4.7, 0], "text": "k=\\dfrac{7-\\sqrt{7}}{6},\\ a+b=6", "color": "text", "tags": ["answer"] }
+  ],
+  "steps": [
+    {
+      "text": "꼭짓점이 원점 $\\mathrm{O}$이고 초점이 $\\mathrm{F}(p,\\ 0)$인 포물선은 $y^2=4px$입니다. 준선은 $x=-p$이고, 점 $\\mathrm{S}(-p,\\ \\sqrt{21})$을 지나는 직선 $\\mathrm{PQ}$를 함께 봅니다.",
+      "show": ["axes", "given", "directrix", "linePQ"],
+      "focus": ["given", "directrix", "linePQ"]
+    },
+    {
+      "text": "$\\overline{\\mathrm{QF}}=k$라 하면 정삼각형 $\\mathrm{PQR}$에서 $\\overline{\\mathrm{QR}}=\\overline{\\mathrm{PR}}=2k$, $\\overline{\\mathrm{RF}}=\\sqrt{3}k$입니다. 따라서 $\\overline{\\mathrm{PF}}=\\sqrt{(2k)^2+(\\sqrt{3}k)^2}=\\sqrt{7}k$입니다.",
+      "show": ["axes", "given", "directrix", "triangle", "k", "focusDistance"],
+      "focus": ["triangle", "k", "focusDistance"]
+    },
+    {
+      "text": "포물선의 정의에 의해 점 $\\mathrm{P}$와 준선 사이의 거리도 $\\sqrt{7}k$입니다. 점 $\\mathrm{P}$에서 준선에 내린 수선의 발을 $\\mathrm{H}$라 하면 $\\overline{\\mathrm{HP}}=\\sqrt{7}k$입니다.",
+      "show": ["axes", "given", "directrix", "triangle", "focusDistance", "distance"],
+      "focus": ["focusDistance", "distance"]
+    },
+    {
+      "text": "점 $\\mathrm{S}$의 높이가 $\\sqrt{21}$이고 $\\overline{\\mathrm{RF}}=\\sqrt{3}k$이므로 $\\overline{\\mathrm{HS}}=\\sqrt{21}-\\sqrt{3}k$입니다. 또 직선 $\\mathrm{PQ}$가 $\\mathrm{S}$를 지나므로 $\\overline{\\mathrm{HS}}=\\sqrt{3}\\overline{\\mathrm{HP}}=\\sqrt{21}k$입니다.",
+      "show": ["axes", "given", "directrix", "triangle", "linePQ", "distance"],
+      "focus": ["linePQ", "distance"]
+    },
+    {
+      "text": "$\\sqrt{21}-\\sqrt{3}k=\\sqrt{21}k$에서 $k=\\dfrac{\\sqrt{21}}{\\sqrt{21}+\\sqrt{3}}=\\dfrac{7-\\sqrt{7}}{6}$입니다. 따라서 $\\overline{\\mathrm{QF}}=\\dfrac{7-\\sqrt{7}}{6}$이므로 $a=7$, $b=-1$이고 $a+b=6$입니다.",
+      "show": ["axes", "given", "directrix", "triangle", "linePQ", "distance", "answer"],
+      "focus": ["answer"]
+    }
+  ]
+}

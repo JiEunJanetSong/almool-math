@@ -1,0 +1,75 @@
+{
+  "topic": "자취",
+  "mode": "2d",
+  "answer": "23",
+  "scale": 35,
+  "camera": { "rotX": -1.5708, "rotY": 0, "zoom": 1.05 },
+  "objects": [
+    { "id": "axisX", "type": "segment", "from": [-3.2, 0, 0], "to": [4.4, 0, 0], "color": "muted", "tags": ["axes"] },
+    { "id": "axisY", "type": "segment", "from": [0, -1.4, 0], "to": [0, 4.2, 0], "color": "muted", "tags": ["axes"] },
+    { "id": "parabola0", "type": "parabola", "form": "y2=4px", "p": 2, "vertex": [0, 0, 0], "span": 4.4, "color": "A", "width": 2.5, "tags": ["given", "parabola0"] },
+    { "id": "directrixL", "type": "segment", "from": [-2, -1.2, 0], "to": [-2, 4, 0], "dash": [5, 4], "color": "muted", "tags": ["given", "directrices", "l"] },
+    { "id": "labelL", "type": "label", "at": [-2.25, 3.8, 0], "text": "l", "color": "muted", "tags": ["directrices", "l"] },
+    { "id": "O", "type": "point", "at": [0, 0, 0], "label": "O", "color": "text", "tags": ["given"] },
+    { "id": "F", "type": "point", "at": [2, 0, 0], "label": "F", "color": "B", "tags": ["given", "focus0", "perimeter"] },
+    { "id": "P", "type": "point", "at": [1, 2.828427, 0], "label": "P", "color": "C", "tags": ["given", "pPoint", "newParabola", "triangle"] },
+    { "id": "Fprime", "type": "point", "at": [-2, 2.828427, 0], "label": "F'", "color": "C", "tags": ["given", "fprime", "newParabola", "triangle", "perimeter"] },
+    { "id": "segPFprime", "type": "segment", "from": [1, 2.828427, 0], "to": [-2, 2.828427, 0], "color": "C", "width": 3, "tags": ["given", "pfprime", "perimeter", "triangle", "answer"] },
+    { "id": "segPF", "type": "segment", "from": [1, 2.828427, 0], "to": [2, 0, 0], "color": "E", "dash": [4, 3], "tags": ["given", "perimeter"] },
+    { "id": "parabola1", "type": "parabola", "form": "y2=4px", "p": -3, "vertex": [1, 2.828427, 0], "span": 4.4, "color": "D", "width": 2.5, "tags": ["newParabola", "parabola1"] },
+    { "id": "directrixM", "type": "segment", "from": [4, -1.2, 0], "to": [4, 4, 0], "dash": [5, 4], "color": "D", "tags": ["directrices", "m", "newParabola", "distance6"] },
+    { "id": "labelM", "type": "label", "at": [4.18, 3.8, 0], "text": "m", "color": "D", "tags": ["directrices", "m"] },
+    { "id": "I", "type": "point", "at": [4, 2.828427, 0], "label": "I", "color": "D", "tags": ["feet", "distance6"] },
+    { "id": "segPI", "type": "segment", "from": [1, 2.828427, 0], "to": [4, 2.828427, 0], "color": "D", "dash": [4, 3], "tags": ["feet", "newParabola"] },
+    { "id": "segFprimeI", "type": "segment", "from": [-2, 2.828427, 0], "to": [4, 2.828427, 0], "color": "D", "width": 2.5, "tags": ["distance6"] },
+    { "id": "rightI", "type": "rightangle", "vertex": [4, 2.828427, 0], "a": [0, 1, 0], "b": [-1, 0, 0], "color": "D", "tags": ["feet"] },
+    { "id": "Q", "type": "point", "at": [0.04, -0.565685, 0], "label": "Q", "color": "C", "tags": ["intersection", "triangle", "answer"] },
+    { "id": "segQF", "type": "segment", "from": [0.04, -0.565685, 0], "to": [2, 0, 0], "color": "E", "dash": [4, 3], "tags": ["intersection", "perimeter"] },
+    { "id": "segQFprime", "type": "segment", "from": [0.04, -0.565685, 0], "to": [-2, 2.828427, 0], "color": "C", "width": 2.5, "tags": ["intersection", "perimeter", "triangle"] },
+    { "id": "segPQ", "type": "segment", "from": [1, 2.828427, 0], "to": [0.04, -0.565685, 0], "color": "C", "width": 2.5, "tags": ["intersection", "triangle", "answer"] },
+    { "id": "H", "type": "point", "at": [-2, -0.565685, 0], "label": "H", "color": "E", "tags": ["feet", "perimeter", "distance6"] },
+    { "id": "J", "type": "point", "at": [4, -0.565685, 0], "label": "J", "color": "D", "tags": ["feet", "perimeter", "distance6"] },
+    { "id": "segQH", "type": "segment", "from": [0.04, -0.565685, 0], "to": [-2, -0.565685, 0], "color": "E", "dash": [4, 3], "tags": ["feet", "perimeter"] },
+    { "id": "segQJ", "type": "segment", "from": [0.04, -0.565685, 0], "to": [4, -0.565685, 0], "color": "D", "dash": [4, 3], "tags": ["feet", "perimeter"] },
+    { "id": "segHJ", "type": "segment", "from": [-2, -0.565685, 0], "to": [4, -0.565685, 0], "color": "D", "width": 2.5, "tags": ["distance6"] },
+    { "id": "rightH", "type": "rightangle", "vertex": [-2, -0.565685, 0], "a": [0, 1, 0], "b": [1, 0, 0], "color": "E", "tags": ["feet"] },
+    { "id": "rightJ", "type": "rightangle", "vertex": [4, -0.565685, 0], "a": [0, 1, 0], "b": [-1, 0, 0], "color": "D", "tags": ["feet"] },
+    { "id": "heightArea", "type": "segment", "from": [0.04, -0.565685, 0], "to": [0.04, 2.828427, 0], "dash": [4, 3], "color": "A", "width": 2.5, "tags": ["height", "answer"] },
+    { "id": "rightHeight", "type": "rightangle", "vertex": [0.04, 2.828427, 0], "a": [1, 0, 0], "b": [0, -1, 0], "color": "A", "tags": ["height"] },
+    { "id": "labelPCoord", "type": "label", "at": [1.18, 3.2, 0], "text": "P(1,\\ 2\\sqrt2)", "color": "text", "tags": ["pCoord"] },
+    { "id": "labelQCoord", "type": "label", "at": [0.35, -0.95, 0], "text": "Q\\left(\\dfrac{1}{25},\\ -\\dfrac{2\\sqrt2}{5}\\right)", "color": "text", "tags": ["qCoord"] },
+    { "id": "answerLabel", "type": "label", "at": [-1.85, 3.55, 0], "text": "[PF'Q]=\\dfrac{18}{5}\\sqrt2,\\quad p+q=23", "color": "text", "tags": ["answer"] }
+  ],
+  "steps": [
+    {
+      "text": "포물선 $y^2=8x$의 초점은 $\\mathrm{F}(2,\\ 0)$, 준선은 $l:x=-2$입니다. 제$1$사분면의 점 $\\mathrm{P}$를 지나고 $x$축과 평행한 직선이 준선 $l$과 만나는 점이 $\\mathrm{F'}$입니다.",
+      "show": ["axes", "given", "parabola0", "focus0", "fprime", "pfprime", "l"],
+      "focus": ["parabola0", "focus0", "fprime", "pfprime"]
+    },
+    {
+      "text": "점 $\\mathrm{F'}$을 초점, 점 $\\mathrm{P}$를 꼭짓점으로 하는 포물선의 준선을 $m$이라 합니다. 점 $\\mathrm{P}$에서 $m$에 내린 수선의 발을 $\\mathrm{I}$라 하면, 포물선의 꼭짓점에서 초점까지의 거리와 준선까지의 거리가 같으므로 $\\overline{\\mathrm{PF'}}=\\overline{\\mathrm{PI}}$입니다.",
+      "show": ["axes", "given", "parabola0", "newParabola", "directrices", "feet"],
+      "focus": ["newParabola", "m", "feet"]
+    },
+    {
+      "text": "점 $\\mathrm{Q}$에서 $l$에 내린 수선의 발을 $\\mathrm{H}$, $m$에 내린 수선의 발을 $\\mathrm{J}$라 하면 포물선의 정의에 의해 $\\overline{\\mathrm{PF}}=\\overline{\\mathrm{PF'}}$, $\\overline{\\mathrm{QF}}=\\overline{\\mathrm{QH}}$, $\\overline{\\mathrm{QF'}}=\\overline{\\mathrm{QJ}}$입니다. 따라서 둘레는 $\\overline{\\mathrm{F'I}}+\\overline{\\mathrm{HJ}}$입니다.",
+      "show": ["axes", "parabola0", "newParabola", "directrices", "perimeter", "feet", "distance6"],
+      "focus": ["perimeter", "feet", "distance6"]
+    },
+    {
+      "text": "$\\overline{\\mathrm{F'I}}$, $\\overline{\\mathrm{HJ}}$는 각각 두 준선 사이의 거리입니다. $\\overline{\\mathrm{F'I}}+\\overline{\\mathrm{HJ}}=12$이므로 두 준선 사이의 거리는 $6$이고, 따라서 $\\overline{\\mathrm{PF'}}=3$입니다. 그러므로 점 $\\mathrm{P}$의 좌표는 $\\left(1,\\ 2\\sqrt2\\right)$입니다.",
+      "show": ["axes", "parabola0", "newParabola", "directrices", "distance6", "pCoord"],
+      "focus": ["distance6", "pCoord"]
+    },
+    {
+      "text": "새 포물선의 방정식은 $\\left(y-2\\sqrt2\\right)^2=-12(x-1)$입니다. 이를 $y^2=8x$와 연립하면 $y=2\\sqrt2$ 또는 $y=-\\dfrac{2\\sqrt2}{5}$이므로 $\\mathrm{P}$가 아닌 교점은 $\\mathrm{Q}\\left(\\dfrac{1}{25},\\ -\\dfrac{2\\sqrt2}{5}\\right)$입니다.",
+      "show": ["axes", "parabola0", "newParabola", "directrices", "intersection", "qCoord"],
+      "focus": ["intersection", "qCoord"]
+    },
+    {
+      "text": "삼각형 $\\mathrm{PF'Q}$의 밑변을 선분 $\\mathrm{PF'}$이라 하면 높이는 $2\\sqrt2-\\left(-\\dfrac{2\\sqrt2}{5}\\right)=\\dfrac{12\\sqrt2}{5}$입니다. 따라서 넓이는 $\\dfrac{1}{2}\\times3\\times\\dfrac{12\\sqrt2}{5}=\\dfrac{18}{5}\\sqrt2$이고, $p+q=23$입니다.",
+      "show": ["axes", "parabola0", "newParabola", "triangle", "height", "answer"],
+      "focus": ["triangle", "height", "answer"]
+    }
+  ]
+}

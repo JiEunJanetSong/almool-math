@@ -1,0 +1,721 @@
+{
+  "topic": "내적",
+  "mode": "2d",
+  "answer": "36",
+  "scale": 12,
+  "camera": {
+    "rotX": -1.5708,
+    "rotY": 0,
+    "zoom": 1.04
+  },
+  "objects": [
+    {
+      "id": "axisX",
+      "type": "segment",
+      "from": [
+        -1,
+        0,
+        0
+      ],
+      "to": [
+        13.5,
+        0,
+        0
+      ],
+      "color": "muted",
+      "tags": [
+        "axes"
+      ]
+    },
+    {
+      "id": "axisY",
+      "type": "segment",
+      "from": [
+        0,
+        -3.2,
+        0
+      ],
+      "to": [
+        0,
+        13.2,
+        0
+      ],
+      "color": "muted",
+      "tags": [
+        "axes"
+      ]
+    },
+    {
+      "id": "rectFill",
+      "type": "plane",
+      "corners": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          6,
+          0,
+          0
+        ],
+        [
+          6,
+          8,
+          0
+        ],
+        [
+          0,
+          8,
+          0
+        ]
+      ],
+      "alpha": 0.12,
+      "color": "B",
+      "tags": [
+        "given",
+        "rect"
+      ]
+    },
+    {
+      "id": "A",
+      "type": "point",
+      "at": [
+        0,
+        0,
+        0
+      ],
+      "label": "A",
+      "color": "B",
+      "tags": [
+        "given",
+        "rect",
+        "theta"
+      ]
+    },
+    {
+      "id": "B",
+      "type": "point",
+      "at": [
+        6,
+        0,
+        0
+      ],
+      "label": "B",
+      "color": "B",
+      "tags": [
+        "given",
+        "rect",
+        "min"
+      ]
+    },
+    {
+      "id": "C",
+      "type": "point",
+      "at": [
+        6,
+        8,
+        0
+      ],
+      "label": "C",
+      "color": "B",
+      "tags": [
+        "given",
+        "rect",
+        "theta"
+      ]
+    },
+    {
+      "id": "D",
+      "type": "point",
+      "at": [
+        0,
+        8,
+        0
+      ],
+      "label": "D",
+      "color": "B",
+      "tags": [
+        "given",
+        "rect"
+      ]
+    },
+    {
+      "id": "segAB",
+      "type": "segment",
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        6,
+        0,
+        0
+      ],
+      "width": 3,
+      "color": "B",
+      "tags": [
+        "rect",
+        "theta"
+      ]
+    },
+    {
+      "id": "segBC",
+      "type": "segment",
+      "from": [
+        6,
+        0,
+        0
+      ],
+      "to": [
+        6,
+        8,
+        0
+      ],
+      "width": 3,
+      "color": "B",
+      "tags": [
+        "rect",
+        "track"
+      ]
+    },
+    {
+      "id": "segCD",
+      "type": "segment",
+      "from": [
+        6,
+        8,
+        0
+      ],
+      "to": [
+        0,
+        8,
+        0
+      ],
+      "width": 3,
+      "color": "B",
+      "tags": [
+        "rect"
+      ]
+    },
+    {
+      "id": "segDA",
+      "type": "segment",
+      "from": [
+        0,
+        8,
+        0
+      ],
+      "to": [
+        0,
+        0,
+        0
+      ],
+      "width": 3,
+      "color": "B",
+      "tags": [
+        "rect"
+      ]
+    },
+    {
+      "id": "E",
+      "type": "point",
+      "at": [
+        9,
+        12,
+        0
+      ],
+      "label": "E",
+      "color": "D",
+      "tags": [
+        "pointE",
+        "vectorAE",
+        "answer"
+      ]
+    },
+    {
+      "id": "vecAE",
+      "type": "vector",
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        9,
+        12,
+        0
+      ],
+      "label": "AE",
+      "width": 3,
+      "color": "D",
+      "tags": [
+        "vectorAE",
+        "answer"
+      ]
+    },
+    {
+      "id": "segAC",
+      "type": "segment",
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        6,
+        8,
+        0
+      ],
+      "dash": [
+        4,
+        3
+      ],
+      "color": "muted",
+      "tags": [
+        "theta"
+      ]
+    },
+    {
+      "id": "arcTheta",
+      "type": "arc",
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "a": [
+        1,
+        0,
+        0
+      ],
+      "b": [
+        0.6,
+        0.8,
+        0
+      ],
+      "r": 28,
+      "label": "\\theta",
+      "color": "C",
+      "tags": [
+        "theta"
+      ]
+    },
+    {
+      "id": "F",
+      "type": "point",
+      "at": [
+        12,
+        0,
+        0
+      ],
+      "label": "F",
+      "color": "C",
+      "tags": [
+        "reflect",
+        "circleFamily",
+        "min"
+      ]
+    },
+    {
+      "id": "G",
+      "type": "point",
+      "at": [
+        12,
+        8,
+        0
+      ],
+      "label": "G",
+      "color": "C",
+      "tags": [
+        "reflect"
+      ]
+    },
+    {
+      "id": "segFG",
+      "type": "segment",
+      "from": [
+        12,
+        0,
+        0
+      ],
+      "to": [
+        12,
+        8,
+        0
+      ],
+      "width": 3,
+      "color": "C",
+      "tags": [
+        "reflect",
+        "circleFamily"
+      ]
+    },
+    {
+      "id": "segAF",
+      "type": "segment",
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        12,
+        0,
+        0
+      ],
+      "dash": [
+        4,
+        3
+      ],
+      "color": "C",
+      "tags": [
+        "reflect"
+      ]
+    },
+    {
+      "id": "segDG",
+      "type": "segment",
+      "from": [
+        0,
+        8,
+        0
+      ],
+      "to": [
+        12,
+        8,
+        0
+      ],
+      "dash": [
+        4,
+        3
+      ],
+      "color": "C",
+      "tags": [
+        "reflect"
+      ]
+    },
+    {
+      "id": "Pgen",
+      "type": "point",
+      "at": [
+        6,
+        5,
+        0
+      ],
+      "label": "P",
+      "color": "E",
+      "tags": [
+        "circleFamily"
+      ]
+    },
+    {
+      "id": "Rgen",
+      "type": "point",
+      "at": [
+        12,
+        5,
+        0
+      ],
+      "label": "R",
+      "color": "E",
+      "tags": [
+        "circleFamily"
+      ]
+    },
+    {
+      "id": "segPgenRgen",
+      "type": "segment",
+      "from": [
+        6,
+        5,
+        0
+      ],
+      "to": [
+        12,
+        5,
+        0
+      ],
+      "width": 3,
+      "color": "E",
+      "tags": [
+        "circleFamily"
+      ]
+    },
+    {
+      "id": "circleGen",
+      "type": "circle",
+      "center": [
+        9,
+        5,
+        0
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "r": 3,
+      "dash": [
+        5,
+        4
+      ],
+      "color": "E",
+      "tags": [
+        "circleFamily"
+      ]
+    },
+    {
+      "id": "K",
+      "type": "point",
+      "at": [
+        9,
+        0,
+        0
+      ],
+      "label": "K",
+      "color": "A",
+      "tags": [
+        "min",
+        "answer"
+      ]
+    },
+    {
+      "id": "circleMin",
+      "type": "circle",
+      "center": [
+        9,
+        0,
+        0
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "r": 3,
+      "width": 3,
+      "color": "A",
+      "tags": [
+        "min",
+        "answer"
+      ]
+    },
+    {
+      "id": "Qp",
+      "type": "point",
+      "at": [
+        7.2,
+        -2.4,
+        0
+      ],
+      "label": "Q'",
+      "color": "A",
+      "tags": [
+        "min",
+        "answer"
+      ]
+    },
+    {
+      "id": "segBK",
+      "type": "segment",
+      "from": [
+        6,
+        0,
+        0
+      ],
+      "to": [
+        9,
+        0,
+        0
+      ],
+      "width": 3,
+      "color": "A",
+      "tags": [
+        "min"
+      ]
+    },
+    {
+      "id": "vecKQp",
+      "type": "vector",
+      "from": [
+        9,
+        0,
+        0
+      ],
+      "to": [
+        7.2,
+        -2.4,
+        0
+      ],
+      "label": "KQ'",
+      "width": 3,
+      "color": "A",
+      "tags": [
+        "min",
+        "answer"
+      ]
+    },
+    {
+      "id": "vecAQp",
+      "type": "vector",
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        7.2,
+        -2.4,
+        0
+      ],
+      "label": "AQ'",
+      "width": 3,
+      "color": "A",
+      "tags": [
+        "answer"
+      ]
+    },
+    {
+      "id": "labelExternal",
+      "type": "label",
+      "at": [
+        7.1,
+        10.7,
+        0
+      ],
+      "text": "E(9,12),\\ |AE|=15",
+      "color": "text",
+      "tags": [
+        "pointE"
+      ]
+    },
+    {
+      "id": "labelCircle",
+      "type": "label",
+      "at": [
+        9.75,
+        5.8,
+        0
+      ],
+      "text": "PQ\\perp RQ",
+      "color": "text",
+      "tags": [
+        "circleFamily"
+      ]
+    },
+    {
+      "id": "labelMin",
+      "type": "label",
+      "at": [
+        6.2,
+        -2.95,
+        0
+      ],
+      "text": "KQ'\\parallel -AE",
+      "color": "text",
+      "tags": [
+        "min"
+      ]
+    },
+    {
+      "id": "labelAnswer",
+      "type": "label",
+      "at": [
+        0.25,
+        12.4,
+        0
+      ],
+      "text": "15\\cdot9\\cdot\\dfrac35-15\\cdot3=36",
+      "color": "text",
+      "tags": [
+        "answer"
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "text": "$\\mathrm{A}(0,\\ 0)$, $\\mathrm{B}(6,\\ 0)$, $\\mathrm{C}(6,\\ 8)$, $\\mathrm{D}(0,\\ 8)$로 둡니다. $2\\overrightarrow{\\mathrm{BE}}=3\\overrightarrow{\\mathrm{BC}}-\\overrightarrow{\\mathrm{BA}}$에서 $\\overrightarrow{\\mathrm{BE}}=(3,\\ 12)$이므로 $\\mathrm{E}(9,\\ 12)$이고 $|\\overrightarrow{\\mathrm{AE}}|=15$입니다.",
+      "show": [
+        "axes",
+        "given",
+        "rect",
+        "pointE",
+        "vectorAE"
+      ],
+      "focus": [
+        "pointE",
+        "vectorAE"
+      ]
+    },
+    {
+      "text": "점 $\\mathrm{A}$와 점 $\\mathrm{D}$를 선분 $\\mathrm{BC}$에 대하여 대칭이동한 점을 각각 $\\mathrm{F}$, $\\mathrm{G}$라 하면 $\\mathrm{F}(12,\\ 0)$, $\\mathrm{G}(12,\\ 8)$입니다. 선분 $\\mathrm{BC}$ 위의 점 $\\mathrm{P}$에서 선분 $\\mathrm{FG}$에 내린 수선의 발을 $\\mathrm{R}$이라 하면 $\\overrightarrow{\\mathrm{AB}}=\\overrightarrow{\\mathrm{PR}}$입니다.",
+      "show": [
+        "axes",
+        "rect",
+        "track",
+        "reflect",
+        "circleFamily"
+      ],
+      "focus": [
+        "reflect",
+        "circleFamily"
+      ]
+    },
+    {
+      "text": "따라서 $\\overrightarrow{\\mathrm{PQ}}\\cdot(\\overrightarrow{\\mathrm{PQ}}-\\overrightarrow{\\mathrm{AB}})=0$은 $\\overrightarrow{\\mathrm{PQ}}\\cdot\\overrightarrow{\\mathrm{RQ}}=0$이 됩니다. 즉 $\\mathrm{PQ}\\perp\\mathrm{RQ}$이므로 점 $\\mathrm{Q}$는 선분 $\\mathrm{PR}$을 지름으로 하는 원 위에 있습니다.",
+      "show": [
+        "axes",
+        "rect",
+        "reflect",
+        "circleFamily"
+      ],
+      "focus": [
+        "circleFamily"
+      ]
+    },
+    {
+      "text": "$\\angle\\mathrm{CAB}=\\theta$라 하면 $\\overline{\\mathrm{AC}}=10$이고 $\\cos\\theta=\\dfrac6{10}=\\dfrac35$입니다.",
+      "show": [
+        "axes",
+        "rect",
+        "theta",
+        "vectorAE"
+      ],
+      "focus": [
+        "theta",
+        "vectorAE"
+      ]
+    },
+    {
+      "text": "$\\overrightarrow{\\mathrm{AE}}\\cdot\\overrightarrow{\\mathrm{AQ}}$는 점 $\\mathrm{P}$가 점 $\\mathrm{B}$에 있고 이때의 원의 중심이 $\\mathrm{K}$일 때, 그 최소를 주는 $\\mathrm{Q}$의 위치를 $\\mathrm{Q'}$이라 하면, $\\overrightarrow{\\mathrm{KQ'}}$가 $\\overrightarrow{\\mathrm{AE}}$와 평행하고 방향이 반대이면 최소가 됩니다.",
+      "show": [
+        "axes",
+        "rect",
+        "theta",
+        "vectorAE",
+        "reflect",
+        "min"
+      ],
+      "focus": [
+        "min",
+        "vectorAE"
+      ]
+    },
+    {
+      "text": "$\\overrightarrow{\\mathrm{AE}}\\cdot\\overrightarrow{\\mathrm{AQ'}}=\\overrightarrow{\\mathrm{AE}}\\cdot(\\overrightarrow{\\mathrm{AK}}+\\overrightarrow{\\mathrm{KQ'}})=15\\times9\\times\\dfrac35+15\\times3\\times(-1)=81-45=36$입니다.",
+      "show": [
+        "axes",
+        "rect",
+        "theta",
+        "vectorAE",
+        "min",
+        "answer"
+      ],
+      "focus": [
+        "answer"
+      ]
+    }
+  ]
+}

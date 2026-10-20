@@ -1,0 +1,566 @@
+{
+  "topic": "자취",
+  "mode": "2d",
+  "answer": "20",
+  "scale": 25,
+  "camera": {
+    "rotX": -1.5708,
+    "rotY": 0,
+    "zoom": 1.08
+  },
+  "objects": [
+    {
+      "id": "axisX",
+      "type": "segment",
+      "from": [
+        -4.6,
+        0,
+        0
+      ],
+      "to": [
+        5.2,
+        0,
+        0
+      ],
+      "color": "muted",
+      "tags": [
+        "axes"
+      ]
+    },
+    {
+      "id": "axisY",
+      "type": "segment",
+      "from": [
+        0,
+        -1.1,
+        0
+      ],
+      "to": [
+        0,
+        5.4,
+        0
+      ],
+      "color": "muted",
+      "tags": [
+        "axes"
+      ]
+    },
+    {
+      "id": "hyperbola",
+      "type": "hyperbola",
+      "form": "x2-y2",
+      "a": 1.605551,
+      "b": 2.534207,
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "span": 1.08,
+      "branch": "both",
+      "width": 3,
+      "color": "A",
+      "tags": [
+        "hyperbola",
+        "answer"
+      ]
+    },
+    {
+      "id": "asymPos",
+      "type": "segment",
+      "from": [
+        -3.6,
+        -5.682251,
+        0
+      ],
+      "to": [
+        3.6,
+        5.682251,
+        0
+      ],
+      "dash": [
+        5,
+        4
+      ],
+      "color": "muted",
+      "tags": [
+        "hyperbola"
+      ]
+    },
+    {
+      "id": "asymNeg",
+      "type": "segment",
+      "from": [
+        -3.6,
+        5.682251,
+        0
+      ],
+      "to": [
+        3.6,
+        -5.682251,
+        0
+      ],
+      "dash": [
+        5,
+        4
+      ],
+      "color": "muted",
+      "tags": [
+        "hyperbola"
+      ]
+    },
+    {
+      "id": "O",
+      "type": "point",
+      "at": [
+        0,
+        0,
+        0
+      ],
+      "label": "O",
+      "color": "text",
+      "tags": [
+        "given",
+        "parallel"
+      ]
+    },
+    {
+      "id": "F",
+      "type": "point",
+      "at": [
+        3,
+        0,
+        0
+      ],
+      "label": "F",
+      "color": "B",
+      "tags": [
+        "foci",
+        "answer"
+      ]
+    },
+    {
+      "id": "Fp",
+      "type": "point",
+      "at": [
+        -3,
+        0,
+        0
+      ],
+      "label": "F'",
+      "color": "B",
+      "tags": [
+        "foci",
+        "midpoint",
+        "distance"
+      ]
+    },
+    {
+      "id": "Q",
+      "type": "point",
+      "at": [
+        0,
+        2,
+        0
+      ],
+      "label": "Q",
+      "color": "D",
+      "tags": [
+        "given",
+        "midpoint",
+        "distance"
+      ]
+    },
+    {
+      "id": "P",
+      "type": "point",
+      "at": [
+        3,
+        4,
+        0
+      ],
+      "label": "P",
+      "color": "E",
+      "tags": [
+        "pointP",
+        "midpoint",
+        "distance",
+        "answer"
+      ]
+    },
+    {
+      "id": "R",
+      "type": "point",
+      "at": [
+        1.771302,
+        1.180868,
+        0
+      ],
+      "label": "R",
+      "color": "C",
+      "tags": [
+        "parallel",
+        "area"
+      ]
+    },
+    {
+      "id": "segFpP",
+      "type": "segment",
+      "from": [
+        -3,
+        0,
+        0
+      ],
+      "to": [
+        3,
+        4,
+        0
+      ],
+      "width": 3,
+      "color": "E",
+      "tags": [
+        "midpoint",
+        "distance",
+        "area"
+      ]
+    },
+    {
+      "id": "segFpQ",
+      "type": "segment",
+      "from": [
+        -3,
+        0,
+        0
+      ],
+      "to": [
+        0,
+        2,
+        0
+      ],
+      "width": 3,
+      "color": "D",
+      "tags": [
+        "given",
+        "midpoint"
+      ]
+    },
+    {
+      "id": "segQP",
+      "type": "segment",
+      "from": [
+        0,
+        2,
+        0
+      ],
+      "to": [
+        3,
+        4,
+        0
+      ],
+      "width": 3,
+      "color": "D",
+      "tags": [
+        "midpoint",
+        "area"
+      ]
+    },
+    {
+      "id": "segOR",
+      "type": "segment",
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        1.771302,
+        1.180868,
+        0
+      ],
+      "width": 3,
+      "color": "C",
+      "tags": [
+        "parallel",
+        "area"
+      ]
+    },
+    {
+      "id": "segPR",
+      "type": "segment",
+      "from": [
+        3,
+        4,
+        0
+      ],
+      "to": [
+        1.771302,
+        1.180868,
+        0
+      ],
+      "width": 3,
+      "color": "C",
+      "tags": [
+        "area"
+      ]
+    },
+    {
+      "id": "Bfoot",
+      "type": "point",
+      "at": [
+        -0.923077,
+        1.384615,
+        0
+      ],
+      "label": "B",
+      "color": "C",
+      "tags": [
+        "height"
+      ]
+    },
+    {
+      "id": "Afoot",
+      "type": "point",
+      "at": [
+        0.848225,
+        2.565483,
+        0
+      ],
+      "label": "A",
+      "color": "C",
+      "tags": [
+        "height",
+        "area"
+      ]
+    },
+    {
+      "id": "segOB",
+      "type": "segment",
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        -0.923077,
+        1.384615,
+        0
+      ],
+      "dash": [
+        4,
+        3
+      ],
+      "color": "C",
+      "tags": [
+        "height"
+      ]
+    },
+    {
+      "id": "segRA",
+      "type": "segment",
+      "from": [
+        1.771302,
+        1.180868,
+        0
+      ],
+      "to": [
+        0.848225,
+        2.565483,
+        0
+      ],
+      "dash": [
+        4,
+        3
+      ],
+      "color": "C",
+      "tags": [
+        "height",
+        "area"
+      ]
+    },
+    {
+      "id": "raB",
+      "type": "rightangle",
+      "vertex": [
+        -0.923077,
+        1.384615,
+        0
+      ],
+      "a": [
+        0,
+        0,
+        0
+      ],
+      "b": [
+        -3,
+        0,
+        0
+      ],
+      "color": "C",
+      "tags": [
+        "height"
+      ]
+    },
+    {
+      "id": "raA",
+      "type": "rightangle",
+      "vertex": [
+        0.848225,
+        2.565483,
+        0
+      ],
+      "a": [
+        1.771302,
+        1.180868,
+        0
+      ],
+      "b": [
+        3,
+        4,
+        0
+      ],
+      "color": "C",
+      "tags": [
+        "height",
+        "area"
+      ]
+    },
+    {
+      "id": "segPF",
+      "type": "segment",
+      "from": [
+        3,
+        4,
+        0
+      ],
+      "to": [
+        3,
+        0,
+        0
+      ],
+      "width": 3,
+      "color": "B",
+      "tags": [
+        "answer"
+      ]
+    },
+    {
+      "id": "labelArea",
+      "type": "label",
+      "at": [
+        1.35,
+        3.15,
+        0
+      ],
+      "text": "[PQR]=3",
+      "color": "text",
+      "tags": [
+        "area"
+      ]
+    },
+    {
+      "id": "labelAnswer",
+      "type": "label",
+      "at": [
+        -4.45,
+        4.85,
+        0
+      ],
+      "text": "2a=2\\sqrt{13}-4",
+      "color": "text",
+      "tags": [
+        "answer"
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "text": "$\\overline{\\mathrm{F'Q}}=\\sqrt{c^2+4}$이고 $\\overline{\\mathrm{F'Q}}=\\overline{\\mathrm{QP}}$입니다. 점 $\\mathrm{R}$에서 선분 $\\mathrm{QP}$에 내린 수선의 발을 $\\mathrm{A}$, 원점 $\\mathrm{O}$에서 선분 $\\mathrm{F'Q}$에 내린 수선의 발을 $\\mathrm{B}$라 하면 평행한 두 직선에서 $\\overline{\\mathrm{RA}}=\\overline{\\mathrm{OB}}=d$입니다.",
+      "show": [
+        "axes",
+        "foci",
+        "given",
+        "midpoint",
+        "parallel",
+        "height"
+      ],
+      "focus": [
+        "midpoint",
+        "parallel",
+        "height"
+      ]
+    },
+    {
+      "text": "$[\\mathrm{PQR}]=\\dfrac12\\overline{\\mathrm{QP}}d=3$이므로 $\\sqrt{c^2+4}\\,d=6$입니다.",
+      "show": [
+        "axes",
+        "foci",
+        "given",
+        "midpoint",
+        "parallel",
+        "height",
+        "area"
+      ],
+      "focus": [
+        "area",
+        "height"
+      ]
+    },
+    {
+      "text": "삼각형 $\\mathrm{OQF'}$에서 $\\dfrac12\\overline{\\mathrm{F'Q}}d=\\dfrac12\\overline{\\mathrm{OF'}}\\cdot2$이므로 $\\sqrt{c^2+4}\\,d=2c$입니다. 따라서 $2c=6$, $c=3$입니다.",
+      "show": [
+        "axes",
+        "foci",
+        "given",
+        "midpoint",
+        "parallel",
+        "height"
+      ],
+      "focus": [
+        "foci",
+        "height"
+      ]
+    },
+    {
+      "text": "$\\mathrm{F'}(-3,\\ 0)$, $\\mathrm{Q}(0,\\ 2)$이고 $\\mathrm{Q}$가 선분 $\\mathrm{F'P}$의 중점이므로 $\\mathrm{P}(3,\\ 4)$입니다.",
+      "show": [
+        "axes",
+        "foci",
+        "given",
+        "midpoint",
+        "pointP"
+      ],
+      "focus": [
+        "pointP",
+        "midpoint"
+      ]
+    },
+    {
+      "text": "$\\mathrm{F}(3,\\ 0)$에서 $\\overline{\\mathrm{PF'}}=\\sqrt{6^2+4^2}=2\\sqrt{13}$, $\\overline{\\mathrm{PF}}=4$입니다. 쌍곡선의 주축의 길이는 $\\overline{\\mathrm{PF'}}-\\overline{\\mathrm{PF}}=2\\sqrt{13}-4$입니다.",
+      "show": [
+        "axes",
+        "hyperbola",
+        "foci",
+        "pointP",
+        "distance",
+        "answer"
+      ],
+      "focus": [
+        "distance",
+        "answer"
+      ]
+    },
+    {
+      "text": "$p+q\\sqrt{13}=2\\sqrt{13}-4$이므로 $p=-4$, $q=2$이고 $p^2+q^2=16+4=20$입니다.",
+      "show": [
+        "axes",
+        "hyperbola",
+        "foci",
+        "pointP",
+        "answer"
+      ],
+      "focus": [
+        "answer"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,620 @@
+{
+  "topic": "구",
+  "mode": "3d",
+  "answer": "\\sqrt{55}",
+  "scale": 24,
+  "camera": {
+    "rotX": 0.44,
+    "rotY": -0.5,
+    "zoom": 1.08
+  },
+  "objects": [
+    {
+      "id": "planeABC",
+      "type": "plane",
+      "corners": [
+        [
+          4.6,
+          0,
+          -0.6
+        ],
+        [
+          -4.6,
+          0,
+          -0.6
+        ],
+        [
+          -4.6,
+          0,
+          6.8
+        ],
+        [
+          4.6,
+          0,
+          6.8
+        ]
+      ],
+      "alpha": 0.12,
+      "color": "muted",
+      "label": "평면 ABC",
+      "tags": [
+        "given",
+        "planeABC"
+      ]
+    },
+    {
+      "id": "planeO",
+      "type": "plane",
+      "corners": [
+        [
+          -4.6,
+          -4.6,
+          0
+        ],
+        [
+          4.6,
+          -4.6,
+          0
+        ],
+        [
+          4.6,
+          4.6,
+          0
+        ],
+        [
+          -4.6,
+          4.6,
+          0
+        ]
+      ],
+      "alpha": 0.1,
+      "color": "D",
+      "label": "원 O의 평면",
+      "tags": [
+        "given",
+        "planeO",
+        "circlePlane"
+      ]
+    },
+    {
+      "id": "A",
+      "type": "point",
+      "at": [
+        4,
+        0,
+        0
+      ],
+      "label": "A",
+      "color": "B",
+      "tags": [
+        "given",
+        "triangle"
+      ]
+    },
+    {
+      "id": "B",
+      "type": "point",
+      "at": [
+        -4,
+        0,
+        0
+      ],
+      "label": "B",
+      "color": "B",
+      "tags": [
+        "given",
+        "triangle"
+      ]
+    },
+    {
+      "id": "C",
+      "type": "point",
+      "at": [
+        -4,
+        0,
+        6
+      ],
+      "label": "C",
+      "color": "B",
+      "tags": [
+        "given",
+        "triangle",
+        "lineAC"
+      ]
+    },
+    {
+      "id": "sphereCenter",
+      "type": "point",
+      "at": [
+        0,
+        0,
+        3
+      ],
+      "label": "S_0",
+      "color": "A",
+      "tags": [
+        "sphere",
+        "diameter"
+      ]
+    },
+    {
+      "id": "sphereS",
+      "type": "sphere",
+      "center": [
+        0,
+        0,
+        3
+      ],
+      "r": 5,
+      "color": "A",
+      "tags": [
+        "sphere",
+        "diameter"
+      ]
+    },
+    {
+      "id": "segAB",
+      "type": "segment",
+      "from": [
+        4,
+        0,
+        0
+      ],
+      "to": [
+        -4,
+        0,
+        0
+      ],
+      "width": 3,
+      "color": "B",
+      "tags": [
+        "given",
+        "triangle",
+        "axisAB"
+      ]
+    },
+    {
+      "id": "segBC",
+      "type": "segment",
+      "from": [
+        -4,
+        0,
+        0
+      ],
+      "to": [
+        -4,
+        0,
+        6
+      ],
+      "width": 3,
+      "color": "B",
+      "tags": [
+        "given",
+        "triangle"
+      ]
+    },
+    {
+      "id": "segAC",
+      "type": "segment",
+      "from": [
+        4,
+        0,
+        0
+      ],
+      "to": [
+        -4,
+        0,
+        6
+      ],
+      "width": 3,
+      "color": "B",
+      "tags": [
+        "given",
+        "triangle",
+        "lineAC",
+        "distance"
+      ]
+    },
+    {
+      "id": "raB",
+      "type": "rightangle",
+      "vertex": [
+        -4,
+        0,
+        0
+      ],
+      "a": [
+        4,
+        0,
+        0
+      ],
+      "b": [
+        -4,
+        0,
+        6
+      ],
+      "color": "D",
+      "tags": [
+        "given",
+        "triangle"
+      ]
+    },
+    {
+      "id": "circleO",
+      "type": "circle",
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "r": 4,
+      "width": 3,
+      "color": "C",
+      "tags": [
+        "circleO",
+        "circlePlane",
+        "equation"
+      ]
+    },
+    {
+      "id": "Ocenter",
+      "type": "point",
+      "at": [
+        0,
+        0,
+        0
+      ],
+      "label": "O",
+      "color": "text",
+      "tags": [
+        "circleO",
+        "equation"
+      ]
+    },
+    {
+      "id": "axisX",
+      "type": "segment",
+      "from": [
+        -4.2,
+        0,
+        0
+      ],
+      "to": [
+        4.2,
+        0,
+        0
+      ],
+      "dash": [
+        4,
+        3
+      ],
+      "color": "muted",
+      "tags": [
+        "circleO",
+        "axisAB",
+        "equation"
+      ]
+    },
+    {
+      "id": "P",
+      "type": "point",
+      "at": [
+        1.5,
+        3.708099,
+        0
+      ],
+      "label": "P",
+      "color": "E",
+      "tags": [
+        "solution",
+        "pointsPQ",
+        "answer"
+      ]
+    },
+    {
+      "id": "Q",
+      "type": "point",
+      "at": [
+        1.5,
+        -3.708099,
+        0
+      ],
+      "label": "Q",
+      "color": "E",
+      "tags": [
+        "solution",
+        "pointsPQ",
+        "answer"
+      ]
+    },
+    {
+      "id": "R",
+      "type": "point",
+      "at": [
+        1.5,
+        0,
+        0
+      ],
+      "label": "R",
+      "color": "D",
+      "tags": [
+        "projection",
+        "distance",
+        "solution"
+      ]
+    },
+    {
+      "id": "H",
+      "type": "point",
+      "at": [
+        2.4,
+        0,
+        1.2
+      ],
+      "label": "H",
+      "color": "D",
+      "tags": [
+        "projection",
+        "distance",
+        "solution"
+      ]
+    },
+    {
+      "id": "segPR",
+      "type": "segment",
+      "from": [
+        1.5,
+        3.708099,
+        0
+      ],
+      "to": [
+        1.5,
+        0,
+        0
+      ],
+      "dash": [
+        4,
+        3
+      ],
+      "width": 2.5,
+      "color": "D",
+      "tags": [
+        "projection",
+        "distance"
+      ]
+    },
+    {
+      "id": "segRH",
+      "type": "segment",
+      "from": [
+        1.5,
+        0,
+        0
+      ],
+      "to": [
+        2.4,
+        0,
+        1.2
+      ],
+      "dash": [
+        4,
+        3
+      ],
+      "width": 2.5,
+      "color": "D",
+      "tags": [
+        "projection",
+        "distance"
+      ]
+    },
+    {
+      "id": "segPH",
+      "type": "segment",
+      "from": [
+        1.5,
+        3.708099,
+        0
+      ],
+      "to": [
+        2.4,
+        0,
+        1.2
+      ],
+      "width": 3,
+      "color": "A",
+      "tags": [
+        "condition"
+      ]
+    },
+    {
+      "id": "raR",
+      "type": "rightangle",
+      "vertex": [
+        1.5,
+        0,
+        0
+      ],
+      "a": [
+        1.5,
+        3.708099,
+        0
+      ],
+      "b": [
+        2.4,
+        0,
+        1.2
+      ],
+      "color": "D",
+      "tags": [
+        "projection",
+        "distance"
+      ]
+    },
+    {
+      "id": "raH",
+      "type": "rightangle",
+      "vertex": [
+        2.4,
+        0,
+        1.2
+      ],
+      "a": [
+        1.5,
+        0,
+        0
+      ],
+      "b": [
+        4,
+        0,
+        0
+      ],
+      "color": "D",
+      "tags": [
+        "projection",
+        "distance"
+      ]
+    },
+    {
+      "id": "segPQ",
+      "type": "segment",
+      "from": [
+        1.5,
+        3.708099,
+        0
+      ],
+      "to": [
+        1.5,
+        -3.708099,
+        0
+      ],
+      "width": 3.5,
+      "color": "E",
+      "tags": [
+        "answer",
+        "pointsPQ"
+      ]
+    },
+    {
+      "id": "labelCircle",
+      "type": "label",
+      "at": [
+        -3.8,
+        4.3,
+        0.2
+      ],
+      "text": "x^2+y^2=16",
+      "color": "text",
+      "tags": [
+        "equation"
+      ]
+    },
+    {
+      "id": "labelDistance",
+      "type": "label",
+      "at": [
+        2.7,
+        2.1,
+        1.0
+      ],
+      "text": "PH=4",
+      "color": "text",
+      "tags": [
+        "condition"
+      ]
+    },
+    {
+      "id": "labelAnswer",
+      "type": "label",
+      "at": [
+        1.9,
+        0,
+        3.4
+      ],
+      "text": "PQ=\\sqrt{55}",
+      "color": "text",
+      "tags": [
+        "answer"
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "text": "$\\mathrm{A}(4,\\ 0,\\ 0)$, $\\mathrm{B}(-4,\\ 0,\\ 0)$, $\\mathrm{C}(-4,\\ 0,\\ 6)$으로 두면 $\\overline{\\mathrm{AB}}=8$, $\\overline{\\mathrm{BC}}=6$, $\\angle\\mathrm{ABC}=\\dfrac{\\pi}{2}$입니다. 선분 $\\mathrm{AC}$를 지름으로 하는 구의 중심은 $(0,\\ 0,\\ 3)$, 반지름은 $5$입니다.",
+      "show": [
+        "given",
+        "triangle",
+        "sphere",
+        "diameter"
+      ],
+      "focus": [
+        "triangle",
+        "sphere"
+      ]
+    },
+    {
+      "text": "직선 $\\mathrm{AB}$를 포함하고 평면 $\\mathrm{ABC}$에 수직인 평면을 $z=0$으로 잡으면, 구와 이 평면의 교선인 원 $O$는 $x^2+y^2=16$입니다.",
+      "show": [
+        "given",
+        "triangle",
+        "sphere",
+        "planeO",
+        "circleO",
+        "axisAB",
+        "equation"
+      ],
+      "focus": [
+        "planeO",
+        "circleO",
+        "equation"
+      ]
+    },
+    {
+      "text": "원 위의 점 $\\mathrm{P}(x,\\ y,\\ 0)$에서 직선 $\\mathrm{AB}$에 내린 수선의 발을 $\\mathrm{R}$, $\\mathrm{R}$에서 선분 $\\mathrm{AC}$에 내린 수선의 발을 $\\mathrm{H}$라 합니다. $\\sin\\angle\\mathrm{BAC}=\\dfrac35$이므로 $\\overline{\\mathrm{AR}}=4-x$, $\\overline{\\mathrm{RH}}=\\dfrac35(4-x)$입니다.",
+      "show": [
+        "given",
+        "triangle",
+        "circleO",
+        "lineAC",
+        "projection",
+        "distance"
+      ],
+      "focus": [
+        "projection",
+        "distance"
+      ]
+    },
+    {
+      "text": "$\\overline{\\mathrm{PH}}=4$이고 $\\triangle\\mathrm{PRH}$가 직각삼각형이므로 $y^2+\\dfrac{9}{25}(4-x)^2=16$입니다. 또 $x^2+y^2=16$이므로 $2x^2+9x-18=0$이고, 원의 범위에서 $x=\\dfrac32$입니다.",
+      "show": [
+        "given",
+        "circleO",
+        "equation",
+        "projection",
+        "distance",
+        "condition"
+      ],
+      "focus": [
+        "equation",
+        "condition"
+      ]
+    },
+    {
+      "text": "$y^2=16-\\dfrac94=\\dfrac{55}{4}$이므로 $\\mathrm{P}\\left(\\dfrac32,\\ \\dfrac{\\sqrt{55}}2,\\ 0\\right)$, $\\mathrm{Q}\\left(\\dfrac32,\\ -\\dfrac{\\sqrt{55}}2,\\ 0\\right)$입니다. 따라서 $\\overline{\\mathrm{PQ}}=\\sqrt{55}$입니다.",
+      "show": [
+        "given",
+        "circleO",
+        "pointsPQ",
+        "answer"
+      ],
+      "focus": [
+        "pointsPQ",
+        "answer"
+      ]
+    }
+  ]
+}

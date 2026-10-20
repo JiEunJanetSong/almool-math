@@ -1,0 +1,748 @@
+{
+  "topic": "정사영",
+  "mode": "3d",
+  "answer": "\\dfrac{\\pi}{4}",
+  "scale": 34,
+  "camera": {
+    "rotX": 0.42,
+    "rotY": -0.58,
+    "zoom": 1.08
+  },
+  "objects": [
+    {
+      "id": "planeBCD",
+      "type": "plane",
+      "corners": [
+        [
+          -2.8,
+          -0.6,
+          0
+        ],
+        [
+          2.8,
+          -0.6,
+          0
+        ],
+        [
+          2.8,
+          4.8,
+          0
+        ],
+        [
+          -2.8,
+          4.8,
+          0
+        ]
+      ],
+      "alpha": 0.1,
+      "color": "muted",
+      "label": "평면 BCD",
+      "tags": [
+        "base",
+        "given",
+        "planeBCD"
+      ]
+    },
+    {
+      "id": "planeABH",
+      "type": "plane",
+      "corners": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          4,
+          0
+        ],
+        [
+          0,
+          2,
+          3.464102
+        ]
+      ],
+      "alpha": 0.16,
+      "color": "B",
+      "label": "평면 ABH",
+      "tags": [
+        "given",
+        "planeABH"
+      ]
+    },
+    {
+      "id": "planeACD",
+      "type": "plane",
+      "corners": [
+        [
+          -2,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          3.464102
+        ]
+      ],
+      "alpha": 0.14,
+      "color": "D",
+      "label": "평면 ACD",
+      "tags": [
+        "planeACD",
+        "sphereRadius"
+      ]
+    },
+    {
+      "id": "planeABC",
+      "type": "plane",
+      "corners": [
+        [
+          0,
+          2,
+          3.464102
+        ],
+        [
+          0,
+          4,
+          0
+        ],
+        [
+          -2,
+          0,
+          0
+        ]
+      ],
+      "alpha": 0.12,
+      "color": "C",
+      "label": "평면 ABC",
+      "tags": [
+        "planeABC",
+        "projectionArea"
+      ]
+    },
+    {
+      "id": "H",
+      "type": "point",
+      "at": [
+        0,
+        0,
+        0
+      ],
+      "label": "H=M",
+      "color": "B",
+      "tags": [
+        "given",
+        "points"
+      ]
+    },
+    {
+      "id": "B",
+      "type": "point",
+      "at": [
+        0,
+        4,
+        0
+      ],
+      "label": "B",
+      "color": "B",
+      "tags": [
+        "given",
+        "points"
+      ]
+    },
+    {
+      "id": "C",
+      "type": "point",
+      "at": [
+        -2,
+        0,
+        0
+      ],
+      "label": "C",
+      "color": "B",
+      "tags": [
+        "given",
+        "points"
+      ]
+    },
+    {
+      "id": "D",
+      "type": "point",
+      "at": [
+        2,
+        0,
+        0
+      ],
+      "label": "D",
+      "color": "B",
+      "tags": [
+        "given",
+        "points"
+      ]
+    },
+    {
+      "id": "A",
+      "type": "point",
+      "at": [
+        0,
+        2,
+        3.464102
+      ],
+      "label": "A",
+      "color": "B",
+      "tags": [
+        "given",
+        "points"
+      ]
+    },
+    {
+      "id": "K",
+      "type": "point",
+      "at": [
+        0,
+        2,
+        0
+      ],
+      "label": "K",
+      "color": "E",
+      "tags": [
+        "centroid",
+        "angle"
+      ]
+    },
+    {
+      "id": "G",
+      "type": "point",
+      "at": [
+        0,
+        2,
+        1.154701
+      ],
+      "label": "G",
+      "color": "A",
+      "tags": [
+        "centroid",
+        "sphere",
+        "circleT"
+      ]
+    },
+    {
+      "id": "O2",
+      "type": "point",
+      "at": [
+        0,
+        2,
+        2.309401
+      ],
+      "label": "O",
+      "color": "D",
+      "tags": [
+        "diameterSphere",
+        "circleT"
+      ]
+    },
+    {
+      "id": "segCD",
+      "type": "segment",
+      "from": [
+        -2,
+        0,
+        0
+      ],
+      "to": [
+        2,
+        0,
+        0
+      ],
+      "width": 3,
+      "color": "B",
+      "tags": [
+        "given",
+        "lengths"
+      ]
+    },
+    {
+      "id": "segBC",
+      "type": "segment",
+      "from": [
+        0,
+        4,
+        0
+      ],
+      "to": [
+        -2,
+        0,
+        0
+      ],
+      "width": 3,
+      "color": "B",
+      "tags": [
+        "given",
+        "lengths"
+      ]
+    },
+    {
+      "id": "segBD",
+      "type": "segment",
+      "from": [
+        0,
+        4,
+        0
+      ],
+      "to": [
+        2,
+        0,
+        0
+      ],
+      "width": 3,
+      "color": "B",
+      "tags": [
+        "given",
+        "lengths"
+      ]
+    },
+    {
+      "id": "segAH",
+      "type": "segment",
+      "from": [
+        0,
+        2,
+        3.464102
+      ],
+      "to": [
+        0,
+        0,
+        0
+      ],
+      "width": 3,
+      "color": "B",
+      "tags": [
+        "given",
+        "lengths",
+        "equilateral"
+      ]
+    },
+    {
+      "id": "segAB",
+      "type": "segment",
+      "from": [
+        0,
+        2,
+        3.464102
+      ],
+      "to": [
+        0,
+        4,
+        0
+      ],
+      "width": 3,
+      "color": "B",
+      "tags": [
+        "given",
+        "lengths",
+        "equilateral"
+      ]
+    },
+    {
+      "id": "segBH",
+      "type": "segment",
+      "from": [
+        0,
+        4,
+        0
+      ],
+      "to": [
+        0,
+        0,
+        0
+      ],
+      "width": 3,
+      "color": "B",
+      "tags": [
+        "given",
+        "lengths",
+        "equilateral"
+      ]
+    },
+    {
+      "id": "segAK",
+      "type": "segment",
+      "from": [
+        0,
+        2,
+        3.464102
+      ],
+      "to": [
+        0,
+        2,
+        0
+      ],
+      "dash": [
+        4,
+        3
+      ],
+      "color": "E",
+      "tags": [
+        "centroid",
+        "angle"
+      ]
+    },
+    {
+      "id": "segAG",
+      "type": "segment",
+      "from": [
+        0,
+        2,
+        3.464102
+      ],
+      "to": [
+        0,
+        2,
+        1.154701
+      ],
+      "width": 3,
+      "color": "A",
+      "tags": [
+        "centroid",
+        "circleT"
+      ]
+    },
+    {
+      "id": "segGK",
+      "type": "segment",
+      "from": [
+        0,
+        2,
+        1.154701
+      ],
+      "to": [
+        0,
+        2,
+        0
+      ],
+      "dash": [
+        4,
+        3
+      ],
+      "color": "E",
+      "tags": [
+        "centroid",
+        "projectionArea"
+      ]
+    },
+    {
+      "id": "sphereS",
+      "type": "sphere",
+      "center": [
+        0,
+        2,
+        1.154701
+      ],
+      "r": 1.154701,
+      "color": "A",
+      "tags": [
+        "sphere",
+        "sphereRadius"
+      ]
+    },
+    {
+      "id": "sphereAG",
+      "type": "sphere",
+      "center": [
+        0,
+        2,
+        2.309401
+      ],
+      "r": 1.154701,
+      "color": "D",
+      "tags": [
+        "diameterSphere",
+        "circleT"
+      ]
+    },
+    {
+      "id": "circleT",
+      "type": "circle",
+      "center": [
+        0,
+        2,
+        1.732051
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "r": 1,
+      "width": 3,
+      "color": "C",
+      "tags": [
+        "circleT",
+        "answer"
+      ]
+    },
+    {
+      "id": "Tcenter",
+      "type": "point",
+      "at": [
+        0,
+        2,
+        1.732051
+      ],
+      "label": "T",
+      "color": "C",
+      "tags": [
+        "circleT",
+        "answer"
+      ]
+    },
+    {
+      "id": "projABC",
+      "type": "plane",
+      "corners": [
+        [
+          0,
+          2,
+          3.464102
+        ],
+        [
+          0,
+          4,
+          0
+        ],
+        [
+          -2,
+          0,
+          0
+        ]
+      ],
+      "alpha": 0.22,
+      "color": "C",
+      "tags": [
+        "projectionArea",
+        "answer"
+      ]
+    },
+    {
+      "id": "triKBC",
+      "type": "plane",
+      "corners": [
+        [
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          4,
+          0
+        ],
+        [
+          -2,
+          0,
+          0
+        ]
+      ],
+      "alpha": 0.22,
+      "color": "A",
+      "tags": [
+        "projectionArea",
+        "angle"
+      ]
+    },
+    {
+      "id": "segKB",
+      "type": "segment",
+      "from": [
+        0,
+        2,
+        0
+      ],
+      "to": [
+        0,
+        4,
+        0
+      ],
+      "width": 3,
+      "color": "A",
+      "tags": [
+        "projectionArea",
+        "angle"
+      ]
+    },
+    {
+      "id": "segKC",
+      "type": "segment",
+      "from": [
+        0,
+        2,
+        0
+      ],
+      "to": [
+        -2,
+        0,
+        0
+      ],
+      "width": 3,
+      "color": "A",
+      "tags": [
+        "projectionArea",
+        "angle"
+      ]
+    },
+    {
+      "id": "labelR",
+      "type": "label",
+      "at": [
+        0.42,
+        2.25,
+        1.25
+      ],
+      "text": "r=\\dfrac{2\\sqrt3}{3}",
+      "color": "text",
+      "tags": [
+        "sphereRadius"
+      ]
+    },
+    {
+      "id": "labelT",
+      "type": "label",
+      "at": [
+        1.25,
+        2.25,
+        1.95
+      ],
+      "text": "r_T=1,\\ [T]=\\pi",
+      "color": "text",
+      "tags": [
+        "circleT"
+      ]
+    },
+    {
+      "id": "labelCos",
+      "type": "label",
+      "at": [
+        -2.45,
+        3.05,
+        0.55
+      ],
+      "text": "\\cos\\theta=\\dfrac{[KBC]}{[ABC]}=\\dfrac14",
+      "color": "text",
+      "tags": [
+        "answer"
+      ]
+    },
+    {
+      "id": "labelAnswer",
+      "type": "label",
+      "at": [
+        -2.6,
+        2.45,
+        2.65
+      ],
+      "text": "S'=\\pi\\cos\\theta=\\dfrac{\\pi}{4}",
+      "color": "text",
+      "tags": [
+        "answer"
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "text": "$\\mathrm{C}(-2,\\ 0,\\ 0)$, $\\mathrm{D}(2,\\ 0,\\ 0)$, $\\mathrm{H}=\\mathrm{M}=(0,\\ 0,\\ 0)$, $\\mathrm{B}(0,\\ 4,\\ 0)$로 둡니다. 그러면 $\\overline{\\mathrm{BC}}=\\overline{\\mathrm{BD}}=2\\sqrt5$, $\\overline{\\mathrm{CD}}=4$이고 $\\overline{\\mathrm{BM}}=4$입니다.",
+      "show": [
+        "base",
+        "given",
+        "points",
+        "lengths"
+      ],
+      "focus": [
+        "points",
+        "lengths"
+      ]
+    },
+    {
+      "text": "$\\mathrm{A}=(0,\\ 2,\\ 2\\sqrt3)$로 두면 $\\mathrm{K}=(0,\\ 2,\\ 0)$이고 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AH}}=\\overline{\\mathrm{BH}}=4$입니다. 따라서 삼각형 $\\mathrm{ABH}$는 정삼각형이고 $\\mathrm{G}=(0,\\ 2,\\ \\dfrac{2\\sqrt3}{3})$입니다.",
+      "show": [
+        "base",
+        "given",
+        "planeABH",
+        "equilateral",
+        "centroid"
+      ],
+      "focus": [
+        "equilateral",
+        "centroid"
+      ]
+    },
+    {
+      "text": "평면 $\\mathrm{ACD}$는 평면 $\\mathrm{ABH}$와 수직이고 교선은 $\\mathrm{AH}$입니다. 점 $\\mathrm{G}$에서 평면 $\\mathrm{ACD}$까지의 거리는 정삼각형 $\\mathrm{ABH}$의 내접원 반지름과 같으므로 구 $S$의 반지름은 $r=\\dfrac{2\\sqrt3}{3}$입니다.",
+      "show": [
+        "given",
+        "planeABH",
+        "planeACD",
+        "centroid",
+        "sphere",
+        "sphereRadius"
+      ],
+      "focus": [
+        "planeACD",
+        "sphereRadius"
+      ]
+    },
+    {
+      "text": "$\\angle\\mathrm{APG}=\\dfrac{\\pi}{2}$인 점 $\\mathrm{P}$의 자취 $T$는 선분 $\\mathrm{AG}$를 지름으로 하는 구와 구 $S$의 교선입니다. $\\overline{\\mathrm{AG}}=\\dfrac{4\\sqrt3}{3}$이고 두 구의 반지름과 중심 사이의 거리가 모두 $\\dfrac{2\\sqrt3}{3}$이므로 $r_T^2=\\left(\\dfrac{2\\sqrt3}{3}\\right)^2-\\left(\\dfrac{\\sqrt3}{3}\\right)^2=1$입니다.",
+      "show": [
+        "given",
+        "centroid",
+        "sphere",
+        "diameterSphere",
+        "circleT"
+      ],
+      "focus": [
+        "diameterSphere",
+        "circleT"
+      ]
+    },
+    {
+      "text": "도형 $T$가 놓인 평면은 평면 $\\mathrm{BCD}$와 평행하므로 $T$의 넓이 $\\pi$에 평면 $\\mathrm{ABC}$와 평면 $\\mathrm{BCD}$가 이루는 각의 코사인을 곱하면 정사영 넓이가 됩니다. 삼각형 $\\mathrm{ABC}$의 평면 $\\mathrm{BCD}$ 위 정사영은 삼각형 $\\mathrm{KBC}$이고 $[\\mathrm{ABC}]=8$, $[\\mathrm{KBC}]=2$입니다.",
+      "show": [
+        "base",
+        "planeABC",
+        "projectionArea",
+        "angle",
+        "circleT"
+      ],
+      "focus": [
+        "projectionArea",
+        "angle"
+      ]
+    },
+    {
+      "text": "따라서 $\\cos\\theta=\\dfrac{[\\mathrm{KBC}]}{[\\mathrm{ABC}]}=\\dfrac{2}{8}=\\dfrac14$이고, 구하는 정사영의 넓이는 $S'=\\pi\\cos\\theta=\\dfrac{\\pi}{4}$입니다.",
+      "show": [
+        "base",
+        "planeABC",
+        "projectionArea",
+        "circleT",
+        "answer"
+      ],
+      "focus": [
+        "answer"
+      ]
+    }
+  ],
+  "theorems": [
+    {
+      "key": "orthogonal-projection-proof",
+      "label": "정사영 넓이 S'=S cos θ"
+    }
+  ]
+}

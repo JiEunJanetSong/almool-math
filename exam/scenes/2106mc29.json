@@ -1,0 +1,70 @@
+{
+  "topic": "자취",
+  "mode": "2d",
+  "answer": "80",
+  "scale": 10,
+  "camera": { "rotX": -1.5708, "rotY": 0, "zoom": 1.05 },
+  "objects": [
+    { "id": "axisX", "type": "segment", "from": [-2.7, 0, 0], "to": [10.4, 0, 0], "color": "muted", "tags": ["axes"] },
+    { "id": "axisY", "type": "segment", "from": [0, -3.2, 0], "to": [0, 16.2, 0], "color": "muted", "tags": ["axes"] },
+    { "id": "lineL", "type": "segment", "from": [-0.35, -4.7, 0], "to": [10.25, 16.5, 0], "color": "muted", "width": 2, "tags": ["given", "line"] },
+    { "id": "parabolaP", "type": "parabola", "form": "y2=4px", "p": 2, "vertex": [0, 0, 0], "span": 7.2, "color": "A", "width": 2.5, "tags": ["given", "parabola0"] },
+    { "id": "directrix0", "type": "segment", "from": [-2, -3.2, 0], "to": [-2, 16.2, 0], "dash": [5, 4], "color": "muted", "tags": ["given", "directrix0"] },
+    { "id": "F", "type": "point", "at": [2, 0, 0], "label": "F", "color": "B", "tags": ["given", "focus0"] },
+    { "id": "V", "type": "point", "at": [0, 0, 0], "label": "O", "color": "text", "tags": ["given"] },
+    { "id": "E", "type": "point", "at": [0.763932, -2.472136, 0], "label": "E", "color": "D", "tags": ["intersections", "translation"] },
+    { "id": "A", "type": "point", "at": [5.236068, 6.472136, 0], "label": "A", "color": "C", "tags": ["given", "intersections", "distances"] },
+    { "id": "shiftVec", "type": "vector", "from": [0.763932, -2.472136, 0], "to": [5.236068, 6.472136, 0], "label": "(a,2a)", "color": "D", "tags": ["translation"] },
+    { "id": "parabolaP2", "type": "parabola", "form": "y2=4px", "p": 2, "vertex": [4.472136, 8.944272, 0], "span": 7.2, "color": "B", "width": 2.5, "tags": ["shifted", "parabola1"] },
+    { "id": "directrix1", "type": "segment", "from": [2.472136, -3.2, 0], "to": [2.472136, 16.2, 0], "dash": [5, 4], "color": "B", "tags": ["shifted", "directrix1"] },
+    { "id": "Vp", "type": "point", "at": [4.472136, 8.944272, 0], "label": "V'", "color": "B", "tags": ["shifted"] },
+    { "id": "Fp", "type": "point", "at": [6.472136, 8.944272, 0], "label": "F'", "color": "B", "tags": ["shifted", "focus1", "distances"] },
+    { "id": "B", "type": "point", "at": [9.708204, 15.416408, 0], "label": "B", "color": "C", "tags": ["shifted", "distances", "answer"] },
+    { "id": "segAF", "type": "segment", "from": [5.236068, 6.472136, 0], "to": [2, 0, 0], "color": "E", "dash": [4, 3], "tags": ["focusRule"] },
+    { "id": "C", "type": "point", "at": [-2, 6.472136, 0], "label": "C", "color": "E", "tags": ["focusRule", "distances"] },
+    { "id": "segAC", "type": "segment", "from": [5.236068, 6.472136, 0], "to": [-2, 6.472136, 0], "color": "E", "width": 3, "tags": ["focusRule", "distances"] },
+    { "id": "Cp", "type": "point", "at": [2.472136, 6.472136, 0], "label": "C'", "color": "D", "tags": ["focusRule", "distances"] },
+    { "id": "segACp", "type": "segment", "from": [5.236068, 6.472136, 0], "to": [2.472136, 6.472136, 0], "color": "D", "width": 3, "tags": ["focusRule", "distances"] },
+    { "id": "segAFp", "type": "segment", "from": [5.236068, 6.472136, 0], "to": [6.472136, 8.944272, 0], "color": "D", "dash": [4, 3], "tags": ["focusRule", "distances"] },
+    { "id": "D", "type": "point", "at": [-2, 15.416408, 0], "label": "D", "color": "E", "tags": ["kFormula", "answer"] },
+    { "id": "Dp", "type": "point", "at": [2.472136, 15.416408, 0], "label": "D'", "color": "D", "tags": ["kFormula"] },
+    { "id": "segBD", "type": "segment", "from": [9.708204, 15.416408, 0], "to": [-2, 15.416408, 0], "color": "E", "width": 3, "tags": ["kFormula", "answer"] },
+    { "id": "segBDp", "type": "segment", "from": [9.708204, 15.416408, 0], "to": [2.472136, 15.416408, 0], "color": "D", "dash": [4, 3], "tags": ["kFormula"] },
+    { "id": "segBFp", "type": "segment", "from": [9.708204, 15.416408, 0], "to": [6.472136, 8.944272, 0], "color": "D", "dash": [4, 3], "tags": ["kFormula"] },
+    { "id": "segAB", "type": "segment", "from": [5.236068, 6.472136, 0], "to": [9.708204, 15.416408, 0], "color": "C", "width": 3, "tags": ["kFormula", "answer"] },
+    { "id": "shiftWidth", "type": "segment", "from": [-2, 14.55, 0], "to": [2.472136, 14.55, 0], "color": "B", "width": 2.5, "tags": ["kFormula"] },
+    { "id": "answerLabel", "type": "label", "at": [0.45, 15.45, 0], "text": "a=2\\sqrt{5},\\ k=2a=4\\sqrt{5},\\ k^2=80", "color": "text", "tags": ["answer"] }
+  ],
+  "steps": [
+    {
+      "text": "$y^2=8x$의 초점은 $\\mathrm{F}(2,\\ 0)$, 준선은 $x=-2$입니다. 직선 $y=2x-4$와의 교점은 $x^2-6x+4=0$에서 나오며, 제$1$사분면의 점은 $\\mathrm{A}(3+\\sqrt{5},\\ 2+2\\sqrt{5})$입니다.",
+      "show": ["axes", "given", "line", "intersections"],
+      "focus": ["parabola0", "line", "focus0", "intersections"]
+    },
+    {
+      "text": "포물선 $(y-2a)^2=8(x-a)$의 꼭짓점은 $(a,\\ 2a)$, 초점은 $\\mathrm{F'}(a+2,\\ 2a)$, 준선은 $x=a-2$입니다. 초점 $\\mathrm{F'}$도 직선 $y=2x-4$ 위에 있습니다.",
+      "show": ["axes", "given", "line", "intersections", "shifted"],
+      "focus": ["shifted", "focus1", "directrix1"]
+    },
+    {
+      "text": "두 점 $\\mathrm{A}$, $\\mathrm{B}$에서 새 포물선의 준선에 내린 수선의 발을 $\\mathrm{C'}$, $\\mathrm{D'}$라 하면, 포물선의 정의에 의해 $\\overline{\\mathrm{AC}}=\\overline{\\mathrm{AF}}$, $\\overline{\\mathrm{BD'}}=\\overline{\\mathrm{BF'}}$, $\\overline{\\mathrm{AC'}}=\\overline{\\mathrm{AF'}}$입니다.",
+      "show": ["axes", "given", "line", "shifted", "focusRule"],
+      "focus": ["focusRule"]
+    },
+    {
+      "text": "$\\overline{\\mathrm{BD}}=\\overline{\\mathrm{BD'}}+a$이고 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AF'}}+\\overline{\\mathrm{BF'}}$이므로 $k=\\overline{\\mathrm{AF}}-\\overline{\\mathrm{AF'}}+a$입니다. 또 $\\overline{\\mathrm{AF'}}=\\overline{\\mathrm{AC'}}=\\overline{\\mathrm{AC}}-a=\\overline{\\mathrm{AF}}-a$이므로 $k=2a$입니다.",
+      "show": ["axes", "given", "line", "shifted", "focusRule", "kFormula"],
+      "focus": ["kFormula"]
+    },
+    {
+      "text": "직선 $y=2x-4$가 원래 포물선과 제$4$사분면에서 만나는 점을 $\\mathrm{E}$라 하면, 새 포물선은 $\\mathrm{E}$를 $\\mathrm{A}$로 옮기는 평행이동입니다. 따라서 두 점 $\\mathrm{A}$, $\\mathrm{E}$의 $x$좌표 차가 $a$입니다.",
+      "show": ["axes", "given", "line", "intersections", "translation", "shifted"],
+      "focus": ["translation"]
+    },
+    {
+      "text": "$x^2-6x+4=0$의 두 실근을 $\\alpha$, $\\beta$라 하면 $(\\alpha-\\beta)^2=(\\alpha+\\beta)^2-4\\alpha\\beta=6^2-4\\times4=20$입니다. 그러므로 $a^2=20$이고 $k^2=4a^2=80$입니다.",
+      "show": ["axes", "given", "line", "intersections", "translation", "shifted", "answer"],
+      "focus": ["answer"]
+    }
+  ]
+}

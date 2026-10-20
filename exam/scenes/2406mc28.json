@@ -1,0 +1,567 @@
+{
+  "topic": "내적",
+  "mode": "2d",
+  "answer": "\\dfrac{12}{5}",
+  "scale": 42,
+  "camera": {
+    "rotX": -1.5708,
+    "rotY": 0,
+    "zoom": 1.05
+  },
+  "objects": [
+    {
+      "id": "axisX",
+      "type": "segment",
+      "from": [
+        -2.6,
+        0,
+        0
+      ],
+      "to": [
+        2.4,
+        0,
+        0
+      ],
+      "color": "muted",
+      "tags": [
+        "axes"
+      ]
+    },
+    {
+      "id": "axisY",
+      "type": "segment",
+      "from": [
+        0,
+        -3.2,
+        0
+      ],
+      "to": [
+        0,
+        1.8,
+        0
+      ],
+      "color": "muted",
+      "tags": [
+        "axes"
+      ]
+    },
+    {
+      "id": "O",
+      "type": "point",
+      "at": [
+        0,
+        0,
+        0
+      ],
+      "label": "O",
+      "color": "text",
+      "tags": [
+        "given"
+      ]
+    },
+    {
+      "id": "A",
+      "type": "point",
+      "at": [
+        1,
+        0,
+        0
+      ],
+      "label": "A",
+      "color": "B",
+      "tags": [
+        "given",
+        "triangle"
+      ]
+    },
+    {
+      "id": "B",
+      "type": "point",
+      "at": [
+        1,
+        1,
+        0
+      ],
+      "label": "B",
+      "color": "B",
+      "tags": [
+        "given"
+      ]
+    },
+    {
+      "id": "circleOP",
+      "type": "circle",
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "r": 1,
+      "width": 3,
+      "color": "A",
+      "tags": [
+        "given",
+        "circleP"
+      ]
+    },
+    {
+      "id": "circleBQ",
+      "type": "circle",
+      "center": [
+        1,
+        1,
+        0
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "r": 3,
+      "dash": [
+        5,
+        4
+      ],
+      "width": 3,
+      "color": "C",
+      "tags": [
+        "given",
+        "circleQ",
+        "minQ"
+      ]
+    },
+    {
+      "id": "Q",
+      "type": "point",
+      "at": [
+        1,
+        -2,
+        0
+      ],
+      "label": "Q",
+      "color": "C",
+      "tags": [
+        "minQ",
+        "answer"
+      ]
+    },
+    {
+      "id": "segBQ",
+      "type": "segment",
+      "from": [
+        1,
+        1,
+        0
+      ],
+      "to": [
+        1,
+        -2,
+        0
+      ],
+      "width": 3,
+      "color": "C",
+      "tags": [
+        "minQ",
+        "answer"
+      ]
+    },
+    {
+      "id": "segAQ",
+      "type": "segment",
+      "from": [
+        1,
+        0,
+        0
+      ],
+      "to": [
+        1,
+        -2,
+        0
+      ],
+      "width": 3,
+      "color": "C",
+      "tags": [
+        "minQ"
+      ]
+    },
+    {
+      "id": "P",
+      "type": "point",
+      "at": [
+        -0.6,
+        -0.8,
+        0
+      ],
+      "label": "P",
+      "color": "E",
+      "tags": [
+        "pointP",
+        "answer"
+      ]
+    },
+    {
+      "id": "M",
+      "type": "point",
+      "at": [
+        0.2,
+        -0.4,
+        0
+      ],
+      "label": "M",
+      "color": "D",
+      "tags": [
+        "midpoint",
+        "perp"
+      ]
+    },
+    {
+      "id": "segAP",
+      "type": "segment",
+      "from": [
+        1,
+        0,
+        0
+      ],
+      "to": [
+        -0.6,
+        -0.8,
+        0
+      ],
+      "width": 3,
+      "color": "E",
+      "tags": [
+        "pointP",
+        "answer"
+      ]
+    },
+    {
+      "id": "segPQ",
+      "type": "segment",
+      "from": [
+        -0.6,
+        -0.8,
+        0
+      ],
+      "to": [
+        1,
+        -2,
+        0
+      ],
+      "width": 3,
+      "color": "A",
+      "tags": [
+        "pointP"
+      ]
+    },
+    {
+      "id": "segQM",
+      "type": "segment",
+      "from": [
+        1,
+        -2,
+        0
+      ],
+      "to": [
+        0.2,
+        -0.4,
+        0
+      ],
+      "dash": [
+        4,
+        3
+      ],
+      "width": 3,
+      "color": "D",
+      "tags": [
+        "midpoint",
+        "perp"
+      ]
+    },
+    {
+      "id": "segAM",
+      "type": "segment",
+      "from": [
+        1,
+        0,
+        0
+      ],
+      "to": [
+        0.2,
+        -0.4,
+        0
+      ],
+      "dash": [
+        4,
+        3
+      ],
+      "color": "D",
+      "tags": [
+        "midpoint"
+      ]
+    },
+    {
+      "id": "segMP",
+      "type": "segment",
+      "from": [
+        0.2,
+        -0.4,
+        0
+      ],
+      "to": [
+        -0.6,
+        -0.8,
+        0
+      ],
+      "dash": [
+        4,
+        3
+      ],
+      "color": "D",
+      "tags": [
+        "midpoint"
+      ]
+    },
+    {
+      "id": "raM",
+      "type": "rightangle",
+      "vertex": [
+        0.2,
+        -0.4,
+        0
+      ],
+      "a": [
+        1,
+        0,
+        0
+      ],
+      "b": [
+        1,
+        -2,
+        0
+      ],
+      "color": "D",
+      "tags": [
+        "perp"
+      ]
+    },
+    {
+      "id": "lineBA",
+      "type": "segment",
+      "from": [
+        1,
+        1.45,
+        0
+      ],
+      "to": [
+        1,
+        -2.35,
+        0
+      ],
+      "dash": [
+        5,
+        4
+      ],
+      "color": "muted",
+      "tags": [
+        "minQ"
+      ]
+    },
+    {
+      "id": "lineAP",
+      "type": "segment",
+      "from": [
+        -0.85,
+        -0.925,
+        0
+      ],
+      "to": [
+        1.35,
+        0.175,
+        0
+      ],
+      "dash": [
+        5,
+        4
+      ],
+      "color": "E",
+      "tags": [
+        "pointP"
+      ]
+    },
+    {
+      "id": "vecAP",
+      "type": "vector",
+      "from": [
+        1,
+        0,
+        0
+      ],
+      "to": [
+        -0.6,
+        -0.8,
+        0
+      ],
+      "label": "AP",
+      "width": 3,
+      "color": "E",
+      "tags": [
+        "answer"
+      ]
+    },
+    {
+      "id": "vecBQ",
+      "type": "vector",
+      "from": [
+        1,
+        1,
+        0
+      ],
+      "to": [
+        1,
+        -2,
+        0
+      ],
+      "label": "BQ",
+      "width": 3,
+      "color": "C",
+      "tags": [
+        "answer"
+      ]
+    },
+    {
+      "id": "labelMin",
+      "type": "label",
+      "at": [
+        1.18,
+        -1.0,
+        0
+      ],
+      "text": "AQ=PQ=2",
+      "color": "text",
+      "tags": [
+        "minQ"
+      ]
+    },
+    {
+      "id": "labelLine",
+      "type": "label",
+      "at": [
+        -1.85,
+        -1.45,
+        0
+      ],
+      "text": "y=\\dfrac12(x-1)",
+      "color": "text",
+      "tags": [
+        "pointP"
+      ]
+    },
+    {
+      "id": "answerLabel",
+      "type": "label",
+      "at": [
+        -2.35,
+        1.25,
+        0
+      ],
+      "text": "AP\\cdot BQ=\\dfrac{12}{5}",
+      "color": "text",
+      "tags": [
+        "answer"
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "text": "$\\mathrm{P}$는 원점 중심 반지름 $1$인 원 위의 점이고, $\\mathrm{Q}$는 $\\mathrm{B}(1,\\ 1)$ 중심 반지름 $3$인 원 위의 점입니다.",
+      "show": [
+        "axes",
+        "given",
+        "circleP",
+        "circleQ"
+      ],
+      "focus": [
+        "circleP",
+        "circleQ"
+      ]
+    },
+    {
+      "text": "선분 $\\mathrm{AP}$의 중점을 $\\mathrm{M}$이라 하면 $\\overrightarrow{\\mathrm{QA}}+\\overrightarrow{\\mathrm{QP}}=2\\overrightarrow{\\mathrm{QM}}$이므로, 주어진 내적 조건에서 직선 $\\mathrm{AP}$와 직선 $\\mathrm{QM}$은 서로 수직입니다.",
+      "show": [
+        "axes",
+        "given",
+        "circleP",
+        "circleQ",
+        "midpoint",
+        "perp"
+      ],
+      "focus": [
+        "midpoint",
+        "perp"
+      ]
+    },
+    {
+      "text": "삼각형 $\\mathrm{QAP}$에서 $\\overline{\\mathrm{PM}}=\\overline{\\mathrm{AM}}$이고 $\\mathrm{QM}\\perp\\mathrm{AP}$이므로 $\\overline{\\mathrm{PQ}}=\\overline{\\mathrm{AQ}}$입니다. 따라서 $|\\overrightarrow{\\mathrm{PQ}}|$의 최솟값은 $|\\overrightarrow{\\mathrm{AQ}}|$의 최솟값과 같습니다.",
+      "show": [
+        "axes",
+        "given",
+        "circleP",
+        "circleQ",
+        "midpoint",
+        "perp"
+      ],
+      "focus": [
+        "perp"
+      ]
+    },
+    {
+      "text": "$\\overline{\\mathrm{AQ}}$가 최소가 되려면 선분 $\\mathrm{BA}$의 연장선이 $\\mathrm{B}$ 중심 반지름 $3$인 원과 만나는 점이 $\\mathrm{Q}$입니다. 따라서 $\\mathrm{Q}=(1,\\ -2)$이고 직선 $\\mathrm{QM}$의 방정식은 $y=-2x$입니다.",
+      "show": [
+        "axes",
+        "given",
+        "circleQ",
+        "minQ",
+        "midpoint",
+        "perp"
+      ],
+      "focus": [
+        "minQ"
+      ]
+    },
+    {
+      "text": "직선 $\\mathrm{AP}$의 기울기는 $\\dfrac12$이므로 직선 $y=\\dfrac12(x-1)$과 원 $x^2+y^2=1$의 교점 중 $\\mathrm{A}$가 아닌 점은 $\\mathrm{P}\\left(-\\dfrac35,\\ -\\dfrac45\\right)$입니다.",
+      "show": [
+        "axes",
+        "given",
+        "circleP",
+        "minQ",
+        "pointP",
+        "midpoint",
+        "perp"
+      ],
+      "focus": [
+        "pointP"
+      ]
+    },
+    {
+      "text": "그러므로 $\\overrightarrow{\\mathrm{AP}}=\\left(-\\dfrac85,\\ -\\dfrac45\\right)$, $\\overrightarrow{\\mathrm{BQ}}=(0,\\ -3)$이고, $\\overrightarrow{\\mathrm{AP}}\\cdot\\overrightarrow{\\mathrm{BQ}}=\\dfrac{12}{5}$입니다.",
+      "show": [
+        "axes",
+        "given",
+        "circleP",
+        "circleQ",
+        "minQ",
+        "pointP",
+        "answer"
+      ],
+      "focus": [
+        "answer"
+      ]
+    }
+  ]
+}

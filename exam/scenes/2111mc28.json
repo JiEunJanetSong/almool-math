@@ -1,0 +1,78 @@
+{
+  "topic": "자취",
+  "mode": "2d",
+  "answer": "7",
+  "scale": 32,
+  "camera": { "rotX": -1.5708, "rotY": 0, "zoom": 1 },
+  "objects": [
+    { "id": "axisX", "type": "segment", "from": [-1.6, 0, 0], "to": [4.2, 0, 0], "color": "muted", "tags": ["axes"] },
+    { "id": "axisY", "type": "segment", "from": [0, -0.6, 0], "to": [0, 5.2, 0], "color": "muted", "tags": ["axes"] },
+    { "id": "parabola1", "type": "parabola", "form": "y2=4px", "p": 0.5, "vertex": [0, 2.598076, 0], "span": 2.8, "color": "A", "width": 2.5, "tags": ["given", "para1"] },
+    { "id": "parabola2", "type": "parabola", "form": "y2=4px", "p": -1, "vertex": [0, 0, 0], "span": 2.8, "color": "D", "width": 2.5, "tags": ["given", "para2"] },
+    { "id": "directrix1", "type": "segment", "from": [-0.5, -0.25, 0], "to": [-0.5, 4.95, 0], "dash": [4, 3], "color": "A", "tags": ["directrices", "l1"] },
+    { "id": "directrix2", "type": "segment", "from": [1, -0.25, 0], "to": [1, 4.95, 0], "dash": [4, 3], "color": "D", "tags": ["directrices", "l2"] },
+    { "id": "labelL1", "type": "label", "at": [-0.72, 4.75, 0], "text": "l_1", "color": "A", "tags": ["directrices", "l1"] },
+    { "id": "labelL2", "type": "label", "at": [1.16, 4.75, 0], "text": "l_2", "color": "D", "tags": ["directrices", "l2"] },
+    { "id": "V1", "type": "point", "at": [0, 2.598076, 0], "label": "V_1", "color": "text", "tags": ["given", "para1"] },
+    { "id": "V2", "type": "point", "at": [0, 0, 0], "label": "V_2", "color": "text", "tags": ["given", "para2"] },
+    { "id": "F1", "type": "point", "at": [0.5, 2.598076, 0], "label": "F_1", "color": "B", "tags": ["given", "foci", "distance"] },
+    { "id": "F2", "type": "point", "at": [-1, 0, 0], "label": "F_2", "color": "B", "tags": ["given", "foci", "distance"] },
+    { "id": "segF1F2", "type": "segment", "from": [0.5, 2.598076, 0], "to": [-1, 0, 0], "color": "B", "width": 3, "tags": ["given", "distance"] },
+    { "id": "P", "type": "point", "at": [0.166667, 2.020726, 0], "label": "P", "color": "C", "tags": ["given", "points", "b"] },
+    { "id": "Q", "type": "point", "at": [-0.333333, 1.154701, 0], "label": "Q", "color": "C", "tags": ["given", "points", "c"] },
+    { "id": "segPQ", "type": "segment", "from": [0.166667, 2.020726, 0], "to": [-0.333333, 1.154701, 0], "color": "C", "width": 4, "tags": ["given", "pq"] },
+    { "id": "segPF1", "type": "segment", "from": [0.5, 2.598076, 0], "to": [0.166667, 2.020726, 0], "color": "E", "width": 3, "tags": ["b"] },
+    { "id": "labelB", "type": "label", "at": [0.43, 2.22, 0], "text": "b", "color": "E", "tags": ["b"] },
+    { "id": "segQF2", "type": "segment", "from": [-0.333333, 1.154701, 0], "to": [-1, 0, 0], "color": "E", "width": 3, "tags": ["c"] },
+    { "id": "labelC", "type": "label", "at": [-0.82, 0.72, 0], "text": "c", "color": "E", "tags": ["c"] },
+    { "id": "Pprime", "type": "point", "at": [-0.5, 2.020726, 0], "label": "P'", "color": "A", "tags": ["defn1", "similar"] },
+    { "id": "segPPprime", "type": "segment", "from": [0.166667, 2.020726, 0], "to": [-0.5, 2.020726, 0], "color": "A", "width": 3, "tags": ["defn1", "similar"] },
+    { "id": "rightPprime", "type": "rightangle", "vertex": [-0.5, 2.020726, 0], "a": [0, 1, 0], "b": [1, 0, 0], "color": "A", "tags": ["defn1"] },
+    { "id": "Qprime", "type": "point", "at": [1, 1.154701, 0], "label": "Q'", "color": "D", "tags": ["defn2", "similar"] },
+    { "id": "segQQprime", "type": "segment", "from": [-0.333333, 1.154701, 0], "to": [1, 1.154701, 0], "color": "D", "width": 3, "tags": ["defn2", "similar"] },
+    { "id": "rightQprime", "type": "rightangle", "vertex": [1, 1.154701, 0], "a": [0, 1, 0], "b": [-1, 0, 0], "color": "D", "tags": ["defn2"] },
+    { "id": "H", "type": "point", "at": [0.166667, 1.154701, 0], "label": "H", "color": "E", "tags": ["defn2", "similar"] },
+    { "id": "segPH", "type": "segment", "from": [0.166667, 2.020726, 0], "to": [0.166667, 1.154701, 0], "dash": [4, 3], "color": "E", "tags": ["defn2", "similar"] },
+    { "id": "rightH", "type": "rightangle", "vertex": [0.166667, 1.154701, 0], "a": [0, 1, 0], "b": [1, 0, 0], "color": "E", "tags": ["defn2"] },
+    { "id": "I", "type": "point", "at": [-1, 1.154701, 0], "label": "I", "color": "C", "tags": ["similar", "angle"] },
+    { "id": "segQI", "type": "segment", "from": [-0.333333, 1.154701, 0], "to": [-1, 1.154701, 0], "color": "C", "width": 3, "tags": ["similar", "angle"] },
+    { "id": "segIF2", "type": "segment", "from": [-1, 1.154701, 0], "to": [-1, 0, 0], "dash": [4, 3], "color": "C", "tags": ["angle"] },
+    { "id": "rightI", "type": "rightangle", "vertex": [-1, 1.154701, 0], "a": [1, 0, 0], "b": [0, -1, 0], "color": "C", "tags": ["angle"] },
+    { "id": "arc60", "type": "arc", "center": [-0.333333, 1.154701, 0], "a": [-0.5, 0, 0], "b": [-0.25, -0.433013, 0], "r": 26, "label": "60^{\\circ}", "color": "C", "tags": ["angle"] },
+    { "id": "labelRatios", "type": "label", "at": [1.15, 2.45, 0], "text": "c:2-c=1:1-p=b:2p-b", "color": "text", "tags": ["ratios"] },
+    { "id": "labelValues", "type": "label", "at": [1.15, 2.1, 0], "text": "p=\\dfrac12,\\ b=\\dfrac23,\\ c=\\dfrac43", "color": "text", "tags": ["values", "answer"] },
+    { "id": "answerLabel", "type": "label", "at": [1.15, 1.75, 0], "text": "a=\\dfrac{3\\sqrt3}{2},\\quad a^2+p^2=7", "color": "text", "tags": ["answer"] }
+  ],
+  "steps": [
+    {
+      "text": "포물선 $(y-a)^2=4px$의 초점은 $\\mathrm{F_1}(p,\\ a)$, 준선은 $l_1:x=-p$이고, 포물선 $y^2=-4x$의 초점은 $\\mathrm{F_2}(-1,\\ 0)$, 준선은 $l_2:x=1$입니다. 선분 $\\mathrm{F_1F_2}$가 두 포물선과 만나는 점을 각각 $\\mathrm{P}$, $\\mathrm{Q}$로 둡니다.",
+      "show": ["axes", "given", "directrices", "foci", "points", "distance", "pq"],
+      "focus": ["given", "directrices", "foci", "points"]
+    },
+    {
+      "text": "$\\overline{\\mathrm{PF_1}}=b$, $\\overline{\\mathrm{QF_2}}=c$라 하면 $\\overline{\\mathrm{F_1F_2}}=3$, $\\overline{\\mathrm{PQ}}=1$이므로 $b+c=2$입니다. 점 $\\mathrm{P}$에서 $l_1$에 내린 수선의 발을 $\\mathrm{P'}$라 하면 포물선의 정의에 의해 $\\overline{\\mathrm{PP'}}=b$입니다.",
+      "show": ["axes", "given", "directrices", "foci", "points", "distance", "pq", "b", "c", "defn1"],
+      "focus": ["b", "c", "defn1"]
+    },
+    {
+      "text": "두 준선 사이의 거리는 $1+p$이므로 점 $\\mathrm{P}$와 $l_2$ 사이의 거리는 $1+p-b$입니다. 또 점 $\\mathrm{F_1}$과 $l_2$ 사이의 거리는 $1-p$이므로 두 점 $\\mathrm{F_1}$, $\\mathrm{P}$의 $x$좌표 차는 $(1+p-b)-(1-p)=2p-b$입니다.",
+      "show": ["axes", "given", "directrices", "foci", "points", "b", "defn1"],
+      "focus": ["directrices", "b"]
+    },
+    {
+      "text": "점 $\\mathrm{Q}$에서 $l_2$에 내린 수선의 발을 $\\mathrm{Q'}$, 점 $\\mathrm{P}$에서 직선 $\\mathrm{QQ'}$에 내린 수선의 발을 $\\mathrm{H}$라 하면 $\\overline{\\mathrm{HQ'}}=1+p-b$입니다. 포물선의 정의로 $\\overline{\\mathrm{QQ'}}=c$이므로 $\\overline{\\mathrm{QH}}=c-(1+p-b)=b+c-(1+p)=1-p$입니다.",
+      "show": ["axes", "given", "directrices", "foci", "points", "b", "c", "defn1", "defn2"],
+      "focus": ["defn2"]
+    },
+    {
+      "text": "$x$좌표가 $\\mathrm{F_2}$와 같고 $y$좌표가 $\\mathrm{Q}$와 같은 점을 $\\mathrm{I}$라 하면 $\\overline{\\mathrm{Q'I}}=2$이므로 $\\overline{\\mathrm{QI}}=2-c$입니다. 그림의 세 삼각형은 서로 닮음이므로 $c:2-c=1:1-p=b:2p-b$입니다.",
+      "show": ["axes", "given", "directrices", "foci", "points", "b", "c", "defn1", "defn2", "similar", "ratios"],
+      "focus": ["similar", "ratios"]
+    },
+    {
+      "text": "$b+c=2$와 연립하면 $p=\\dfrac12$, $b=\\dfrac23$, $c=\\dfrac43$입니다. 한편 $a$는 두 점 $\\mathrm{F_1}$, $\\mathrm{F_2}$의 $y$좌표의 차이고, $\\overline{\\mathrm{QF_2}}:\\overline{\\mathrm{QI}}=2:1$이므로 $\\angle\\mathrm{IQF_2}=60^{\\circ}$입니다. 따라서 $a=\\overline{\\mathrm{F_1F_2}}\\sin60^{\\circ}=\\dfrac{3\\sqrt3}{2}$이고 $a^2+p^2=7$입니다.",
+      "show": ["axes", "given", "directrices", "foci", "points", "distance", "pq", "b", "c", "defn1", "defn2", "similar", "angle", "ratios", "values", "answer"],
+      "focus": ["angle", "values", "answer"]
+    }
+  ]
+}

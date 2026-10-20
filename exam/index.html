@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="description" content="A learning tool that traces KICE geometry exam solutions (solid geometry, vectors) through step-by-step 3D visualization.">
+<meta property="og:title" content="Exam Solution Visualizer — Solid Geometry & Vectors">
+<meta property="og:description" content="A learning tool that traces KICE geometry exam solutions (solid geometry, vectors) through step-by-step 3D visualization.">
+<meta property="og:type" content="website">
+<title>Exam Solution Visualizer — Solid Geometry & Vectors</title>
+<meta name="theme-color" content="#f5f5f4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111827" media="(prefers-color-scheme: dark)">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+</head>
+<body class="theme-system">
+<noscript><div style="padding:1.25rem;font-family:-apple-system,sans-serif">이 도구는 JavaScript로 도형을 그립니다. JavaScript를 활성화해 주세요. / This tool draws shapes with JavaScript. Please enable JavaScript.</div></noscript>
+<style>
+:root,.theme-light{
+  --font-sans:'Pretendard Variable','Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  --color-text-primary:#1a1a1a;--color-text-secondary:#555;--color-text-tertiary:#999;
+  --color-text-info:#1a6fb5;--color-text-on-info:#f5f5f4;
+  --color-background-primary:#fff;--color-background-secondary:#f5f5f4;--color-background-tertiary:#eee;
+  --color-background-info:rgba(26,111,181,0.08);
+  --color-border-primary:#ccc;--color-border-secondary:#ddd;--color-border-tertiary:#e8e8e8;
+  --color-border-info:rgba(26,111,181,0.3);
+  --border-radius-lg:10px;--border-radius-md:8px;
+  --glass-fill-strong:rgba(255,255,255,0.30);--glass-highlight:rgba(255,255,255,0.70);--glass-border:rgba(255,255,255,0.55);
+}
+.theme-dark{
+  --color-text-primary:oklch(93% 0.018 91);--color-text-secondary:oklch(78% 0.028 92);--color-text-tertiary:oklch(58% 0.028 92);
+  --color-text-info:oklch(82% 0.14 220);--color-text-on-info:oklch(18% 0.035 248);
+  --color-background-primary:oklch(18% 0.036 248);--color-background-secondary:oklch(23% 0.038 248);--color-background-tertiary:oklch(29% 0.04 248);
+  --color-background-info:oklch(82% 0.14 220 / .12);
+  --color-border-primary:oklch(50% 0.05 248);--color-border-secondary:oklch(38% 0.045 248);--color-border-tertiary:oklch(31% 0.04 248);
+  --color-border-info:oklch(82% 0.14 220 / .36);
+  --glass-fill-strong:oklch(18% 0.036 248 / .58);--glass-highlight:oklch(96% 0.02 91 / .08);--glass-border:oklch(96% 0.02 91 / .12);
+}
+@media(prefers-color-scheme:dark){.theme-system{
+  --color-text-primary:oklch(93% 0.018 91);--color-text-secondary:oklch(78% 0.028 92);--color-text-tertiary:oklch(58% 0.028 92);
+  --color-text-info:oklch(82% 0.14 220);--color-text-on-info:oklch(18% 0.035 248);
+  --color-background-primary:oklch(18% 0.036 248);--color-background-secondary:oklch(23% 0.038 248);--color-background-tertiary:oklch(29% 0.04 248);
+  --color-background-info:oklch(82% 0.14 220 / .12);
+  --color-border-primary:oklch(50% 0.05 248);--color-border-secondary:oklch(38% 0.045 248);--color-border-tertiary:oklch(31% 0.04 248);
+  --color-border-info:oklch(82% 0.14 220 / .36);
+  --glass-fill-strong:oklch(18% 0.036 248 / .58);--glass-highlight:oklch(96% 0.02 91 / .08);--glass-border:oklch(96% 0.02 91 / .12);
+}}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{touch-action:manipulation}
+body{background:var(--color-background-primary);color:var(--color-text-primary);font-family:var(--font-sans)}
+#app{padding:1rem 1.25rem;max-width:1400px;margin:0 auto}
+.hdr{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:10px;padding:12px 1.25rem;margin:-1rem -1.25rem 1rem;background:var(--color-background-primary);border-bottom:.5px solid var(--color-border-tertiary)}
+.hdr h1{font-size:20px;font-weight:600}
+.hdr .sub{font-size:14px;color:var(--color-text-secondary)}
+.hdr a.backlink{margin-left:auto;font-size:14px;color:var(--color-text-info);text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
+.settings-menu{position:relative}
+.settings-summary{min-width:38px;min-height:36px;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;background:transparent;color:var(--color-text-primary);cursor:pointer;list-style:none;font-size:18px;padding:0;user-select:none}
+.settings-summary::-webkit-details-marker{display:none}
+.settings-menu[open] .settings-summary{color:var(--color-text-info)}
+.settings-menu .settings{position:absolute;right:0;top:calc(100% + 8px);z-index:20;width:max-content;max-width:min(92vw,520px);padding:8px;border:.5px solid var(--color-border-tertiary);border-radius:10px;background:var(--color-background-primary);box-shadow:0 12px 30px rgba(0,0,0,.12)}
+body.glass-on .hdr{background:var(--glass-fill-strong);backdrop-filter:blur(34px) saturate(1.5);-webkit-backdrop-filter:blur(34px) saturate(1.5);border-bottom-color:var(--glass-border);box-shadow:inset 0 1px 0 var(--glass-highlight)}
+body.glass-on .settings-menu .settings{background:var(--glass-fill-strong);backdrop-filter:blur(34px) saturate(1.5);-webkit-backdrop-filter:blur(34px) saturate(1.5);border-color:var(--glass-border)}
+.settings{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.seg-group{display:flex}
+.seg-btn{font-size:13px;padding:5px 10px;min-height:32px;border:.5px solid var(--color-border-secondary);background:var(--color-background-secondary);color:var(--color-text-secondary);cursor:pointer}
+.seg-btn:first-child{border-radius:6px 0 0 6px}
+.seg-btn:last-child{border-radius:0 6px 6px 0}
+.seg-btn.active{background:var(--color-text-info);color:var(--color-text-on-info);border-color:var(--color-text-info)}
+.cb-toggle{font-size:13px;padding:5px 10px;min-height:32px;border-radius:6px;border:.5px solid var(--color-border-secondary);background:var(--color-background-secondary);color:var(--color-text-secondary);cursor:pointer}
+.cb-toggle.active{background:var(--color-background-info);color:var(--color-text-info);border-color:var(--color-border-info)}
+.workspace{display:grid;grid-template-columns:minmax(180px,230px) minmax(0,1fr) minmax(300px,360px);gap:14px;align-items:start}
+.navpane{position:sticky;top:72px;max-height:calc(100svh - 90px);overflow:auto;padding:12px;border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);background:var(--color-background-secondary)}
+.nav-exam{font-size:12px;font-weight:600;color:var(--color-text-tertiary);margin:10px 0 4px}
+.nav-exam:first-child{margin-top:0}
+.pbtn{display:flex;justify-content:space-between;align-items:center;width:100%;min-height:44px;text-align:left;font-size:14px;padding:8px 10px;margin-bottom:4px;border-radius:8px;border:.5px solid var(--color-border-secondary);background:var(--color-background-primary);color:var(--color-text-secondary);cursor:pointer}
+.pbtn.active{background:var(--color-background-info);color:var(--color-text-info);border-color:var(--color-border-info)}
+.pbtn .topic{font-size:12px;color:var(--color-text-tertiary)}
+.mainstage{min-width:0}
+.cvwrap{position:relative;background:var(--color-background-secondary);border-radius:var(--border-radius-lg);border:.5px solid var(--color-border-tertiary);overflow:hidden}
+#c{width:100%;height:min(62svh,560px);display:block;cursor:grab;touch-action:none}
+.hint{position:absolute;right:10px;bottom:8px;font-size:12px;color:var(--color-text-tertiary);pointer-events:none}
+.side{display:flex;flex-direction:column;gap:12px}
+.card{padding:14px;border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);background:var(--color-background-secondary)}
+.card .card-k{font-size:12px;font-weight:600;color:var(--color-text-tertiary);margin-bottom:8px}
+.statement{font-size:15.5px;line-height:1.75;color:var(--color-text-primary);white-space:pre-line;word-break:keep-all;overflow-x:auto}
+.math-display{margin:8px 0;overflow-x:auto}
+.start-solve{width:100%;min-height:44px;font-size:15px;font-weight:600;border-radius:8px;border:.5px solid var(--color-border-info);background:var(--color-background-info);color:var(--color-text-info);cursor:pointer}
+.step-nav{display:flex;gap:6px;align-items:center;margin-bottom:10px}
+.step-nav button{min-width:82px;min-height:36px;font-size:14px;font-weight:600;border-radius:8px;border:.5px solid var(--color-border-secondary);background:var(--color-background-primary);color:var(--color-text-primary);cursor:pointer}
+.step-nav button:disabled{opacity:.35;cursor:not-allowed}
+.step-pos{margin-left:auto;font-size:13px;color:var(--color-text-tertiary)}
+.step-text{font-size:15px;line-height:1.75;white-space:pre-line;word-break:keep-all;overflow-x:auto}
+.answer-row{margin-top:10px;padding-top:10px;border-top:.5px solid var(--color-border-tertiary);font-size:15px}
+.answer-row b{color:var(--color-text-info)}
+.thm-links{display:flex;flex-direction:column;gap:6px}
+.thm-links a{font-size:14px;color:var(--color-text-info);text-decoration:none;min-height:44px;display:flex;align-items:center;padding:0 10px;border:.5px solid var(--color-border-info);border-radius:8px;background:var(--color-background-info)}
+@media(max-width:960px){
+  .workspace{grid-template-columns:1fr}
+  .navpane{position:relative;top:auto;max-height:220px}
+  .mainstage{position:sticky;top:64px;z-index:5}
+  .step-nav button{min-height:44px}
+}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+<div id="app">
+  <header class="hdr">
+    <div><h1 data-i18n="h1">기출 풀이 시각화</h1><div class="sub" data-i18n="sub">공간도형·벡터 4점 — 평가원</div></div>
+    <a class="backlink" data-i18n="backlink" href="../geometry/index.html">기본명제 학습 →</a>
+    <details class="settings-menu"><summary class="settings-summary" data-i18n-aria="settingsLabel" aria-label="설정">⚙</summary>
+      <div class="settings">
+        <div class="seg-group" id="lang-group" role="radiogroup" data-i18n-aria="langLabel" aria-label="언어">
+          <button class="seg-btn active" role="radio" aria-checked="true" onclick="TMLang.setLang('ko')">한국어</button>
+          <button class="seg-btn" role="radio" aria-checked="false" onclick="TMLang.setLang('en')">EN</button>
+        </div>
+        <div class="seg-group" id="theme-group" role="radiogroup" data-i18n-aria="themeLabel" aria-label="테마">
+          <button class="seg-btn" role="radio" aria-checked="false" data-i18n="themeLight" onclick="TMTheme.setTheme('light')">라이트</button>
+          <button class="seg-btn active" role="radio" aria-checked="true" data-i18n="themeSystem" onclick="TMTheme.setTheme('system')">시스템</button>
+          <button class="seg-btn" role="radio" aria-checked="false" data-i18n="themeDark" onclick="TMTheme.setTheme('dark')">다크</button>
+        </div>
+        <div class="seg-group" id="glass-group" role="radiogroup" data-i18n-aria="glassLabel" aria-label="시각 효과 모드">
+          <button class="seg-btn active" role="radio" aria-checked="true" data-i18n="glassAuto" onclick="TMTheme.setGlass('auto')">자동</button>
+          <button class="seg-btn" role="radio" aria-checked="false" data-i18n="glassOn" onclick="TMTheme.setGlass('on')">켬</button>
+          <button class="seg-btn" role="radio" aria-checked="false" data-i18n="glassOff" onclick="TMTheme.setGlass('off')">끔</button>
+        </div>
+        <button class="cb-toggle" id="cb-btn" data-i18n="colorblind" aria-pressed="false" onclick="TMTheme.toggleColorblind()">색각 보정</button>
+      </div>
+    </details>
+  </header>
+  <div class="workspace">
+    <nav class="navpane" id="nav" data-i18n-aria="navLabel" aria-label="문항 목록"></nav>
+    <div class="mainstage">
+      <div class="cvwrap">
+        <canvas id="c" role="img" data-i18n-aria="canvasLabel" aria-label="풀이 단계 3D 시각화"></canvas>
+        <div class="hint" id="hint">드래그 회전 · 스크롤 확대</div>
+      </div>
+    </div>
+    <aside class="side">
+      <div class="card">
+        <div class="card-k" id="prob-label"></div>
+        <div class="statement" id="statement"></div>
+      </div>
+      <div class="card" id="solve-card">
+        <button class="start-solve" id="start-solve" data-i18n="startSolve" onclick="startSolve()">풀이 시작</button>
+        <div id="steps-ui" hidden>
+          <div class="step-nav">
+            <button id="step-prev" data-i18n="stepPrev" onclick="stepPrev()">이전단계</button>
+            <button id="step-next" data-i18n="stepNext" onclick="stepNext()">다음단계</button>
+            <span class="step-pos" id="step-pos" aria-live="polite"></span>
+          </div>
+          <div class="step-text" id="step-text"></div>
+          <div class="answer-row" id="answer-row" hidden><span id="answer-label" data-i18n="answerLabel">정답</span> <b id="answer-val"></b></div>
+        </div>
+      </div>
+      <div class="card" id="thm-card" hidden>
+        <div class="card-k" data-i18n="thmCardTitle">이 풀이에 쓰인 기본명제</div>
+        <div class="thm-links" id="thm-links"></div>
+      </div>
+    </aside>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="../shared/theme.js?v=3"></script>
+<script src="../shared/i18n.js?v=3"></script>
+<script src="../shared/engine.js?v=3"></script>
+<script src="renderer.js?v=3"></script>
+<script src="app.js?v=3"></script>
+</body>
+</html>

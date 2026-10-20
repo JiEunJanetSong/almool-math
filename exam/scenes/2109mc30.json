@@ -1,0 +1,66 @@
+{
+  "topic": "내적",
+  "mode": "2d",
+  "answer": "45",
+  "scale": 30,
+  "camera": { "rotX": -1.5708, "rotY": 0, "zoom": 1.2 },
+  "objects": [
+    { "id": "axisX", "type": "segment", "from": [-4.5, 0, 0], "to": [2.5, 0, 0], "color": "muted", "tags": ["axes"] },
+    { "id": "axisY", "type": "segment", "from": [0, -1, 0], "to": [0, 4.5, 0], "color": "muted", "tags": ["axes"] },
+    { "id": "O", "type": "point", "at": [0, 0, 0], "label": "O", "color": "text", "tags": ["given"] },
+    { "id": "A", "type": "point", "at": [-3, 1, 0], "label": "A", "color": "B", "tags": ["given"] },
+    { "id": "B", "type": "point", "at": [0, 2, 0], "label": "B", "color": "B", "tags": ["given"] },
+    { "id": "C", "type": "point", "at": [1, 0, 0], "label": "C", "color": "B", "tags": ["given"] },
+    { "id": "circleP", "type": "circle", "center": [-3, 1, 0], "normal": [0, 0, 1], "r": 1, "color": "A", "tags": ["circles"] },
+    { "id": "circleQ", "type": "circle", "center": [0, 2, 0], "normal": [0, 0, 1], "r": 2, "color": "A", "tags": ["circles"] },
+    { "id": "vecOC", "type": "vector", "from": [0, 0, 0], "to": [1, 0, 0], "label": "OC", "color": "C", "tags": ["dot"] },
+    { "id": "segArcLower", "type": "segment", "from": [-3, 1, 0], "to": [-2.292893, 0.292893, 0], "dash": [4, 3], "color": "D", "tags": ["arc"] },
+    { "id": "segArcUpper", "type": "segment", "from": [-3, 1, 0], "to": [-2.292893, 1.707107, 0], "dash": [4, 3], "color": "D", "tags": ["arc"] },
+    { "id": "arcConstraint", "type": "arc", "center": [-3, 1, 0], "a": [0.707107, 0.707107, 0], "b": [0.707107, -0.707107, 0], "r": 28, "label": "90°", "color": "D", "tags": ["arc"] },
+    { "id": "vecAB", "type": "vector", "from": [-3, 1, 0], "to": [0, 2, 0], "label": "AB", "color": "C", "tags": ["decompose"] },
+    { "id": "P0", "type": "point", "at": [-2.292893, 0.292893, 0], "label": "P0", "color": "E", "tags": ["p0"] },
+    { "id": "vecAP0", "type": "vector", "from": [-3, 1, 0], "to": [-2.292893, 0.292893, 0], "label": "AP0", "color": "E", "tags": ["p0", "xrange"] },
+    { "id": "Q0", "type": "point", "at": [-1.414214, 3.414214, 0], "label": "Q0", "color": "E", "tags": ["q0"] },
+    { "id": "vecBQ0", "type": "vector", "from": [0, 2, 0], "to": [-1.414214, 3.414214, 0], "label": "BQ0", "color": "E", "tags": ["q0"] },
+    { "id": "lineAExt", "type": "segment", "from": [-3.424264, 1.424264, 0], "to": [-1.868629, -0.131371, 0], "dash": [3, 3], "color": "muted", "tags": ["lines"] },
+    { "id": "lineBExt", "type": "segment", "from": [0.424264, 1.575736, 0], "to": [-1.838478, 3.838478, 0], "dash": [3, 3], "color": "muted", "tags": ["lines"] },
+    { "id": "Xpt", "type": "point", "at": [-2.353553, 0.353553, 0], "label": "X", "color": "C", "tags": ["xmax"] },
+    { "id": "segBX", "type": "segment", "from": [0, 2, 0], "to": [-2.353553, 0.353553, 0], "color": "C", "tags": ["xmax"] },
+    { "id": "Xprime", "type": "point", "at": [-0.353553, 2.353553, 0], "label": "X'", "color": "D", "tags": ["xmax"] },
+    { "id": "segXXprime", "type": "segment", "from": [-2.353553, 0.353553, 0], "to": [-0.353553, 2.353553, 0], "dash": [4, 3], "color": "D", "tags": ["xmax"] },
+    { "id": "raXprime", "type": "rightangle", "vertex": [-0.353553, 2.353553, 0], "a": [-2.0, -2.0, 0], "b": [0.353553, -0.353553, 0], "color": "D", "tags": ["xmax"] },
+    { "id": "segQ0X", "type": "segment", "from": [-1.414214, 3.414214, 0], "to": [-2.353553, 0.353553, 0], "color": "A", "width": 3, "tags": ["answer"] }
+  ],
+  "steps": [
+    {
+      "text": "세 점 $\\mathrm{A}(-3,\\ 1)$, $\\mathrm{B}(0,\\ 2)$, $\\mathrm{C}(1,\\ 0)$이 있습니다. $\\overline{\\mathrm{AP}}=1$이므로 점 $\\mathrm{P}$는 $\\mathrm{A}$를 중심으로 하는 반지름 $1$인 원 위를, $\\overline{\\mathrm{BQ}}=2$이므로 점 $\\mathrm{Q}$는 $\\mathrm{B}$를 중심으로 하는 반지름 $2$인 원 위를 움직입니다.",
+      "show": ["axes", "given", "circles"],
+      "focus": ["given", "circles"]
+    },
+    {
+      "text": "$\\overrightarrow{\\mathrm{OC}}=(1,\\ 0)$이므로 $\\overrightarrow{\\mathrm{AP}}\\cdot\\overrightarrow{\\mathrm{OC}}$는 $\\overrightarrow{\\mathrm{AP}}$의 $x$성분입니다. 이 값이 $\\dfrac{\\sqrt{2}}{2}$ 이상이어야 하므로 점 $\\mathrm{P}$는 중심각 $90^{\\circ}$인 호 위를 움직입니다.",
+      "show": ["axes", "given", "circles", "dot", "arc"],
+      "focus": ["dot", "arc"]
+    },
+    {
+      "text": "$\\overrightarrow{\\mathrm{AP}}\\cdot\\overrightarrow{\\mathrm{AQ}}=\\overrightarrow{\\mathrm{AP}}\\cdot\\overrightarrow{\\mathrm{AB}}+\\overrightarrow{\\mathrm{AP}}\\cdot\\overrightarrow{\\mathrm{BQ}}$입니다. $\\overrightarrow{\\mathrm{BQ}}$가 원벡터이므로 $\\overrightarrow{\\mathrm{AP}}$와 반대 방향일 때 $\\overrightarrow{\\mathrm{AP}}\\cdot\\overrightarrow{\\mathrm{BQ}}$가 최소이며, $\\overrightarrow{\\mathrm{AP}}\\cdot\\overrightarrow{\\mathrm{AB}}$가 최소일 때 즉 $\\angle\\mathrm{PAB}$가 최대일 때 전체가 최소가 됩니다.",
+      "show": ["axes", "given", "circles", "arc", "decompose"],
+      "focus": ["decompose"]
+    },
+    {
+      "text": "$\\angle\\mathrm{PAB}$가 최대인 점은 $\\mathrm{A}$를 지나고 기울기가 $-1$인 직선이 원과 만나는 점 중 $x$좌표가 큰 점이므로 $\\mathrm{P_0}\\left(-3+\\dfrac{\\sqrt{2}}{2},\\ 1-\\dfrac{\\sqrt{2}}{2}\\right)$입니다. $\\overrightarrow{\\mathrm{BQ_0}}$는 $\\overrightarrow{\\mathrm{AP_0}}$와 반대 방향이므로 $\\mathrm{Q_0}$는 $\\mathrm{B}$를 지나는 같은 기울기 $-1$ 직선이 원과 만나는 점 중 $x$좌표가 작은 점, $\\mathrm{Q_0}(-\\sqrt{2},\\ 2+\\sqrt{2})$입니다.",
+      "show": ["axes", "given", "circles", "arc", "p0", "q0", "lines"],
+      "focus": ["p0", "q0"]
+    },
+    {
+      "text": "선분 $\\mathrm{AP_0}$ 위의 점 $\\mathrm{X}$에서 직선 $\\mathrm{BQ_0}$에 내린 수선의 발을 $\\mathrm{X'}$이라 하면 $\\overrightarrow{\\mathrm{BX}}\\cdot\\overrightarrow{\\mathrm{BQ_0}}=\\overline{\\mathrm{BX'}}\\times 2 \\ge 1$이므로 $\\overline{\\mathrm{BX'}}\\ge\\dfrac{1}{2}$. 두 직선 $\\mathrm{AP_0}$, $\\mathrm{BQ_0}$은 평행하고 그 거리는 $2\\sqrt{2}$이므로 $\\overline{\\mathrm{XX'}}=2\\sqrt{2}$로 일정하며, $\\overline{\\mathrm{Q_0X'}}=2-\\overline{\\mathrm{BX'}}\\le\\dfrac{3}{2}$입니다.",
+      "show": ["axes", "given", "circles", "p0", "q0", "lines", "xrange", "xmax"],
+      "focus": ["xrange", "xmax"]
+    },
+    {
+      "text": "따라서 $\\overline{\\mathrm{Q_0X}}^2$의 최댓값은 $\\left(\\dfrac{3}{2}\\right)^2+(2\\sqrt{2})^2=\\dfrac{9}{4}+8=\\dfrac{41}{4}$이고, 이는 $\\overline{\\mathrm{BX'}}=\\dfrac{1}{2}$일 때 성립합니다. $p=4$, $q=41$이므로 $p+q=45$.",
+      "show": ["axes", "given", "circles", "p0", "q0", "xrange", "xmax", "answer"],
+      "focus": ["answer"]
+    }
+  ]
+}

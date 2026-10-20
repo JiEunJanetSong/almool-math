@@ -1,0 +1,77 @@
+{
+  "topic": "벡터연산",
+  "mode": "2d",
+  "answer": "8",
+  "scale": 24,
+  "camera": { "rotX": -1.5708, "rotY": 0, "zoom": 1.1 },
+  "objects": [
+    { "id": "axisX", "type": "segment", "from": [-5, 0, 0], "to": [5, 0, 0], "color": "muted", "tags": ["axes"] },
+    { "id": "axisY", "type": "segment", "from": [0, -4, 0], "to": [0, 4.3, 0], "color": "muted", "tags": ["axes"] },
+
+    { "id": "A", "type": "point", "at": [4, 0, 0], "label": "A", "color": "B", "tags": ["given"] },
+    { "id": "B", "type": "point", "at": [2, 3.464102, 0], "label": "B", "color": "B", "tags": ["given"] },
+    { "id": "C", "type": "point", "at": [-2, 3.464102, 0], "label": "C", "color": "B", "tags": ["given"] },
+    { "id": "D", "type": "point", "at": [-4, 0, 0], "label": "D", "color": "B", "tags": ["given"] },
+    { "id": "E", "type": "point", "at": [-2, -3.464102, 0], "label": "E", "color": "B", "tags": ["given"] },
+    { "id": "F", "type": "point", "at": [2, -3.464102, 0], "label": "F", "color": "B", "tags": ["given"] },
+
+    { "id": "hexPlane", "type": "plane", "corners": [[4, 0, 0], [2, 3.464102, 0], [-2, 3.464102, 0], [-4, 0, 0], [-2, -3.464102, 0], [2, -3.464102, 0]], "alpha": 0.12, "color": "muted", "tags": ["given"] },
+    { "id": "segAB", "type": "segment", "from": [4, 0, 0], "to": [2, 3.464102, 0], "color": "muted", "tags": ["given"] },
+    { "id": "segBC", "type": "segment", "from": [2, 3.464102, 0], "to": [-2, 3.464102, 0], "color": "muted", "tags": ["given"] },
+    { "id": "segCD", "type": "segment", "from": [-2, 3.464102, 0], "to": [-4, 0, 0], "color": "muted", "tags": ["given"] },
+    { "id": "segDE", "type": "segment", "from": [-4, 0, 0], "to": [-2, -3.464102, 0], "color": "muted", "tags": ["given"] },
+    { "id": "segEF", "type": "segment", "from": [-2, -3.464102, 0], "to": [2, -3.464102, 0], "color": "muted", "tags": ["given"] },
+    { "id": "segFA", "type": "segment", "from": [2, -3.464102, 0], "to": [4, 0, 0], "color": "muted", "tags": ["given"] },
+
+    { "id": "circleC", "type": "circle", "center": [-2, 3.464102, 0], "normal": [0, 0, 1], "r": 1, "color": "A", "tags": ["given"] },
+
+    { "id": "halfSeg1", "type": "segment", "from": [1, 1.732051, 0], "to": [0, 3.464102, 0], "dash": [3, 3], "color": "muted", "tags": ["condA"] },
+    { "id": "halfSeg2", "type": "segment", "from": [0, 3.464102, 0], "to": [-2, 3.464102, 0], "dash": [3, 3], "color": "muted", "tags": ["condA"] },
+    { "id": "halfSeg3", "type": "segment", "from": [-2, 3.464102, 0], "to": [-3, 1.732051, 0], "dash": [3, 3], "color": "muted", "tags": ["condA"] },
+    { "id": "halfSeg4", "type": "segment", "from": [-3, 1.732051, 0], "to": [-2, 0, 0], "dash": [3, 3], "color": "muted", "tags": ["condA"] },
+    { "id": "halfSeg5", "type": "segment", "from": [-2, 0, 0], "to": [0, 0, 0], "dash": [3, 3], "color": "muted", "tags": ["condA"] },
+    { "id": "halfSeg6", "type": "segment", "from": [0, 0, 0], "to": [1, 1.732051, 0], "dash": [3, 3], "color": "muted", "tags": ["condA"] },
+    { "id": "circleHalfA", "type": "circle", "center": [1, 1.732051, 0], "normal": [0, 0, 1], "r": 1, "dash": [4, 3], "color": "A", "tags": ["condA"] },
+    { "id": "circleHalfD", "type": "circle", "center": [-3, 1.732051, 0], "normal": [0, 0, 1], "r": 1, "dash": [4, 3], "color": "A", "tags": ["condA"] },
+
+    { "id": "vecCA", "type": "vector", "from": [-2, 3.464102, 0], "to": [4, 0, 0], "label": "CA", "color": "C", "tags": ["condB"] },
+    { "id": "vecCD", "type": "vector", "from": [-2, 3.464102, 0], "to": [-4, 0, 0], "label": "CD", "color": "C", "tags": ["condB"] },
+    { "id": "rightangleC", "type": "rightangle", "vertex": [-2, 3.464102, 0], "a": [0.433013, -0.25, 0], "b": [-0.25, -0.433013, 0], "color": "D", "tags": ["condB"] },
+    { "id": "lineCDext", "type": "segment", "from": [-0.25, 3.031089, 0], "to": [-2.75, -1.299038, 0], "dash": [4, 3], "color": "muted", "tags": ["condB"] },
+
+    { "id": "Xalpha", "type": "point", "at": [-0.5, 2.598076, 0], "label": "Xα", "color": "D", "tags": ["minmax"] },
+    { "id": "Xbeta", "type": "point", "at": [-2.5, -0.866025, 0], "label": "Xβ", "color": "E", "tags": ["minmax"] },
+    { "id": "vecCXalpha", "type": "vector", "from": [-2, 3.464102, 0], "to": [-0.5, 2.598076, 0], "color": "D", "tags": ["minmax"] },
+    { "id": "vecCXbeta", "type": "vector", "from": [-2, 3.464102, 0], "to": [-2.5, -0.866025, 0], "color": "E", "tags": ["minmax"] },
+    { "id": "segXalphaXbeta", "type": "segment", "from": [-0.5, 2.598076, 0], "to": [-2.5, -0.866025, 0], "width": 3, "color": "A", "tags": ["minmax", "answer"] },
+
+    { "id": "answerLabel", "type": "label", "at": [-4.7, 4.0, 0], "text": "\\alpha=2,\\ \\beta=-2,\\ \\alpha^2+\\beta^2=8", "color": "text", "tags": ["answer"] }
+  ],
+  "steps": [
+    {
+      "text": "정육각형 $\\mathrm{ABCDEF}$의 한 변의 길이는 $4$입니다. $\\mathrm{A}(4,\\ 0)$, $\\mathrm{B}(2,\\ 2\\sqrt3)$, $\\mathrm{C}(-2,\\ 2\\sqrt3)$, $\\mathrm{D}(-4,\\ 0)$, $\\mathrm{E}(-2,\\ -2\\sqrt3)$, $\\mathrm{F}(2,\\ -2\\sqrt3)$로 놓으면 모든 변의 길이가 $4$입니다. 점 $\\mathrm{P}$는 이 정육각형의 변 위를, 점 $\\mathrm{Q}$는 점 $\\mathrm{C}$를 중심으로 하고 반지름의 길이가 $1$인 원 위를 움직입니다.",
+      "show": ["axes", "given"],
+      "focus": ["given"]
+    },
+    {
+      "text": "시점이 $\\mathrm{C}$인 벡터 $\\dfrac{1}{2}\\overrightarrow{\\mathrm{CP}}$의 종점은 정육각형을 $\\mathrm{C}$에 대하여 $\\dfrac{1}{2}$배로 축소한 육각형의 경계 위에 있습니다. $\\overrightarrow{\\mathrm{CQ}}$는 크기가 $1$인 원벡터이므로, 조건 (가)만 고려했을 때 시점이 $\\mathrm{C}$인 벡터 $\\overrightarrow{\\mathrm{CX}}$의 종점은 이 축소된 육각형의 경계를 반지름 $1$인 원으로 두껍게 만든 영역(경계 포함) 위에 있습니다.",
+      "show": ["axes", "given", "condA"],
+      "focus": ["condA"]
+    },
+    {
+      "text": "조건 (나) $\\overrightarrow{\\mathrm{XA}}+\\overrightarrow{\\mathrm{XC}}+2\\overrightarrow{\\mathrm{XD}}=k\\overrightarrow{\\mathrm{CD}}$에서 $\\overrightarrow{\\mathrm{XA}}=\\overrightarrow{\\mathrm{CA}}-\\overrightarrow{\\mathrm{CX}}$, $\\overrightarrow{\\mathrm{XD}}=\\overrightarrow{\\mathrm{CD}}-\\overrightarrow{\\mathrm{CX}}$이므로 $(\\overrightarrow{\\mathrm{CA}}-\\overrightarrow{\\mathrm{CX}})+(-\\overrightarrow{\\mathrm{CX}})+2(\\overrightarrow{\\mathrm{CD}}-\\overrightarrow{\\mathrm{CX}})=k\\overrightarrow{\\mathrm{CD}}$, 즉 $4\\overrightarrow{\\mathrm{CX}}=\\overrightarrow{\\mathrm{CA}}+(2-k)\\overrightarrow{\\mathrm{CD}}$이므로 $\\overrightarrow{\\mathrm{CX}}=\\dfrac{1}{4}\\overrightarrow{\\mathrm{CA}}+\\dfrac{2-k}{4}\\overrightarrow{\\mathrm{CD}}$입니다. 정육각형의 성질에 의해 $\\overrightarrow{\\mathrm{CA}}\\perp\\overrightarrow{\\mathrm{CD}}$이므로, 점 $\\mathrm{X}$는 $\\dfrac{1}{4}\\overrightarrow{\\mathrm{CA}}$의 종점을 지나고 $\\overrightarrow{\\mathrm{CD}}$ 방향인 직선 위에 있습니다.",
+      "show": ["axes", "given", "condA", "condB"],
+      "focus": ["condB"]
+    },
+    {
+      "text": "$\\overrightarrow{\\mathrm{CA}}\\perp\\overrightarrow{\\mathrm{CD}}$이므로 피타고라스 정리에 의해 $\\overline{\\mathrm{CX}}^2=\\left|\\dfrac{1}{4}\\overrightarrow{\\mathrm{CA}}\\right|^2+\\left|\\dfrac{2-k}{4}\\overrightarrow{\\mathrm{CD}}\\right|^2$이므로 $\\left|\\dfrac{2-k}{4}\\overrightarrow{\\mathrm{CD}}\\right|$가 최소·최대일 때 각각 $\\overline{\\mathrm{CX}}$도 최소·최대입니다. 그림에서 이 값은 조건 (가)의 영역과의 교점에서 $\\dfrac{2-k}{4}\\overrightarrow{\\mathrm{CD}}=\\vec0$(점 $\\mathrm{X}_\\alpha$)일 때 최소, $\\dfrac{2-k}{4}\\overrightarrow{\\mathrm{CD}}=\\overrightarrow{\\mathrm{CD}}$(점 $\\mathrm{X}_\\beta$)일 때 최대가 됩니다.",
+      "show": ["axes", "given", "condA", "condB", "minmax"],
+      "focus": ["minmax"]
+    },
+    {
+      "text": "$\\dfrac{2-k}{4}=0$이면 $k=2$이므로 $\\overline{\\mathrm{CX}}$가 최소일 때 $k=\\alpha=2$이고, $\\dfrac{2-k}{4}=1$이면 $k=-2$이므로 $\\overline{\\mathrm{CX}}$가 최대일 때 $k=\\beta=-2$입니다. 따라서 $\\alpha^2+\\beta^2=4+4=8$입니다.",
+      "show": ["axes", "given", "condA", "condB", "minmax", "answer"],
+      "focus": ["answer"]
+    }
+  ]
+}

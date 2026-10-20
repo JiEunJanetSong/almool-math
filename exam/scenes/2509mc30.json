@@ -1,0 +1,74 @@
+{
+  "topic": "내적",
+  "mode": "2d",
+  "answer": "69",
+  "scale": 12,
+  "camera": { "rotX": -1.5708, "rotY": 0, "zoom": 1.02 },
+  "objects": [
+    { "id": "axisX", "type": "segment", "from": [-10, 0, 0], "to": [10, 0, 0], "color": "muted", "tags": ["axes"] },
+    { "id": "axisY", "type": "segment", "from": [0, -1.5, 0], "to": [0, 17.5, 0], "color": "muted", "tags": ["axes"] },
+    { "id": "triABC", "type": "plane", "corners": [[0, 16, 0], [-8, 0, 0], [8, 0, 0]], "alpha": 0.12, "color": "B", "tags": ["given", "triangle"] },
+    { "id": "A", "type": "point", "at": [0, 16, 0], "label": "A", "color": "B", "tags": ["given", "triangle"] },
+    { "id": "B", "type": "point", "at": [-8, 0, 0], "label": "B", "color": "B", "tags": ["given", "triangle", "range"] },
+    { "id": "C", "type": "point", "at": [8, 0, 0], "label": "C", "color": "B", "tags": ["given", "triangle"] },
+    { "id": "O", "type": "point", "at": [0, 0, 0], "label": "O", "color": "text", "tags": ["given"] },
+    { "id": "segAB", "type": "segment", "from": [0, 16, 0], "to": [-8, 0, 0], "width": 3, "color": "B", "tags": ["given", "triangle", "trackP"] },
+    { "id": "segBC", "type": "segment", "from": [-8, 0, 0], "to": [8, 0, 0], "width": 3, "color": "B", "tags": ["given", "triangle", "trackQ"] },
+    { "id": "segCA", "type": "segment", "from": [8, 0, 0], "to": [0, 16, 0], "width": 3, "color": "B", "tags": ["given", "triangle", "trackR"] },
+    { "id": "Qgen", "type": "point", "at": [-2, 0, 0], "label": "Q", "color": "D", "tags": ["derived", "pointsPQR", "orthogonal"] },
+    { "id": "Pgen", "type": "point", "at": [-5, 6, 0], "label": "P", "color": "D", "tags": ["derived", "pointsPQR", "orthogonal", "circleX"] },
+    { "id": "Rgen", "type": "point", "at": [3, 10, 0], "label": "R", "color": "D", "tags": ["derived", "pointsPQR", "orthogonal", "circleX"] },
+    { "id": "midBQ", "type": "point", "at": [-5, 0, 0], "label": "M", "color": "E", "tags": ["conditionA"] },
+    { "id": "midCQ", "type": "point", "at": [3, 0, 0], "label": "N", "color": "E", "tags": ["conditionA"] },
+    { "id": "segPM", "type": "segment", "from": [-5, 6, 0], "to": [-5, 0, 0], "dash": [4, 3], "color": "E", "tags": ["conditionA"] },
+    { "id": "segRN", "type": "segment", "from": [3, 10, 0], "to": [3, 0, 0], "dash": [4, 3], "color": "E", "tags": ["conditionA"] },
+    { "id": "vecQP", "type": "vector", "from": [-2, 0, 0], "to": [-5, 6, 0], "label": "QP", "width": 3, "color": "C", "tags": ["orthogonal"] },
+    { "id": "vecPR", "type": "vector", "from": [-5, 6, 0], "to": [3, 10, 0], "label": "PR", "width": 3, "color": "C", "tags": ["orthogonal", "circleX"] },
+    { "id": "raP", "type": "rightangle", "vertex": [-5, 6, 0], "a": [3, -6, 0], "b": [8, 4, 0], "color": "C", "tags": ["orthogonal"] },
+    { "id": "S", "type": "point", "at": [-3, 7, 0], "label": "S", "color": "A", "tags": ["circleX", "range", "answer"] },
+    { "id": "circleX", "type": "circle", "center": [-3, 7, 0], "normal": [0, 0, 1], "r": 2.236068, "width": 3, "color": "A", "tags": ["circleX", "range", "answer"] },
+    { "id": "segPS", "type": "segment", "from": [-5, 6, 0], "to": [-3, 7, 0], "dash": [4, 3], "color": "A", "tags": ["circleX"] },
+    { "id": "segSR", "type": "segment", "from": [-3, 7, 0], "to": [3, 10, 0], "dash": [4, 3], "color": "A", "tags": ["circleX"] },
+    { "id": "segBS", "type": "segment", "from": [-8, 0, 0], "to": [-3, 7, 0], "width": 3, "color": "D", "tags": ["range", "answer"] },
+    { "id": "Xmin", "type": "point", "at": [-4.299688, 5.180437, 0], "label": "X_m", "color": "E", "tags": ["range", "answer"] },
+    { "id": "Xmax", "type": "point", "at": [-1.700312, 8.819563, 0], "label": "X_M", "color": "E", "tags": ["range", "answer"] },
+    { "id": "segBXmin", "type": "segment", "from": [-8, 0, 0], "to": [-4.299688, 5.180437, 0], "width": 3, "color": "E", "tags": ["range"] },
+    { "id": "segBXmax", "type": "segment", "from": [-8, 0, 0], "to": [-1.700312, 8.819563, 0], "width": 3, "color": "E", "tags": ["range", "answer"] },
+    { "id": "labelABC", "type": "label", "at": [-9.7, 16.5, 0], "text": "A(0,16),\\ B(-8,0),\\ C(8,0)", "color": "text", "tags": ["given"] },
+    { "id": "labelPQR", "type": "label", "at": [1.8, 13.2, 0], "text": "q=-2,\\ P(-5,6),\\ Q(-2,0),\\ R(3,10)", "color": "text", "tags": ["derived"] },
+    { "id": "labelCircle", "type": "label", "at": [-0.5, 6.2, 0], "text": "S(-3,7),\\ r=\\sqrt5", "color": "text", "tags": ["circleX"] },
+    { "id": "labelAnswer", "type": "label", "at": [-9.6, -1.05, 0], "text": "M m=(\\sqrt{74}+\\sqrt5)(\\sqrt{74}-\\sqrt5)=69", "color": "text", "tags": ["answer"] }
+  ],
+  "steps": [
+    {
+      "text": "선분 $\\mathrm{BC}$의 중점을 원점으로 두면 $\\mathrm{A}(0,\\ 16)$, $\\mathrm{B}(-8,\\ 0)$, $\\mathrm{C}(8,\\ 0)$입니다. 직선 $\\mathrm{AB}$는 $y=2x+16$, 직선 $\\mathrm{AC}$는 $y=-2x+16$입니다.",
+      "show": ["axes", "given", "triangle", "trackP", "trackQ", "trackR"],
+      "focus": ["triangle"]
+    },
+    {
+      "text": "$\\mathrm{Q}=(q,\\ 0)$이라 두면 조건 (가)에서 $\\mathrm{P}$는 $\\mathrm{B}$와 $\\mathrm{Q}$의 중점 위 수직선과 $\\mathrm{AB}$의 교점이므로 $\\mathrm{P}\\left(\\dfrac{q-8}{2},\\ q+8\\right)$입니다. 같은 방법으로 $\\mathrm{R}\\left(\\dfrac{q+8}{2},\\ 8-q\\right)$입니다.",
+      "show": ["axes", "triangle", "trackP", "trackQ", "trackR", "conditionA", "pointsPQR"],
+      "focus": ["conditionA", "pointsPQR"]
+    },
+    {
+      "text": "조건 (나)는 $\\overrightarrow{\\mathrm{QP}}\\cdot\\overrightarrow{\\mathrm{PR}}=0$입니다. $\\overrightarrow{\\mathrm{PQ}}=\\left(\\dfrac{q+8}{2},\\ -q-8\\right)$, $\\overrightarrow{\\mathrm{PR}}=(8,\\ -2q)$이므로 $(q+8)(4+2q)=0$입니다.",
+      "show": ["axes", "triangle", "pointsPQR", "orthogonal"],
+      "focus": ["orthogonal"]
+    },
+    {
+      "text": "$q=-8$이면 $\\mathrm{P}=\\mathrm{Q}$가 되어 $|\\overrightarrow{\\mathrm{PQ}}|>0$에 어긋나므로 $q=-2$입니다. 따라서 $\\mathrm{P}(-5,\\ 6)$, $\\mathrm{Q}(-2,\\ 0)$, $\\mathrm{R}(3,\\ 10)$입니다.",
+      "show": ["axes", "triangle", "pointsPQR", "orthogonal", "derived"],
+      "focus": ["pointsPQR", "derived"]
+    },
+    {
+      "text": "선분 $\\mathrm{PR}$을 $1:3$으로 내분하는 점을 $\\mathrm{S}$라 하면 $3\\overrightarrow{\\mathrm{XP}}+\\overrightarrow{\\mathrm{XR}}=4\\overrightarrow{\\mathrm{XS}}$입니다. $\\mathrm{S}=(-3,\\ 7)$이고 $|\\overrightarrow{\\mathrm{PR}}|=4\\sqrt5$이므로 점 $\\mathrm{X}$는 중심 $\\mathrm{S}$, 반지름 $\\sqrt5$인 원 위에 있습니다.",
+      "show": ["axes", "triangle", "pointsPQR", "circleX"],
+      "focus": ["circleX"]
+    },
+    {
+      "text": "$\\overline{\\mathrm{BS}}=\\sqrt{(-3+8)^2+7^2}=\\sqrt{74}$입니다. 원 위의 점까지의 거리의 최댓값과 최솟값은 각각 $M=\\sqrt{74}+\\sqrt5$, $m=\\sqrt{74}-\\sqrt5$이므로 $Mm=74-5=69$입니다.",
+      "show": ["axes", "triangle", "circleX", "range", "answer"],
+      "focus": ["range", "answer"]
+    }
+  ]
+}

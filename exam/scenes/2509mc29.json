@@ -1,0 +1,503 @@
+{
+  "topic": "자취",
+  "mode": "2d",
+  "answer": "396",
+  "scale": 11,
+  "camera": {
+    "rotX": -1.5708,
+    "rotY": 0,
+    "zoom": 1.04
+  },
+  "objects": [
+    {
+      "id": "axisX",
+      "type": "segment",
+      "from": [
+        -13.5,
+        0,
+        0
+      ],
+      "to": [
+        19,
+        0,
+        0
+      ],
+      "color": "muted",
+      "tags": [
+        "axes"
+      ]
+    },
+    {
+      "id": "axisY",
+      "type": "segment",
+      "from": [
+        0,
+        -14,
+        0
+      ],
+      "to": [
+        0,
+        16,
+        0
+      ],
+      "color": "muted",
+      "tags": [
+        "axes"
+      ]
+    },
+    {
+      "id": "C1",
+      "type": "ellipse",
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "rx": 11.224972,
+      "ry": 12.727922,
+      "width": 3,
+      "color": "A",
+      "tags": [
+        "c1",
+        "given",
+        "answer"
+      ]
+    },
+    {
+      "id": "C2",
+      "type": "ellipse",
+      "center": [
+        4.949747,
+        6,
+        0
+      ],
+      "rx": 7.778175,
+      "ry": 6,
+      "width": 3,
+      "color": "C",
+      "tags": [
+        "c2",
+        "answer"
+      ]
+    },
+    {
+      "id": "F",
+      "type": "point",
+      "at": [
+        0,
+        6,
+        0
+      ],
+      "label": "F",
+      "color": "B",
+      "tags": [
+        "given",
+        "foci",
+        "c2foci"
+      ]
+    },
+    {
+      "id": "Fp",
+      "type": "point",
+      "at": [
+        0,
+        -6,
+        0
+      ],
+      "label": "F'",
+      "color": "B",
+      "tags": [
+        "given",
+        "foci"
+      ]
+    },
+    {
+      "id": "P",
+      "type": "point",
+      "at": [
+        9.899495,
+        6,
+        0
+      ],
+      "label": "P",
+      "color": "D",
+      "tags": [
+        "pointP",
+        "given",
+        "c2foci",
+        "answer"
+      ]
+    },
+    {
+      "id": "Q",
+      "type": "point",
+      "at": [
+        4.949747,
+        0,
+        0
+      ],
+      "label": "Q",
+      "color": "E",
+      "tags": [
+        "pointQ",
+        "c2data"
+      ]
+    },
+    {
+      "id": "R",
+      "type": "point",
+      "at": [
+        11.044636,
+        2.27232,
+        0
+      ],
+      "label": "R",
+      "color": "E",
+      "tags": [
+        "pointR",
+        "distance",
+        "answer"
+      ]
+    },
+    {
+      "id": "lineFP",
+      "type": "segment",
+      "from": [
+        -1.2,
+        6,
+        0
+      ],
+      "to": [
+        12.8,
+        6,
+        0
+      ],
+      "dash": [
+        4,
+        3
+      ],
+      "color": "muted",
+      "tags": [
+        "pointP"
+      ]
+    },
+    {
+      "id": "segPFp",
+      "type": "segment",
+      "from": [
+        9.899495,
+        6,
+        0
+      ],
+      "to": [
+        0,
+        -6,
+        0
+      ],
+      "width": 2.5,
+      "color": "D",
+      "tags": [
+        "pointQ",
+        "c1sum"
+      ]
+    },
+    {
+      "id": "segPF",
+      "type": "segment",
+      "from": [
+        9.899495,
+        6,
+        0
+      ],
+      "to": [
+        0,
+        6,
+        0
+      ],
+      "width": 3,
+      "color": "D",
+      "tags": [
+        "pointP",
+        "c1sum",
+        "answer"
+      ]
+    },
+    {
+      "id": "segFQ",
+      "type": "segment",
+      "from": [
+        0,
+        6,
+        0
+      ],
+      "to": [
+        4.949747,
+        0,
+        0
+      ],
+      "dash": [
+        4,
+        3
+      ],
+      "color": "C",
+      "tags": [
+        "c2data"
+      ]
+    },
+    {
+      "id": "segPQ",
+      "type": "segment",
+      "from": [
+        9.899495,
+        6,
+        0
+      ],
+      "to": [
+        4.949747,
+        0,
+        0
+      ],
+      "dash": [
+        4,
+        3
+      ],
+      "color": "C",
+      "tags": [
+        "c2data"
+      ]
+    },
+    {
+      "id": "segFR",
+      "type": "segment",
+      "from": [
+        0,
+        6,
+        0
+      ],
+      "to": [
+        11.044636,
+        2.27232,
+        0
+      ],
+      "width": 2.5,
+      "color": "B",
+      "tags": [
+        "distance"
+      ]
+    },
+    {
+      "id": "segFpR",
+      "type": "segment",
+      "from": [
+        0,
+        -6,
+        0
+      ],
+      "to": [
+        11.044636,
+        2.27232,
+        0
+      ],
+      "width": 3,
+      "color": "A",
+      "tags": [
+        "distance",
+        "answer"
+      ]
+    },
+    {
+      "id": "segPR",
+      "type": "segment",
+      "from": [
+        9.899495,
+        6,
+        0
+      ],
+      "to": [
+        11.044636,
+        2.27232,
+        0
+      ],
+      "width": 3,
+      "color": "C",
+      "tags": [
+        "distance",
+        "answer"
+      ]
+    },
+    {
+      "id": "labelC1",
+      "type": "label",
+      "at": [
+        -13.1,
+        13.3,
+        0
+      ],
+      "text": "C_1:\\ 2a=18\\sqrt2",
+      "color": "text",
+      "tags": [
+        "c1result"
+      ]
+    },
+    {
+      "id": "labelC2",
+      "type": "label",
+      "at": [
+        7.1,
+        13.25,
+        0
+      ],
+      "text": "C_2:\\ 2a'=11\\sqrt2",
+      "color": "text",
+      "tags": [
+        "c2result"
+      ]
+    },
+    {
+      "id": "labelQ",
+      "type": "label",
+      "at": [
+        5.45,
+        -1.25,
+        0
+      ],
+      "text": "Q\\left(\\dfrac p2,0\\right)",
+      "color": "text",
+      "tags": [
+        "c2data"
+      ]
+    },
+    {
+      "id": "labelP",
+      "type": "label",
+      "at": [
+        9.8,
+        7.2,
+        0
+      ],
+      "text": "p=7\\sqrt2",
+      "color": "text",
+      "tags": [
+        "answer"
+      ]
+    },
+    {
+      "id": "labelAnswer",
+      "type": "label",
+      "at": [
+        -12.9,
+        -12.7,
+        0
+      ],
+      "text": "(2a)(2a')=(18\\sqrt2)(11\\sqrt2)=396",
+      "color": "text",
+      "tags": [
+        "product"
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "text": "점 $\\mathrm{R}$이 $C_1$, $C_2$ 위에 있으므로 $\\overline{\\mathrm{RF}}+\\overline{\\mathrm{RF'}}=2a$, $\\overline{\\mathrm{RP}}+\\overline{\\mathrm{RF}}=2a'$입니다. 주어진 $\\overline{\\mathrm{F'R}}-\\overline{\\mathrm{PR}}=7\\sqrt2$에서 $2a-2a'=7\\sqrt2$입니다.",
+      "show": [
+        "axes",
+        "given",
+        "c1",
+        "c2",
+        "foci",
+        "c2foci",
+        "pointR",
+        "distance"
+      ],
+      "focus": [
+        "pointR",
+        "distance"
+      ]
+    },
+    {
+      "text": "$\\mathrm{P}=(p,\\ 6)$이라 두면 $\\overline{\\mathrm{PF}}=p$, $\\overline{\\mathrm{PF'}}=\\sqrt{p^2+144}$이므로 $p+\\sqrt{p^2+144}=2a$입니다.",
+      "show": [
+        "axes",
+        "c1",
+        "foci",
+        "pointP",
+        "c1sum"
+      ],
+      "focus": [
+        "pointP",
+        "c1sum"
+      ]
+    },
+    {
+      "text": "직선 $\\mathrm{PF'}$의 $x$절편은 $\\mathrm{Q}\\left(\\dfrac p2,\\ 0\\right)$이고, $C_2$의 중심은 $\\left(\\dfrac p2,\\ 6\\right)$입니다. 따라서 $b'=6$, $c'=\\dfrac p2$입니다.",
+      "show": [
+        "axes",
+        "c1",
+        "c2",
+        "foci",
+        "c2foci",
+        "pointP",
+        "pointQ",
+        "c2data"
+      ],
+      "focus": [
+        "pointQ",
+        "c2data"
+      ]
+    },
+    {
+      "text": "$(a')^2=6^2+\\left(\\dfrac p2\\right)^2$이므로 $2a'=\\sqrt{144+p^2}$입니다. 앞의 식 $p+\\sqrt{p^2+144}=2a$와 비교하면 $2a-2a'=p$입니다.",
+      "show": [
+        "axes",
+        "c2",
+        "c2foci",
+        "pointQ",
+        "c2data"
+      ],
+      "focus": [
+        "c2",
+        "c2data"
+      ]
+    },
+    {
+      "text": "$2a-2a'=7\\sqrt2$와 $2a-2a'=p$에서 $p=7\\sqrt2$입니다. 그러므로 $2a'=\\sqrt{144+98}=11\\sqrt2$, $2a=18\\sqrt2$입니다.",
+      "show": [
+        "axes",
+        "c1",
+        "c2",
+        "foci",
+        "c2foci",
+        "pointP",
+        "pointQ",
+        "pointR",
+        "answer",
+        "c1result",
+        "c2result"
+      ],
+      "focus": [
+        "answer"
+      ]
+    },
+    {
+      "text": "따라서 두 타원의 장축의 길이의 곱은 $2a\\times2a'=18\\sqrt2\\times11\\sqrt2=396$입니다.",
+      "show": [
+        "axes",
+        "c1",
+        "c2",
+        "foci",
+        "c2foci",
+        "pointP",
+        "pointQ",
+        "pointR",
+        "answer",
+        "c1result",
+        "c2result",
+        "product"
+      ],
+      "focus": [
+        "answer",
+        "product"
+      ]
+    }
+  ]
+}

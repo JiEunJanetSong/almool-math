@@ -1,0 +1,60 @@
+{
+  "topic": "자취",
+  "mode": "2d",
+  "answer": "\\dfrac{3\\sqrt{6}}{2}",
+  "scale": 24,
+  "camera": { "rotX": -1.5708, "rotY": 0, "zoom": 1.05 },
+  "objects": [
+    { "id": "axisX", "type": "segment", "from": [-5.2, 0, 0], "to": [6.2, 0, 0], "color": "muted", "tags": ["axes"] },
+    { "id": "axisY", "type": "segment", "from": [0, -5.2, 0], "to": [0, 7.2, 0], "color": "muted", "tags": ["axes"] },
+    { "id": "moveLine", "type": "segment", "from": [-1, -5, 0], "to": [5.1, 7.2, 0], "color": "D", "width": 2.5, "tags": ["given", "line"] },
+    { "id": "lineLabel", "type": "label", "at": [4.1, 5.45, 0], "text": "y=2x-3", "color": "D", "tags": ["given", "line"] },
+    { "id": "A", "type": "point", "at": [3.674235, 0, 0], "label": "A", "color": "B", "tags": ["given", "foci"] },
+    { "id": "B", "type": "point", "at": [-3.674235, 0, 0], "label": "B", "color": "B", "tags": ["given", "foci"] },
+    { "id": "O", "type": "point", "at": [0, 0, 0], "label": "O", "color": "text", "tags": ["given", "center"] },
+    { "id": "focusAxis", "type": "segment", "from": [-3.674235, 0, 0], "to": [3.674235, 0, 0], "dash": [4, 3], "color": "muted", "tags": ["given", "foci"] },
+    { "id": "wideHyperbola", "type": "hyperbola", "form": "x2-y2", "a": 3.2, "b": 1.805547, "center": [0, 0, 0], "span": 1.05, "branch": "pos", "dash": [4, 3], "color": "muted", "tags": ["candidate"] },
+    { "id": "hyperbola", "type": "hyperbola", "form": "x2-y2", "a": 2.12132, "b": 3, "center": [0, 0, 0], "span": 1.27, "branch": "both", "color": "A", "width": 3, "tags": ["hyperbola", "tangent"] },
+    { "id": "asymptotePos", "type": "segment", "from": [-4.8, -6.788225, 0], "to": [4.8, 6.788225, 0], "dash": [5, 4], "color": "muted", "tags": ["asymptotes"] },
+    { "id": "asymptoteNeg", "type": "segment", "from": [-4.8, 6.788225, 0], "to": [4.8, -6.788225, 0], "dash": [5, 4], "color": "muted", "tags": ["asymptotes"] },
+    { "id": "Vpos", "type": "point", "at": [2.12132, 0, 0], "label": "V", "color": "C", "tags": ["vertices", "equation"] },
+    { "id": "Vneg", "type": "point", "at": [-2.12132, 0, 0], "label": "V'", "color": "C", "tags": ["vertices", "equation"] },
+    { "id": "P", "type": "point", "at": [3, 3, 0], "label": "P", "color": "E", "tags": ["pointP", "tangent", "distances"] },
+    { "id": "segPA", "type": "segment", "from": [3, 3, 0], "to": [3.674235, 0, 0], "color": "C", "width": 3, "tags": ["distances"] },
+    { "id": "segPB", "type": "segment", "from": [3, 3, 0], "to": [-3.674235, 0, 0], "color": "C", "width": 3, "tags": ["distances"] },
+    { "id": "labelDiff", "type": "label", "at": [-1.7, 2.15, 0], "text": "\\overline{\\mathrm{PB}}-\\overline{\\mathrm{PA}}=2a", "color": "text", "tags": ["distances", "equation"] },
+    { "id": "tangentPointLine", "type": "segment", "from": [1.35, -0.3, 0], "to": [5.05, 7.1, 0], "dash": [4, 3], "color": "E", "width": 3, "tags": ["tangent"] },
+    { "id": "slopeLabel", "type": "label", "at": [4.65, 6.55, 0], "text": "\\text{기울기 }2", "color": "E", "tags": ["tangent"] },
+    { "id": "eqLabel1", "type": "label", "at": [-4.85, 6.65, 0], "text": "\\dfrac{x^2}{a^2}-\\dfrac{y^2}{b^2}=1", "color": "text", "tags": ["equation"] },
+    { "id": "eqLabel2", "type": "label", "at": [-4.85, 6.05, 0], "text": "4a^2-b^2=9", "color": "text", "tags": ["equation"] },
+    { "id": "eqLabel3", "type": "label", "at": [-4.85, 5.45, 0], "text": "\\dfrac{9}{a^2}-\\dfrac{9}{b^2}=1", "color": "text", "tags": ["equation"] },
+    { "id": "answerLabel", "type": "label", "at": [0.75, -4.65, 0], "text": "a^2=\\dfrac92,\\ b^2=9,\\ c=\\dfrac{3\\sqrt6}{2}", "color": "text", "tags": ["answer"] }
+  ],
+  "steps": [
+    {
+      "text": "두 점 $\\mathrm{A}(c,\\ 0)$, $\\mathrm{B}(-c,\\ 0)$를 초점으로 하는 쌍곡선의 $x>0$인 가지 위에서는 $\\overline{\\mathrm{PB}}-\\overline{\\mathrm{PA}}=2a$입니다. 점 $\\mathrm{P}$는 직선 $y=2x-3$ 위를 움직입니다.",
+      "show": ["axes", "given", "line", "foci"],
+      "focus": ["line", "foci"]
+    },
+    {
+      "text": "주축의 길이를 크게 잡은 쌍곡선은 직선과 만나지 않습니다. 주축의 길이를 줄여 처음 만나는 순간이 차이 $\\overline{\\mathrm{PB}}-\\overline{\\mathrm{PA}}$가 최대가 되는 경우이므로, 그 쌍곡선은 직선 $y=2x-3$과 $\\mathrm{P}(3,\\ 3)$에서 접합니다.",
+      "show": ["axes", "given", "line", "foci", "candidate", "hyperbola", "pointP", "tangent"],
+      "focus": ["candidate", "hyperbola", "pointP", "tangent"]
+    },
+    {
+      "text": "쌍곡선의 방정식을 $\\dfrac{x^2}{a^2}-\\dfrac{y^2}{b^2}=1$이라 하면 기울기가 $2$인 접선은 $y=2x\\pm\\sqrt{4a^2-b^2}$입니다. 접선이 $y=2x-3$이므로 $\\sqrt{4a^2-b^2}=3$, 즉 $4a^2-b^2=9$입니다.",
+      "show": ["axes", "given", "line", "foci", "hyperbola", "tangent", "asymptotes", "equation"],
+      "focus": ["tangent", "equation"]
+    },
+    {
+      "text": "또 쌍곡선이 $\\mathrm{P}(3,\\ 3)$을 지나므로 $\\dfrac{9}{a^2}-\\dfrac{9}{b^2}=1$입니다. 두 식을 연립하면 $a^2=\\dfrac{9}{2}$, $b^2=9$입니다.",
+      "show": ["axes", "given", "line", "foci", "hyperbola", "tangent", "pointP", "vertices", "equation"],
+      "focus": ["pointP", "vertices", "equation"]
+    },
+    {
+      "text": "초점 좌표의 상수는 $c^2=a^2+b^2$를 만족하므로 $c=\\sqrt{\\dfrac{9}{2}+9}=\\dfrac{3\\sqrt{6}}{2}$입니다.",
+      "show": ["axes", "given", "line", "foci", "hyperbola", "tangent", "distances", "equation", "answer"],
+      "focus": ["foci", "distances", "answer"]
+    }
+  ]
+}

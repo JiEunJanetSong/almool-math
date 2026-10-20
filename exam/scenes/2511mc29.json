@@ -1,0 +1,481 @@
+{
+  "topic": "자취",
+  "mode": "2d",
+  "answer": "360",
+  "scale": 10,
+  "camera": {
+    "rotX": -1.5708,
+    "rotY": 0,
+    "zoom": 1.02
+  },
+  "objects": [
+    {
+      "id": "axisX",
+      "type": "segment",
+      "from": [
+        -18,
+        0,
+        0
+      ],
+      "to": [
+        12,
+        0,
+        0
+      ],
+      "color": "muted",
+      "tags": [
+        "axes"
+      ]
+    },
+    {
+      "id": "axisY",
+      "type": "segment",
+      "from": [
+        0,
+        -8,
+        0
+      ],
+      "to": [
+        0,
+        10,
+        0
+      ],
+      "color": "muted",
+      "tags": [
+        "axes"
+      ]
+    },
+    {
+      "id": "parabola",
+      "type": "parabola",
+      "form": "y2=4px",
+      "p": 9,
+      "vertex": [
+        0,
+        0,
+        0
+      ],
+      "span": 10,
+      "width": 3,
+      "color": "A",
+      "tags": [
+        "parabola",
+        "given"
+      ]
+    },
+    {
+      "id": "directrix",
+      "type": "segment",
+      "from": [
+        -9,
+        -8,
+        0
+      ],
+      "to": [
+        -9,
+        10,
+        0
+      ],
+      "dash": [
+        5,
+        4
+      ],
+      "color": "muted",
+      "tags": [
+        "directrix",
+        "given"
+      ]
+    },
+    {
+      "id": "directrixLabel",
+      "type": "label",
+      "at": [
+        -11.2,
+        9.1,
+        0
+      ],
+      "text": "x=-p",
+      "color": "text",
+      "tags": [
+        "directrix",
+        "given"
+      ]
+    },
+    {
+      "id": "F",
+      "type": "point",
+      "at": [
+        9,
+        0,
+        0
+      ],
+      "label": "F",
+      "color": "B",
+      "tags": [
+        "given",
+        "parabolaData",
+        "answer"
+      ]
+    },
+    {
+      "id": "A",
+      "type": "point",
+      "at": [
+        1,
+        6,
+        0
+      ],
+      "label": "A",
+      "color": "B",
+      "tags": [
+        "given",
+        "pointA",
+        "area"
+      ]
+    },
+    {
+      "id": "H",
+      "type": "point",
+      "at": [
+        -9,
+        6,
+        0
+      ],
+      "label": "H",
+      "color": "B",
+      "tags": [
+        "given",
+        "pointA",
+        "area",
+        "answer"
+      ]
+    },
+    {
+      "id": "segAH",
+      "type": "segment",
+      "from": [
+        -9,
+        6,
+        0
+      ],
+      "to": [
+        1,
+        6,
+        0
+      ],
+      "width": 3,
+      "color": "B",
+      "tags": [
+        "pointA",
+        "area",
+        "perimeter"
+      ]
+    },
+    {
+      "id": "segAF",
+      "type": "segment",
+      "from": [
+        1,
+        6,
+        0
+      ],
+      "to": [
+        9,
+        0,
+        0
+      ],
+      "dash": [
+        4,
+        3
+      ],
+      "color": "D",
+      "tags": [
+        "parabolaData"
+      ]
+    },
+    {
+      "id": "ellipse",
+      "type": "ellipse",
+      "center": [
+        -4,
+        0,
+        0
+      ],
+      "rx": 13,
+      "ry": 6.5,
+      "width": 3,
+      "color": "C",
+      "tags": [
+        "ellipse",
+        "perimeter",
+        "area"
+      ]
+    },
+    {
+      "id": "ellipseCenter",
+      "type": "point",
+      "at": [
+        -4,
+        0,
+        0
+      ],
+      "label": "O_e",
+      "color": "C",
+      "tags": [
+        "ellipse",
+        "perimeter"
+      ]
+    },
+    {
+      "id": "B",
+      "type": "point",
+      "at": [
+        7.25833,
+        0,
+        0
+      ],
+      "label": "B",
+      "color": "C",
+      "tags": [
+        "ellipse",
+        "focusB",
+        "perimeter",
+        "area"
+      ]
+    },
+    {
+      "id": "Bp",
+      "type": "point",
+      "at": [
+        -15.25833,
+        0,
+        0
+      ],
+      "label": "B'",
+      "color": "C",
+      "tags": [
+        "ellipse",
+        "focusB",
+        "perimeter"
+      ]
+    },
+    {
+      "id": "segAB",
+      "type": "segment",
+      "from": [
+        1,
+        6,
+        0
+      ],
+      "to": [
+        7.25833,
+        0,
+        0
+      ],
+      "width": 2.5,
+      "color": "C",
+      "tags": [
+        "perimeter",
+        "area"
+      ]
+    },
+    {
+      "id": "segHB",
+      "type": "segment",
+      "from": [
+        -9,
+        6,
+        0
+      ],
+      "to": [
+        7.25833,
+        0,
+        0
+      ],
+      "width": 2.5,
+      "color": "C",
+      "tags": [
+        "perimeter",
+        "area"
+      ]
+    },
+    {
+      "id": "segHF",
+      "type": "segment",
+      "from": [
+        -9,
+        6,
+        0
+      ],
+      "to": [
+        9,
+        0,
+        0
+      ],
+      "width": 3,
+      "color": "E",
+      "tags": [
+        "answer"
+      ]
+    },
+    {
+      "id": "labelParabola",
+      "type": "label",
+      "at": [
+        2.8,
+        8.8,
+        0
+      ],
+      "text": "y^2=4px",
+      "color": "text",
+      "tags": [
+        "parabolaData"
+      ]
+    },
+    {
+      "id": "labelPerimeter",
+      "type": "label",
+      "at": [
+        -17.3,
+        8.5,
+        0
+      ],
+      "text": "\\overline{AH}+2a=4p=p+27",
+      "color": "text",
+      "tags": [
+        "perimeter"
+      ]
+    },
+    {
+      "id": "labelArea",
+      "type": "label",
+      "at": [
+        -17.3,
+        7.2,
+        0
+      ],
+      "text": "\\dfrac12(x_1+p)y_1=2p+12",
+      "color": "text",
+      "tags": [
+        "area"
+      ]
+    },
+    {
+      "id": "labelSolved",
+      "type": "label",
+      "at": [
+        2.0,
+        -4.8,
+        0
+      ],
+      "text": "p=9,\\ A(1,6),\\ H(-9,6)",
+      "color": "text",
+      "tags": [
+        "solved"
+      ]
+    },
+    {
+      "id": "labelAnswer",
+      "type": "label",
+      "at": [
+        -6.4,
+        -6.3,
+        0
+      ],
+      "text": "HF^2=18^2+6^2=360",
+      "color": "text",
+      "tags": [
+        "answer"
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "text": "초점이 $\\mathrm{F}(p,\\ 0)$이고 준선이 $x=-p$인 포물선의 방정식은 $y^2=4px$입니다. 점 $\\mathrm{A}(x_1,\\ y_1)$은 제1사분면에 있으므로 $y_1^2=4px_1$입니다.",
+      "show": [
+        "axes",
+        "given",
+        "parabola",
+        "directrix",
+        "parabolaData"
+      ],
+      "focus": [
+        "parabola",
+        "parabolaData"
+      ]
+    },
+    {
+      "text": "$\\mathrm{H}=(-p,\\ y_1)$이고 타원의 중심의 $x$좌표는 $\\dfrac{x_1-p}{2}$입니다. 장축의 길이는 $2a=2\\left\\{p-\\dfrac{x_1-p}{2}\\right\\}$, 또 $\\overline{\\mathrm{AH}}=x_1+p$입니다.",
+      "show": [
+        "axes",
+        "parabola",
+        "directrix",
+        "pointA",
+        "ellipse",
+        "focusB"
+      ],
+      "focus": [
+        "pointA",
+        "ellipse"
+      ]
+    },
+    {
+      "text": "둘레 조건에서 $p+27=\\overline{\\mathrm{AH}}+\\overline{\\mathrm{AB}}+\\overline{\\mathrm{HB}}=\\overline{\\mathrm{AH}}+2a=4p$이므로 $p=9$입니다.",
+      "show": [
+        "axes",
+        "pointA",
+        "ellipse",
+        "focusB",
+        "perimeter"
+      ],
+      "focus": [
+        "perimeter"
+      ]
+    },
+    {
+      "text": "넓이 조건은 $2p+12=\\dfrac12(x_1+p)y_1$입니다. $p=9$를 대입하면 $60=(x_1+9)y_1$이므로 $y_1=\\dfrac{60}{x_1+9}$입니다.",
+      "show": [
+        "axes",
+        "pointA",
+        "ellipse",
+        "focusB",
+        "area"
+      ],
+      "focus": [
+        "area"
+      ]
+    },
+    {
+      "text": "$\\left(\\dfrac{60}{x_1+9}\\right)^2=36x_1$에서 $x_1^3+18x_1^2+81x_1-100=0$, 즉 $(x_1-1)(x_1^2+19x_1+100)=0$입니다. 따라서 $x_1=1$, $y_1=6$입니다.",
+      "show": [
+        "axes",
+        "parabola",
+        "directrix",
+        "pointA",
+        "ellipse",
+        "area",
+        "solved"
+      ],
+      "focus": [
+        "pointA",
+        "area",
+        "solved"
+      ]
+    },
+    {
+      "text": "그러므로 $\\mathrm{H}(-9,\\ 6)$, $\\mathrm{F}(9,\\ 0)$이고 $k=\\overline{\\mathrm{HF}}=\\sqrt{18^2+(-6)^2}=\\sqrt{360}$입니다. 따라서 $k^2=360$입니다.",
+      "show": [
+        "axes",
+        "parabola",
+        "directrix",
+        "pointA",
+        "ellipse",
+        "answer",
+        "solved"
+      ],
+      "focus": [
+        "answer"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "topic": "내적",
+  "mode": "2d",
+  "answer": "14/5",
+  "scale": 17,
+  "camera": { "rotX": -1.5708, "rotY": 0, "zoom": 1.05 },
+  "objects": [
+    { "id": "axisX", "type": "segment", "from": [-9.5, 0, 0], "to": [2.5, 0, 0], "color": "muted", "tags": ["axes"] },
+    { "id": "axisY", "type": "segment", "from": [0, -4.5, 0], "to": [0, 4.5, 0], "color": "muted", "tags": ["axes"] },
+    { "id": "circleSmall", "type": "circle", "center": [0, 0, 0], "normal": [0, 0, 1], "r": 2, "color": "A", "tags": ["given"] },
+    { "id": "circleLarge", "type": "circle", "center": [-5, 0, 0], "normal": [0, 0, 1], "r": 4, "color": "A", "tags": ["given"] },
+    { "id": "O", "type": "point", "at": [0, 0, 0], "label": "O", "color": "text", "tags": ["given"] },
+    { "id": "A", "type": "point", "at": [-5, 0, 0], "label": "A", "color": "B", "tags": ["given"] },
+    { "id": "P", "type": "point", "at": [1.2, 1.6, 0], "label": "P", "color": "B", "tags": ["locus"] },
+    { "id": "vecOP", "type": "vector", "from": [0, 0, 0], "to": [1.2, 1.6, 0], "label": "OP", "color": "C", "tags": ["locus"] },
+    { "id": "M", "type": "point", "at": [0.6, 0.8, 0], "label": "M", "color": "E", "tags": ["locus"] },
+    { "id": "tangentLine", "type": "segment", "from": [1.8, -0.1, 0], "to": [-2.84, 3.38, 0], "dash": [4, 3], "color": "D", "tags": ["locus"] },
+    { "id": "Q", "type": "point", "at": [-2.6, 3.2, 0], "label": "Q", "color": "E", "tags": ["tangent"] },
+    { "id": "segAQ", "type": "segment", "from": [-5, 0, 0], "to": [-2.6, 3.2, 0], "color": "muted", "tags": ["tangent"] },
+    { "id": "H", "type": "point", "at": [-3.2, 2.4, 0], "label": "H", "color": "D", "tags": ["tangent"] },
+    { "id": "segOH", "type": "segment", "from": [0, 0, 0], "to": [-3.2, 2.4, 0], "color": "D", "tags": ["tangent"] },
+    { "id": "segOA", "type": "segment", "from": [0, 0, 0], "to": [-5, 0, 0], "dash": [3, 3], "color": "muted", "tags": ["tangent"] },
+    { "id": "rightangleH", "type": "rightangle", "vertex": [-3.2, 2.4, 0], "a": [0.8, -0.6, 0], "b": [0.6, 0.8, 0], "color": "D", "tags": ["tangent"] },
+    { "id": "arcTheta", "type": "arc", "center": [0, 0, 0], "a": [1, 0, 0], "b": [0.6, 0.8, 0], "r": 26, "label": "θ", "color": "D", "tags": ["theta"] },
+    { "id": "answerLabel", "type": "label", "at": [-2, 4.2, 0], "text": "\\mathrm{P}\\left(\\dfrac{6}{5},\\ \\dfrac{8}{5}\\right),\\ a+b=\\dfrac{14}{5}", "color": "text", "tags": ["answer"] }
+  ],
+  "steps": [
+    {
+      "text": "좌표평면에서 반원의 호 $x^2+y^2=4\\ (x\\ge0)$ 위의 점 $\\mathrm{P}(a,\\ b)$와, $\\overrightarrow{\\mathrm{OP}}\\cdot\\overrightarrow{\\mathrm{OQ}}=2$를 만족시키는 반원의 호 $(x+5)^2+y^2=16\\ (y\\ge0)$ 위의 점 $\\mathrm{Q}$가 하나뿐인 상황입니다. 큰 반원의 중심은 $\\mathrm{A}(-5,\\ 0)$, 원점은 $\\mathrm{O}$입니다.",
+      "show": ["axes", "given"],
+      "focus": ["given"]
+    },
+    {
+      "text": "$\\overline{\\mathrm{OP}}$의 크기는 $2$로 일정하므로 $\\overrightarrow{\\mathrm{OP}}\\cdot\\overrightarrow{\\mathrm{OQ}}=2$인 점 $\\mathrm{Q}$에서 직선 $\\mathrm{OP}$에 내린 수선의 발은 선분 $\\mathrm{OP}$의 중점 $\\mathrm{M}$입니다. 즉 점 $\\mathrm{Q}$는 선분 $\\mathrm{OP}$의 수직이등분선과 반원의 호의 교점입니다.",
+      "show": ["axes", "given", "locus"],
+      "focus": ["locus"]
+    },
+    {
+      "text": "이러한 점 $\\mathrm{Q}$가 하나뿐인 경우는 선분 $\\mathrm{OP}$의 수직이등분선이 반원의 호와 접하는 경우뿐입니다. 큰 반원의 중심인 점 $\\mathrm{A}(-5,\\ 0)$과 작은 반원의 중심인 원점 사이의 거리는 $5$이고, 점 $\\mathrm{O}$에서 직선 $\\mathrm{AQ}$에 내린 수선의 발 $\\mathrm{H}$에 대하여 $\\overline{\\mathrm{AH}}=3$입니다.",
+      "show": ["axes", "given", "locus", "tangent"],
+      "focus": ["tangent"]
+    },
+    {
+      "text": "직선 $\\mathrm{OP}$가 $x$축의 양의 방향과 이루는 각 $\\theta$에 대하여 $\\cos\\theta=\\dfrac{\\overline{\\mathrm{AH}}}{\\overline{\\mathrm{OA}}}=\\dfrac{3}{5}$입니다. 따라서 점 $\\mathrm{P}$의 좌표는 $\\left(\\dfrac{6}{5},\\ \\dfrac{8}{5}\\right)$입니다.",
+      "show": ["axes", "given", "locus", "tangent", "theta"],
+      "focus": ["theta"]
+    },
+    {
+      "text": "따라서 $a+b=\\dfrac{6}{5}+\\dfrac{8}{5}=\\dfrac{14}{5}$입니다.",
+      "show": ["axes", "given", "locus", "tangent", "theta", "answer"],
+      "focus": ["answer"]
+    }
+  ]
+}

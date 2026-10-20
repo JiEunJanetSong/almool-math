@@ -1,0 +1,1190 @@
+{
+  "topic": "정사영",
+  "mode": "3d",
+  "answer": "40",
+  "scale": 18,
+  "camera": {
+    "rotX": 0.36,
+    "rotY": -0.55,
+    "zoom": 1.12
+  },
+  "objects": [
+    {
+      "id": "basePlane",
+      "type": "plane",
+      "corners": [
+        [
+          9,
+          9,
+          0
+        ],
+        [
+          -1,
+          9,
+          0
+        ],
+        [
+          -1,
+          -1,
+          0
+        ],
+        [
+          9,
+          -1,
+          0
+        ]
+      ],
+      "alpha": 0.08,
+      "color": "muted",
+      "label": "평면 ABCD",
+      "tags": [
+        "base",
+        "given"
+      ]
+    },
+    {
+      "id": "squareABCD",
+      "type": "plane",
+      "corners": [
+        [
+          0,
+          8,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          8,
+          0,
+          0
+        ],
+        [
+          8,
+          8,
+          0
+        ]
+      ],
+      "alpha": 0.14,
+      "color": "muted",
+      "tags": [
+        "given"
+      ]
+    },
+    {
+      "id": "A",
+      "type": "point",
+      "at": [
+        0,
+        8,
+        0
+      ],
+      "label": "A",
+      "color": "B",
+      "tags": [
+        "given"
+      ]
+    },
+    {
+      "id": "B",
+      "type": "point",
+      "at": [
+        0,
+        0,
+        0
+      ],
+      "label": "B",
+      "color": "B",
+      "tags": [
+        "given"
+      ]
+    },
+    {
+      "id": "C",
+      "type": "point",
+      "at": [
+        8,
+        0,
+        0
+      ],
+      "label": "C",
+      "color": "B",
+      "tags": [
+        "given"
+      ]
+    },
+    {
+      "id": "D",
+      "type": "point",
+      "at": [
+        8,
+        8,
+        0
+      ],
+      "label": "D",
+      "color": "B",
+      "tags": [
+        "given"
+      ]
+    },
+    {
+      "id": "segAB",
+      "type": "segment",
+      "from": [
+        0,
+        8,
+        0
+      ],
+      "to": [
+        0,
+        0,
+        0
+      ],
+      "width": 3,
+      "color": "B",
+      "tags": [
+        "given",
+        "fold"
+      ]
+    },
+    {
+      "id": "segBC",
+      "type": "segment",
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        8,
+        0,
+        0
+      ],
+      "width": 2.5,
+      "color": "B",
+      "tags": [
+        "given"
+      ]
+    },
+    {
+      "id": "segCD",
+      "type": "segment",
+      "from": [
+        8,
+        0,
+        0
+      ],
+      "to": [
+        8,
+        8,
+        0
+      ],
+      "width": 3,
+      "color": "B",
+      "tags": [
+        "given",
+        "fold"
+      ]
+    },
+    {
+      "id": "segDA",
+      "type": "segment",
+      "from": [
+        8,
+        8,
+        0
+      ],
+      "to": [
+        0,
+        8,
+        0
+      ],
+      "width": 2.5,
+      "color": "B",
+      "tags": [
+        "given"
+      ]
+    },
+    {
+      "id": "flatArcAB",
+      "type": "arc3d",
+      "center": [
+        0,
+        4,
+        0
+      ],
+      "r": 4,
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        0,
+        8,
+        0
+      ],
+      "via": [
+        -4,
+        4,
+        0
+      ],
+      "color": "A",
+      "tags": [
+        "flatPaper"
+      ]
+    },
+    {
+      "id": "flatArcCD",
+      "type": "arc3d",
+      "center": [
+        8,
+        4,
+        0
+      ],
+      "r": 4,
+      "from": [
+        8,
+        0,
+        0
+      ],
+      "to": [
+        8,
+        8,
+        0
+      ],
+      "via": [
+        12,
+        4,
+        0
+      ],
+      "color": "A",
+      "tags": [
+        "flatPaper"
+      ]
+    },
+    {
+      "id": "Pflat",
+      "type": "point",
+      "at": [
+        -3.464102,
+        2,
+        0
+      ],
+      "label": "P",
+      "color": "C",
+      "tags": [
+        "flatPaper",
+        "flatP"
+      ]
+    },
+    {
+      "id": "Pprime",
+      "type": "point",
+      "at": [
+        0,
+        2,
+        0
+      ],
+      "label": "P'",
+      "color": "D",
+      "tags": [
+        "flatPaper",
+        "flatP",
+        "foldedP"
+      ]
+    },
+    {
+      "id": "segPflatPprime",
+      "type": "segment",
+      "from": [
+        -3.464102,
+        2,
+        0
+      ],
+      "to": [
+        0,
+        2,
+        0
+      ],
+      "dash": [
+        3,
+        3
+      ],
+      "color": "D",
+      "tags": [
+        "flatP"
+      ]
+    },
+    {
+      "id": "Qflat",
+      "type": "point",
+      "at": [
+        12,
+        4,
+        0
+      ],
+      "label": "Q",
+      "color": "C",
+      "tags": [
+        "flatPaper",
+        "flatQ"
+      ]
+    },
+    {
+      "id": "Qprime",
+      "type": "point",
+      "at": [
+        8,
+        4,
+        0
+      ],
+      "label": "Q'",
+      "color": "D",
+      "tags": [
+        "flatPaper",
+        "flatQ",
+        "foldedQ"
+      ]
+    },
+    {
+      "id": "segQflatQprime",
+      "type": "segment",
+      "from": [
+        12,
+        4,
+        0
+      ],
+      "to": [
+        8,
+        4,
+        0
+      ],
+      "dash": [
+        3,
+        3
+      ],
+      "color": "D",
+      "tags": [
+        "flatQ"
+      ]
+    },
+    {
+      "id": "foldArcAB",
+      "type": "arc3d",
+      "center": [
+        0,
+        4,
+        0
+      ],
+      "r": 4,
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        0,
+        8,
+        0
+      ],
+      "via": [
+        3.464102,
+        4,
+        2
+      ],
+      "color": "A",
+      "tags": [
+        "foldedPaper",
+        "foldedP"
+      ]
+    },
+    {
+      "id": "foldArcCD",
+      "type": "arc3d",
+      "center": [
+        8,
+        4,
+        0
+      ],
+      "r": 4,
+      "from": [
+        8,
+        0,
+        0
+      ],
+      "to": [
+        8,
+        8,
+        0
+      ],
+      "via": [
+        6,
+        4,
+        3.464102
+      ],
+      "color": "A",
+      "tags": [
+        "foldedPaper",
+        "foldedQ"
+      ]
+    },
+    {
+      "id": "P",
+      "type": "point",
+      "at": [
+        3,
+        2,
+        1.732051
+      ],
+      "label": "P",
+      "color": "C",
+      "tags": [
+        "foldedP",
+        "pcq"
+      ]
+    },
+    {
+      "id": "Q",
+      "type": "point",
+      "at": [
+        6,
+        4,
+        3.464102
+      ],
+      "label": "Q",
+      "color": "C",
+      "tags": [
+        "foldedQ",
+        "pcq"
+      ]
+    },
+    {
+      "id": "G",
+      "type": "point",
+      "at": [
+        3,
+        2,
+        0
+      ],
+      "label": "G",
+      "color": "E",
+      "tags": [
+        "projection",
+        "foldedP",
+        "triangleGCH"
+      ]
+    },
+    {
+      "id": "H",
+      "type": "point",
+      "at": [
+        6,
+        4,
+        0
+      ],
+      "label": "H",
+      "color": "E",
+      "tags": [
+        "projection",
+        "foldedQ",
+        "triangleGCH"
+      ]
+    },
+    {
+      "id": "segPG",
+      "type": "segment",
+      "from": [
+        3,
+        2,
+        1.732051
+      ],
+      "to": [
+        3,
+        2,
+        0
+      ],
+      "width": 2.5,
+      "dash": [
+        4,
+        3
+      ],
+      "color": "D",
+      "tags": [
+        "projection",
+        "foldedP"
+      ]
+    },
+    {
+      "id": "segQH",
+      "type": "segment",
+      "from": [
+        6,
+        4,
+        3.464102
+      ],
+      "to": [
+        6,
+        4,
+        0
+      ],
+      "width": 2.5,
+      "dash": [
+        4,
+        3
+      ],
+      "color": "D",
+      "tags": [
+        "projection",
+        "foldedQ"
+      ]
+    },
+    {
+      "id": "segPprimeG",
+      "type": "segment",
+      "from": [
+        0,
+        2,
+        0
+      ],
+      "to": [
+        3,
+        2,
+        0
+      ],
+      "width": 2.5,
+      "color": "D",
+      "tags": [
+        "foldedP",
+        "lengths"
+      ]
+    },
+    {
+      "id": "segQprimeH",
+      "type": "segment",
+      "from": [
+        8,
+        4,
+        0
+      ],
+      "to": [
+        6,
+        4,
+        0
+      ],
+      "width": 2.5,
+      "color": "D",
+      "tags": [
+        "foldedQ",
+        "lengths"
+      ]
+    },
+    {
+      "id": "labelPG",
+      "type": "label",
+      "at": [
+        3.25,
+        2.25,
+        0.9
+      ],
+      "text": "PG=\\sqrt3",
+      "color": "text",
+      "tags": [
+        "foldedP"
+      ]
+    },
+    {
+      "id": "labelQH",
+      "type": "label",
+      "at": [
+        6.3,
+        4.25,
+        1.9
+      ],
+      "text": "QH=2\\sqrt3",
+      "color": "text",
+      "tags": [
+        "foldedQ"
+      ]
+    },
+    {
+      "id": "Gp",
+      "type": "point",
+      "at": [
+        3,
+        0,
+        0
+      ],
+      "label": "G'",
+      "color": "D",
+      "tags": [
+        "lengths"
+      ]
+    },
+    {
+      "id": "I",
+      "type": "point",
+      "at": [
+        6,
+        0,
+        0
+      ],
+      "label": "I",
+      "color": "D",
+      "tags": [
+        "lengths",
+        "gh"
+      ]
+    },
+    {
+      "id": "X",
+      "type": "point",
+      "at": [
+        6,
+        2,
+        0
+      ],
+      "label": "X",
+      "color": "D",
+      "tags": [
+        "gh"
+      ]
+    },
+    {
+      "id": "segGGp",
+      "type": "segment",
+      "from": [
+        3,
+        2,
+        0
+      ],
+      "to": [
+        3,
+        0,
+        0
+      ],
+      "dash": [
+        3,
+        3
+      ],
+      "color": "D",
+      "tags": [
+        "lengths"
+      ]
+    },
+    {
+      "id": "segCGp",
+      "type": "segment",
+      "from": [
+        8,
+        0,
+        0
+      ],
+      "to": [
+        3,
+        0,
+        0
+      ],
+      "width": 2.5,
+      "color": "D",
+      "tags": [
+        "lengths"
+      ]
+    },
+    {
+      "id": "segCI",
+      "type": "segment",
+      "from": [
+        8,
+        0,
+        0
+      ],
+      "to": [
+        6,
+        0,
+        0
+      ],
+      "width": 2.5,
+      "color": "D",
+      "tags": [
+        "lengths"
+      ]
+    },
+    {
+      "id": "segHI",
+      "type": "segment",
+      "from": [
+        6,
+        4,
+        0
+      ],
+      "to": [
+        6,
+        0,
+        0
+      ],
+      "dash": [
+        3,
+        3
+      ],
+      "color": "D",
+      "tags": [
+        "lengths",
+        "gh"
+      ]
+    },
+    {
+      "id": "segGX",
+      "type": "segment",
+      "from": [
+        3,
+        2,
+        0
+      ],
+      "to": [
+        6,
+        2,
+        0
+      ],
+      "width": 2.5,
+      "color": "D",
+      "tags": [
+        "gh"
+      ]
+    },
+    {
+      "id": "segHX",
+      "type": "segment",
+      "from": [
+        6,
+        4,
+        0
+      ],
+      "to": [
+        6,
+        2,
+        0
+      ],
+      "width": 2.5,
+      "color": "D",
+      "tags": [
+        "gh"
+      ]
+    },
+    {
+      "id": "raX",
+      "type": "rightangle",
+      "vertex": [
+        6,
+        2,
+        0
+      ],
+      "a": [
+        3,
+        2,
+        0
+      ],
+      "b": [
+        6,
+        4,
+        0
+      ],
+      "color": "D",
+      "tags": [
+        "gh"
+      ]
+    },
+    {
+      "id": "triPCQ",
+      "type": "plane",
+      "corners": [
+        [
+          3,
+          2,
+          1.732051
+        ],
+        [
+          8,
+          0,
+          0
+        ],
+        [
+          6,
+          4,
+          3.464102
+        ]
+      ],
+      "alpha": 0.18,
+      "color": "C",
+      "tags": [
+        "pcq",
+        "areaPCQ"
+      ]
+    },
+    {
+      "id": "segPC",
+      "type": "segment",
+      "from": [
+        3,
+        2,
+        1.732051
+      ],
+      "to": [
+        8,
+        0,
+        0
+      ],
+      "width": 3,
+      "color": "C",
+      "tags": [
+        "pcq",
+        "areaPCQ"
+      ]
+    },
+    {
+      "id": "segCQ",
+      "type": "segment",
+      "from": [
+        8,
+        0,
+        0
+      ],
+      "to": [
+        6,
+        4,
+        3.464102
+      ],
+      "width": 3,
+      "color": "C",
+      "tags": [
+        "pcq",
+        "areaPCQ"
+      ]
+    },
+    {
+      "id": "segPQ",
+      "type": "segment",
+      "from": [
+        3,
+        2,
+        1.732051
+      ],
+      "to": [
+        6,
+        4,
+        3.464102
+      ],
+      "width": 3,
+      "color": "A",
+      "tags": [
+        "pcq",
+        "areaPCQ"
+      ]
+    },
+    {
+      "id": "triGCH",
+      "type": "plane",
+      "corners": [
+        [
+          3,
+          2,
+          0
+        ],
+        [
+          8,
+          0,
+          0
+        ],
+        [
+          6,
+          4,
+          0
+        ]
+      ],
+      "alpha": 0.22,
+      "color": "A",
+      "tags": [
+        "triangleGCH",
+        "areaGCH"
+      ]
+    },
+    {
+      "id": "segCG",
+      "type": "segment",
+      "from": [
+        8,
+        0,
+        0
+      ],
+      "to": [
+        3,
+        2,
+        0
+      ],
+      "width": 3,
+      "color": "A",
+      "tags": [
+        "triangleGCH",
+        "areaGCH"
+      ]
+    },
+    {
+      "id": "segCH",
+      "type": "segment",
+      "from": [
+        8,
+        0,
+        0
+      ],
+      "to": [
+        6,
+        4,
+        0
+      ],
+      "width": 3,
+      "color": "A",
+      "tags": [
+        "triangleGCH",
+        "areaGCH"
+      ]
+    },
+    {
+      "id": "segGH",
+      "type": "segment",
+      "from": [
+        3,
+        2,
+        0
+      ],
+      "to": [
+        6,
+        4,
+        0
+      ],
+      "width": 3,
+      "color": "A",
+      "tags": [
+        "triangleGCH",
+        "gh",
+        "areaGCH"
+      ]
+    },
+    {
+      "id": "labelCG",
+      "type": "label",
+      "at": [
+        5.35,
+        1.15,
+        0.15
+      ],
+      "text": "CG=\\sqrt{29}",
+      "color": "text",
+      "tags": [
+        "lengths"
+      ]
+    },
+    {
+      "id": "labelCH",
+      "type": "label",
+      "at": [
+        7.2,
+        2.25,
+        0.15
+      ],
+      "text": "CH=2\\sqrt5",
+      "color": "text",
+      "tags": [
+        "lengths"
+      ]
+    },
+    {
+      "id": "labelGH",
+      "type": "label",
+      "at": [
+        4.2,
+        3.25,
+        0.15
+      ],
+      "text": "GH=\\sqrt{13}",
+      "color": "text",
+      "tags": [
+        "gh"
+      ]
+    },
+    {
+      "id": "labelPQ",
+      "type": "label",
+      "at": [
+        4.25,
+        3.25,
+        2.85
+      ],
+      "text": "PQ=4",
+      "color": "text",
+      "tags": [
+        "areaPCQ"
+      ]
+    },
+    {
+      "id": "labelPCQ",
+      "type": "label",
+      "at": [
+        6.9,
+        2.45,
+        2.05
+      ],
+      "text": "[PCQ]=4\\sqrt7",
+      "color": "text",
+      "tags": [
+        "areaPCQ"
+      ]
+    },
+    {
+      "id": "labelGCH",
+      "type": "label",
+      "at": [
+        5.5,
+        0.7,
+        0.2
+      ],
+      "text": "[GCH]=8",
+      "color": "text",
+      "tags": [
+        "areaGCH"
+      ]
+    },
+    {
+      "id": "answerLabel",
+      "type": "label",
+      "at": [
+        1,
+        8.8,
+        2.4
+      ],
+      "text": "\\cos\\theta=\\dfrac{2}{\\sqrt7},\\quad 70\\cos^2\\theta=40",
+      "color": "text",
+      "tags": [
+        "answer"
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "text": "$\\mathrm{B}(0,\\ 0,\\ 0)$, $\\mathrm{C}(8,\\ 0,\\ 0)$, $\\mathrm{D}(8,\\ 8,\\ 0)$, $\\mathrm{A}(0,\\ 8,\\ 0)$로 둡니다. 접기 전에는 두 반원이 모두 $z=0$ 위에 있고, $\\mathrm{P'}=(0,\\ 2,\\ 0)$, $\\overline{\\mathrm{PP'}}=2\\sqrt3$, $\\mathrm{Q'}=(8,\\ 4,\\ 0)$, $\\overline{\\mathrm{Q'Q}}=4$입니다.",
+      "show": [
+        "given",
+        "fold",
+        "flatPaper",
+        "flatP",
+        "flatQ"
+      ],
+      "focus": [
+        "flatP",
+        "flatQ"
+      ],
+      "camera": {
+        "rotX": -1.5708,
+        "rotY": 0,
+        "zoom": 1.05
+      }
+    },
+    {
+      "text": "선분 $\\mathrm{AB}$를 접는 선으로 올린 뒤 $\\overline{\\mathrm{PG}}=\\sqrt3$이므로 $\\overline{\\mathrm{P'G}}=\\sqrt{(2\\sqrt3)^2-(\\sqrt3)^2}=3$입니다. 따라서 $\\mathrm{G}=(3,\\ 2,\\ 0)$, $\\mathrm{P}=(3,\\ 2,\\ \\sqrt3)$이고, $\\overline{\\mathrm{CG}}=\\sqrt{29}$, $\\overline{\\mathrm{PC}}=4\\sqrt2$입니다.",
+      "show": [
+        "base",
+        "given",
+        "fold",
+        "foldedPaper",
+        "foldedP",
+        "projection",
+        "lengths"
+      ],
+      "focus": [
+        "foldedP",
+        "lengths"
+      ],
+      "camera": {
+        "rotX": 0.36,
+        "rotY": -0.55,
+        "zoom": 1.12
+      }
+    },
+    {
+      "text": "$\\mathrm{Q'}$은 호 $\\mathrm{CD}$의 중점에서 반원의 중심입니다. $\\overline{\\mathrm{QH}}=2\\sqrt3$이므로 $\\overline{\\mathrm{Q'H}}=\\sqrt{4^2-(2\\sqrt3)^2}=2$, 즉 $\\mathrm{H}=(6,\\ 4,\\ 0)$, $\\mathrm{Q}=(6,\\ 4,\\ 2\\sqrt3)$입니다. 따라서 $\\overline{\\mathrm{CH}}=2\\sqrt5$, $\\overline{\\mathrm{QC}}=4\\sqrt2$입니다.",
+      "show": [
+        "base",
+        "given",
+        "fold",
+        "foldedPaper",
+        "foldedP",
+        "foldedQ",
+        "projection",
+        "lengths"
+      ],
+      "focus": [
+        "foldedQ",
+        "lengths"
+      ]
+    },
+    {
+      "text": "$\\mathrm{H}$에서 $\\mathrm{BC}$에 내린 수선의 발을 $\\mathrm{I}$, $\\mathrm{G}$에서 $\\mathrm{CD}$에 내린 수선과 $\\mathrm{HI}$의 교점을 $\\mathrm{X}$라 하면 $\\mathrm{X}=(6,\\ 2,\\ 0)$입니다. $\\overline{\\mathrm{HX}}=2$, $\\overline{\\mathrm{GX}}=3$이므로 $\\overline{\\mathrm{GH}}=\\sqrt{13}$이고 $\\overline{\\mathrm{PQ}}=\\sqrt{13+(2\\sqrt3-\\sqrt3)^2}=4$입니다.",
+      "show": [
+        "base",
+        "given",
+        "foldedPaper",
+        "foldedP",
+        "foldedQ",
+        "projection",
+        "lengths",
+        "gh",
+        "pcq"
+      ],
+      "focus": [
+        "gh",
+        "pcq"
+      ]
+    },
+    {
+      "text": "삼각형 $\\mathrm{PCQ}$의 평면 $\\mathrm{ABCD}$ 위로의 정사영은 삼각형 $\\mathrm{GCH}$입니다. $\\overline{\\mathrm{PC}}=\\overline{\\mathrm{QC}}=4\\sqrt2$, $\\overline{\\mathrm{PQ}}=4$이므로 $[\\mathrm{PCQ}]=4\\sqrt7$이고, $\\overline{\\mathrm{CG}}=\\sqrt{29}$, $\\overline{\\mathrm{CH}}=2\\sqrt5$, $\\overline{\\mathrm{GH}}=\\sqrt{13}$에서 $[\\mathrm{GCH}]=8$입니다.",
+      "show": [
+        "base",
+        "given",
+        "foldedPaper",
+        "projection",
+        "pcq",
+        "triangleGCH",
+        "areaPCQ",
+        "areaGCH"
+      ],
+      "focus": [
+        "areaPCQ",
+        "areaGCH"
+      ]
+    },
+    {
+      "text": "정사영 넓이 공식에서 $\\cos\\theta=\\dfrac{[\\mathrm{GCH}]}{[\\mathrm{PCQ}]}=\\dfrac{8}{4\\sqrt7}=\\dfrac{2}{\\sqrt7}$입니다. 따라서 $70\\cos^2\\theta=70\\times\\dfrac47=40$입니다.",
+      "show": [
+        "base",
+        "given",
+        "foldedPaper",
+        "projection",
+        "pcq",
+        "triangleGCH",
+        "areaPCQ",
+        "areaGCH",
+        "answer"
+      ],
+      "focus": [
+        "answer"
+      ]
+    }
+  ],
+  "theorems": [
+    {
+      "key": "orthogonal-projection-proof",
+      "label": "정사영 넓이 S'=S cos θ"
+    }
+  ]
+}

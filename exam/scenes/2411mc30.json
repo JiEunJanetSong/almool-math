@@ -1,0 +1,72 @@
+{
+  "topic": "내적",
+  "mode": "2d",
+  "answer": "316",
+  "scale": 30,
+  "camera": { "rotX": -1.5708, "rotY": 0, "zoom": 1.05 },
+  "objects": [
+    { "id": "axisX", "type": "segment", "from": [-0.8, 0, 0], "to": [5.0, 0, 0], "color": "muted", "tags": ["axes"] },
+    { "id": "axisY", "type": "segment", "from": [0, -0.8, 0], "to": [0, 5.0, 0], "color": "muted", "tags": ["axes"] },
+    { "id": "square", "type": "plane", "corners": [[0, 0, 0], [4, 0, 0], [4, 4, 0], [0, 4, 0]], "alpha": 0.10, "color": "muted", "tags": ["given", "square"] },
+    { "id": "A", "type": "point", "at": [0, 4, 0], "label": "A", "color": "B", "tags": ["given", "square", "dotProduct"] },
+    { "id": "B", "type": "point", "at": [0, 0, 0], "label": "B", "color": "B", "tags": ["given", "square", "locusS"] },
+    { "id": "C", "type": "point", "at": [4, 0, 0], "label": "C", "color": "B", "tags": ["given", "square", "locusS", "dotProduct"] },
+    { "id": "D", "type": "point", "at": [4, 4, 0], "label": "D", "color": "B", "tags": ["given", "square", "mapQ"] },
+    { "id": "segAB", "type": "segment", "from": [0, 4, 0], "to": [0, 0, 0], "width": 2.5, "color": "B", "tags": ["given", "square"] },
+    { "id": "segBC", "type": "segment", "from": [0, 0, 0], "to": [4, 0, 0], "width": 2.5, "color": "B", "tags": ["given", "square", "locusS"] },
+    { "id": "segCD", "type": "segment", "from": [4, 0, 0], "to": [4, 4, 0], "width": 2.5, "color": "B", "tags": ["given", "square"] },
+    { "id": "segDA", "type": "segment", "from": [4, 4, 0], "to": [0, 4, 0], "width": 2.5, "color": "B", "tags": ["given", "square"] },
+    { "id": "M", "type": "point", "at": [2, 0, 0], "label": "M", "color": "C", "tags": ["locusS", "mapQ"] },
+    { "id": "circleS", "type": "circle", "center": [2, 0, 0], "normal": [0, 0, 1], "r": 2, "width": 3, "color": "A", "tags": ["locusS", "circleS"] },
+    { "id": "P", "type": "point", "at": [3.414214, 1.414214, 0], "label": "P", "color": "A", "tags": ["locusS", "mapQ"] },
+    { "id": "E", "type": "point", "at": [2.666667, 2.666667, 0], "label": "E", "color": "D", "tags": ["mapQ", "centerQ"] },
+    { "id": "segBD", "type": "segment", "from": [0, 0, 0], "to": [4, 4, 0], "dash": [4, 3], "color": "D", "tags": ["mapQ", "centerQ"] },
+    { "id": "segPE", "type": "segment", "from": [3.414214, 1.414214, 0], "to": [2.666667, 2.666667, 0], "dash": [4, 3], "width": 2.5, "color": "D", "tags": ["mapQ"] },
+    { "id": "F", "type": "point", "at": [2.5, 2, 0], "label": "F", "color": "C", "tags": ["centerQ", "locusT", "dotProduct"] },
+    { "id": "circleT", "type": "circle", "center": [2.5, 2, 0], "normal": [0, 0, 1], "r": 0.5, "width": 3, "color": "C", "tags": ["locusT", "dotProduct"] },
+    { "id": "Q", "type": "point", "at": [2.853553, 1.646447, 0], "label": "Q_1", "color": "E", "tags": ["locusT", "extreme", "max"] },
+    { "id": "Qmin", "type": "point", "at": [2.146447, 2.353553, 0], "label": "Q_2", "color": "E", "tags": ["locusT", "extreme", "min"] },
+    { "id": "segAQmax", "type": "segment", "from": [0, 4, 0], "to": [2.853553, 1.646447, 0], "width": 3, "color": "E", "tags": ["max", "answer"] },
+    { "id": "segAQmin", "type": "segment", "from": [0, 4, 0], "to": [2.146447, 2.353553, 0], "dash": [4, 3], "width": 2.5, "color": "E", "tags": ["min", "answer"] },
+    { "id": "vecAC", "type": "vector", "from": [0, 4, 0], "to": [4, 0, 0], "label": "AC", "width": 3, "color": "B", "tags": ["dotProduct", "extreme"] },
+    { "id": "vecAF", "type": "vector", "from": [0, 4, 0], "to": [2.5, 2, 0], "label": "AF", "width": 3, "color": "D", "tags": ["dotProduct"] },
+    { "id": "vecFQmax", "type": "vector", "from": [2.5, 2, 0], "to": [2.853553, 1.646447, 0], "label": "FQ_1", "width": 3, "color": "E", "tags": ["max", "extreme"] },
+    { "id": "vecFQmin", "type": "vector", "from": [2.5, 2, 0], "to": [2.146447, 2.353553, 0], "label": "FQ_2", "width": 3, "color": "E", "tags": ["min", "extreme"] },
+    { "id": "labelS", "type": "label", "at": [3.45, -0.45, 0], "text": "(x-2)^2+y^2=4", "color": "text", "tags": ["locusS"] },
+    { "id": "labelT", "type": "label", "at": [2.9, 2.75, 0], "text": "T:\\left(x-\\dfrac52\\right)^2+(y-2)^2=\\dfrac14", "color": "text", "tags": ["locusT"] },
+    { "id": "labelDot", "type": "label", "at": [0.2, 4.75, 0], "text": "\\overrightarrow{AC}\\cdot\\overrightarrow{AF}=18", "color": "text", "tags": ["dotProduct"] },
+    { "id": "labelAnswer", "type": "label", "at": [0.1, -0.55, 0], "text": "(18+2\\sqrt2)(18-2\\sqrt2)=316", "color": "text", "tags": ["answer"] }
+  ],
+  "steps": [
+    {
+      "text": "$\\mathrm{B}$를 원점, 직선 $\\mathrm{BC}$를 $x$축, 직선 $\\mathrm{BA}$를 $y$축으로 잡으면 $\\mathrm{A}(0,\\ 4)$, $\\mathrm{B}(0,\\ 0)$, $\\mathrm{C}(4,\\ 0)$, $\\mathrm{D}(4,\\ 4)$입니다.",
+      "show": ["axes", "given", "square"],
+      "focus": ["square"]
+    },
+    {
+      "text": "$\\overrightarrow{\\mathrm{XB}}-\\overrightarrow{\\mathrm{XC}}=\\overrightarrow{\\mathrm{CB}}$이므로 $\\left|\\overrightarrow{\\mathrm{XB}}+\\overrightarrow{\\mathrm{XC}}\\right|=4$입니다. 선분 $\\mathrm{BC}$의 중점 $\\mathrm{M}(2,\\ 0)$에 대하여 $\\left|\\overrightarrow{\\mathrm{XM}}\\right|=2$이므로 $S:(x-2)^2+y^2=4$입니다.",
+      "show": ["axes", "given", "square", "locusS", "circleS"],
+      "focus": ["locusS", "circleS"]
+    },
+    {
+      "text": "선분 $\\mathrm{BD}$를 $2:1$로 내분하는 점을 $\\mathrm{E}$라 하면 $\\mathrm{E}\\left(\\dfrac83,\\ \\dfrac83\\right)$이고, $\\overrightarrow{\\mathrm{PE}}=\\dfrac{\\overrightarrow{\\mathrm{PB}}+2\\overrightarrow{\\mathrm{PD}}}{3}$입니다. 따라서 $4\\overrightarrow{\\mathrm{PQ}}=3\\overrightarrow{\\mathrm{PE}}$에서 $\\overrightarrow{\\mathrm{EQ}}=\\dfrac14\\overrightarrow{\\mathrm{EP}}$입니다.",
+      "show": ["axes", "given", "square", "circleS", "mapQ", "centerQ"],
+      "focus": ["mapQ", "centerQ"]
+    },
+    {
+      "text": "점 $\\mathrm{F}$가 선분 $\\mathrm{EM}$을 $1:3$으로 내분하면 $\\mathrm{F}\\left(\\dfrac52,\\ 2\\right)$입니다. 점 $\\mathrm{P}$가 중심 $\\mathrm{M}$, 반지름 $2$인 원 위를 움직이므로 점 $\\mathrm{Q}$는 중심 $\\mathrm{F}$, 반지름 $\\dfrac12$인 원 $T$ 위를 움직입니다.",
+      "show": ["axes", "given", "square", "circleS", "centerQ", "locusT"],
+      "focus": ["locusT", "centerQ"]
+    },
+    {
+      "text": "$\\overrightarrow{\\mathrm{AC}}=(4,\\ -4)$, $\\overrightarrow{\\mathrm{AF}}=\\left(\\dfrac52,\\ -2\\right)$이므로 $\\overrightarrow{\\mathrm{AC}}\\cdot\\overrightarrow{\\mathrm{AF}}=18$입니다. 또 $\\left|\\overrightarrow{\\mathrm{AC}}\\right|=4\\sqrt2$, $\\left|\\overrightarrow{\\mathrm{FQ}}\\right|=\\dfrac12$이므로 $-2\\sqrt2\\le\\overrightarrow{\\mathrm{AC}}\\cdot\\overrightarrow{\\mathrm{FQ}}\\le2\\sqrt2$입니다.",
+      "show": ["axes", "given", "square", "locusT", "dotProduct", "extreme", "max", "min"],
+      "focus": ["dotProduct", "extreme"]
+    },
+    {
+      "text": "따라서 $18-2\\sqrt2\\le\\overrightarrow{\\mathrm{AC}}\\cdot\\overrightarrow{\\mathrm{AQ}}\\le18+2\\sqrt2$입니다. $M=18+2\\sqrt2$, $m=18-2\\sqrt2$이므로 $Mm=18^2-(2\\sqrt2)^2=316$입니다.",
+      "show": ["axes", "given", "square", "locusT", "dotProduct", "extreme", "max", "min", "answer"],
+      "focus": ["max", "min", "answer"]
+    }
+  ]
+}

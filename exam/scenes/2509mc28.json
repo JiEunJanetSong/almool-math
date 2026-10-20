@@ -1,0 +1,66 @@
+{
+  "topic": "정사영",
+  "mode": "3d",
+  "answer": "\\dfrac{\\sqrt{2}}{3}",
+  "scale": 18,
+  "camera": { "rotX": 0.42, "rotY": -0.58, "zoom": 1.04 },
+  "objects": [
+    { "id": "xy", "type": "plane", "corners": [[-7, -7, 0], [7, -7, 0], [7, 8, 0], [-7, 8, 0]], "alpha": 0.08, "color": "muted", "label": "xy평면", "tags": ["base", "projection"] },
+    { "id": "sphereS", "type": "sphere", "center": [0, 0, 0], "r": 6, "color": "A", "tags": ["given", "sphere"] },
+    { "id": "O", "type": "point", "at": [0, 0, 0], "label": "O", "color": "text", "tags": ["given", "projection", "triangle"] },
+    { "id": "A", "type": "point", "at": [3, 0, 5.196152], "label": "A", "color": "B", "tags": ["given", "triangle", "heightA"] },
+    { "id": "B", "type": "point", "at": [0, 4.898979, 3.464102], "label": "B", "color": "B", "tags": ["given", "triangle", "heightB"] },
+    { "id": "C", "type": "point", "at": [2, 0, 3.464102], "label": "C", "color": "D", "tags": ["conditionA", "horizontal"] },
+    { "id": "Ap", "type": "point", "at": [3, 0, 0], "label": "A'", "color": "E", "tags": ["projection", "rightProjected", "areas"] },
+    { "id": "Bp", "type": "point", "at": [0, 4.898979, 0], "label": "B'", "color": "E", "tags": ["projection", "rightProjected", "areas"] },
+    { "id": "segOA", "type": "segment", "from": [0, 0, 0], "to": [3, 0, 5.196152], "width": 3, "color": "B", "tags": ["given", "triangle", "heightA"] },
+    { "id": "segOB", "type": "segment", "from": [0, 0, 0], "to": [0, 4.898979, 3.464102], "width": 3, "color": "B", "tags": ["given", "triangle", "heightB"] },
+    { "id": "segAB", "type": "segment", "from": [3, 0, 5.196152], "to": [0, 4.898979, 3.464102], "width": 3, "color": "B", "tags": ["triangle", "equilateral"] },
+    { "id": "segOC", "type": "segment", "from": [0, 0, 0], "to": [2, 0, 3.464102], "width": 3, "color": "D", "tags": ["conditionA"] },
+    { "id": "segBC", "type": "segment", "from": [0, 4.898979, 3.464102], "to": [2, 0, 3.464102], "width": 3, "color": "D", "tags": ["conditionA", "horizontal"] },
+    { "id": "segAAp", "type": "segment", "from": [3, 0, 5.196152], "to": [3, 0, 0], "dash": [4, 3], "color": "E", "tags": ["projection", "heightA"] },
+    { "id": "segBBp", "type": "segment", "from": [0, 4.898979, 3.464102], "to": [0, 4.898979, 0], "dash": [4, 3], "color": "E", "tags": ["projection", "heightB"] },
+    { "id": "triOAB", "type": "plane", "corners": [[0, 0, 0], [3, 0, 5.196152], [0, 4.898979, 3.464102]], "alpha": 0.20, "color": "C", "tags": ["triangle", "area3d"] },
+    { "id": "segOAp", "type": "segment", "from": [0, 0, 0], "to": [3, 0, 0], "width": 3, "color": "E", "tags": ["projection", "rightProjected", "areas"] },
+    { "id": "segOBp", "type": "segment", "from": [0, 0, 0], "to": [0, 4.898979, 0], "width": 3, "color": "E", "tags": ["projection", "rightProjected", "areas"] },
+    { "id": "segApBp", "type": "segment", "from": [3, 0, 0], "to": [0, 4.898979, 0], "width": 3, "color": "E", "tags": ["projection", "rightProjected", "areas"] },
+    { "id": "triOApBp", "type": "plane", "corners": [[0, 0, 0], [3, 0, 0], [0, 4.898979, 0]], "alpha": 0.24, "color": "E", "tags": ["projection", "rightProjected", "areas", "answer"] },
+    { "id": "raO", "type": "rightangle", "vertex": [0, 0, 0], "a": [3, 0, 0], "b": [0, 4.898979, 0], "color": "D", "tags": ["rightProjected"] },
+    { "id": "labelHeights", "type": "label", "at": [3.35, 0.2, 2.7], "text": "z_A=3\\sqrt3,\\ z_B=2\\sqrt3", "color": "text", "tags": ["heightA", "heightB"] },
+    { "id": "labelArea3d", "type": "label", "at": [1.15, 1.45, 4.0], "text": "[OAB]=9\\sqrt3", "color": "text", "tags": ["area3d"] },
+    { "id": "labelArea2d", "type": "label", "at": [1.05, 2.35, 0.25], "text": "[OA'B']=3\\sqrt6", "color": "text", "tags": ["areas"] },
+    { "id": "labelAnswer", "type": "label", "at": [-3.4, 6.8, 2.2], "text": "\\cos\\theta=\\dfrac{3\\sqrt6}{9\\sqrt3}=\\dfrac{\\sqrt2}{3}", "color": "text", "tags": ["answer"] }
+  ],
+  "steps": [
+    {
+      "text": "구 $S$의 반지름이 $6$이므로 $\\overline{\\mathrm{OA}}=\\overline{\\mathrm{OB}}=6$입니다. 점 $\\mathrm{C}$는 $\\overrightarrow{\\mathrm{OC}}=\\dfrac23\\overrightarrow{\\mathrm{OA}}$를 만족합니다.",
+      "show": ["base", "given", "sphere", "conditionA"],
+      "focus": ["given", "conditionA"]
+    },
+    {
+      "text": "직선 $\\mathrm{BC}$가 $xy$평면과 평행하므로 $z_{\\mathrm{B}}=z_{\\mathrm{C}}=\\dfrac23z_{\\mathrm{A}}$입니다. 또 $\\sin\\alpha=3\\sin\\beta$에서 $\\overline{\\mathrm{AB}}=6$이 되어 삼각형 $\\mathrm{OAB}$는 한 변의 길이가 $6$인 정삼각형입니다.",
+      "show": ["base", "given", "sphere", "conditionA", "horizontal", "triangle", "equilateral"],
+      "focus": ["horizontal", "equilateral"]
+    },
+    {
+      "text": "$\\overrightarrow{\\mathrm{OA}}\\cdot\\overrightarrow{\\mathrm{OB}}=18$입니다. 정사영 삼각형이 직각삼각형인 세 경우 중 $\\angle\\mathrm{A'OB'}=90^\\circ$만 가능하므로 $z_{\\mathrm{A}}z_{\\mathrm{B}}=18$이고 $z_{\\mathrm{A}}=3\\sqrt3$, $z_{\\mathrm{B}}=2\\sqrt3$입니다.",
+      "show": ["base", "given", "triangle", "projection", "rightProjected", "heightA", "heightB"],
+      "focus": ["rightProjected", "heightA", "heightB"],
+      "camera": { "rotX": -1.5708, "rotY": 0, "zoom": 1.08 }
+    },
+    {
+      "text": "$\\overline{\\mathrm{OA'}}^2=36-z_{\\mathrm{A}}^2=9$, $\\overline{\\mathrm{OB'}}^2=36-z_{\\mathrm{B}}^2=24$이므로 $\\overline{\\mathrm{OA'}}=3$, $\\overline{\\mathrm{OB'}}=2\\sqrt6$입니다. 따라서 $[\\mathrm{OA'B'}]=3\\sqrt6$입니다.",
+      "show": ["base", "projection", "rightProjected", "areas"],
+      "focus": ["rightProjected", "areas"],
+      "camera": { "rotX": -1.5708, "rotY": 0, "zoom": 1.08 }
+    },
+    {
+      "text": "$[\\mathrm{OAB}]=\\dfrac12\\cdot6\\cdot6\\cdot\\sin60^\\circ=9\\sqrt3$이고, 정사영 넓이 공식에 의해 $\\cos\\theta=\\dfrac{[\\mathrm{OA'B'}]}{[\\mathrm{OAB}]}=\\dfrac{3\\sqrt6}{9\\sqrt3}=\\dfrac{\\sqrt2}{3}$입니다.",
+      "show": ["base", "projection", "triangle", "area3d", "areas", "answer"],
+      "focus": ["area3d", "answer"]
+    }
+  ],
+  "theorems": [
+    { "key": "orthogonal-projection-proof", "label": "정사영 넓이 S'=S cos θ" }
+  ]
+}

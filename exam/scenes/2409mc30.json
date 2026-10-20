@@ -1,0 +1,79 @@
+{
+  "topic": "벡터연산",
+  "mode": "2d",
+  "answer": "54",
+  "scale": 18,
+  "camera": { "rotX": -1.5708, "rotY": 0, "zoom": 1.02 },
+  "objects": [
+    { "id": "axisX", "type": "segment", "from": [-5.5, 0, 0], "to": [9.2, 0, 0], "color": "muted", "tags": ["axes"] },
+    { "id": "axisY", "type": "segment", "from": [0, -0.8, 0], "to": [0, 8.8, 0], "color": "muted", "tags": ["axes"] },
+    { "id": "O", "type": "point", "at": [0, 0, 0], "label": "O", "color": "text", "tags": ["given", "triAOB"] },
+    { "id": "A", "type": "point", "at": [0, 8, 0], "label": "A", "color": "B", "tags": ["given", "triAOB", "max"] },
+    { "id": "B", "type": "point", "at": [8, 0, 0], "label": "B", "color": "B", "tags": ["given", "triAOB", "maxCandidates"] },
+    { "id": "C", "type": "point", "at": [7, 1, 0], "label": "C", "color": "C", "tags": ["given", "triCDB"] },
+    { "id": "D", "type": "point", "at": [7, 0, 0], "label": "D", "color": "C", "tags": ["given", "triCDB"] },
+    { "id": "E", "type": "point", "at": [-4, 2, 0], "label": "E", "color": "D", "tags": ["given", "translation"] },
+    { "id": "triAOBFill", "type": "plane", "corners": [[0, 0, 0], [0, 8, 0], [8, 0, 0]], "alpha": 0.12, "color": "B", "tags": ["triAOB"] },
+    { "id": "segOA", "type": "segment", "from": [0, 0, 0], "to": [0, 8, 0], "width": 3, "color": "B", "tags": ["triAOB"] },
+    { "id": "segAB", "type": "segment", "from": [0, 8, 0], "to": [8, 0, 0], "width": 3, "color": "B", "tags": ["triAOB", "min"] },
+    { "id": "segOB", "type": "segment", "from": [0, 0, 0], "to": [8, 0, 0], "width": 3, "color": "B", "tags": ["triAOB"] },
+    { "id": "triCDBFill", "type": "plane", "corners": [[7, 1, 0], [7, 0, 0], [8, 0, 0]], "alpha": 0.13, "color": "C", "tags": ["triCDB"] },
+    { "id": "segCD", "type": "segment", "from": [7, 1, 0], "to": [7, 0, 0], "width": 2.5, "color": "C", "tags": ["triCDB"] },
+    { "id": "segDB", "type": "segment", "from": [7, 0, 0], "to": [8, 0, 0], "width": 2.5, "color": "C", "tags": ["triCDB"] },
+    { "id": "segCB", "type": "segment", "from": [7, 1, 0], "to": [8, 0, 0], "width": 2.5, "color": "C", "tags": ["triCDB"] },
+    { "id": "vecOE", "type": "vector", "from": [0, 0, 0], "to": [-4, 2, 0], "label": "OE", "width": 3, "color": "D", "tags": ["translation"] },
+    { "id": "Cp", "type": "point", "at": [3, 3, 0], "label": "C'", "color": "E", "tags": ["translated", "maxCandidates", "min"] },
+    { "id": "Dp", "type": "point", "at": [3, 2, 0], "label": "D'", "color": "E", "tags": ["translated"] },
+    { "id": "Bp", "type": "point", "at": [4, 2, 0], "label": "B'", "color": "E", "tags": ["translated", "max", "maxCandidates", "min"] },
+    { "id": "triCpDpBpFill", "type": "plane", "corners": [[3, 3, 0], [3, 2, 0], [4, 2, 0]], "alpha": 0.18, "color": "E", "tags": ["translated"] },
+    { "id": "segCpDp", "type": "segment", "from": [3, 3, 0], "to": [3, 2, 0], "width": 3, "color": "E", "tags": ["translated"] },
+    { "id": "segDpBp", "type": "segment", "from": [3, 2, 0], "to": [4, 2, 0], "width": 3, "color": "E", "tags": ["translated"] },
+    { "id": "segBpCp", "type": "segment", "from": [4, 2, 0], "to": [3, 3, 0], "width": 3, "color": "E", "tags": ["translated", "min"] },
+    { "id": "vecShiftC", "type": "vector", "from": [7, 1, 0], "to": [3, 3, 0], "dash": [4, 3], "label": "OE", "color": "D", "tags": ["translation"] },
+    { "id": "vecShiftB", "type": "vector", "from": [8, 0, 0], "to": [4, 2, 0], "dash": [4, 3], "color": "D", "tags": ["translation"] },
+    { "id": "segABp", "type": "segment", "from": [0, 8, 0], "to": [4, 2, 0], "width": 3.5, "color": "A", "tags": ["max", "maxCandidates"] },
+    { "id": "segBCp", "type": "segment", "from": [8, 0, 0], "to": [3, 3, 0], "dash": [5, 4], "width": 2.5, "color": "muted", "tags": ["maxCandidates"] },
+    { "id": "segOBp", "type": "segment", "from": [0, 0, 0], "to": [4, 2, 0], "dash": [5, 4], "width": 2.5, "color": "muted", "tags": ["maxCandidates"] },
+    { "id": "Pmin", "type": "point", "at": [5, 3, 0], "label": "P", "color": "A", "tags": ["min"] },
+    { "id": "Rmin", "type": "point", "at": [4, 2, 0], "label": "R", "color": "A", "tags": ["min"] },
+    { "id": "segMin", "type": "segment", "from": [5, 3, 0], "to": [4, 2, 0], "width": 3.5, "color": "A", "tags": ["min"] },
+    { "id": "raPmin", "type": "rightangle", "vertex": [5, 3, 0], "a": [0, 8, 0], "b": [4, 2, 0], "color": "A", "tags": ["min"] },
+    { "id": "lineABlabel", "type": "label", "at": [5.9, 2.35, 0], "text": "x+y=8", "color": "text", "tags": ["min"] },
+    { "id": "labelMax", "type": "label", "at": [1.1, 5.25, 0], "text": "AB'^2=52", "color": "text", "tags": ["max"] },
+    { "id": "labelCandidates", "type": "label", "at": [4.9, 6.9, 0], "text": "AB'^2=52,\\ BC'^2=34,\\ OB'^2=20", "color": "text", "tags": ["maxCandidates"] },
+    { "id": "labelMin", "type": "label", "at": [5.15, 3.8, 0], "text": "d=\\sqrt2", "color": "text", "tags": ["min"] },
+    { "id": "labelAns", "type": "label", "at": [-4.9, 7.8, 0], "text": "M+m=52+2=54", "color": "text", "tags": ["answer"] }
+  ],
+  "steps": [
+    {
+      "text": "$\\overrightarrow{\\mathrm{PQ}}+\\overrightarrow{\\mathrm{OE}}=\\overrightarrow{\\mathrm{OQ}}-\\overrightarrow{\\mathrm{OP}}+\\overrightarrow{\\mathrm{OE}}$입니다. $\\overrightarrow{\\mathrm{OE}}+\\overrightarrow{\\mathrm{OQ}}=\\overrightarrow{\\mathrm{OR}}$라 하면 $\\mathrm{R}$은 $\\mathrm{Q}$를 $x$축 방향으로 $-4$, $y$축 방향으로 $2$만큼 평행이동한 점입니다.",
+      "show": ["axes", "given", "triAOB", "triCDB", "translation"],
+      "focus": ["translation"]
+    },
+    {
+      "text": "따라서 $\\mathrm{R}$은 삼각형 $\\mathrm{CDB}$를 평행이동한 삼각형 $\\mathrm{C'D'B'}$ 위를 움직입니다. 이때 $\\mathrm{C'}(3,\\ 3)$, $\\mathrm{D'}(3,\\ 2)$, $\\mathrm{B'}(4,\\ 2)$이고 $\\overrightarrow{\\mathrm{PQ}}+\\overrightarrow{\\mathrm{OE}}=\\overrightarrow{\\mathrm{PR}}$입니다.",
+      "show": ["axes", "triAOB", "triCDB", "translation", "translated"],
+      "focus": ["translated"]
+    },
+    {
+      "text": "두 점 사이의 거리가 최대가 될 때는 $\\overline{\\mathrm{PR}}=\\overline{\\mathrm{AB'}}$, $\\overline{\\mathrm{BC'}}$, $\\overline{\\mathrm{OB'}}$인 경우를 비교하면 됩니다. 각각 $\\overline{\\mathrm{AB'}}=\\sqrt{52}$, $\\overline{\\mathrm{BC'}}=\\sqrt{34}$, $\\overline{\\mathrm{OB'}}=\\sqrt{20}$입니다.",
+      "show": ["axes", "triAOB", "translated", "maxCandidates"],
+      "focus": ["maxCandidates"]
+    },
+    {
+      "text": "$\\overline{\\mathrm{AB'}}$가 최대이므로 $\\left|\\overrightarrow{\\mathrm{PR}}\\right|^2$이 최대일 때는 $\\mathrm{P}(0,\\ 8)$, $\\mathrm{R}(4,\\ 2)$일 때입니다. 따라서 $M=(-4)^2+(8-2)^2=52$입니다.",
+      "show": ["axes", "triAOB", "translated", "max", "maxCandidates"],
+      "focus": ["max"]
+    },
+    {
+      "text": "두 점 사이의 거리가 최소일 때는 $\\mathrm{R}$이 선분 $\\mathrm{B'C'}$ 위를 움직이고, $\\mathrm{P}$가 $\\mathrm{R}$에서 선분 $\\mathrm{AB}$에 내린 수선의 발일 때입니다. 점 $\\mathrm{B'}(4,\\ 2)$에서 직선 $y=-x+8$까지의 거리는 $\\dfrac{|4+2-8|}{\\sqrt{1^2+1^2}}=\\sqrt2$입니다.",
+      "show": ["axes", "triAOB", "translated", "min"],
+      "focus": ["min"]
+    },
+    {
+      "text": "이때 $\\left|\\overrightarrow{\\mathrm{PR}}\\right|^2=2$이므로 $m=2$입니다. 따라서 $M+m=52+2=54$입니다.",
+      "show": ["axes", "triAOB", "translated", "max", "min", "answer"],
+      "focus": ["answer"]
+    }
+  ]
+}

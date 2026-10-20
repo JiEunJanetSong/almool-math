@@ -1,0 +1,391 @@
+{
+  "topic": "정사영",
+  "mode": "3d",
+  "answer": "9",
+  "scale": 24,
+  "camera": {
+    "rotX": 0.36,
+    "rotY": -0.55,
+    "zoom": 1.15
+  },
+  "objects": [
+    {
+      "id": "xy",
+      "type": "plane",
+      "corners": [
+        [
+          -3,
+          -3,
+          0
+        ],
+        [
+          7,
+          -3,
+          0
+        ],
+        [
+          7,
+          8,
+          0
+        ],
+        [
+          -3,
+          8,
+          0
+        ]
+      ],
+      "color": "muted",
+      "alpha": 0.1,
+      "label": "xy평면",
+      "tags": [
+        "base"
+      ]
+    },
+    {
+      "id": "A",
+      "type": "point",
+      "at": [
+        0,
+        0,
+        1
+      ],
+      "label": "A",
+      "color": "B",
+      "tags": [
+        "given"
+      ]
+    },
+    {
+      "id": "C",
+      "type": "point",
+      "at": [
+        3,
+        4,
+        5
+      ],
+      "label": "C",
+      "color": "B",
+      "tags": [
+        "given"
+      ]
+    },
+    {
+      "id": "sph",
+      "type": "sphere",
+      "center": [
+        3,
+        4,
+        5
+      ],
+      "r": 1,
+      "color": "A",
+      "tags": [
+        "given"
+      ]
+    },
+    {
+      "id": "P",
+      "type": "point",
+      "at": [
+        3.717,
+        3.31,
+        4.902
+      ],
+      "label": "P",
+      "color": "C",
+      "tags": [
+        "tangent"
+      ]
+    },
+    {
+      "id": "segAP",
+      "type": "segment",
+      "from": [
+        0,
+        0,
+        1
+      ],
+      "to": [
+        3.717,
+        3.31,
+        4.902
+      ],
+      "color": "C",
+      "tags": [
+        "tangent"
+      ]
+    },
+    {
+      "id": "segCP",
+      "type": "segment",
+      "from": [
+        3,
+        4,
+        5
+      ],
+      "to": [
+        3.717,
+        3.31,
+        4.902
+      ],
+      "color": "C",
+      "dash": [
+        5,
+        4
+      ],
+      "tags": [
+        "tangent"
+      ]
+    },
+    {
+      "id": "raP",
+      "type": "rightangle",
+      "vertex": [
+        3.717,
+        3.31,
+        4.902
+      ],
+      "a": [
+        0,
+        0,
+        1
+      ],
+      "b": [
+        3,
+        4,
+        5
+      ],
+      "color": "D",
+      "tags": [
+        "tangent"
+      ]
+    },
+    {
+      "id": "segAC",
+      "type": "segment",
+      "from": [
+        0,
+        0,
+        1
+      ],
+      "to": [
+        3,
+        4,
+        5
+      ],
+      "color": "E",
+      "width": 2.5,
+      "tags": [
+        "diameter"
+      ]
+    },
+    {
+      "id": "circ",
+      "type": "circle",
+      "center": [
+        1.5,
+        2,
+        3
+      ],
+      "normal": [
+        2.368,
+        3.162,
+        -4.938
+      ],
+      "r": 3.2016,
+      "color": "B",
+      "tags": [
+        "circle"
+      ]
+    },
+    {
+      "id": "z1",
+      "type": "plane",
+      "corners": [
+        [
+          -3,
+          -3,
+          1
+        ],
+        [
+          7,
+          -3,
+          1
+        ],
+        [
+          7,
+          8,
+          1
+        ],
+        [
+          -3,
+          8,
+          1
+        ]
+      ],
+      "color": "D",
+      "alpha": 0.07,
+      "label": "z=1",
+      "tags": [
+        "tilt"
+      ]
+    },
+    {
+      "id": "H",
+      "type": "point",
+      "at": [
+        3,
+        4,
+        1
+      ],
+      "label": "H",
+      "color": "D",
+      "tags": [
+        "tilt"
+      ]
+    },
+    {
+      "id": "segCH",
+      "type": "segment",
+      "from": [
+        3,
+        4,
+        5
+      ],
+      "to": [
+        3,
+        4,
+        1
+      ],
+      "color": "D",
+      "dash": [
+        5,
+        4
+      ],
+      "tags": [
+        "tilt"
+      ]
+    },
+    {
+      "id": "raH",
+      "type": "rightangle",
+      "vertex": [
+        3,
+        4,
+        1
+      ],
+      "a": [
+        3,
+        4,
+        5
+      ],
+      "b": [
+        0,
+        0,
+        1
+      ],
+      "color": "D",
+      "tags": [
+        "tilt"
+      ]
+    },
+    {
+      "id": "theta",
+      "type": "label",
+      "at": [
+        1.4,
+        1.8,
+        1.35
+      ],
+      "text": "θ",
+      "color": "D",
+      "tags": [
+        "tilt"
+      ]
+    },
+    {
+      "id": "shadow",
+      "type": "projection",
+      "of": "circ",
+      "toZ": 0,
+      "color": "B",
+      "dash": [
+        4,
+        4
+      ],
+      "tags": [
+        "shadow"
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "text": "좌표공간에 점 $\\mathrm{A}(0,\\ 0,\\ 1)$과 중심 $\\mathrm{C}(3,\\ 4,\\ 5)$, 반지름 $1$인 구가 있습니다. $\\mathrm{A}$를 지나는 직선이 이 구와 한 점 $\\mathrm{P}$에서만 만납니다.",
+      "show": [
+        "base",
+        "given"
+      ],
+      "focus": [
+        "given"
+      ]
+    },
+    {
+      "text": "직선 $\\mathrm{AP}$가 구에 접하므로 $\\angle\\mathrm{APC}=90^{\\circ}$. 지름에 대한 원주각이 직각이므로 선분 $\\mathrm{AC}$는 세 점 $\\mathrm{A},\\mathrm{C},\\mathrm{P}$를 지나는 원의 지름이고, $\\overline{\\mathrm{AC}}=\\sqrt{41}$이므로 원의 넓이는 $\\dfrac{41}{4}\\pi$입니다.",
+      "show": [
+        "base",
+        "given",
+        "tangent",
+        "diameter",
+        "circle"
+      ],
+      "focus": [
+        "tangent",
+        "diameter"
+      ]
+    },
+    {
+      "text": "$\\mathrm{P}$가 움직여도 원은 항상 지름 $\\mathrm{AC}$를 가집니다. 평면 $\\mathrm{ACP}$는 직선 $\\mathrm{AC}$를 포함하는 임의의 평면이므로, 정사영 넓이가 최대가 되려면 이 평면과 $xy$평면이 이루는 각 $\\theta$가 최소여야 합니다. 도형을 회전시켜 원과 $xy$평면의 기울기를 확인해 보세요.",
+      "show": [
+        "base",
+        "given",
+        "diameter",
+        "circle"
+      ],
+      "focus": [
+        "circle"
+      ]
+    },
+    {
+      "text": "편의상 평면 $z=1$과 비교합니다. $\\mathrm{C}$에서 평면 $z=1$에 내린 수선의 발이 $\\mathrm{H}(3,\\ 4,\\ 1)$이고 $\\overline{\\mathrm{CH}}=4$. 교선까지의 거리를 이용하면 $\\sin\\theta=\\dfrac{4}{\\sqrt{41-a^{2}}}$이므로, $a=0$일 때 $\\theta$가 최소이고 $\\cos\\theta$의 최댓값은 $\\dfrac{5}{\\sqrt{41}}$입니다.",
+      "show": [
+        "base",
+        "given",
+        "diameter",
+        "circle",
+        "tilt"
+      ],
+      "focus": [
+        "tilt"
+      ]
+    },
+    {
+      "text": "정사영 넓이의 최댓값은 $\\dfrac{41}{4}\\pi\\times\\dfrac{5}{\\sqrt{41}}=\\dfrac{5}{4}\\sqrt{41}\\pi$. 따라서 $p=4$, $q=5$이고 $p+q=9$입니다.",
+      "show": [
+        "base",
+        "given",
+        "diameter",
+        "circle",
+        "shadow"
+      ],
+      "focus": [
+        "shadow"
+      ]
+    }
+  ],
+  "theorems": [
+    {
+      "key": "orthogonal-projection-proof",
+      "label": "정사영 넓이 S′=S cos θ"
+    }
+  ]
+}

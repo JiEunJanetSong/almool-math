@@ -1,0 +1,61 @@
+{
+  "topic": "내적",
+  "mode": "2d",
+  "answer": "12",
+  "scale": 35,
+  "camera": { "rotX": -1.5708, "rotY": 0, "zoom": 1.1 },
+  "objects": [
+    { "id": "axisX", "type": "segment", "from": [-2, 0, 0], "to": [5, 0, 0], "color": "muted", "tags": ["axes"] },
+    { "id": "axisY", "type": "segment", "from": [0, -4, 0], "to": [0, 2.5, 0], "color": "muted", "tags": ["axes"] },
+    { "id": "trapezoidABCD", "type": "plane", "corners": [[1, 1.732051, 0], [0, 0, 0], [4, 0, 0], [3, 1.732051, 0]], "alpha": 0.12, "color": "muted", "tags": ["given"] },
+    { "id": "A", "type": "point", "at": [1, 1.732051, 0], "label": "A", "color": "B", "tags": ["given"] },
+    { "id": "B", "type": "point", "at": [0, 0, 0], "label": "B", "color": "B", "tags": ["given"] },
+    { "id": "C", "type": "point", "at": [4, 0, 0], "label": "C", "color": "B", "tags": ["given"] },
+    { "id": "D", "type": "point", "at": [3, 1.732051, 0], "label": "D", "color": "B", "tags": ["given"] },
+    { "id": "segAB", "type": "segment", "from": [1, 1.732051, 0], "to": [0, 0, 0], "color": "muted", "tags": ["given"] },
+    { "id": "segBC", "type": "segment", "from": [0, 0, 0], "to": [4, 0, 0], "color": "muted", "tags": ["given"] },
+    { "id": "segCD", "type": "segment", "from": [4, 0, 0], "to": [3, 1.732051, 0], "color": "muted", "tags": ["given"] },
+    { "id": "segDA", "type": "segment", "from": [3, 1.732051, 0], "to": [1, 1.732051, 0], "color": "muted", "tags": ["given"] },
+    { "id": "vecAC", "type": "vector", "from": [1, 1.732051, 0], "to": [4, 0, 0], "label": "AC", "color": "C", "tags": ["condA"] },
+    { "id": "vecADcond", "type": "vector", "from": [1, 1.732051, 0], "to": [3, 1.732051, 0], "label": "AD", "color": "C", "tags": ["condA"] },
+    { "id": "vecBP", "type": "vector", "from": [0, 0, 0], "to": [-0.5, -0.866025, 0], "label": "BP", "color": "D", "tags": ["condA"] },
+    { "id": "P", "type": "point", "at": [-0.5, -0.866025, 0], "label": "P", "color": "E", "tags": ["condA"] },
+    { "id": "lineABP", "type": "segment", "from": [1, 1.732051, 0], "to": [-0.5, -0.866025, 0], "dash": [3, 3], "color": "muted", "tags": ["condA"] },
+    { "id": "lineNa", "type": "segment", "from": [0, -3.464102, 0], "to": [3, 1.732051, 0], "dash": [4, 3], "color": "D", "tags": ["condBC"] },
+    { "id": "circleBQ", "type": "circle", "center": [0, 0, 0], "normal": [0, 0, 1], "r": 2, "color": "A", "tags": ["condBC"] },
+    { "id": "Qreject", "type": "point", "at": [2, 0, 0], "label": "Q'", "color": "muted", "tags": ["candidates"] },
+    { "id": "vecBQreject", "type": "vector", "from": [0, 0, 0], "to": [2, 0, 0], "label": "BQ'", "dash": [3, 3], "color": "muted", "tags": ["candidates"] },
+    { "id": "Q", "type": "point", "at": [1, -1.732051, 0], "label": "Q", "color": "E", "tags": ["candidates", "answer"] },
+    { "id": "vecBQ", "type": "vector", "from": [0, 0, 0], "to": [1, -1.732051, 0], "label": "BQ", "color": "C", "tags": ["candidates"] },
+    { "id": "vecCP", "type": "vector", "from": [4, 0, 0], "to": [-0.5, -0.866025, 0], "label": "CP", "color": "A", "width": 3, "tags": ["answer"] },
+    { "id": "vecDQ", "type": "vector", "from": [3, 1.732051, 0], "to": [1, -1.732051, 0], "label": "DQ", "color": "A", "width": 3, "tags": ["answer"] },
+    { "id": "answerLabel", "type": "label", "at": [-1.7, 2.2, 0], "text": "\\overrightarrow{\\mathrm{CP}}\\cdot\\overrightarrow{\\mathrm{DQ}}=12", "color": "text", "tags": ["answer"] }
+  ],
+  "steps": [
+    {
+      "text": "$\\mathrm{B}$를 원점, $\\overline{\\mathrm{BC}}$를 $x$축 방향으로 놓으면 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{CD}}=\\overline{\\mathrm{AD}}=2$, $\\angle\\mathrm{ABC}=\\angle\\mathrm{BCD}=\\dfrac{\\pi}{3}$인 등변사다리꼴에서 $\\mathrm{A}(1,\\ \\sqrt{3})$, $\\mathrm{B}(0,\\ 0)$, $\\mathrm{C}(4,\\ 0)$, $\\mathrm{D}(3,\\ \\sqrt{3})$입니다. ($\\overline{\\mathrm{BC}}=\\overline{\\mathrm{AD}}+2\\cos\\dfrac{\\pi}{3}\\times 2=4$)",
+      "show": ["axes", "given"],
+      "focus": ["given"]
+    },
+    {
+      "text": "조건 (가) $\\overrightarrow{\\mathrm{AC}}=2(\\overrightarrow{\\mathrm{AD}}+\\overrightarrow{\\mathrm{BP}})$에서 $\\overrightarrow{\\mathrm{AC}}=(3,\\ -\\sqrt{3})$, $\\overrightarrow{\\mathrm{AD}}=(2,\\ 0)$이므로 $\\overrightarrow{\\mathrm{BP}}=\\dfrac{1}{2}\\overrightarrow{\\mathrm{AC}}-\\overrightarrow{\\mathrm{AD}}=\\left(-\\dfrac{1}{2},\\ -\\dfrac{\\sqrt{3}}{2}\\right)$, 즉 $\\mathrm{P}\\left(-\\dfrac{1}{2},\\ -\\dfrac{\\sqrt{3}}{2}\\right)$입니다. $\\overrightarrow{\\mathrm{BP}}=-\\dfrac{1}{2}\\overrightarrow{\\mathrm{BA}}$이므로 $\\mathrm{A}$, $\\mathrm{B}$, $\\mathrm{P}$는 일직선 위에 있습니다.",
+      "show": ["axes", "given", "condA"],
+      "focus": ["condA"]
+    },
+    {
+      "text": "조건 (나) $\\overrightarrow{\\mathrm{AC}}\\cdot\\overrightarrow{\\mathrm{PQ}}=6$에서 $\\mathrm{Q}(q_1,\\ q_2)$는 직선 $3q_1-\\sqrt{3}q_2=6$ 위에 있습니다. 한편 $\\mathrm{A}$, $\\mathrm{B}$, $\\mathrm{P}$가 일직선이므로 $\\angle\\mathrm{ABQ}+\\angle\\mathrm{PBQ}=\\pi$이고, 조건 (다) $2\\angle\\mathrm{BQA}=\\angle\\mathrm{PBQ}$를 삼각형 $\\mathrm{ABQ}$에 적용하면 $\\angle\\mathrm{BAQ}=\\angle\\mathrm{BQA}$가 되어 이등변삼각형이므로 $\\overline{\\mathrm{BQ}}=\\overline{\\mathrm{AB}}=2$, 즉 $\\mathrm{Q}$는 원 $q_1^2+q_2^2=4$ 위에 있습니다.",
+      "show": ["axes", "given", "condA", "condBC"],
+      "focus": ["condBC"]
+    },
+    {
+      "text": "$3q_1-\\sqrt{3}q_2=6$과 $q_1^2+q_2^2=4$를 연립하면 $q_2(q_2+\\sqrt{3})=0$이므로 $\\mathrm{Q}=(2,\\ 0)$ 또는 $\\mathrm{Q}=(1,\\ -\\sqrt{3})$입니다. $(2,\\ 0)$은 $\\overrightarrow{\\mathrm{BP}}\\cdot\\overrightarrow{\\mathrm{BQ}}=-1<0$이므로 $\\angle\\mathrm{PBQ}>\\dfrac{\\pi}{2}$가 되어 (다)의 $\\angle\\mathrm{PBQ}<\\dfrac{\\pi}{2}$를 만족하지 못해 기각되고, $(1,\\ -\\sqrt{3})$은 $\\overrightarrow{\\mathrm{BP}}\\cdot\\overrightarrow{\\mathrm{BQ}}=1>0$이므로 채택되어 $\\mathrm{Q}(1,\\ -\\sqrt{3})$입니다.",
+      "show": ["axes", "given", "condA", "condBC", "candidates"],
+      "focus": ["candidates"]
+    },
+    {
+      "text": "$\\overrightarrow{\\mathrm{CP}}=\\left(-\\dfrac{9}{2},\\ -\\dfrac{\\sqrt{3}}{2}\\right)$, $\\overrightarrow{\\mathrm{DQ}}=(-2,\\ -2\\sqrt{3})$이므로 $\\overrightarrow{\\mathrm{CP}}\\cdot\\overrightarrow{\\mathrm{DQ}}=\\dfrac{9}{2}\\times 2+\\dfrac{\\sqrt{3}}{2}\\times 2\\sqrt{3}=9+3=12$입니다.",
+      "show": ["axes", "given", "condA", "condBC", "candidates", "answer"],
+      "focus": ["answer"]
+    }
+  ]
+}

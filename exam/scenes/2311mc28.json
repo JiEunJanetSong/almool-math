@@ -1,0 +1,728 @@
+{
+  "topic": "정사영",
+  "mode": "3d",
+  "answer": "\\dfrac{2\\sqrt{78}}{39}",
+  "scale": 14,
+  "camera": {
+    "rotX": 0.38,
+    "rotY": -0.52,
+    "zoom": 1.08
+  },
+  "objects": [
+    {
+      "id": "beta",
+      "type": "plane",
+      "corners": [
+        [
+          -10,
+          -2,
+          0
+        ],
+        [
+          10,
+          -2,
+          0
+        ],
+        [
+          10,
+          8,
+          0
+        ],
+        [
+          -10,
+          8,
+          0
+        ]
+      ],
+      "alpha": 0.08,
+      "color": "muted",
+      "label": "\\beta",
+      "tags": [
+        "base",
+        "given",
+        "beta"
+      ]
+    },
+    {
+      "id": "alpha",
+      "type": "plane",
+      "corners": [
+        [
+          -10,
+          0,
+          0
+        ],
+        [
+          10,
+          0,
+          0
+        ],
+        [
+          10,
+          4,
+          7.874008
+        ],
+        [
+          -10,
+          4,
+          7.874008
+        ]
+      ],
+      "alpha": 0.1,
+      "color": "D",
+      "label": "\\alpha",
+      "tags": [
+        "given",
+        "alpha",
+        "circleC1"
+      ]
+    },
+    {
+      "id": "A",
+      "type": "point",
+      "at": [
+        -9,
+        0,
+        0
+      ],
+      "label": "A",
+      "color": "B",
+      "tags": [
+        "given",
+        "axis"
+      ]
+    },
+    {
+      "id": "B",
+      "type": "point",
+      "at": [
+        9,
+        0,
+        0
+      ],
+      "label": "B",
+      "color": "B",
+      "tags": [
+        "given",
+        "axis"
+      ]
+    },
+    {
+      "id": "O",
+      "type": "point",
+      "at": [
+        0,
+        0,
+        0
+      ],
+      "label": "O",
+      "color": "text",
+      "tags": [
+        "given",
+        "axis",
+        "circleC1"
+      ]
+    },
+    {
+      "id": "F",
+      "type": "point",
+      "at": [
+        5.196152,
+        0,
+        0
+      ],
+      "label": "F",
+      "color": "C",
+      "tags": [
+        "given",
+        "foci",
+        "ellipseData"
+      ]
+    },
+    {
+      "id": "Fp",
+      "type": "point",
+      "at": [
+        -5.196152,
+        0,
+        0
+      ],
+      "label": "F'",
+      "color": "C",
+      "tags": [
+        "given",
+        "foci",
+        "ellipseData"
+      ]
+    },
+    {
+      "id": "segAB",
+      "type": "segment",
+      "from": [
+        -9,
+        0,
+        0
+      ],
+      "to": [
+        9,
+        0,
+        0
+      ],
+      "width": 3,
+      "color": "B",
+      "tags": [
+        "given",
+        "axis",
+        "ellipseData"
+      ]
+    },
+    {
+      "id": "circleC1",
+      "type": "circle",
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "normal": [
+        0,
+        -7.874008,
+        4
+      ],
+      "r": 9,
+      "dash": [
+        5,
+        4
+      ],
+      "width": 2.5,
+      "color": "D",
+      "tags": [
+        "given",
+        "circleC1"
+      ]
+    },
+    {
+      "id": "H",
+      "type": "point",
+      "at": [
+        -1.732051,
+        4,
+        0
+      ],
+      "label": "H",
+      "color": "E",
+      "tags": [
+        "hData",
+        "projection",
+        "angle"
+      ]
+    },
+    {
+      "id": "Hp",
+      "type": "point",
+      "at": [
+        -1.732051,
+        0,
+        0
+      ],
+      "label": "H'",
+      "color": "E",
+      "tags": [
+        "hData",
+        "projection",
+        "angle",
+        "alphaCross"
+      ]
+    },
+    {
+      "id": "Q",
+      "type": "point",
+      "at": [
+        -5.196152,
+        6,
+        0
+      ],
+      "label": "Q",
+      "color": "A",
+      "tags": [
+        "qData",
+        "ellipseData"
+      ]
+    },
+    {
+      "id": "P",
+      "type": "point",
+      "at": [
+        -1.732051,
+        4,
+        7.874008
+      ],
+      "label": "P",
+      "color": "D",
+      "tags": [
+        "pData",
+        "projection",
+        "alphaCross",
+        "circleC1"
+      ]
+    },
+    {
+      "id": "segFH",
+      "type": "segment",
+      "from": [
+        5.196152,
+        0,
+        0
+      ],
+      "to": [
+        -1.732051,
+        4,
+        0
+      ],
+      "width": 3,
+      "color": "E",
+      "tags": [
+        "hData",
+        "angle"
+      ]
+    },
+    {
+      "id": "segHFp",
+      "type": "segment",
+      "from": [
+        -1.732051,
+        4,
+        0
+      ],
+      "to": [
+        -5.196152,
+        0,
+        0
+      ],
+      "dash": [
+        4,
+        3
+      ],
+      "color": "C",
+      "tags": [
+        "hData"
+      ]
+    },
+    {
+      "id": "segFQ",
+      "type": "segment",
+      "from": [
+        5.196152,
+        0,
+        0
+      ],
+      "to": [
+        -5.196152,
+        6,
+        0
+      ],
+      "width": 3,
+      "color": "A",
+      "tags": [
+        "qData",
+        "ellipseData"
+      ]
+    },
+    {
+      "id": "segQFp",
+      "type": "segment",
+      "from": [
+        -5.196152,
+        6,
+        0
+      ],
+      "to": [
+        -5.196152,
+        0,
+        0
+      ],
+      "width": 3,
+      "color": "A",
+      "tags": [
+        "qData",
+        "ellipseData"
+      ]
+    },
+    {
+      "id": "segHHp",
+      "type": "segment",
+      "from": [
+        -1.732051,
+        4,
+        0
+      ],
+      "to": [
+        -1.732051,
+        0,
+        0
+      ],
+      "width": 3,
+      "color": "E",
+      "tags": [
+        "hData",
+        "projection",
+        "angle"
+      ]
+    },
+    {
+      "id": "segPH",
+      "type": "segment",
+      "from": [
+        -1.732051,
+        4,
+        7.874008
+      ],
+      "to": [
+        -1.732051,
+        4,
+        0
+      ],
+      "dash": [
+        4,
+        3
+      ],
+      "width": 2.5,
+      "color": "D",
+      "tags": [
+        "projection",
+        "pData"
+      ]
+    },
+    {
+      "id": "segPHp",
+      "type": "segment",
+      "from": [
+        -1.732051,
+        4,
+        7.874008
+      ],
+      "to": [
+        -1.732051,
+        0,
+        0
+      ],
+      "width": 3,
+      "color": "D",
+      "tags": [
+        "alphaCross",
+        "answer"
+      ]
+    },
+    {
+      "id": "segOHp",
+      "type": "segment",
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        -1.732051,
+        0,
+        0
+      ],
+      "dash": [
+        4,
+        3
+      ],
+      "color": "E",
+      "tags": [
+        "alphaCross"
+      ]
+    },
+    {
+      "id": "segOP",
+      "type": "segment",
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        -1.732051,
+        4,
+        7.874008
+      ],
+      "width": 3,
+      "color": "D",
+      "tags": [
+        "circleC1",
+        "alphaCross"
+      ]
+    },
+    {
+      "id": "circleH",
+      "type": "circle",
+      "center": [
+        -1.732051,
+        4,
+        0
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "r": 4,
+      "dash": [
+        5,
+        4
+      ],
+      "color": "E",
+      "tags": [
+        "hCircle",
+        "qData"
+      ]
+    },
+    {
+      "id": "raHHp",
+      "type": "rightangle",
+      "vertex": [
+        -1.732051,
+        0,
+        0
+      ],
+      "a": [
+        0,
+        4,
+        0
+      ],
+      "b": [
+        1,
+        0,
+        0
+      ],
+      "color": "D",
+      "tags": [
+        "hData"
+      ]
+    },
+    {
+      "id": "raPH",
+      "type": "rightangle",
+      "vertex": [
+        -1.732051,
+        4,
+        0
+      ],
+      "a": [
+        0,
+        0,
+        7.874008
+      ],
+      "b": [
+        1,
+        0,
+        0
+      ],
+      "color": "D",
+      "tags": [
+        "projection"
+      ]
+    },
+    {
+      "id": "arcTheta",
+      "type": "arc3d",
+      "center": [
+        -1.732051,
+        0,
+        0
+      ],
+      "r": 1.2,
+      "from": [
+        -1.732051,
+        1.2,
+        0.0
+      ],
+      "to": [
+        -1.732051,
+        0.543493,
+        1.069867
+      ],
+      "via": [
+        -1.732051,
+        1.022788,
+        0.627618
+      ],
+      "width": 3,
+      "color": "A",
+      "tags": [
+        "answer"
+      ]
+    },
+    {
+      "id": "labelLengths1",
+      "type": "label",
+      "at": [
+        1.1,
+        5.9,
+        0.15
+      ],
+      "text": "FH=8,\\ FQ=12,\\ F'Q=6",
+      "color": "text",
+      "tags": [
+        "qData"
+      ]
+    },
+    {
+      "id": "labelLengths2",
+      "type": "label",
+      "at": [
+        -5.8,
+        2.1,
+        0.15
+      ],
+      "text": "HH'=4,\\ OH'=\\sqrt3",
+      "color": "text",
+      "tags": [
+        "hData"
+      ]
+    },
+    {
+      "id": "labelEllipse",
+      "type": "label",
+      "at": [
+        0.9,
+        -1.35,
+        0.15
+      ],
+      "text": "C_2:\\ FQ+F'Q=18",
+      "color": "text",
+      "tags": [
+        "ellipseData"
+      ]
+    },
+    {
+      "id": "labelAnswer",
+      "type": "label",
+      "at": [
+        -4.8,
+        2.8,
+        5.4
+      ],
+      "text": "\\cos\\theta=\\dfrac{4}{\\sqrt{78}}=\\dfrac{2\\sqrt{78}}{39}",
+      "color": "text",
+      "tags": [
+        "answer"
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "text": "평면 $\\beta$를 $z=0$으로, 교선 $\\mathrm{AB}$를 $x$축으로 둡니다. $\\overline{\\mathrm{AB}}=18$이므로 $\\mathrm{A}(-9,0,0)$, $\\mathrm{B}(9,0,0)$, $\\mathrm{O}(0,0,0)$입니다.",
+      "show": [
+        "base",
+        "given",
+        "axis"
+      ],
+      "focus": [
+        "axis"
+      ]
+    },
+    {
+      "text": "$\\angle\\mathrm{HFF'}=\\dfrac{\\pi}{6}$이고 원의 반지름이 $4$이므로 $\\overline{\\mathrm{HH'}}=4$, $\\overline{\\mathrm{FH}}=8$, $\\overline{\\mathrm{FH'}}=4\\sqrt3$입니다. 따라서 $\\mathrm{F}=(3\\sqrt3,0,0)$, $\\mathrm{F'}=(-3\\sqrt3,0,0)$, $\\mathrm{H}=(-\\sqrt3,4,0)$입니다.",
+      "show": [
+        "base",
+        "axis",
+        "foci",
+        "hData",
+        "angle"
+      ],
+      "focus": [
+        "hData",
+        "angle"
+      ],
+      "camera": {
+        "rotX": -1.5708,
+        "rotY": 0,
+        "zoom": 1.02
+      }
+    },
+    {
+      "text": "세 점 $\\mathrm{F}$, $\\mathrm{H}$, $\\mathrm{Q}$가 일직선 위에 있고 $\\overline{\\mathrm{HQ}}=4$이므로 $\\overline{\\mathrm{FQ}}=12$입니다. 타원의 정의에서 $\\overline{\\mathrm{F'Q}}=18-12=6$이고, $\\dfrac{6}{12}=\\sin\\dfrac{\\pi}{6}$이므로 $\\mathrm{QF'}\\perp\\mathrm{AB}$입니다.",
+      "show": [
+        "base",
+        "axis",
+        "ellipseData",
+        "hData",
+        "qData",
+        "hCircle"
+      ],
+      "focus": [
+        "qData",
+        "ellipseData"
+      ],
+      "camera": {
+        "rotX": -1.5708,
+        "rotY": 0,
+        "zoom": 1.02
+      }
+    },
+    {
+      "text": "$\\overline{\\mathrm{FF'}}=12\\cos\\dfrac{\\pi}{6}=6\\sqrt3$이므로 $\\overline{\\mathrm{OF}}=3\\sqrt3$입니다. 또 $\\overline{\\mathrm{FH'}}=4\\sqrt3$에서 $\\overline{\\mathrm{OH'}}=\\sqrt3$입니다.",
+      "show": [
+        "base",
+        "axis",
+        "foci",
+        "hData",
+        "qData",
+        "ellipseData"
+      ],
+      "focus": [
+        "foci",
+        "hData"
+      ]
+    },
+    {
+      "text": "$\\mathrm{PH}\\perp\\beta$이고 $\\mathrm{HH'}\\perp\\mathrm{AB}$이므로 $\\mathrm{PH'}\\perp\\mathrm{AB}$입니다. 따라서 두 평면이 이루는 각 $\\theta$는 $\\angle\\mathrm{PH'H}$와 같습니다.",
+      "show": [
+        "base",
+        "given",
+        "alpha",
+        "axis",
+        "hData",
+        "projection",
+        "pData",
+        "alphaCross"
+      ],
+      "focus": [
+        "projection",
+        "alphaCross"
+      ],
+      "camera": {
+        "rotX": 0.38,
+        "rotY": -0.52,
+        "zoom": 1.08
+      }
+    },
+    {
+      "text": "평면 $\\alpha$에서 $\\mathrm{P}$는 지름 $\\mathrm{AB}$인 원 위에 있으므로 $\\overline{\\mathrm{OP}}=9$입니다. $\\overline{\\mathrm{OH'}}=\\sqrt3$에서 $\\overline{\\mathrm{PH'}}=\\sqrt{81-3}=\\sqrt{78}$이고, $\\cos\\theta=\\dfrac{\\overline{\\mathrm{HH'}}}{\\overline{\\mathrm{PH'}}}=\\dfrac{4}{\\sqrt{78}}=\\dfrac{2\\sqrt{78}}{39}$입니다.",
+      "show": [
+        "base",
+        "given",
+        "alpha",
+        "axis",
+        "circleC1",
+        "hData",
+        "projection",
+        "pData",
+        "alphaCross",
+        "answer"
+      ],
+      "focus": [
+        "answer"
+      ]
+    }
+  ],
+  "theorems": [
+    {
+      "key": "orthogonal-projection-proof",
+      "label": "정사영 넓이 S'=S cos θ"
+    }
+  ]
+}

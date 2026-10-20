@@ -1,0 +1,57 @@
+{
+  "topic": "자취",
+  "mode": "2d",
+  "answer": "\\sqrt{22}",
+  "scale": 46,
+  "camera": { "rotX": -1.5708, "rotY": 0, "zoom": 1.04 },
+  "objects": [
+    { "id": "axisX", "type": "segment", "from": [-2.5, 0, 0], "to": [2.5, 0, 0], "color": "muted", "tags": ["axes"] },
+    { "id": "axisY", "type": "segment", "from": [0, -2.8, 0], "to": [0, 2.8, 0], "color": "muted", "tags": ["axes"] },
+    { "id": "C1", "type": "ellipse", "center": [0, 0, 0], "rx": 1.414214, "ry": 1, "width": 3, "color": "A", "tags": ["c1", "given"] },
+    { "id": "C2", "type": "ellipse", "center": [0, 0, 0], "rx": 1.414214, "ry": 2.345208, "width": 3, "color": "C", "tags": ["c2", "answer"] },
+    { "id": "F", "type": "point", "at": [1, 0, 0], "label": "F", "color": "B", "tags": ["given", "foci1", "midpoint"] },
+    { "id": "Fp", "type": "point", "at": [-1, 0, 0], "label": "F'", "color": "B", "tags": ["given", "foci1", "qline"] },
+    { "id": "G", "type": "point", "at": [0, 1.870829, 0], "label": "G", "color": "D", "tags": ["gpoints", "midpoint", "c2"] },
+    { "id": "Gp", "type": "point", "at": [0, -1.870829, 0], "label": "G'", "color": "D", "tags": ["gpoints", "c2"] },
+    { "id": "P", "type": "point", "at": [0.5, 0.935414, 0], "label": "P", "color": "E", "tags": ["pointP", "midpoint", "qline"] },
+    { "id": "Q", "type": "point", "at": [1.158162, 1.345851, 0], "label": "Q", "color": "E", "tags": ["pointQ", "qline", "answer"] },
+    { "id": "segFG", "type": "segment", "from": [1, 0, 0], "to": [0, 1.870829, 0], "width": 3, "color": "D", "tags": ["midpoint"] },
+    { "id": "segGP", "type": "segment", "from": [0, 1.870829, 0], "to": [0.5, 0.935414, 0], "width": 3, "color": "E", "tags": ["midpoint"] },
+    { "id": "segPF", "type": "segment", "from": [0.5, 0.935414, 0], "to": [1, 0, 0], "width": 3, "color": "E", "tags": ["midpoint"] },
+    { "id": "segPFp", "type": "segment", "from": [0.5, 0.935414, 0], "to": [-1, 0, 0], "width": 2.5, "color": "B", "tags": ["sumC1", "qline"] },
+    { "id": "segFQ", "type": "segment", "from": [-1, 0, 0], "to": [1.158162, 1.345851, 0], "dash": [5, 4], "width": 3, "color": "E", "tags": ["qline"] },
+    { "id": "vertexR", "type": "point", "at": [1.414214, 0, 0], "label": "V", "color": "C", "tags": ["vertices", "c2"] },
+    { "id": "vertexL", "type": "point", "at": [-1.414214, 0, 0], "label": "V'", "color": "C", "tags": ["vertices", "c2"] },
+    { "id": "segQG", "type": "segment", "from": [1.158162, 1.345851, 0], "to": [0, 1.870829, 0], "width": 3, "color": "C", "tags": ["answer"] },
+    { "id": "segQGp", "type": "segment", "from": [1.158162, 1.345851, 0], "to": [0, -1.870829, 0], "width": 3, "color": "C", "tags": ["answer"] },
+    { "id": "labelC1", "type": "label", "at": [-2.35, 1.45, 0], "text": "C_1:\\ \\dfrac{x^2}{2}+y^2=1", "color": "text", "tags": ["c1"] },
+    { "id": "labelC2", "type": "label", "at": [0.55, 2.55, 0], "text": "2b=\\sqrt{22}", "color": "text", "tags": ["answer"] }
+  ],
+  "steps": [
+    {
+      "text": "$\\overline{\\mathrm{GP}}=\\overline{\\mathrm{PF}}$이고 $\\overline{\\mathrm{GP}}+\\overline{\\mathrm{PF'}}=2\\sqrt2$이므로 $\\overline{\\mathrm{PF}}+\\overline{\\mathrm{PF'}}=2\\sqrt2$입니다. 따라서 $2a=2\\sqrt2$, $a=\\sqrt2$입니다.",
+      "show": ["axes", "given", "c1", "foci1", "midpoint", "sumC1"],
+      "focus": ["c1", "midpoint", "sumC1"]
+    },
+    {
+      "text": "$C_1:\\dfrac{x^2}{2}+y^2=1$이므로 초점은 $\\mathrm{F}(1,\\ 0)$, $\\mathrm{F'}(-1,\\ 0)$입니다. $\\overline{\\mathrm{GP}}=\\overline{\\mathrm{PF}}$에서 $\\mathrm{P}$의 $x$좌표는 $\\dfrac12$입니다.",
+      "show": ["axes", "c1", "foci1", "midpoint", "pointP"],
+      "focus": ["foci1", "pointP"]
+    },
+    {
+      "text": "$\\dfrac12\\left(\\dfrac12\\right)^2+y^2=1$에서 $y^2=\\dfrac78$이고 제 $1$사분면의 점이므로 $\\mathrm{P}\\left(\\dfrac12,\\ \\dfrac{\\sqrt{14}}4\\right)$입니다. 점 $\\mathrm{P}$는 선분 $\\mathrm{FG}$의 중점이므로 $\\mathrm{G}\\left(0,\\ \\dfrac{\\sqrt{14}}2\\right)$입니다.",
+      "show": ["axes", "c1", "foci1", "midpoint", "pointP", "gpoints"],
+      "focus": ["pointP", "gpoints"]
+    },
+    {
+      "text": "타원 $C_2$는 $C_1$의 두 꼭짓점 $\\left(\\sqrt2,\\ 0\\right)$, $\\left(-\\sqrt2,\\ 0\\right)$을 지나고 초점이 $\\mathrm{G}$, $\\mathrm{G'}$입니다. 장반지름을 $b$라 하면 $b^2=\\left(\\sqrt2\\right)^2+\\left(\\dfrac{\\sqrt{14}}2\\right)^2=\\dfrac{22}{4}$입니다.",
+      "show": ["axes", "c1", "c2", "vertices", "gpoints", "qline", "pointQ"],
+      "focus": ["c2", "vertices", "gpoints"]
+    },
+    {
+      "text": "따라서 $\\overline{\\mathrm{QG}}+\\overline{\\mathrm{QG'}}=2b=\\sqrt{22}$입니다.",
+      "show": ["axes", "c1", "c2", "gpoints", "qline", "pointQ", "answer"],
+      "focus": ["answer"]
+    }
+  ]
+}
